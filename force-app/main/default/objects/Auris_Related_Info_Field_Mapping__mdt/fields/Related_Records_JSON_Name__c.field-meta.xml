@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Records_JSON_Name__c</fullName>
+    <description>The parent JSON node key (e.g., &quot;extraCurricularActivities&quot;, &quot;academicResults&quot;).
+This identifies which child object the field belongs to.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The parent JSON node key (e.g., &quot;extraCurricularActivities&quot;, &quot;academicResults&quot;).
+This identifies which child object the field belongs to.</inlineHelpText>
+    <label>ParentNodeJSONKey</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

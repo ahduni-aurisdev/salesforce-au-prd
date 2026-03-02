@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Erro de acumulação de oportunidades – OBSOLETO</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Erros de acumulação de oportunidades – OBSOLETOS</value>
+    </caseValues>
+    <gender>Masculine</gender>
+</CustomObjectTranslation>

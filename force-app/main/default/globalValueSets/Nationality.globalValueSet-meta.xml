@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Indian</fullName>
+        <default>false</default>
+        <label>Indian</label>
+    </customValue>
+    <customValue>
+        <fullName>Foreign</fullName>
+        <default>false</default>
+        <label>Foreign</label>
+    </customValue>
+    <masterLabel>Nationality</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

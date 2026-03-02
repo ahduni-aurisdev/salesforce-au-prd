@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>It is used for the dynamic API of the AU website Integration code [class - saveWebsiteLead]</description>
+    <label>WebFormFieldMapping</label>
+    <pluralLabel>WebFormFieldMappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

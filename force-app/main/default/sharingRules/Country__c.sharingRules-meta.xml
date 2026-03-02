@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingGuestRules>
+        <fullName>Country_Read_For_WalkIn_Guest</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Country Read For WalkIn Guest</label>
+        <sharedTo>
+            <guestUser>Walk_in_Lead_Form</guestUser>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>India</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+</SharingRules>

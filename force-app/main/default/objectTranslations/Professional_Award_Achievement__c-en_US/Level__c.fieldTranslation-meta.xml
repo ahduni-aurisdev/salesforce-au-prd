@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Level --></label>
+    <name>Level__c</name>
+    <picklistValues>
+        <masterLabel>International</masterLabel>
+        <translation><!-- International --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Local</masterLabel>
+        <translation><!-- Local --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>National</masterLabel>
+        <translation><!-- National --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Regional</masterLabel>
+        <translation><!-- Regional --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

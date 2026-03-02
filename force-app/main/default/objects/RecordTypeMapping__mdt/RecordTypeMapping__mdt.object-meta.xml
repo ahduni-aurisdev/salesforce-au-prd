@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Record Type Mapping for opportunity and person account objects</description>
+    <label>RecordTypeMapping</label>
+    <pluralLabel>RecordTypeMappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

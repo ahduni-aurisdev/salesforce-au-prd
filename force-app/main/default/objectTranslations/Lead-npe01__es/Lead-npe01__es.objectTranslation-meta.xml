@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>CLeF Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Auris Application Information --></label>
+            <section>Auris Application Information</section>
+        </sections>
+        <sections>
+            <label><!-- College Information --></label>
+            <section>College Information</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Lead Information --></label>
+            <section>General Lead Information</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Information --></label>
+            <section>Personal Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Executive Education Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Class 12 Details --></label>
+            <section>Class 12 Details</section>
+        </sections>
+        <sections>
+            <label><!-- College Education --></label>
+            <section>College Education</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Information --></label>
+            <section>Personal Information</section>
+        </sections>
+        <sections>
+            <label><!-- Statement of Purpose --></label>
+            <section>Statement of Purpose</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Graduation Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Auris Application Information --></label>
+            <section>Auris Application Information</section>
+        </sections>
+        <sections>
+            <label><!-- College Information --></label>
+            <section>College Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Information --></label>
+            <section>Personal Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Application Information --></label>
+            <section>Application Information</section>
+        </sections>
+        <sections>
+            <label><!-- Application Status --></label>
+            <section>Application Status</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label><!-- Identification Information --></label>
+            <section>Identification Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Masters Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Auris Application Information --></label>
+            <section>Auris Application Information</section>
+        </sections>
+        <sections>
+            <label><!-- College Information --></label>
+            <section>College Information</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Lead Information --></label>
+            <section>General Lead Information</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Information --></label>
+            <section>Personal Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PHD Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Auris Application Information --></label>
+            <section>Auris Application Information</section>
+        </sections>
+        <sections>
+            <label><!-- College Information --></label>
+            <section>College Information</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- General Lead Information --></label>
+            <section>General Lead Information</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Information --></label>
+            <section>Personal Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Undergraduation Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Auris Application Information --></label>
+            <section>Auris Application Information</section>
+        </sections>
+        <sections>
+            <label><!-- College Information --></label>
+            <section>College Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Information --></label>
+            <section>Personal Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Call Customer --></label>
+        <name>Call_Customer</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Call Log --></label>
+        <name>Call_Log</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Task --></label>
+        <name>NewTask2</name>
+    </quickActions>
+</CustomObjectTranslation>

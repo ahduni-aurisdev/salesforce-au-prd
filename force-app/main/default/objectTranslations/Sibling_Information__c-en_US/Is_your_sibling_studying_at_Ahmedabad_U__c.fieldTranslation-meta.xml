@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Is your sibling studying at Ahmedabad University or is an alumnus/alumna? --></help>
+    <label><!-- Is your sibling studying at Ahmedabad U --></label>
+    <name>Is_your_sibling_studying_at_Ahmedabad_U__c</name>
+</CustomFieldTranslation>

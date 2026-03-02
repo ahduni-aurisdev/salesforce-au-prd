@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Special_Assignee__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Identifies whether the user is a special assignee for specific Master programs (e.g., Master of Technology in Composites, Computer Sciences and Engineering, Microelectronics and Semiconductors).</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Identifies whether the user is a special assignee for specific Master programs (e.g., Master of Technology in Composites, Computer Sciences and Engineering, Microelectronics and Semiconductors).</inlineHelpText>
+    <label>Is Special Assignee</label>
+    <type>Checkbox</type>
+</CustomField>

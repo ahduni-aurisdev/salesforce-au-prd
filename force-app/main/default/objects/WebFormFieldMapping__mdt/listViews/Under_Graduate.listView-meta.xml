@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Under_Graduate</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Department__c</columns>
+    <columns>JSON_Key__c</columns>
+    <columns>TypeOfForm__c</columns>
+    <columns>Datatype__c</columns>
+    <columns>LeadSourceGroup__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Department__c</field>
+        <operation>equals</operation>
+        <value>Masters</value>
+    </filters>
+    <filters>
+        <field>TypeOfForm__c</field>
+        <operation>equals</operation>
+        <value>Website_MastersQueries</value>
+    </filters>
+    <label>Under Graduate (Queries)</label>
+    <language>en_US</language>
+</ListView>

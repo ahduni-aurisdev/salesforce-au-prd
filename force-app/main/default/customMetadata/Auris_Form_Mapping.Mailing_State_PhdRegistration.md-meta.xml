@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Mailing_State__c</label>
+    <protected>false</protected>
+    <values>
+        <field>Datatype__c</field>
+        <value xsi:type="xsd:string">Text</value>
+    </values>
+    <values>
+        <field>Department__c</field>
+        <value xsi:type="xsd:string">Phd</value>
+    </values>
+    <values>
+        <field>JSON_Key__c</field>
+        <value xsi:type="xsd:string">maillingStateProvince</value>
+    </values>
+    <values>
+        <field>LeadSourceGroup__c</field>
+        <value xsi:type="xsd:string">AURIS</value>
+    </values>
+    <values>
+        <field>TypeOfForm__c</field>
+        <value xsi:type="xsd:string">Auris_Registration_Form</value>
+    </values>
+</CustomMetadata>

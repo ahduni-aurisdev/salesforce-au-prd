@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>MBA Leads from Meta</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>tapan.amin@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Business Administration</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>Meta_Ads</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>State and City wise Lead Assignment</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <assignedTo>hetal.thakkar@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Himachal Pradesh</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Haryana</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Uttar Pradesh</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Undergraduation</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>prakriti.gaur@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8) AND 9</booleanFilter>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Telangana</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Karnataka</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Andhra Pradesh</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Kerala</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Tamil Nadu</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Source_Medium__c</field>
+                <operation>contains</operation>
+                <value>Andaman and Nicobar</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Lakshadweep</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Puducherry</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Undergraduation</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>vanisha.gopalani@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>equals</operation>
+                <value>Madhya Pradesh</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Country</field>
+                <operation>notEqual</operation>
+                <value>India</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Undergraduation</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>vanisha.gopalani@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7) AND 8</booleanFilter>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>equals</operation>
+                <value>Surat</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>equals</operation>
+                <value>Vadodara</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>notEqual</operation>
+                <value>Ahmedabad</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>notEqual</operation>
+                <value>Gandhinagar</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>notEqual</operation>
+                <value>Jamnagar</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>notEqual</operation>
+                <value>Rajkot</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.City</field>
+                <operation>notEqual</operation>
+                <value>Kutch</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Undergraduation</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>execed@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Lead_Type__c</field>
+                <operation>equals</operation>
+                <value>Executive Education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Executive Education</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>doctoral.admissions@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Lead_Type__c</field>
+                <operation>equals</operation>
+                <value>Phd</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Phd</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>farheen.qureshi@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Masters</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Business Administration</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Science in Quantitative Finance</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Department__c</field>
+                <operation>equals</operation>
+                <value>Masters</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>farheen.qureshi@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Masters</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Science in Economics</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Management Studies in Heritage Management</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Department__c</field>
+                <operation>equals</operation>
+                <value>Masters</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>aaqib.chokwala@ahduni.edu.in</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Masters</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Technology in Computer Science and Engineering</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Technology in Composites</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Preferred_Programme__c</field>
+                <operation>equals</operation>
+                <value>Master of Technology in Microelectronics and Semiconductors</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

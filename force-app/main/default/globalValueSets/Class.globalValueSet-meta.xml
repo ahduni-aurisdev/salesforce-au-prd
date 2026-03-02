@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Class 8</fullName>
+        <default>false</default>
+        <label>Class 8</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 9</fullName>
+        <default>false</default>
+        <label>Class 9</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 10</fullName>
+        <default>false</default>
+        <label>Class 10</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 11</fullName>
+        <default>false</default>
+        <label>Class 11</label>
+    </customValue>
+    <customValue>
+        <fullName>Class 12</fullName>
+        <default>false</default>
+        <label>Class 12</label>
+    </customValue>
+    <customValue>
+        <fullName>Educator</fullName>
+        <default>false</default>
+        <label>Educator</label>
+    </customValue>
+    <customValue>
+        <fullName>Counselor</fullName>
+        <default>false</default>
+        <label>Counselor</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>NA for educators</fullName>
+        <default>false</default>
+        <label>NA for educators</label>
+    </customValue>
+    <masterLabel>Class</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

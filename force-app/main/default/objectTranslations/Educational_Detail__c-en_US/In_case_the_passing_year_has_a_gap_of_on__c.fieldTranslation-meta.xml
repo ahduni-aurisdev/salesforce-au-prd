@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- In case the passing year has a gap of one year or more write the reason for the gap year --></help>
+    <label><!-- In case the passing year has a gap of on --></label>
+    <name>In_case_the_passing_year_has_a_gap_of_on__c</name>
+</CustomFieldTranslation>

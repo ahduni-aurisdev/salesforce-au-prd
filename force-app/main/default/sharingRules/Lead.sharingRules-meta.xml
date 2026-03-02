@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Masters_Record_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Masters Record Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Associate_Director_Graduate_Admissions</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Masters</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Graduate_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Graduate Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Manager_of_Outreach</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Associate_Director_Graduate_Admissions</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Graduate_Sharing_Rule_V2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Graduate Sharing Rule V2</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Associate_Director_Graduate_Admissions</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Manager_of_Outreach</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Lead_Sharing_Ops_to_Ops</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Lead Sharing Ops to Ops</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Associate_Director_of_Ops</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Associate_Director_of_Ops</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Lead_Sharing_Ops_to_OutReach</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Lead Sharing Ops to OutReach</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Associate_Director_of_Outreach</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Associate_Director_of_Ops</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Lead_Sharing_Outreach_to_Ops</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Lead Sharing Outreach to Ops</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Associate_Director_of_Ops</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Associate_Director_of_Outreach</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Lead_Sharing_Outreach_to_Outreach</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Lead Sharing Outreach to Outreach</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Associate_Director_of_Outreach</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <roleAndSubordinatesInternal>Associate_Director_of_Outreach</roleAndSubordinatesInternal>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

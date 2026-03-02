@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Block</actionOnInsert>
+    <actionOnUpdate>Block</actionOnUpdate>
+    <alertText>An opportunity already exists</alertText>
+    <description xsi:nil="true"/>
+    <duplicateRuleFilter xsi:nil="true"/>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>PersonAccount</matchRuleSObjectType>
+        <matchingRule>Person_Account_Email_Or_Phone</matchingRule>
+        <objectMapping>
+            <inputObject>Nurturing_Database__c</inputObject>
+            <mappingFields>
+                <inputField>Email__c</inputField>
+                <outputField>PersonEmail</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>Phone__c</inputField>
+                <outputField>Phone</outputField>
+            </mappingFields>
+            <outputObject>PersonAccount</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <isActive>true</isActive>
+    <masterLabel>Duplicate rule for Nurturing Database</masterLabel>
+    <securityOption>EnforceSharingRules</securityOption>
+    <sortOrder>1</sortOrder>
+</DuplicateRule>

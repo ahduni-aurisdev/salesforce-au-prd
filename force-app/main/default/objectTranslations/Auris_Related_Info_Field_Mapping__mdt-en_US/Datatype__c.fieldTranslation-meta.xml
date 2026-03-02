@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Specifies the Salesforce field datatype that the JSON value should map to (e.g., Text, Date, Number, Picklist). --></help>
+    <label><!-- Datatype --></label>
+    <name>Datatype__c</name>
+</CustomFieldTranslation>

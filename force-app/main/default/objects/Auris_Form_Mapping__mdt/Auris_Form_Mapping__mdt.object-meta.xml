@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The Auris Form Mapping metadata is designed to make Auris → Salesforce Lead integration dynamic and configurable without changing code.
+Each metadata record represents one mapping rule between a JSON field and a Lead field.
+When a JSON payload is received from Auris, the system looks up the mapping based on:
+Department__c (UG, Masters, PhD, Exec. Ed.)
+TypeOfForm__c (Admission or Registration)
+JSON_Key__c (the key in incoming JSON)
+The mapped Lead field is then populated with the value from the Auris JSON.
+Datatype__c ensures proper data conversion (e.g., Date parsing, Number conversion).
+LeadSourceGroup__c allows grouping of mappings by source (currently &quot;Auris&quot;).</description>
+    <label>Auris Form Mapping</label>
+    <pluralLabel>Auris Form Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

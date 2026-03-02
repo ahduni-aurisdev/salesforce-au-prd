@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JSON_Key__c</fullName>
+    <description>The field-level key inside the child JSON object (e.g., &quot;activities&quot;, &quot;activityCategory&quot;).</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The field-level key inside the child JSON object (e.g., &quot;activities&quot;, &quot;activityCategory&quot;).</inlineHelpText>
+    <label>JSON Key</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

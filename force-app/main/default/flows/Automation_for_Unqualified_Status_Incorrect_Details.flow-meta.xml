@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Invalid_Lead</name>
+        <label>Check Invalid Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Invalid_Lead</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Invalid_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Is_Invalid_Phone</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Lead_as_Unqualified</targetReference>
+            </connector>
+            <label>Invalid Lead</label>
+        </rules>
+    </decisions>
+    <description>For leads with invalid email/ Phone, the status will be updated to&quot;Unqualified&quot;, and Lead Fitment Score will be &quot;-999&quot;</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Is_Invalid_Email</description>
+        <name>Is_Invalid_Email</name>
+        <dataType>Boolean</dataType>
+        <expression>ISBLANK({!$Record.Email}) ||
+NOT(CONTAINS({!$Record.Email},&quot;@&quot;))</expression>
+    </formulas>
+    <formulas>
+        <description>Is_Invalid_Phone</description>
+        <name>Is_Invalid_Phone</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+    ISBLANK($Record.Phone),
+
+    LEN($Record.Phone) &lt; 10,
+    LEN($Record.Phone) &gt; 15,
+
+    $Record.Phone = &quot;0000000000&quot;,
+    $Record.Phone = &quot;1111111111&quot;,
+    $Record.Phone = &quot;2222222222&quot;,
+    $Record.Phone = &quot;3333333333&quot;,
+    $Record.Phone = &quot;4444444444&quot;,
+    $Record.Phone = &quot;5555555555&quot;,
+    $Record.Phone = &quot;6666666666&quot;,
+    $Record.Phone = &quot;7777777777&quot;,
+    $Record.Phone = &quot;8888888888&quot;,
+    $Record.Phone = &quot;9999999999&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Phone_Digit_Count</description>
+        <name>Phone_Digit_Count</name>
+        <dataType>Number</dataType>
+        <expression>LEN(
+  SUBSTITUTE(
+    SUBSTITUTE(
+      SUBSTITUTE(
+        SUBSTITUTE({!$Record.Phone},&quot; &quot;,&quot;&quot;),
+      &quot;-&quot;,&quot;&quot;),
+    &quot;(&quot; ,&quot;&quot;),
+  &quot;)&quot;,&quot;&quot;)
+)</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Automation for Unqualified Status -Incorrect Details {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Automation for Unqualified Status -Incorrect Details</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Set_Lead_as_Unqualified</name>
+        <label>Set Lead as Unqualified</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Lead_Fitment_Score__c</field>
+            <value>
+                <stringValue>-999</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Unqualified</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Invalid_Lead</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

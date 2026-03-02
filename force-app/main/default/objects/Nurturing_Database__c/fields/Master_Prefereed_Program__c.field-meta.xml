@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Master_Prefereed_Program__c</fullName>
+    <label>Master Prefereed Program</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Master of Business Administration</fullName>
+                <default>false</default>
+                <label>Master of Business Administration</label>
+            </value>
+            <value>
+                <fullName>Master of Science in Economics</fullName>
+                <default>false</default>
+                <label>Master of Science in Economics</label>
+            </value>
+            <value>
+                <fullName>Master of Management Studies in Heritage Management</fullName>
+                <default>false</default>
+                <label>Master of Management Studies in Heritage Management</label>
+            </value>
+            <value>
+                <fullName>Master of Science in Quantitative Finance</fullName>
+                <default>false</default>
+                <label>Master of Science in Quantitative Finance</label>
+            </value>
+            <value>
+                <fullName>Master of Technology in Composites</fullName>
+                <default>false</default>
+                <label>Master of Technology in Composites</label>
+            </value>
+            <value>
+                <fullName>Master of Technology in Computer Sciences and Engineering</fullName>
+                <default>false</default>
+                <label>Master of Technology in Computer Sciences and Engineering</label>
+            </value>
+            <value>
+                <fullName>Master of Technology in Microelectronics and Semiconductors</fullName>
+                <default>false</default>
+                <label>Master of Technology in Microelectronics and Semiconductors</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

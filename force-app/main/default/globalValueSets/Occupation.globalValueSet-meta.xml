@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Self Employed</fullName>
+        <default>false</default>
+        <label>Self Employed</label>
+    </customValue>
+    <customValue>
+        <fullName>Government</fullName>
+        <default>false</default>
+        <label>Government</label>
+    </customValue>
+    <customValue>
+        <fullName>Public Sector undertakings</fullName>
+        <default>false</default>
+        <label>Public Sector undertakings</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Sector</fullName>
+        <default>false</default>
+        <label>Private Sector</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional (CA, CS, CWA, Architect, Doctor, Lawyer, etc)</fullName>
+        <default>false</default>
+        <label>Professional (CA, CS, CWA, Architect, Doctor, Lawyer, etc)</label>
+    </customValue>
+    <customValue>
+        <fullName>Unemployed</fullName>
+        <default>false</default>
+        <label>Unemployed</label>
+    </customValue>
+    <customValue>
+        <fullName>Retired</fullName>
+        <default>false</default>
+        <label>Retired</label>
+    </customValue>
+    <customValue>
+        <fullName>Armed Forces/ Defence</fullName>
+        <default>false</default>
+        <label>Armed Forces/ Defence</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Home Maker</fullName>
+        <default>false</default>
+        <label>Home Maker</label>
+    </customValue>
+    <customValue>
+        <fullName>Defense</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Defense</label>
+    </customValue>
+    <masterLabel>Occupation</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

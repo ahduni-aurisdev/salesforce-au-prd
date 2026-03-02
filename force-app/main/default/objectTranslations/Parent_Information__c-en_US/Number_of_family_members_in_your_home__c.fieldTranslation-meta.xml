@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Number of family members in your home --></label>
+    <name>Number_of_family_members_in_your_home__c</name>
+</CustomFieldTranslation>

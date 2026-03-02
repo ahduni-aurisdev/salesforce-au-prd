@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Is there anything about your personal or educational background that is not already covered in the application that you would like to tell us? --></help>
+    <label><!-- Is there anything about your personal or --></label>
+    <name>Is_there_anything_about_your_personal_or__c</name>
+</CustomFieldTranslation>

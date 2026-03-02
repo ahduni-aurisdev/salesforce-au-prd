@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Other Medium of instruction --></label>
+    <name>Other_Medium_of_instruction__c</name>
+</CustomFieldTranslation>

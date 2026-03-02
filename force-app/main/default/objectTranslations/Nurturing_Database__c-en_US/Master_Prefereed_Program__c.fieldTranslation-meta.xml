@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Master Prefereed Program --></label>
+    <name>Master_Prefereed_Program__c</name>
+    <picklistValues>
+        <masterLabel>Master of Business Administration</masterLabel>
+        <translation><!-- Master of Business Administration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Management Studies in Heritage Management</masterLabel>
+        <translation><!-- Master of Management Studies in Heritage Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Science in Economics</masterLabel>
+        <translation><!-- Master of Science in Economics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Science in Quantitative Finance</masterLabel>
+        <translation><!-- Master of Science in Quantitative Finance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Technology in Composites</masterLabel>
+        <translation><!-- Master of Technology in Composites --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Technology in Computer Sciences and Engineering</masterLabel>
+        <translation><!-- Master of Technology in Computer Sciences and Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Technology in Microelectronics and Semiconductors</masterLabel>
+        <translation><!-- Master of Technology in Microelectronics and Semiconductors --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

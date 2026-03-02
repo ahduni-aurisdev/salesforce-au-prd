@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Estado da lista de verificação – Introdução – Conclusão</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Estados da lista de verificação – Introdução – Conclusão</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Introdução Conclusão Lista de verificaçã</nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Educational Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Educational Detail</value>
+    </caseValues>
+    <layouts>
+        <layout>Educational Detail Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- School / College Point of Contact --></label>
+            <section>School / College Point of Contact</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Educational Detail Layout Exe &amp; Phd</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Medium of instruction is Other Please Fill Other Medium of instruction --></errorMessage>
+        <name>Other_Medium_of_instruction</name>
+    </validationRules>
+</CustomObjectTranslation>

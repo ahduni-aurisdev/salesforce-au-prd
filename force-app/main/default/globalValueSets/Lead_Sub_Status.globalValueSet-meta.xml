@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Incomplete</fullName>
+        <default>false</default>
+        <label>Incomplete</label>
+    </customValue>
+    <customValue>
+        <fullName>Complete</fullName>
+        <default>false</default>
+        <label>Complete</label>
+    </customValue>
+    <customValue>
+        <fullName>Future</fullName>
+        <default>false</default>
+        <label>Future</label>
+    </customValue>
+    <customValue>
+        <fullName>Junk</fullName>
+        <default>false</default>
+        <label>Junk</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid</fullName>
+        <default>false</default>
+        <label>Paid</label>
+    </customValue>
+    <customValue>
+        <fullName>Unpaid</fullName>
+        <default>false</default>
+        <label>Unpaid</label>
+    </customValue>
+    <masterLabel>Lead Sub Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

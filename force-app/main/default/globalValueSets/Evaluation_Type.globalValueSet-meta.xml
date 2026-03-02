@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Marks</fullName>
+        <default>false</default>
+        <label>Marks</label>
+    </customValue>
+    <customValue>
+        <fullName>Grade Points</fullName>
+        <default>false</default>
+        <label>Grade Points</label>
+    </customValue>
+    <customValue>
+        <fullName>Grade</fullName>
+        <default>false</default>
+        <label>Grade</label>
+    </customValue>
+    <masterLabel>Evaluation Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

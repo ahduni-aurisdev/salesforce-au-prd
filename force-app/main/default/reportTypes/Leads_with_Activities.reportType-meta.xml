@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Lead</baseObject>
+    <category>leads</category>
+    <deployed>false</deployed>
+    <description>Leads with Activities</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>Activities</relationship>
+    </join>
+    <label>Leads with Activities</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead ID</displayNameOverride>
+            <field>Id</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Full Name</displayNameOverride>
+            <field>Name</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Salutation</displayNameOverride>
+            <field>Salutation</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Name</displayNameOverride>
+            <field>FirstName</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Name</displayNameOverride>
+            <field>LastName</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Title</displayNameOverride>
+            <field>Title</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company</displayNameOverride>
+            <field>Company</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address</displayNameOverride>
+            <field>Address</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street</displayNameOverride>
+            <field>Street</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
+            <field>City</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/Province (text only)</displayNameOverride>
+            <field>State</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Zip/Postal Code</displayNameOverride>
+            <field>PostalCode</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country (text only)</displayNameOverride>
+            <field>Country</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/Province</displayNameOverride>
+            <field>StateCode</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country</displayNameOverride>
+            <field>CountryCode</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latitude</displayNameOverride>
+            <field>Latitude</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Longitude</displayNameOverride>
+            <field>Longitude</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Geocode Accuracy</displayNameOverride>
+            <field>GeocodeAccuracy</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Phone</displayNameOverride>
+            <field>Phone</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mobile</displayNameOverride>
+            <field>MobilePhone</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fax</displayNameOverride>
+            <field>Fax</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email</displayNameOverride>
+            <field>Email</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Website</displayNameOverride>
+            <field>Website</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source</displayNameOverride>
+            <field>LeadSource</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Status</displayNameOverride>
+            <field>Status</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Industry</displayNameOverride>
+            <field>Industry</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rating</displayNameOverride>
+            <field>Rating</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Annual Revenue</displayNameOverride>
+            <field>AnnualRevenue</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No. of Employees</displayNameOverride>
+            <field>NumberOfEmployees</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Opt Out</displayNameOverride>
+            <field>HasOptedOutOfEmail</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted</displayNameOverride>
+            <field>IsConverted</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted Date</displayNameOverride>
+            <field>ConvertedDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted Account</displayNameOverride>
+            <field>ConvertedAccount</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted Contact</displayNameOverride>
+            <field>ConvertedContact</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Converted Opportunity</displayNameOverride>
+            <field>ConvertedOpportunity</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unread By Owner</displayNameOverride>
+            <field>IsUnreadByOwner</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity</displayNameOverride>
+            <field>LastActivityDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Do Not Call</displayNameOverride>
+            <field>DoNotCall</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fax Opt Out</displayNameOverride>
+            <field>HasOptedOutOfFax</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Transfer Date</displayNameOverride>
+            <field>LastTransferDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Data.com Key</displayNameOverride>
+            <field>Jigsaw</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Bounced Reason</displayNameOverride>
+            <field>EmailBouncedReason</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Bounced Date</displayNameOverride>
+            <field>EmailBouncedDate</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Individual</displayNameOverride>
+            <field>Individual</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pronouns</displayNameOverride>
+            <field>Pronouns</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Gender Identity</displayNameOverride>
+            <field>GenderIdentity</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Preferred Email</displayNameOverride>
+            <field>npe01__Preferred_Email__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Preferred Phone</displayNameOverride>
+            <field>npe01__Preferred_Phone__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Batch</displayNameOverride>
+            <field>npsp__Batch__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company City</displayNameOverride>
+            <field>npsp__CompanyCity__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company Country</displayNameOverride>
+            <field>npsp__CompanyCountry__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company Zip/Postal Code</displayNameOverride>
+            <field>npsp__CompanyPostalCode__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company State/Province</displayNameOverride>
+            <field>npsp__CompanyState__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company Street</displayNameOverride>
+            <field>npsp__CompanyStreet__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mobile Opt Out</displayNameOverride>
+            <field>et4ae5__HasOptedOutOfMobile__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mobile Country Code</displayNameOverride>
+            <field>et4ae5__Mobile_Country_Code__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Aadhar card number</displayNameOverride>
+            <field>Aadhar_card_number__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Are you an OCI cardholder?</displayNameOverride>
+            <field>Are_you_an_OCI_cardholder__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Are you differently abled? </displayNameOverride>
+            <field>Are_you_differently_abled__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Are you interested in student housing?</displayNameOverride>
+            <field>Are_you_interested_in_student_housing__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Category</displayNameOverride>
+            <field>Category__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City/Town/Village</displayNameOverride>
+            <field>City_Town_Village__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Class</displayNameOverride>
+            <field>Class__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Complete your profile</displayNameOverride>
+            <field>Complete_your_profile__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country</displayNameOverride>
+            <field>Country__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date of Birth</displayNameOverride>
+            <field>Date_of_Birth__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date of issue</displayNameOverride>
+            <field>Date_of_issue__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>District</displayNameOverride>
+            <field>District__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Gender</displayNameOverride>
+            <field>Gender__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is your siblings is in AU?</displayNameOverride>
+            <field>Is_your_sibling_studying_at_AU__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Sub Status</displayNameOverride>
+            <field>Lead_Sub_Status__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Nationality</displayNameOverride>
+            <field>Nationality__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Lead Source</displayNameOverride>
+            <field>Other_Lead_Source__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Passport Number</displayNameOverride>
+            <field>Passport_Number__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pay application fees</displayNameOverride>
+            <field>Pay_application_fees__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pin code/Postal code</displayNameOverride>
+            <field>Pin_code_Postal_code__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Place of issue</displayNameOverride>
+            <field>Place_of_issue__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Share educational journey</displayNameOverride>
+            <field>Share_educational_journey__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/ Union Territory / Province</displayNameOverride>
+            <field>State_Union_Territory_Province__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street</displayNameOverride>
+            <field>Street__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Upload documents</displayNameOverride>
+            <field>Upload_documents__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Would you like to specify?</displayNameOverride>
+            <field>Would_you_like_to_specify__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Write the Personal Statement</displayNameOverride>
+            <field>Write_the_Personal_Statement__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>You are eligible for Financial Aid (Need</displayNameOverride>
+            <field>You_are_eligible_for_Financial_Aid_Need__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Number</displayNameOverride>
+            <field>Registration_Number__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Application Number</displayNameOverride>
+            <field>Application_Number__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Date</displayNameOverride>
+            <field>Registration_Date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Application Date</displayNameOverride>
+            <field>Application_Date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Robin No</displayNameOverride>
+            <field>Round_Robin_No__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School State</displayNameOverride>
+            <field>School_State__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Data Upload?</displayNameOverride>
+            <field>Data_Upload__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Major</displayNameOverride>
+            <field>Major__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Source Medium</displayNameOverride>
+            <field>Source_Medium__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Source Campaign</displayNameOverride>
+            <field>Source_Campaign__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MC Phone Number</displayNameOverride>
+            <field>MC_Phone_Number__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offered Date</displayNameOverride>
+            <field>Offered_Date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Acceptance Date</displayNameOverride>
+            <field>Last_Acceptance_Date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Programme Interested in</displayNameOverride>
+            <field>Programme_Interested_in__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Admission Year</displayNameOverride>
+            <field>Admission_Year__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School</displayNameOverride>
+            <field>School__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Email Id</displayNameOverride>
+            <field>Parent_Email_Id__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Class Pursuing</displayNameOverride>
+            <field>Class_Pursuing__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School City</displayNameOverride>
+            <field>School_City__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Phone</displayNameOverride>
+            <field>Parent_Phone__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created</displayNameOverride>
+            <field>Created__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Sub Source</displayNameOverride>
+            <field>Lead_Sub_Source__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country Code</displayNameOverride>
+            <field>Country_Code__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Educator/Counsellor</displayNameOverride>
+            <field>Educator_Counsellor__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Board</displayNameOverride>
+            <field>Board_c__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Type</displayNameOverride>
+            <field>Lead_Type__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Designation</displayNameOverride>
+            <field>Designation__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Statement of Purpose</displayNameOverride>
+            <field>Statement_of_Purpose__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Source</displayNameOverride>
+            <field>Source__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PhD Engineering discipline</displayNameOverride>
+            <field>PhD_Engineering_discipline__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>UTM Link</displayNameOverride>
+            <field>UTM_Link__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Auris_Form_URL__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Campaign_Medium__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Department__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Convert__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mailing_Address__City__s</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mailing_Address__CountryCode__s</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mailing_Address__StateCode__s</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TypeOfForm__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mailing_Country__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Preferred_Programme__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Aging__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Work_Experience__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Company_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>UG_Group_Tag__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>How_did_you_come_to_know_about_AU__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Submission_Channel__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Form_Submission_Date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Engagement_score__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>My_Highest_Qualification__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Certificate_Lead_Score__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Prior_Knowledge_Experience_in_this_field__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Call_Log__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Whatsapp_Number__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Interested_for_Phone__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Lead_Fitment_Score__c</field>
+            <table>Lead</table>
+        </columns>
+        <masterLabel>Leads</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Task</displayNameOverride>
+            <field>IsTask</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Activity ID</displayNameOverride>
+            <field>Id</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related To</displayNameOverride>
+            <field>What</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Subject</displayNameOverride>
+            <field>Subject</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date</displayNameOverride>
+            <field>ActivityDate</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Due Time</displayNameOverride>
+            <field>ActivityTimeOnly</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Priority</displayNameOverride>
+            <field>Priority</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Assigned To</displayNameOverride>
+            <field>Owner</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comments</displayNameOverride>
+            <field>Description</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed</displayNameOverride>
+            <field>IsClosed</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Duration</displayNameOverride>
+            <field>CallDurationInSeconds</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Type</displayNameOverride>
+            <field>CallType</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Result</displayNameOverride>
+            <field>CallDisposition</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Object Identifier</displayNameOverride>
+            <field>CallObject</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reminder Date/Time</displayNameOverride>
+            <field>ReminderDateTime</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reminder Set</displayNameOverride>
+            <field>IsReminderSet</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Repeat This Task</displayNameOverride>
+            <field>RecurrenceRegeneratedType</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Task Subtype</displayNameOverride>
+            <field>TaskSubtype</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Completed Date/Time</displayNameOverride>
+            <field>CompletedDateTime</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location</displayNameOverride>
+            <field>Location</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>All-Day Event</displayNameOverride>
+            <field>IsAllDayEvent</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time</displayNameOverride>
+            <field>ActivityDateTime</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration</displayNameOverride>
+            <field>DurationInMinutes</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Private</displayNameOverride>
+            <field>IsPrivate</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Show Time As</displayNameOverride>
+            <field>ShowAs</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Child</displayNameOverride>
+            <field>IsChild</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Group Event</displayNameOverride>
+            <field>IsGroupEvent</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Group Event Type</displayNameOverride>
+            <field>GroupEventType</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event Subtype</displayNameOverride>
+            <field>EventSubtype</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engagement Plan Task</displayNameOverride>
+            <field>npsp__Engagement_Plan_Task__c</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engagement Plan</displayNameOverride>
+            <field>npsp__Engagement_Plan__c</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <masterLabel>Activities</masterLabel>
+    </sections>
+</ReportType>

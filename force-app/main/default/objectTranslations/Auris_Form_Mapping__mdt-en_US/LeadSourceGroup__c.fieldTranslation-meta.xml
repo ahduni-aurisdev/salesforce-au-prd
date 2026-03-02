@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- LeadSourceGroup --></label>
+    <name>LeadSourceGroup__c</name>
+    <picklistValues>
+        <masterLabel>AURIS</masterLabel>
+        <translation><!-- AURIS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Alumni</masterLabel>
+        <translation><!-- Alumni --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Careers 360</masterLabel>
+        <translation><!-- Careers 360 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Collegedunia</masterLabel>
+        <translation><!-- Collegedunia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Colloquiums</masterLabel>
+        <translation><!-- Colloquiums --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Corporate Partner Visit</masterLabel>
+        <translation><!-- Corporate Partner Visit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Email</masterLabel>
+        <translation><!-- Email --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Event</masterLabel>
+        <translation><!-- Event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook</masterLabel>
+        <translation><!-- Facebook --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fair</masterLabel>
+        <translation><!-- Fair --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google_ads</masterLabel>
+        <translation><!-- Google_ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inbound Call(mcube)</masterLabel>
+        <translation><!-- Inbound Call(mcube) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Instagram</masterLabel>
+        <translation><!-- Instagram --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LinkedIn Ads</masterLabel>
+        <translation><!-- LinkedIn Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta Ads</masterLabel>
+        <translation><!-- Meta Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Newsletter</masterLabel>
+        <translation><!-- Newsletter --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Open House</masterLabel>
+        <translation><!-- Open House --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Outreach Event</masterLabel>
+        <translation><!-- Outreach Event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partner</masterLabel>
+        <translation><!-- Partner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partners</masterLabel>
+        <translation><!-- Partners --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phone</masterLabel>
+        <translation><!-- Phone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Referral</masterLabel>
+        <translation><!-- Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Shiksha</masterLabel>
+        <translation><!-- Shiksha --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Virtual Webinar</masterLabel>
+        <translation><!-- Virtual Webinar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Walk-in</masterLabel>
+        <translation><!-- Walk-in --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website</masterLabel>
+        <translation><!-- Website --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MasterConnect</masterLabel>
+        <translation><!-- Website_MasterConnect --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MastersBrochures</masterLabel>
+        <translation><!-- Website_MastersBrochures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MastersEconomicsLanding</masterLabel>
+        <translation><!-- Website_MastersEconomicsLanding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MastersHeritageLanding</masterLabel>
+        <translation><!-- Website_MastersHeritageLanding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MastersMBALanding</masterLabel>
+        <translation><!-- Website_MastersMBALanding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MastersMSQFLanding</masterLabel>
+        <translation><!-- Website_MastersMSQFLanding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_MastersQueries</masterLabel>
+        <translation><!-- Website_MastersQueries --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_PhDBrochures</masterLabel>
+        <translation><!-- Website_PhDBrochures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_PhDConnect</masterLabel>
+        <translation><!-- Website_PhDConnect --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_PhDQueries</masterLabel>
+        <translation><!-- Website_PhDQueries --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_UGBrochures</masterLabel>
+        <translation><!-- Website_UGBrochures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website_UGQueries</masterLabel>
+        <translation><!-- Website_UGQueries --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>careers360</masterLabel>
+        <translation><!-- careers360 --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

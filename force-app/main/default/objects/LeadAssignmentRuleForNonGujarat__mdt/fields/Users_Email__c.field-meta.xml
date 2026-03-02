@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Users_Email__c</fullName>
+    <description>Contains the list of user emails (comma-separated) that are part of the round-robin assignment pool. Leads matching the criteria will be distributed sequentially among these users.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Contains the list of user emails (comma-separated) that are part of the round-robin assignment pool. Leads matching the criteria will be distributed sequentially among these users.</inlineHelpText>
+    <label>Users Email</label>
+    <length>131072</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

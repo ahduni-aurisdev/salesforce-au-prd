@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relationship_Occupation</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Relationship__c ,&quot;Other&quot;) &amp;&amp; ISBLANK( Other__c )</errorConditionFormula>
+    <errorDisplayField>Other__c</errorDisplayField>
+    <errorMessage>Relationship is Other Please Fill Other</errorMessage>
+</ValidationRule>

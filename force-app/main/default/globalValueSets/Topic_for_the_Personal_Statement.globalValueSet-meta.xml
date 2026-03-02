@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Which of your personal qualities or attributes makes you a valuable member of your class at school? What could others learn from you? Tell us about an occasion at school when you have demonstrated these qualities or attributes.</fullName>
+        <default>false</default>
+        <label>Which of your personal qualities or attributes makes you a valuable member of your class at school? What could others learn from you? Tell us about an occasion at school when you have demonstrated these qualities or attributes.</label>
+    </customValue>
+    <customValue>
+        <fullName>Is there an event or incident related to your life that has helped you grow, challenged you or motivated you? What was the event? How has it changed you or influenced you?</fullName>
+        <default>false</default>
+        <label>Is there an event or incident related to your life that has helped you grow, challenged you or motivated you? What was the event? How has it changed you or influenced you?</label>
+    </customValue>
+    <customValue>
+        <fullName>Describe something you are passionate about. What makes it so appealing to you? How do you learn more about it?</fullName>
+        <default>false</default>
+        <label>Describe something you are passionate about. What makes it so appealing to you? How do you learn more about it?</label>
+    </customValue>
+    <customValue>
+        <fullName>Pick up an idea or subject on which you have a strong opinion/viewpoint. What is the opinion you hold? Why is it important to you? How have you acted on your ideas?</fullName>
+        <default>false</default>
+        <label>Pick up an idea or subject on which you have a strong opinion/viewpoint. What is the opinion you hold? Why is it important to you? How have you acted on your ideas?</label>
+    </customValue>
+    <customValue>
+        <fullName>Visit the Ahmedabad University website and select information that interests you or that you find important. Why is this idea of value to you? How is it going to benefit you in your education?</fullName>
+        <default>false</default>
+        <label>Visit the Ahmedabad University website and select information that interests you or that you find important. Why is this idea of value to you? How is it going to benefit you in your education?</label>
+    </customValue>
+    <customValue>
+        <fullName>Do you think challenges in life are integral to the learning process? Recount a time when you faced a challenge, setback, or failure. How did it affect you, and what did you learn from the experience?</fullName>
+        <default>false</default>
+        <label>Do you think challenges in life are integral to the learning process? Recount a time when you faced a challenge, setback, or failure. How did it affect you, and what did you learn from the experience?</label>
+    </customValue>
+    <customValue>
+        <fullName>Personal qualities or attributes</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Personal qualities or attributes</label>
+    </customValue>
+    <masterLabel>Topic for the Personal Statement</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

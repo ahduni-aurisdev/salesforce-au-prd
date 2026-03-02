@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Lightning Layout</layout>
+        <sections>
+            <label>Kontaktdetails</label>
+            <section>Contact Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Organization Layout</layout>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>School Layout</layout>
+        <sections>
+            <label><!-- Address Information --></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Information --></label>
+            <section>Contact Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description Information --></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- New Opportunity --></label>
+        <name>NewDonation</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Opportunity --></label>
+        <name>NewInKind</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Opportunity --></label>
+        <name>NewMajorGift</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Opportunity --></label>
+        <name>NewMembership</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Task --></label>
+        <name>NewTasks</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Open Recurring Donation --></label>
+        <name>New_Open_Recurring_Donation</name>
+    </quickActions>
+</CustomObjectTranslation>

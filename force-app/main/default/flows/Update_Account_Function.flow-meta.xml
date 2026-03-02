@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Function_Values</name>
+        <label>Update Function Values</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Function__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>CDC</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_Function_Valuess</name>
+        <label>Update Function Values</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Function__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Executive Education</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>If_Department</name>
+        <label>If Department</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Others</defaultConnectorLabel>
+        <rules>
+            <name>CDC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Organization</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.Department</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CDC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Function_Values</targetReference>
+            </connector>
+            <label>CDC</label>
+        </rules>
+        <rules>
+            <name>Executive_Education</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Organization</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.Department</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Executive Education</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Function_Valuess</targetReference>
+            </connector>
+            <label>Executive Education</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Update Account Function {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Account Function</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_Department</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

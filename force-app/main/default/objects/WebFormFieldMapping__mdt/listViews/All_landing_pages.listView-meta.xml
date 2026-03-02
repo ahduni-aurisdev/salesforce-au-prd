@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_landing_pages</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>Department__c</columns>
+    <columns>JSON_Key__c</columns>
+    <columns>TypeOfForm__c</columns>
+    <columns>LeadSourceGroup__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All landing pages</label>
+    <language>en_US</language>
+</ListView>

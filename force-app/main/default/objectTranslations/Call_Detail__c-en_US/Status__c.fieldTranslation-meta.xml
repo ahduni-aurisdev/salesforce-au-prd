@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>ANSWER</masterLabel>
+        <translation><!-- ANSWER --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BUSY</masterLabel>
+        <translation><!-- BUSY --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CANCEL</masterLabel>
+        <translation><!-- CANCEL --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CONNECTING</masterLabel>
+        <translation><!-- CONNECTING --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Call Complete</masterLabel>
+        <translation><!-- Call Complete --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Connected</masterLabel>
+        <translation><!-- Connected --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Busy</masterLabel>
+        <translation><!-- Customer Busy --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Originate</masterLabel>
+        <translation><!-- Originate --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

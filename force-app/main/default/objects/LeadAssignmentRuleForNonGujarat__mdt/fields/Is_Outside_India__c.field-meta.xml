@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Outside_India__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checkbox field that identifies if the rule is applicable for leads outside India.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Is Outside India</label>
+    <type>Checkbox</type>
+</CustomField>

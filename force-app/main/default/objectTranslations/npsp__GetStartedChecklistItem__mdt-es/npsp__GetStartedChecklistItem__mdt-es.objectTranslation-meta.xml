@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Elemento de lista de comprobación de Empezar a trabajar de NPSP --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Elementos de listas de comprobación de Empezar a trabajar de NPSP --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+</CustomObjectTranslation>

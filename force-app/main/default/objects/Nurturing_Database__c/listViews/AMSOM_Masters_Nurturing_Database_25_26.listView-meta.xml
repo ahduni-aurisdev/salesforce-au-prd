@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AMSOM_Masters_Nurturing_Database_25_26</fullName>
+    <columns>NAME</columns>
+    <columns>Email__c</columns>
+    <columns>Phone__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Source__c</columns>
+    <columns>Master_Prefereed_Program__c</columns>
+    <columns>Academic_Year__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Address__StateCode__s</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Master_Prefereed_Program__c</field>
+        <operation>equals</operation>
+        <value>Master of Business Administration,Master of Science in Economics,Master of Management Studies in Heritage Management,Master of Science in Quantitative Finance</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>10/1/2025 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Address__StateCode__s</field>
+        <operation>contains</operation>
+        <value>MH</value>
+    </filters>
+    <label>AMSOM Masters Nurturing Database - 25-26</label>
+    <sharedTo>
+        <role>Executive_Graduate_Admissions</role>
+        <role>Manager_Graduate_Admissions</role>
+        <role>Senior_Executive_Graduate_Admissions</role>
+        <role>Senior_Manager_Graduate_Admissions</role>
+    </sharedTo>
+</ListView>

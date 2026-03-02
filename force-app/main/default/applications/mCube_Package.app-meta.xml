@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>logo2</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>MCube Package</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>M_Cube_Setup_Configuration</tabs>
+    <tabs>MCUBE_Object_Api__c</tabs>
+    <tabs>Call_Detail__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>m_Cube_Managed_Package_UtilityBar</utilityBar>
+</CustomApplication>

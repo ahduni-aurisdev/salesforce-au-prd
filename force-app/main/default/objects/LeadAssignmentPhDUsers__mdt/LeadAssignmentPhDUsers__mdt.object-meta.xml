@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lead Assignment For PhD and Executive Education department and assign that leads particularly to the &quot;Doctoral Admissions&quot; for &quot;PhD&quot; department and for the &quot;Executive Education&quot; department assigned that leads to &quot;Rahul Mehta&quot; User.</description>
+    <label>LeadAssignmentPhD&amp;EEUsers</label>
+    <pluralLabel>LeadAssignmentPhD&amp;&amp;EEUsers</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

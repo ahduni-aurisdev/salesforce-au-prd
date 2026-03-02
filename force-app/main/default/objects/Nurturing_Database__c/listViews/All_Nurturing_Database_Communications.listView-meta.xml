@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Nurturing_Database_Communications</fullName>
+    <columns>NAME</columns>
+    <columns>Email__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Source__c</columns>
+    <columns>Master_Prefereed_Program__c</columns>
+    <columns>Academic_Year__c</columns>
+    <columns>Unsubscribe__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Source__c</field>
+        <operation>equals</operation>
+        <value>QS_Academician</value>
+    </filters>
+    <label>All Nurturing Database - Communications</label>
+    <sharedTo>
+        <role>Communication_Team</role>
+    </sharedTo>
+</ListView>

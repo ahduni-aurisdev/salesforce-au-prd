@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>General</fullName>
+        <default>false</default>
+        <label>General</label>
+    </customValue>
+    <customValue>
+        <fullName>Minorities</fullName>
+        <default>false</default>
+        <label>Minorities</label>
+    </customValue>
+    <customValue>
+        <fullName>Economically Weaker Section (EWS)</fullName>
+        <default>false</default>
+        <label>Economically Weaker Section (EWS)</label>
+    </customValue>
+    <customValue>
+        <fullName>Scheduled Case (SC)</fullName>
+        <default>false</default>
+        <label>Scheduled Case (SC)</label>
+    </customValue>
+    <customValue>
+        <fullName>Scheduled Tribe (ST)</fullName>
+        <default>false</default>
+        <label>Scheduled Tribe (ST)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Backward Class (OBC)</fullName>
+        <default>false</default>
+        <label>Other Backward Class (OBC)</label>
+    </customValue>
+    <masterLabel>Category</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>CBSE</fullName>
+        <default>false</default>
+        <label>CBSE</label>
+    </customValue>
+    <customValue>
+        <fullName>ISC/ICSE</fullName>
+        <default>false</default>
+        <label>ISC/ICSE</label>
+    </customValue>
+    <customValue>
+        <fullName>International Baccalaureate (IB)</fullName>
+        <default>false</default>
+        <label>International Baccalaureate (IB)</label>
+    </customValue>
+    <customValue>
+        <fullName>Cambridge International (IGCSE)</fullName>
+        <default>false</default>
+        <label>Cambridge International (IGCSE)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other International Board</fullName>
+        <default>false</default>
+        <label>Other International Board</label>
+    </customValue>
+    <customValue>
+        <fullName>NIOS</fullName>
+        <default>false</default>
+        <label>NIOS</label>
+    </customValue>
+    <customValue>
+        <fullName>State Board</fullName>
+        <default>false</default>
+        <label>State Board</label>
+    </customValue>
+    <customValue>
+        <fullName>Gujarat Board (GSHSEB)</fullName>
+        <default>false</default>
+        <label>Gujarat Board (GSHSEB)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other State Board</fullName>
+        <default>false</default>
+        <label>Other State Board</label>
+    </customValue>
+    <customValue>
+        <fullName>CBSC</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CBSC</label>
+    </customValue>
+    <customValue>
+        <fullName>ICSC</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>ICSC</label>
+    </customValue>
+    <customValue>
+        <fullName>IGCSE</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>IGCSE</label>
+    </customValue>
+    <customValue>
+        <fullName>SSC</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>SSC</label>
+    </customValue>
+    <customValue>
+        <fullName>GHSEB</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>GHSEB</label>
+    </customValue>
+    <customValue>
+        <fullName>Gujarat Board</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Gujarat Board</label>
+    </customValue>
+    <masterLabel>Board</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

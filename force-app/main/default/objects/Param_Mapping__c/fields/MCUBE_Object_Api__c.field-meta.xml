@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MCUBE_Object_Api__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>MCUBE Object Api</label>
+    <referenceTo>MCUBE_Object_Api__c</referenceTo>
+    <relationshipLabel>Param Mappings</relationshipLabel>
+    <relationshipName>Param_Mappings</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

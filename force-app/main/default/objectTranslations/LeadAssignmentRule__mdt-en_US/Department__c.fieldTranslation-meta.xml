@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Department --></label>
+    <name>Department__c</name>
+    <picklistValues>
+        <masterLabel>CLeF</masterLabel>
+        <translation><!-- CLeF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Executive Education</masterLabel>
+        <translation><!-- Executive Education --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Masters</masterLabel>
+        <translation><!-- Masters --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phd</masterLabel>
+        <translation><!-- Phd --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

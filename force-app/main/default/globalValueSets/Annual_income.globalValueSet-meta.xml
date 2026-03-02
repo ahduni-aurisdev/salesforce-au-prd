@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Up to Rs.3,00,000</fullName>
+        <default>false</default>
+        <label>Up to Rs.3,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs.3,00,001 to 5,00,000</fullName>
+        <default>false</default>
+        <label>Between Rs.3,00,001 to 5,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs 3-6 Lakh</fullName>
+        <default>false</default>
+        <label>Between Rs 3-6 Lakh</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs.5,00,001 to 7,50,000</fullName>
+        <default>false</default>
+        <label>Between Rs.5,00,001 to 7,50,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs 6-8 Lakh</fullName>
+        <default>false</default>
+        <label>Between Rs 6-8 Lakh</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs 6-10 Lakh</fullName>
+        <default>false</default>
+        <label>Between Rs 6-10 Lakh</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs.7,50,001 to 10,00,000</fullName>
+        <default>false</default>
+        <label>Between Rs.7,50,001 to 10,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs 8-10 Lakh</fullName>
+        <default>false</default>
+        <label>Between Rs 8-10 Lakh</label>
+    </customValue>
+    <customValue>
+        <fullName>Between Rs.10,00,001 to 15,00,000</fullName>
+        <default>false</default>
+        <label>Between Rs.10,00,001 to 15,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Above Rs.15,00,000</fullName>
+        <default>false</default>
+        <label>Above Rs.15,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between 10,00,001 to 15,00,000</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Between 10,00,001 to 15,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between 7,50,001 to 10,00,000</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Between 7,50,001 to 10,00,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between 5,00,001 to 7,50,000</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Between 5,00,001 to 7,50,000</label>
+    </customValue>
+    <customValue>
+        <fullName>Between 3,00,001 to 5,00,000</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Between 3,00,001 to 5,00,000</label>
+    </customValue>
+    <masterLabel>Annual income</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

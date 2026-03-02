@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sequence_No_Minimum__c</fullName>
+    <label>Sequence No Minimum</label>
+    <summarizedField>Round_Robin_User__c.Sequence_Number__c</summarizedField>
+    <summaryFilterItems>
+        <field>Round_Robin_User__c.Active__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Round_Robin_User__c.State__c</summaryForeignKey>
+    <summaryOperation>min</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

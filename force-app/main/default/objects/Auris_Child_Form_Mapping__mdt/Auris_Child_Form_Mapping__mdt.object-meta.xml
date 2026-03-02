@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The Auris Child Form Mapping metadata ensures that nested JSON structures (child objects/arrays) from Auris are dynamically processed without modifying code.
+When the system receives a JSON payload from Auris, it looks for child nodes (e.g., academicResults, education, siblings).
+For each child node, the system checks this metadata:
+Matches Department__c and TypeOfForm__c.
+Finds the JSONKey__c (e.g., academicResults).
+Retrieves the Label field value (e.g., insertAcademicResults).
+The corresponding Apex method (with the same name as in Label) is then called to process and insert child records.</description>
+    <label>Auris Child Form Mapping</label>
+    <pluralLabel>Auris Child Form Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

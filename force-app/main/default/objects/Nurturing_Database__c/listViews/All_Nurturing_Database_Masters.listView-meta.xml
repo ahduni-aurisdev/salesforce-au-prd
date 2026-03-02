@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Nurturing_Database_Masters</fullName>
+    <columns>NAME</columns>
+    <columns>Email__c</columns>
+    <columns>Phone__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Source__c</columns>
+    <columns>Master_Prefereed_Program__c</columns>
+    <columns>Academic_Year__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Source__c</field>
+        <operation>equals</operation>
+        <value>MasterClass Nilesh Jain</value>
+    </filters>
+    <label>All Nurturing Database - Masters</label>
+    <sharedTo>
+        <role>Associate_Director_Graduate_Admissions</role>
+        <role>Executive_Graduate_Admissions</role>
+        <role>Manager_Graduate_Admissions</role>
+        <role>Senior_Executive_Graduate_Admissions</role>
+        <role>Senior_Manager_Graduate_Admissions</role>
+    </sharedTo>
+</ListView>

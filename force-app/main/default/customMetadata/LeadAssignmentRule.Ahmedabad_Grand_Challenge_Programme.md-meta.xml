@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Ahmedabad Grand Challenge Programme</label>
+    <protected>false</protected>
+    <values>
+        <field>Course__c</field>
+        <value xsi:type="xsd:string">Ahmedabad Grand Challenge Programme</value>
+    </values>
+    <values>
+        <field>Department__c</field>
+        <value xsi:type="xsd:string">CLeF</value>
+    </values>
+    <values>
+        <field>Is_Special_Assignee__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Lead_Source__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Round_Robin_Index__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>User_Email__c</field>
+        <value xsi:type="xsd:string">clef@ahduni.edu.in</value>
+    </values>
+    <values>
+        <field>User__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>
