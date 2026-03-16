@@ -1283,8 +1283,7 @@ global with sharing class LeadConversionService {
         leadConvert.setDoNotCreateOpportunity(false);
     
         // Set the converted status based on the lead's record type
-        String leadStatus = '%'+(String) payloadMap.get('leadStatus')+'%';
-        String convertedStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true AND Name LIKE :leadStatus LIMIT 1].MasterLabel;
+        String convertedStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true LIMIT 1].MasterLabel;
         leadConvert.setConvertedStatus(convertedStatus);
     
         Database.LeadConvertResult result = Database.convertLead(leadConvert);
@@ -1557,13 +1556,7 @@ global with sharing class LeadConversionService {
 
 
         
-        // Id accountId = result.getAccountId();
-
-        if(result != null){
-            accountId = result.getAccountId();
-        }else{
-            accountId = lead.ConvertedAccountId;
-        }
+        Id accountId = result.getAccountId();
         //Id opportunityId = result.getOpportunityId();
         Id leadOwnerId = lead.OwnerId; // Get the Lead Owner ID
         String firstname;
