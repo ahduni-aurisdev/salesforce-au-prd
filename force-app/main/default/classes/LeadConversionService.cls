@@ -38,21 +38,6 @@ global with sharing class LeadConversionService {
         }
         return recordTypeIdWithName;
     }   
-
-    /**
-    * @description
-    ****************************************************************************************** 
-     * Static Block
-     * Created By    : Preksha Chauhan
-     * Create Date   : 30/07/2024
-     * Description   : The static block initializes the recordTypeMapping Map by querying the 
-     *                 RecordTypeMapping__mdt custom metadata type. It populates the Map with 
-     *                 Record Type IDs using the object name and record type name as keys. This 
-     *                 initialization ensures that record type mappings are available for use 
-     *                 throughout the class.
-     ****************************************************************************************
-     ***/ 
-     public static Map<String, Id> recordTypeMapping;
  
      /****************************************************************************************** 
      * Variable Name : recordTypeMapping
@@ -65,44 +50,125 @@ global with sharing class LeadConversionService {
      *                 Opportunity records during Lead conversion.
      ****************************************************************************************
      ***/ 
-    // static {
-    //     // Initialize the record type mappings
-    //     recordTypeMapping = new Map<String, Id>();
-
-    //     List<RecordTypeMapping__mdt> mappings = [SELECT Object_Name__c, Record_Type_Id__c, Record_Type_Name__c FROM RecordTypeMapping__mdt];
-    //     for (RecordTypeMapping__mdt mapping : mappings) {
-    //         String key = mapping.Object_Name__c + '-' + mapping.Record_Type_Name__c;
-    //         recordTypeMapping.put(key, mapping.Record_Type_Id__c);
-    //     }
-    //     System.debug('49 Record type mappings initialized: ' + recordTypeMapping);
-    // }
 
     /**
     * @description record type mapping initilization
     */
+    
+    //modified by rishav raj
+    //19/01/26
+    public static Map<String, Id> recordTypeMapping {
+        get {
+            if (recordTypeMapping == null) {
+                System.debug('=== LAZY INITIALIZING recordTypeMapping ===');
+                recordTypeMapping = new Map<String, Id>();
+                
+                // 1. Get mappings from RecordTypeMapping__mdt (primary source)
+                try {
+                    List<RecordTypeMapping__mdt> mappings = [
+                        SELECT Object_Name__c, Record_Type_Id__c, Record_Type_Name__c 
+                        FROM RecordTypeMapping__mdt
+                    ];
+                    
+                    for (RecordTypeMapping__mdt mapping : mappings) {
+                        String key = mapping.Object_Name__c + '-' + mapping.Record_Type_Name__c;
+                        recordTypeMapping.put(key, mapping.Record_Type_Id__c);
+                    }
+                    System.debug('Added ' + mappings.size() + ' mappings from RecordTypeMapping__mdt');
+                } catch (Exception e) {
+                    System.debug('Error querying RecordTypeMapping__mdt: ' + e.getMessage());
+                }
+                
+                // 2. Add direct RecordType mappings as backup
+                // If custom metadata query fails, it tries the backup approach (direct RecordType query).
+                try {
+                    List<RecordType> allRecordTypes = [
+                        SELECT Id, DeveloperName, SobjectType 
+                        FROM RecordType 
+                        WHERE SobjectType IN ('Lead', 'Account', 'Opportunity')
+                    ];
+                    
+                    for (RecordType rt : allRecordTypes) {
+                        String key = rt.SobjectType + '-' + rt.DeveloperName;
+                        if (!recordTypeMapping.containsKey(key)) {
+                            recordTypeMapping.put(key, rt.Id);
+                        }
+                    }
+                    System.debug('Added ' + allRecordTypes.size() + ' mappings from RecordType objects');
+                } catch (Exception e) {
+                    System.debug('Error querying RecordTypes: ' + e.getMessage());
+                }
+                
+                System.debug('Total mappings: ' + recordTypeMapping.size());
+            }
+            return recordTypeMapping;
+        }
+        private set;
+    }    
+    
+    /*
     static {
-        // Initialize the record type mappings
-        recordTypeMapping = new Map<String, Id>();
-    
-        // Fetch record type metadata from RecordTypeMapping__mdt
-        List<RecordTypeMapping__mdt> mappings = [SELECT Object_Name__c, Record_Type_Id__c, Record_Type_Name__c FROM RecordTypeMapping__mdt];
-        for (RecordTypeMapping__mdt mapping : mappings) {
-            String key = mapping.Object_Name__c + '-' + mapping.Record_Type_Name__c;
-            recordTypeMapping.put(key, mapping.Record_Type_Id__c);
+        try {
+            System.debug('=== LeadConversionService Static Block START ===');
+            
+            // Initialize the record type mappings
+            recordTypeMapping = new Map<String, Id>();
+            
+            // 1. Fetch ALL RecordTypes from the database
+            List<RecordType> allRecordTypes = [SELECT Id, DeveloperName, SobjectType 
+                                               FROM RecordType 
+                                               WHERE SobjectType IN ('Lead', 'Account', 'Opportunity')];  
+            
+            System.debug('Found ' + allRecordTypes.size() + ' RecordTypes');
+            
+            for (RecordType rt : allRecordTypes) {
+                String key = rt.SobjectType + '-' + rt.DeveloperName;
+                recordTypeMapping.put(key, rt.Id);
+                System.debug('Added: ' + key + ' -> ' + rt.Id);
+            }        
+            
+            // 2. Try to fetch from RecordTypeMapping__mdt (optional)
+            try {
+                List<RecordTypeMapping__mdt> mappings = [SELECT Object_Name__c, Record_Type_Id__c, Record_Type_Name__c 
+                                                         FROM RecordTypeMapping__mdt];
+                System.debug('Found ' + mappings.size() + ' RecordTypeMapping__mdt records');
+                
+                for (RecordTypeMapping__mdt mapping : mappings) {
+                    String key = mapping.Object_Name__c + '-' + mapping.Record_Type_Name__c;
+                    recordTypeMapping.put(key, mapping.Record_Type_Id__c);
+                    System.debug('Added from custom MDT: ' + key + ' -> ' + mapping.Record_Type_Id__c);
+                }
+            } catch (Exception e) {
+                System.debug('Warning: Could not query RecordTypeMapping__mdt: ' + e.getMessage());
+            }
+            
+            // 3. Try to fetch from Department_Record_Type_Mapping__mdt (optional)
+            try {
+                Map<String, String> recordTypeWithName = getRecordTypeWithName();
+                System.debug('Found ' + recordTypeWithName.size() + ' Department_Record_Type_Mapping__mdt records');
+                
+                for (String recordTypeId : recordTypeWithName.keySet()) {
+                    String recordTypeName = recordTypeWithName.get(recordTypeId);
+                    String key = 'Lead-' + recordTypeName;
+                    recordTypeMapping.put(key, recordTypeId);
+                    System.debug('Added from Department MDT: ' + key + ' -> ' + recordTypeId);
+                }
+            } catch (Exception e) {
+                System.debug('Warning: Could not process Department_Record_Type_Mapping__mdt: ' + e.getMessage());
+            }
+            
+            System.debug('=== LeadConversionService Static Block END ===');
+            System.debug('Total keys in recordTypeMapping: ' + recordTypeMapping.size());
+            
+        } catch (Exception e) {
+            System.debug('ERROR in LeadConversionService static block: ' + e.getMessage());
+            System.debug('Stack trace: ' + e.getStackTraceString());
+            
+            // At minimum, ensure the map is initialized
+            recordTypeMapping = new Map<String, Id>();
         }
-    
-        // Fetch record type metadata from Department_Record_Type_Mapping__mdt using the getRecordTypeWithName method
-        Map<String, String> recordTypeWithName = getRecordTypeWithName();
-        //System.debug('RecordTypeWithName: ' + recordTypeWithName);
-        
-        for (String recordTypeId : recordTypeWithName.keySet()) {
-            String recordTypeName = recordTypeWithName.get(recordTypeId);
-            String key = 'Lead-' + recordTypeName; // Assuming you're mapping Lead record types
-            recordTypeMapping.put(key, recordTypeId);
-        }
-    
-        //System.debug('Record type mappings initialized: ' + recordTypeMapping);
     }
+    */
     
     /****************************************************************************************** 
     * Method Name : convertLead
@@ -263,8 +329,9 @@ global with sharing class LeadConversionService {
                 //Query lead  wwhere id is getting lead id from payload
                 Lead lead = [SELECT Id, Is_convert__c, Status, Name, Registration_Date__c, Registration_Number__c, OwnerId,
                                     Application_Number__c, Application_Date__c, LeadSource, Phone, Email, Company, RecordType.DeveloperName,
-                                    Preferred_Programme__c,
-                                    URL__c, Auris_Form_URL__c
+                                    Preferred_Programme__c, URL__c, Auris_Form_URL__c,
+                                    Organisation_Institute_Name__c, Designation__c, My_Highest_Qualification__c,
+                                    Engagement_Score__c, Total_Work_Experience_Year_s__c, Department__c                             
                                     FROM Lead WHERE Id = :leadId LIMIT 1];
                 //system.debug('183' +lead.OwnerId);
                 //check if there is no lead
@@ -346,11 +413,19 @@ global with sharing class LeadConversionService {
                 
                 String result;
                 //check if RecordTypeName is Masters
+                String recordTypeDeveloperName = lead.RecordType.DeveloperName;
+                System.debug('RecordType DeveloperName: ' + recordTypeDeveloperName);
                 
                 if(recordTypeName == 'Undergraduation'){
                     //system.debug('undergraduation record');
                     result = convertLeadToAccountAndOpportunityUndergraduation(lead, payloadMap, responseMap);
                 }
+                else if (recordTypeDeveloperName == 'Executive_Education' ||
+                         recordTypeDeveloperName == 'Executive_Education_Lead' ||
+                         lead.Department__c == 'Executive Education') {
+                    System.debug('Using Executive Education conversion method (via Masters method)');
+                    result = convertLeadToAccountAndOpportunityMasters(lead, payloadMap, responseMap); 
+                }             
                 else{
                     System.debug('in Masters record update method');
                     result = convertLeadToAccountAndOpportunityMasters(lead, payloadMap, responseMap);
@@ -555,48 +630,466 @@ global with sharing class LeadConversionService {
     *               the response map with conversion results.
     ****************************************************************************************
     ***/ 
-        public static String convertLeadToAccountAndOpportunityMasters(
+    public static String convertLeadToAccountAndOpportunityMasters(
         Lead lead, 
         Map<String, Object> payloadMap, 
         Map<String, Object> responseMap
     ) {
-        System.debug('⚡ Starting lead conversion for Lead ID: ' + lead.Id + ', RecordType: ' + lead.RecordTypeId);
-
-        // Prepare LeadConvert object
+        System.debug('Starting lead conversion for Lead ID: ' + lead.Id + ', RecordType: ' + lead.RecordTypeId);
+    
+        // FIRST: Check if lead is already converted BEFORE any processing
+        Lead freshLead = [
+            SELECT Id, IsConverted, ConvertedAccountId, ConvertedContactId, Is_convert__c, 
+                   RecordType.DeveloperName, RecordTypeId, Preferred_Programme__c, OwnerId,
+                   Email, Phone, Name, Company, Registration_Date__c, Registration_Number__c,
+                   Application_Number__c, Application_Date__c, LeadSource, URL__c, Auris_Form_URL__c,
+                   Organisation_Institute_Name__c, Designation__c, My_Highest_Qualification__c,
+                   Engagement_Score__c, Total_Work_Experience_Year_s__c, Department__c
+            FROM Lead
+            WHERE Id = :lead.Id
+        ];
+        
+        if (freshLead.IsConverted) {
+            System.debug('Lead already converted. Checking for existing opportunities...');
+            
+            // Handle already converted lead
+            Set<String> existingApplicationNumbers = new Set<String>();
+            Map<Id, String> opportunityIdsWithProgram = new Map<Id, String>();
+            List<Opportunity> opportunitiesToInsert = new List<Opportunity>();
+            Set<Id> opportunityIds = new Set<Id>();
+            
+            // Get existing opportunities for this account
+            if (freshLead.ConvertedAccountId != null) {
+                List<Opportunity> existingOpps = [
+                    SELECT Id, Application_Number__c, Preferred_Programme__c, AccountId, ContactId,
+                           RecordType.DeveloperName, RecordType.Name
+                    FROM Opportunity
+                    WHERE AccountId = :freshLead.ConvertedAccountId
+                    ORDER BY CreatedDate DESC
+                ];
+                
+                for (Opportunity opp : existingOpps) {
+                    opportunityIds.add(opp.Id);
+                    opportunityIdsWithProgram.put(opp.Id, opp.Preferred_Programme__c + ' (' + opp.RecordType.Name + ')');
+                    if (opp.Application_Number__c != null) {
+                        existingApplicationNumbers.add(opp.Application_Number__c);
+                    }
+                    System.debug('Existing Opportunity: ' + opp.Application_Number__c + ' | ' + opp.Preferred_Programme__c + ' | RecordType: ' + opp.RecordType.Name);
+                }
+            }
+            
+            // Get RecordType DeveloperName SAFELY with null check
+            String recordTypeDevName = null;
+            
+            // Method 1: Try using RecordTypeId with null check
+            if (freshLead.RecordTypeId != null) {
+                try {
+                    List<RecordType> rtList = [SELECT DeveloperName FROM RecordType WHERE Id = :freshLead.RecordTypeId LIMIT 1];
+                    if (!rtList.isEmpty()) {
+                        recordTypeDevName = rtList[0].DeveloperName;
+                        System.debug('Got RecordType DeveloperName from RecordTypeId: ' + recordTypeDevName);
+                    }
+                } catch (Exception e) {
+                    System.debug('Error querying RecordType: ' + e.getMessage());
+                }
+            }
+            
+            // Method 2: Try from the RecordType field in the query
+            if (String.isBlank(recordTypeDevName)) {
+                try {
+                    // The field RecordType.DeveloperName might be accessible directly
+                    Object devName = freshLead.get('RecordType.DeveloperName');
+                    if (devName != null) {
+                        recordTypeDevName = String.valueOf(devName);
+                        System.debug('Got RecordType DeveloperName from get method: ' + recordTypeDevName);
+                    }
+                } catch (Exception e) {
+                    System.debug('Error getting RecordType via get: ' + e.getMessage());
+                }
+            }
+            
+            // Method 3: Last resort - query the lead again
+            if (String.isBlank(recordTypeDevName)) {
+                try {
+                    List<Lead> leadCheck = [SELECT RecordType.DeveloperName FROM Lead WHERE Id = :freshLead.Id LIMIT 1];
+                    if (!leadCheck.isEmpty() && leadCheck[0].RecordType != null) {
+                        recordTypeDevName = leadCheck[0].RecordType.DeveloperName;
+                        System.debug('Got RecordType DeveloperName from re-query: ' + recordTypeDevName);
+                    }
+                } catch (Exception e) {
+                    System.debug('Error in re-query: ' + e.getMessage());
+                }
+            }
+            
+            if (String.isBlank(recordTypeDevName)) {
+                System.debug('ERROR: Could not determine RecordType for lead: ' + freshLead.Id);
+                responseMap.put('message', 'Lead conversion failed: Could not determine RecordType');
+                responseMap.put('statusCode', 400);
+                return 'Lead conversion failed';
+            }
+            
+            String opportunityKey = 'Opportunity-' + recordTypeDevName;
+            System.debug('Using opportunityKey: ' + opportunityKey);
+            
+            if (!recordTypeMapping.containsKey(opportunityKey)) {
+                System.debug('No RecordType mapping found for key: ' + opportunityKey);
+                responseMap.put('message', 'Lead conversion failed: No RecordType mapping for ' + recordTypeDevName);
+                responseMap.put('statusCode', 400);
+                return 'Lead conversion failed';
+            }
+            
+            // Process ProgramsInterestedIn from payload
+            if (payloadMap.containsKey('ProgramsInterestedIn')) {
+                List<Object> programs = (List<Object>) payloadMap.get('ProgramsInterestedIn');
+                System.debug('Programs Interested In (raw): ' + programs);
+                
+                String convertedStatus = System.label.LeadToOppootunityConversionStage;
+                
+                // Create opportunities for each program
+                for (Object program : programs) {
+                    Map<String, Object> programMap = (Map<String, Object>) program;
+                    String applicationNumber = (String) programMap.get('applicationNumber');
+                    String programName = (String) programMap.get('ProgramName');
+                    
+                    // ENHANCED DUPLICATE Check by application number
+                    boolean duplicateFound = false;
+                    if (freshLead.ConvertedAccountId != null && applicationNumber != null) {
+                        List<Opportunity> duplicateOpps = [
+                            SELECT Id, Application_Number__c, Preferred_Programme__c
+                            FROM Opportunity
+                            WHERE AccountId = :freshLead.ConvertedAccountId
+                            AND Application_Number__c = :applicationNumber
+                            LIMIT 1
+                        ];
+                        if (!duplicateOpps.isEmpty()) {
+                            duplicateFound = true;
+                            System.debug('Skipping duplicate opportunity for Application#: ' + applicationNumber + 
+                                       ' | Existing Opportunity ID: ' + duplicateOpps[0].Id);
+                        }
+                    }
+                    
+                    if (duplicateFound) {
+                        continue;
+                    }
+                    
+                    // Create new opportunity
+                    Opportunity opp = new Opportunity();
+                    
+                    // Set program information
+                    if (programMap.containsKey('ProgramName') && programMap.get('ProgramName') != null) {
+                        opp.Name = (String) programMap.get('ProgramName');
+                        opp.Preferred_Programme__c = (String) programMap.get('ProgramName');
+                        System.debug('Program Name: ' + opp.Preferred_Programme__c);
+                    }
+                    
+                    if (programMap.containsKey('applicationNumber') && programMap.get('applicationNumber') != null) {
+                        opp.Application_Number__c = (String) programMap.get('applicationNumber');  
+                        System.debug('Application#: ' + opp.Application_Number__c);
+                    }
+                    
+                    // Set Record Type
+                    opp.RecordTypeId = recordTypeMapping.get(opportunityKey);
+                    System.debug('Set Opportunity RecordType to: ' + opportunityKey + ' (ID: ' + opp.RecordTypeId + ')');
+                    
+                    // Set standard fields
+                    opp.StageName = convertedStatus;
+                    opp.Auris_Last_Modified_Timestamp__c = System.now().format('yyyy-MM-dd:HH:mm:ss');
+                    opp.CloseDate = Date.today().addMonths(2);
+                    opp.Email__c = freshLead.Email;
+                    opp.Phone__c = freshLead.Phone;
+                    opp.AccountId = freshLead.ConvertedAccountId;
+                    opp.ContactId = freshLead.ConvertedContactId;
+                    opp.OwnerId = freshLead.OwnerId;
+                    
+                    // EXECUTIVE EDUCATION FIELD MAPPING
+                    if (recordTypeDevName == 'Executive_Education' || 
+                        recordTypeDevName == 'Executive_Education_Lead') {
+                        System.debug('Adding Executive Education field mapping to opportunity during creation');
+                        
+                        // Map Organisation/Institute Name
+                        if (freshLead.Organisation_Institute_Name__c != null) {
+                            opp.Organisation_Institute_Name__c = freshLead.Organisation_Institute_Name__c;
+                        } else if (freshLead.Company != null) {
+                            opp.Organisation_Institute_Name__c = freshLead.Company;
+                        }
+                        
+                        // Map Designation
+                        if (freshLead.Designation__c != null) {
+                            opp.Designation__c = freshLead.Designation__c;
+                        }
+                        
+                        // Map Highest Qualification
+                        if (freshLead.My_Highest_Qualification__c != null) {
+                            opp.Highest_Qualification__c = freshLead.My_Highest_Qualification__c;
+                        }
+                        
+                        // Map Engagement Score
+                        if (freshLead.Engagement_Score__c != null) {
+                            opp.Engagement_Score__c = freshLead.Engagement_Score__c;
+                        }
+                        
+                        // Map Total Work Experience
+                        if (freshLead.Total_Work_Experience_Year_s__c != null) {
+                            opp.Total_Work_Experience_Year_s__c = freshLead.Total_Work_Experience_Year_s__c;
+                        }
+                        
+                        // Map Registration Date
+                        if (freshLead.Registration_Date__c != null) {
+                            opp.Registration_Date__c = freshLead.Registration_Date__c;
+                        }
+                        
+                        // Map Application Date
+                        if (freshLead.Application_Date__c != null) {
+                            opp.Application_Initiated_Date__c = freshLead.Application_Date__c;
+                        }
+                        
+                        // Map Application Number (if not already set from payload)
+                        if (opp.Application_Number__c == null && freshLead.Application_Number__c != null) {
+                            opp.Application_Number__c = freshLead.Application_Number__c;
+                        }
+                        
+                        System.debug('Executive Education fields mapped successfully');
+                    }
+                    
+                    opportunitiesToInsert.add(opp);
+                }
+                
+                // Insert new opportunities
+                if (!opportunitiesToInsert.isEmpty()) {
+                    insert opportunitiesToInsert;
+                    for (Opportunity opp : opportunitiesToInsert) {
+                        opportunityIds.add(opp.Id);
+                        Opportunity insertedOpp = [SELECT Id, Preferred_Programme__c, RecordType.Name FROM Opportunity WHERE Id = :opp.Id];
+                        opportunityIdsWithProgram.put(opp.Id, insertedOpp.Preferred_Programme__c + ' (' + insertedOpp.RecordType.Name + ')');
+                    }
+                    System.debug('Created ' + opportunitiesToInsert.size() + ' new opportunity(ies)');
+                }
+            }
+            
+            // Map fields to all opportunities
+            if (!opportunityIds.isEmpty()) {
+                mapFieldsToOpportunityAndAccountMasters(freshLead, null, responseMap, opportunityIds);
+            }
+            
+            responseMap.put('statusCode', 208);
+            responseMap.put('leadId', freshLead.Id);
+            responseMap.put('personAccountId', freshLead.ConvertedAccountId);
+            responseMap.put('convertedContactId', freshLead.ConvertedContactId);
+            responseMap.put('Opportunity Ids with Programs', opportunityIdsWithProgram);
+            
+            String message = 'Lead already converted. ';
+            if (!opportunitiesToInsert.isEmpty()) {
+                message += 'Created ' + opportunitiesToInsert.size() + ' new opportunity(ies).';
+            } else {
+                message += 'No new opportunities created (all application numbers already exist).';
+            }
+            
+            responseMap.put('message', message);
+            return message;
+        }
+        
+        // ============ LEAD NOT CONVERTED - PROCEED WITH CONVERSION ============
+        
+        // Check if Is_convert__c flag is already set (prevent duplicate processing)
+        if (freshLead.Is_convert__c) {
+            System.debug('Lead Is_convert__c flag already set. Checking if conversion is in progress...');
+            List<Opportunity> existingOpps = [
+                SELECT Id, Application_Number__c, AccountId
+                FROM Opportunity
+                WHERE AccountId IN (SELECT ConvertedAccountId FROM Lead WHERE Id = :lead.Id AND IsConverted = true)
+                LIMIT 1
+            ];
+            
+            if (!existingOpps.isEmpty()) {
+                freshLead = [SELECT Id, IsConverted, ConvertedAccountId, ConvertedContactId FROM Lead WHERE Id = :lead.Id];
+                responseMap.put('statusCode', 208);
+                responseMap.put('leadId', freshLead.Id);
+                responseMap.put('personAccountId', freshLead.ConvertedAccountId);
+                responseMap.put('convertedContactId', freshLead.ConvertedContactId);
+                responseMap.put('message', 'Lead already converted. No new opportunities created.');
+                return 'Lead already converted.';
+            }
+        }
+        
+        // FOR PREFERRED_PROGRAMME__C MAPPING - Store original and clear field
+        String originalPreferredProgramme = freshLead.Preferred_Programme__c;
+        Boolean leadNeedsUpdate = false;
+        
+        // Clear Preferred_Programme__c if needed
+        if (freshLead.Preferred_Programme__c != null) {
+            freshLead.Preferred_Programme__c = null;
+            leadNeedsUpdate = true;
+            System.debug('Preparing to clear Preferred_Programme__c from lead');
+        }
+        
+        // Mark as being converted to prevent duplicate processing
+        if (!freshLead.Is_convert__c) {
+            freshLead.Is_convert__c = true;
+            leadNeedsUpdate = true;
+            System.debug('Preparing to set Is_convert__c flag to true for Lead: ' + lead.Id);
+        }  
+        
+        // Single DML update
+        if (leadNeedsUpdate) {
+            update freshLead;
+            System.debug('Lead updated with cleared Preferred_Programme__c and Is_convert__c=true');
+        }        
+        
+        // Setup Lead conversion
         Database.LeadConvert leadConvert = new Database.LeadConvert();
-        leadConvert.setLeadId(lead.Id);
-        leadConvert.setOwnerId(lead.OwnerId);
+        leadConvert.setLeadId(freshLead.Id);
+        leadConvert.setOwnerId(freshLead.OwnerId);
         leadConvert.setDoNotCreateOpportunity(true);
-
-        // Set converted status
+    
         String convertedStatus = System.label.LeadToOppootunityConversionStage;
         leadConvert.setConvertedStatus(convertedStatus);
-        System.debug('📌 Converted Status set: ' + convertedStatus);
-
+        System.debug('Converted Status set: ' + convertedStatus);
+    
         List<Opportunity> opportunitiesToInsert = new List<Opportunity>();
-
+    
+        // Get RecordType DeveloperName SAFELY with null check
+        String recordTypeDevName = null;
+        
+        // Method 1: Try using RecordTypeId with null check
+        if (freshLead.RecordTypeId != null) {
+            try {
+                List<RecordType> rtList = [SELECT DeveloperName FROM RecordType WHERE Id = :freshLead.RecordTypeId LIMIT 1];
+                if (!rtList.isEmpty()) {
+                    recordTypeDevName = rtList[0].DeveloperName;
+                    System.debug('Got RecordType DeveloperName from RecordTypeId: ' + recordTypeDevName);
+                }
+            } catch (Exception e) {
+                System.debug('Error querying RecordType: ' + e.getMessage());
+            }
+        }
+        
+        // Method 2: Try from the RecordType field in the query
+        if (String.isBlank(recordTypeDevName)) {
+            try {
+                Object devName = freshLead.get('RecordType.DeveloperName');
+                if (devName != null) {
+                    recordTypeDevName = String.valueOf(devName);
+                    System.debug('Got RecordType DeveloperName from get method: ' + recordTypeDevName);
+                }
+            } catch (Exception e) {
+                System.debug('Error getting RecordType via get: ' + e.getMessage());
+            }
+        }
+        
+        // Method 3: Last resort - query the lead again
+        if (String.isBlank(recordTypeDevName)) {
+            try {
+                List<Lead> leadCheck = [SELECT RecordType.DeveloperName FROM Lead WHERE Id = :freshLead.Id LIMIT 1];
+                if (!leadCheck.isEmpty() && leadCheck[0].RecordType != null) {
+                    recordTypeDevName = leadCheck[0].RecordType.DeveloperName;
+                    System.debug('Got RecordType DeveloperName from re-query: ' + recordTypeDevName);
+                }
+            } catch (Exception e) {
+                System.debug('Error in re-query: ' + e.getMessage());
+            }
+        }
+        
+        if (String.isBlank(recordTypeDevName)) {
+            System.debug('ERROR: Could not determine RecordType for lead: ' + freshLead.Id);
+            responseMap.put('message', 'Lead conversion failed: Could not determine RecordType');
+            responseMap.put('statusCode', 400);
+            return 'Lead conversion failed';
+        }
+        
+        String opportunityKey = 'Opportunity-' + recordTypeDevName;
+        System.debug('Using opportunityKey: ' + opportunityKey);
+        
+        if (!recordTypeMapping.containsKey(opportunityKey)) {
+            System.debug('No RecordType mapping found for key: ' + opportunityKey);
+            responseMap.put('message', 'Lead conversion failed: No RecordType mapping for ' + recordTypeDevName);
+            responseMap.put('statusCode', 400);
+            return 'Lead conversion failed';
+        }
+    
+        // Process ProgramsInterestedIn from payload
         if (payloadMap.containsKey('ProgramsInterestedIn')) {
             List<Object> programs = (List<Object>) payloadMap.get('ProgramsInterestedIn');
-            System.debug('🎯 Programs Interested In (raw): ' + programs);
-
+            System.debug('Programs Interested In (raw): ' + programs);
+    
             // Create opportunities
             for (Object program : programs) {
                 Map<String, Object> programMap = (Map<String, Object>) program;
                 Opportunity opp = new Opportunity();
-
+    
+                // Set program information
                 if (programMap.containsKey('ProgramName') && programMap.get('ProgramName') != null) {
                     opp.Name = (String) programMap.get('ProgramName');
                     opp.Preferred_Programme__c = (String) programMap.get('ProgramName');
-                    System.debug('🏷️ Program Name: ' + opp);
+                    System.debug('Program Name: ' + opp.Preferred_Programme__c);
                 }
+                
                 if (programMap.containsKey('applicationNumber') && programMap.get('applicationNumber') != null) {
                     opp.Application_Number__c = (String) programMap.get('applicationNumber');  
+                    System.debug('Application#: ' + opp.Application_Number__c);
                 }
-
-                System.debug('🆕 Creating Opportunity for Program: ' + opp.Preferred_Programme__c + 
-                            ' | Application#: ' + opp.Application_Number__c);
-
-                // Assignment for MTec programs
+                
+                // Set Record Type
+                opp.RecordTypeId = recordTypeMapping.get(opportunityKey);
+                System.debug('Set Opportunity RecordType to: ' + opportunityKey + ' (ID: ' + opp.RecordTypeId + ')');
+    
+                // Set standard fields
+                opp.StageName = convertedStatus;
+                opp.Auris_Last_Modified_Timestamp__c = System.now().format('yyyy-MM-dd:HH:mm:ss');
+                opp.CloseDate = Date.today().addMonths(2);
+                opp.Email__c = freshLead.Email;
+                opp.Phone__c = freshLead.Phone;
+                
+                // EXECUTIVE EDUCATION FIELD MAPPING
+                if (recordTypeDevName == 'Executive_Education' || 
+                    recordTypeDevName == 'Executive_Education_Lead') {
+                    System.debug('Adding Executive Education field mapping to opportunity during creation');
+                    
+                    // Map Organisation/Institute Name
+                    if (freshLead.Organisation_Institute_Name__c != null) {
+                        opp.Organisation_Institute_Name__c = freshLead.Organisation_Institute_Name__c;
+                    } else if (freshLead.Company != null) {
+                        opp.Organisation_Institute_Name__c = freshLead.Company;
+                    }
+                    
+                    // Map Designation
+                    if (freshLead.Designation__c != null) {
+                        opp.Designation__c = freshLead.Designation__c;
+                    }
+                    
+                    // Map Highest Qualification
+                    if (freshLead.My_Highest_Qualification__c != null) {
+                        opp.Highest_Qualification__c = freshLead.My_Highest_Qualification__c;
+                    }
+                    
+                    // Map Engagement Score
+                    if (freshLead.Engagement_Score__c != null) {
+                        opp.Engagement_Score__c = freshLead.Engagement_Score__c;
+                    }
+                    
+                    // Map Total Work Experience
+                    if (freshLead.Total_Work_Experience_Year_s__c != null) {
+                        opp.Total_Work_Experience_Year_s__c = freshLead.Total_Work_Experience_Year_s__c;
+                    }
+                    
+                    // Map Registration Date
+                    if (freshLead.Registration_Date__c != null) {
+                        opp.Registration_Date__c = freshLead.Registration_Date__c;
+                    }
+                    
+                    // Map Application Date
+                    if (freshLead.Application_Date__c != null) {
+                        opp.Application_Initiated_Date__c = freshLead.Application_Date__c;
+                    }
+                    
+                    // Map Application Number (if not already set from payload)
+                    if (opp.Application_Number__c == null && freshLead.Application_Number__c != null) {
+                        opp.Application_Number__c = freshLead.Application_Number__c;
+                    }
+                    
+                    System.debug('Executive Education fields mapped successfully');
+                }
+                
+                // Owner assignment logic
                 if (opp.Preferred_Programme__c == System.label.Preferred_Program_Master_of_Technology_in_Composites 
                     || opp.Preferred_Programme__c == System.label.Preferred_Program_Master_of_Technology_in_Computer_Science_and_Engineering 
                     || opp.Preferred_Programme__c == System.label.Preferred_Program_Master_of_Technology_in_Microelectronics_and_Semiconductors) {
@@ -608,11 +1101,9 @@ global with sharing class LeadConversionService {
                     ];
                     if (!phdUsers.isEmpty()) {
                         opp.OwnerId = phdUsers[0].User_Id__c;
-                        System.debug('👤 MTec Program → Assigned to User: ' + phdUsers[0].User_Name__c + 
-                                    ' (' + phdUsers[0].User_Id__c + ')');
+                        System.debug('MTec Program → Assigned to User: ' + phdUsers[0].User_Name__c);
                     }
                 }
-                // Assignment for MBA/MSc programs
                 else if (opp.Preferred_Programme__c == System.label.Preferred_Program_Master_of_Science_in_Economics
                         || opp.Preferred_Programme__c == System.label.Preferred_Program_Master_of_Business_Administration
                         || opp.Preferred_Programme__c == System.label.Preferred_Program_Master_of_Management_Studies_in_Heritage_Management
@@ -623,8 +1114,8 @@ global with sharing class LeadConversionService {
                         FROM OpportunityAssignment__mdt
                         ORDER BY Round_Robin_Index__c
                     ];
-                    System.debug('⚖️ MBA/MSc Assignment Rules found: ' + rules.size());
-
+                    System.debug('MBA/MSc Assignment Rules found: ' + rules.size());
+    
                     if (!rules.isEmpty()) {
                         OpportunityAssignmentTrackerMasters__c tracker = OpportunityAssignmentTrackerMasters__c.getOrgDefaults();
                         Integer index = tracker != null && tracker.Last_Assigned_Index__c != null 
@@ -634,10 +1125,9 @@ global with sharing class LeadConversionService {
                         opp.OwnerId = rules[index].User__c;
                         opp.Last_Opportunity_Assigned_User__c = rules[index].User__c;
                         opp.Last_Index__c = index;
-
-                        System.debug('🔄 Round robin → Assigned to User: ' + opp.OwnerId + 
-                                    ' | Index: ' + index);
-
+    
+                        System.debug('Round robin → Assigned to User: ' + opp.OwnerId + ' | Index: ' + index);
+    
                         // Update tracker
                         index = Math.mod(index + 1, rules.size());
                         if (tracker == null) {
@@ -646,111 +1136,136 @@ global with sharing class LeadConversionService {
                         tracker.Last_Assigned_Index__c = index;
                         upsert tracker;
                     }
+                } else {
+                    opp.OwnerId = freshLead.OwnerId;
                 }
-                
-
-                opp.StageName = convertedStatus;
-                opp.Auris_Last_Modified_Timestamp__c = System.now().format('yyyy-MM-dd:HH:mm:ss');
-                opp.CloseDate = Date.today().addMonths(2);
-                opp.Email__c = lead.Email;
-                opp.Phone__c = lead.Phone;
-
+    
                 opportunitiesToInsert.add(opp);
             }
-            System.debug('📊 Total Opportunities prepared: ' + opportunitiesToInsert.size());
+            System.debug('Total Opportunities prepared: ' + opportunitiesToInsert.size());
         }
-
-        System.debug('🚀 Starting Lead Conversion for LeadId=' + lead.Id + ' | LeadConvert=' + leadConvert);
-
+    
+        System.debug('Starting Lead Conversion for LeadId=' + freshLead.Id + ' | LeadConvert=' + leadConvert);
+    
         Database.LeadConvertResult result;
         try {
-            result = Database.convertLead(leadConvert, false); // false = don't allow partial success
-            System.debug('✅ Lead conversion executed. Result=' + result);
+            result = Database.convertLead(leadConvert, false);
+            System.debug('Lead conversion executed. Result=' + result);
         } catch (Exception e) {
-            System.debug('❌ Exception during Lead Conversion: ' + e.getMessage() + ' | Stack=' + e.getStackTraceString());
-            throw e; // rethrow so we don't swallow the error
+            // Reset the conversion flag if conversion fails
+            freshLead.Is_convert__c = false;
+            
+            // Restore the Preferred_Programme__c value if conversion fails
+            if (originalPreferredProgramme != null) {
+                freshLead.Preferred_Programme__c = originalPreferredProgramme;
+            }
+            update freshLead;
+            System.debug('Exception during Lead Conversion: ' + e.getMessage() + ' | Stack=' + e.getStackTraceString());
+            throw e;
         }
-
-
+    
         if (!opportunitiesToInsert.isEmpty()) {
+            // Set AccountId and ContactId on all opportunities before insertion
+            for (Opportunity opp : opportunitiesToInsert) {
+                opp.AccountId = result.getAccountId();
+                opp.ContactId = result.getContactId();
+            }
             insert opportunitiesToInsert;
-            System.debug('✅ Inserted Opportunities: ' + opportunitiesToInsert);
+            System.debug('Inserted Opportunities: ' + opportunitiesToInsert);
         }
-
+    
         if (result.isSuccess()) {
-            System.debug('🎉 Lead conversion successful! AccountId=' + result.getAccountId());
-
+            System.debug('Lead conversion successful! AccountId=' + result.getAccountId());
+    
             List<Opportunity> opportunityList = [
-                SELECT Id, Preferred_Programme__c 
+                SELECT Id, Preferred_Programme__c, RecordType.Name
                 FROM Opportunity 
                 WHERE Id IN :opportunitiesToInsert
             ];
             Set<Id> opportunityIds = new Set<Id>();
             Map<Id, String> opportunityIdsWithProgram = new Map<Id, String>();
-
+    
             for (Opportunity opp : opportunityList) {
                 opportunityIds.add(opp.Id);
-                opportunityIdsWithProgram.put(opp.Id, opp.Preferred_Programme__c);
+                opportunityIdsWithProgram.put(opp.Id, opp.Preferred_Programme__c + ' (' + opp.RecordType.Name + ')');
             }
-            System.debug('📌 Opportunity Ids with Program Names: ' + opportunityIdsWithProgram);
-
+            System.debug('Opportunity Ids with Program Names: ' + opportunityIdsWithProgram);
+    
             // Update record types
-            updateRecordTypes(lead, result.getAccountId(), opportunityIds);
-
+            updateRecordTypes(freshLead, result.getAccountId(), opportunityIds);
+    
             // Map fields
-            mapFieldsToOpportunityAndAccountMasters(lead, result, responseMap, opportunityIds);
-
-            responseMap.put('leadId', lead.Id);
+            mapFieldsToOpportunityAndAccountMasters(freshLead, result, responseMap, opportunityIds);
+    
+            responseMap.put('leadId', freshLead.Id);
             responseMap.put('personAccountId', result.getAccountId());
             responseMap.put('message', 'Lead converted successfully.');
             responseMap.put('Opportunity Ids with Programs', opportunityIdsWithProgram);
-
+    
             return 'Lead converted successfully.';
         } else {
-            // Handle "already converted" case
-            Lead freshLead = [
-                SELECT Id, IsConverted, ConvertedAccountId, ConvertedOpportunityId, ConvertedContactId
-                FROM Lead
-                WHERE Id = :lead.Id
-            ];
+            String errorMessage = 'Lead conversion failed. Error: ' + result.getErrors()[0].getMessage();
+            System.debug(errorMessage);
+            responseMap.put('statusCode', 400);
+            responseMap.put('message', errorMessage);
+            return errorMessage;
+        }
+    }
+    
+    // ============ HELPER METHOD TO GET RECORD TYPE DEVELOPER NAME SAFELY ============
+    private static String getRecordTypeDeveloperName(Id recordTypeId, Id leadId) {
+        String devName = null;
         
-            if (freshLead.IsConverted) {
-                responseMap.put('statusCode', 208); // Already converted
-                responseMap.put('leadId', freshLead.Id);
-                responseMap.put('personAccountId', freshLead.ConvertedAccountId);
-                responseMap.put('convertedContactId', freshLead.ConvertedContactId);
+        // Method 1: Try using RecordTypeId
+        if (recordTypeId != null) {
+            try {
+                List<RecordType> rtList = [SELECT DeveloperName FROM RecordType WHERE Id = :recordTypeId LIMIT 1];
+                if (!rtList.isEmpty()) {
+                    devName = rtList[0].DeveloperName;
+                    System.debug('Method 1 success - Got from RecordTypeId: ' + devName);
+                    return devName;
+                }
+            } catch (Exception e) {
+                System.debug('Method 1 error: ' + e.getMessage());
+            }
+        }
         
-                // Fetch existing opportunities for this account
-                Map<Id, String> opportunityIdsWithProgram = new Map<Id, String>();
-                if (freshLead.ConvertedAccountId != null) {
-                    List<Opportunity> opps = [
-                        SELECT Id, Preferred_Programme__c
-                        FROM Opportunity
-                        WHERE AccountId = :freshLead.ConvertedAccountId
-                    ];
-                    for (Opportunity opp : opps) {
-                        opportunityIdsWithProgram.put(opp.Id, opp.Preferred_Programme__c);
+        // Method 2: Try querying Lead directly
+        if (leadId != null) {
+            try {
+                List<Lead> leadList = [SELECT RecordType.DeveloperName FROM Lead WHERE Id = :leadId LIMIT 1];
+                if (!leadList.isEmpty()) {
+                    Lead l = leadList[0];
+                    if (l.RecordType != null) {
+                        devName = l.RecordType.DeveloperName;
+                        System.debug('Method 2 success - Got from Lead RecordType: ' + devName);
+                        return devName;
                     }
                 }
-                responseMap.put('Opportunity Ids with Programs', opportunityIdsWithProgram);
-        
-                String errorMessage = 'Lead already converted. ' ;
-        
-                System.debug(errorMessage);
-                responseMap.put('message', errorMessage);
-        
-                return errorMessage;
-            } else {
-                String errorMessage = 'Lead conversion failed. Error: ' + result.getErrors()[0].getMessage();
-                System.debug(errorMessage);
-                responseMap.put('statusCode', 400);
-                responseMap.put('message', errorMessage);
-                return errorMessage;
+            } catch (Exception e) {
+                System.debug('Method 2 error: ' + e.getMessage());
             }
-        }        
-    }
-
-
+        }
+        
+        // Method 3: Try getting from SObject describe
+        if (recordTypeId != null) {
+            try {
+                Schema.DescribeSObjectResult describe = Lead.sObjectType.getDescribe();
+                Map<Id, Schema.RecordTypeInfo> rtMapById = describe.getRecordTypeInfosById();
+                if (rtMapById.containsKey(recordTypeId)) {
+                    devName = rtMapById.get(recordTypeId).getDeveloperName();
+                    System.debug('Method 3 success - Got from describe: ' + devName);
+                    return devName;
+                }
+            } catch (Exception e) {
+                System.debug('Method 3 error: ' + e.getMessage());
+            }
+        }
+        
+        System.debug('ALL METHODS FAILED - Could not determine RecordType for lead: ' + leadId + ', RecordTypeId: ' + recordTypeId);
+        return null;
+    }    
+    
     /**
     * @description - Method to converts the Lead record into Account and Opportunity records for undergraduation
     * @param lead leads to be converted
@@ -768,7 +1283,8 @@ global with sharing class LeadConversionService {
         leadConvert.setDoNotCreateOpportunity(false);
     
         // Set the converted status based on the lead's record type
-        String convertedStatus = 'Application Submitted';
+        String leadStatus = '%'+(String) payloadMap.get('leadStatus')+'%';
+        String convertedStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true AND Name LIKE :leadStatus LIMIT 1].MasterLabel;
         leadConvert.setConvertedStatus(convertedStatus);
     
         Database.LeadConvertResult result = Database.convertLead(leadConvert);
@@ -789,6 +1305,7 @@ global with sharing class LeadConversionService {
             responseMap.put('personAccountId', result.getAccountId());
             responseMap.put('opportunityId', result.getOpportunityId());
             responseMap.put('message', 'Lead converted successfully.');
+            responseMap.put('Opportunity', 'Opportunity Created');
             //System.debug('Lead converted successfully.');
             return 'Lead converted successfully.';
         } else {
@@ -806,7 +1323,7 @@ global with sharing class LeadConversionService {
                 responseMap.put('convertedOpportunityId', freshLead.ConvertedOpportunityId);
                 responseMap.put('convertedContactId', freshLead.ConvertedContactId);
         
-                String errorMessage = '❌ Lead already converted. ' +
+                String errorMessage = 'Lead already converted. ' +
                                       'ContactId=' + freshLead.ConvertedContactId +
                                       ', AccountId=' + freshLead.ConvertedAccountId +
                                       ', OpportunityId=' + freshLead.ConvertedOpportunityId;
@@ -816,7 +1333,7 @@ global with sharing class LeadConversionService {
         
                 return errorMessage;
             } else {
-                String errorMessage = '❌ Lead conversion failed. Error: ' + result.getErrors()[0].getMessage();
+                String errorMessage = 'Lead conversion failed. Error: ' + result.getErrors()[0].getMessage();
                 System.debug(errorMessage);
                 responseMap.put('statusCode', 400);
                 responseMap.put('message', errorMessage);
@@ -824,32 +1341,6 @@ global with sharing class LeadConversionService {
             }
         }
     }
-
-
-    
-    // public static void updateRecordTypes(Lead lead, Id accountId, Id opportunityId) {
-    //     if (accountId != null) {
-    //         Account account = [SELECT Id, RecordTypeId FROM Account WHERE Id = :accountId LIMIT 1];
-    //         String accountKey = 'Account-' + lead.RecordType.DeveloperName;
-    //         if (recordTypeMapping.containsKey(accountKey)) {
-    //             account.RecordTypeId = recordTypeMapping.get(accountKey);
-    //             System.debug('292 Account record type updated: ' + account.RecordTypeId);
-    //         }
-    //         update account;
-    //         System.debug('295 Account record type updated: ' + account);
-    //     }
-    
-    //     if (opportunityId != null) {
-    //         Opportunity opportunity = [SELECT Id, RecordTypeId FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
-    //         String opportunityKey = 'Opportunity-' + lead.RecordType.DeveloperName;
-    //         if (recordTypeMapping.containsKey(opportunityKey)) {
-    //             opportunity.RecordTypeId = recordTypeMapping.get(opportunityKey);
-    //             System.debug('303 Opportunity record type updated: ' + opportunity.RecordTypeId);
-    //         }
-    //         update opportunity;
-    //         System.debug('306 Opportunity record type updated: ' + opportunity);
-    //     }
-    // }
 
     /**
     * @description - This method updates the record types of the Account and Opportunity records
@@ -866,7 +1357,9 @@ global with sharing class LeadConversionService {
     *               from the recordTypeMapping map based on the Lead's record type and applies them
     *               to the Account and Opportunity records.
     ****************************************************************************************
-    ***/ 
+    ***/     
+    
+    /*
     public static void updateRecordTypes(Lead lead, Id accountId, Set<Id> opportunityIdSet) {
         System.debug('Entered updateRecordTypes for Lead: ' + lead.Id + 
                      ' | RecordType DeveloperName: ' + lead.RecordType.DeveloperName);
@@ -924,6 +1417,106 @@ global with sharing class LeadConversionService {
             }
         }
     }
+    */
+    
+    // Modify By : Rishav Raj
+    // MODIFICATION: Update record types for opportunities
+    // 19/01/26    
+    public static void updateRecordTypes(Lead lead, Id accountId, Set<Id> opportunityIdSet) {
+        // Add null checks at the beginning
+        if (lead == null || lead.RecordTypeId == null || lead.RecordType == null) {
+            System.debug('Lead or RecordType is null, skipping record type update');
+            return;
+        }
+        
+        System.debug('=== updateRecordTypes START ===');
+        System.debug('Lead RecordType.DeveloperName: ' + lead.RecordType.DeveloperName);
+        
+        // Handle Account
+        if (accountId != null) {
+            try {
+                Account account = [SELECT Id, RecordTypeId FROM Account WHERE Id = :accountId LIMIT 1];
+                String accountKey = 'Account-' + lead.RecordType.DeveloperName;
+                
+                System.debug('Looking for Account key: ' + accountKey);
+                
+                if (recordTypeMapping != null && recordTypeMapping.containsKey(accountKey)) {
+                    account.RecordTypeId = recordTypeMapping.get(accountKey);
+                    update account;
+                    System.debug('Updated Account RecordType to: ' + account.RecordTypeId);
+                } else {
+                    System.debug('ERROR: Account key not found or mapping is null: ' + accountKey);
+                }
+            } catch (Exception e) {
+                System.debug('Error updating account record type: ' + e.getMessage());
+            }
+        }
+        
+        // Handle Opportunities
+        if (opportunityIdSet != null && !opportunityIdSet.isEmpty()) {
+            try {
+                List<Opportunity> opportunityList = [
+                    SELECT Id, RecordTypeId 
+                    FROM Opportunity 
+                    WHERE Id IN :opportunityIdSet
+                ];
+                List<Opportunity> opportunityListToUpdate = new List<Opportunity>();
+            
+                String opportunityKey = 'Opportunity-' + lead.RecordType.DeveloperName;
+                
+                System.debug('Looking for Opportunity key: ' + opportunityKey);
+                
+                for (Opportunity opportunity : opportunityList) {
+                    if (recordTypeMapping != null && recordTypeMapping.containsKey(opportunityKey)) {
+                        Id newRecordTypeId = recordTypeMapping.get(opportunityKey);
+                        if (opportunity.RecordTypeId != newRecordTypeId) {
+                            opportunity.RecordTypeId = newRecordTypeId;
+                            opportunityListToUpdate.add(opportunity);
+                            System.debug('Updating Opportunity RecordType to: ' + newRecordTypeId);
+                        }
+                    } else {
+                        System.debug('ERROR: Opportunity key not found or mapping is null: ' + opportunityKey);
+                    }
+                }
+                
+                if (!opportunityListToUpdate.isEmpty()) {
+                    update opportunityListToUpdate;
+                }
+            } catch (Exception e) {
+                System.debug('Error updating opportunities record type: ' + e.getMessage());
+            }
+        }
+    }
+    
+    // Added this method to convert Lead's Multi_Select value for Opportunity
+    public static String convertMultiSelectForOpportunity(String leadMultiSelectValue) {
+        if (String.isBlank(leadMultiSelectValue)) {
+            return null;
+        }
+        
+        // Convert semicolon-separated values
+        List<String> values = leadMultiSelectValue.split(';');
+        List<String> convertedValues = new List<String>();
+        
+        for (String val : values) {
+            val = val.trim();
+            
+            // Convert Meta_Ads to Meta Ads for Opportunity
+            if (val == 'Meta_Ads') {
+                convertedValues.add('Meta Ads');
+            }
+            // Convert other Meta variations
+            else if (val == 'Meta Dds' || val == 'Meta Das' || val.equalsIgnoreCase('meta_ads')) {
+                convertedValues.add('Meta Ads');
+            }
+            // Keep other values as-is (they should be valid in both picklists)
+            else {
+                convertedValues.add(val);
+            }
+        }
+        
+        return String.join(convertedValues, ';');
+    }  
     
 
     /**
@@ -944,7 +1537,6 @@ global with sharing class LeadConversionService {
     ****************************************************************************************
     ***/ 
     public static void mapFieldsToOpportunityAndAccountMasters(Lead lead, Database.LeadConvertResult result, Map<String, Object> responseMap, Set<Id> opportunityIds) {
-        // Ensure Lead OwnerId is available by querying it if it's not already provided
             
             //modified by rishav
             lead = [SELECT Id, OwnerId, Name, Company, Phone, Email, UTM_Link__c,department__c,
@@ -965,15 +1557,19 @@ global with sharing class LeadConversionService {
 
 
         
-        Id accountId = result.getAccountId();
+        // Id accountId = result.getAccountId();
+
+        if(result != null){
+            accountId = result.getAccountId();
+        }else{
+            accountId = lead.ConvertedAccountId;
+        }
         //Id opportunityId = result.getOpportunityId();
         Id leadOwnerId = lead.OwnerId; // Get the Lead Owner ID
         String firstname;
         //String LastName;
         String fullName;
         if (accountId != null) {
-
-            // modified by rishav
             Account account = [SELECT Id, IsPersonAccount, FirstName, LastName, Phone, PersonEmail, 
                                     UTM_Link__c, Registration_Number__c, Registration_Date__c,
                                     Multi_Select_Lead_Source__c, Campaign_Name__c, Campaign_Source__c, 
@@ -1018,9 +1614,11 @@ global with sharing class LeadConversionService {
             mapExecutiveEducationFieldsToAccount(lead, account); //added by rishav
 
             update account;
-            //System.debug('346 Account (including Person Account) fields updated: ' + account);
+            responseMap.put('AccountId', account.Id);
         }
 
+        responseMap.put('LeadId', lead.Id);
+        
         if(!opportunityIds.isEmpty()){
          
             // modified by rishav
@@ -1066,6 +1664,7 @@ global with sharing class LeadConversionService {
                 opportunity.Campaign_Name__c = lead.Campaign_Name__c;
                 opportunity.Campaign_Source__c = lead.Campaign_Source__c;
                 opportunity.Campaign_Medium__c = lead.Campaign_Medium__c;
+                opportunity.Multi_Select_Lead_Source__c = convertMultiSelectForOpportunity(lead.Multi_Select_Lead_Source__c);
                 //opportunity.ContactId  = lead.ConvertedContactId;
 
                 mapExecutiveEducationFields(lead, opportunity, accountId); //added by rishav
@@ -1081,13 +1680,15 @@ global with sharing class LeadConversionService {
 
             //add primary opportunity contact role to map ContactId on opportunity
            List<OpportunityContactRole> opportunityRoleToBeUpdated =  new List<OpportunityContactRole>();
-            for(Opportunity opp :opportunityToBeUpdated){
-                OpportunityContactRole oppRole = new OpportunityContactRole();
-                oppRole.ContactId = lead.ConvertedContactId;
-                oppRole.OpportunityId = opp.Id;
-                oppRole.IsPrimary =True;
+            for (Opportunity opp : opportunityToBeUpdated) {
+                OpportunityContactRole oppRole = new OpportunityContactRole(
+                    ContactId = lead.ConvertedContactId,
+                    OpportunityId = opp.Id,
+                    IsPrimary = true
+                );
                 opportunityRoleToBeUpdated.add(oppRole);
             }
+            
             if(!opportunityRoleToBeUpdated.isEmpty()){
                 insert opportunityRoleToBeUpdated;
                 //System.debug('opportunityToBeUpdated updated: ' + opportunityToBeUpdated);
@@ -1175,7 +1776,9 @@ global with sharing class LeadConversionService {
                 state = account.BillingState;
             }
             if (payloadMap.containsKey('email') && payloadMap.get('email') != null) {
-                account.Email__c = (String) payloadMap.get('email');
+                String emailVal = String.valueOf(payloadMap.get('email'));
+                account.Email__c = emailVal;
+                account.PersonEmail = emailVal;
             }
             if (payloadMap.containsKey('phone') && payloadMap.get('phone') != null) {
                 account.Phone = (String) payloadMap.get('phone');
@@ -1308,6 +1911,7 @@ global with sharing class LeadConversionService {
                 opportunity.URL__c = lead.URL__c;
                 opportunity.Auris_Form_URL__c = lead.Auris_Form_URL__c;
                 opportunity.URL__c = lead.URL__c;
+                opportunity.Multi_Select_Lead_Source__c = convertMultiSelectForOpportunity(lead.Multi_Select_Lead_Source__c);
                 Datetime now = System.now();
                 // Format the datetime to the desired format
                 String formattedDate = now.format('yyyy-MM-dd:HH:mm:ss');
@@ -1490,7 +2094,7 @@ global with sharing class LeadConversionService {
 
     /**
     * created By - Rishav
-    * @description - Method to map Executive Education specific fields from Lead to Opportunity
+
     * @param lead - Source Lead record
     * @param opportunity - Target Opportunity record
     * @param accountId - Account Id for reference
@@ -1934,7 +2538,7 @@ global with sharing class LeadConversionService {
                 opportunityToBeUpdated.put(opportunityId, opportunityStatus);
             }
 
-            // Query Opportunities by IDs
+            // Query Opportunities by IDs 
             List<Opportunity> opportunitiesToUpdateList = [
                 SELECT Id, StageName FROM Opportunity WHERE Id IN :opportunityToBeUpdated.keySet()];
 
