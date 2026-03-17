@@ -1282,8 +1282,10 @@ global with sharing class LeadConversionService {
         leadConvert.setOwnerId(lead.OwnerId);
         leadConvert.setDoNotCreateOpportunity(false);
     
+        //Mihir - 16th Marth 2026
+        String leadStatus = '%' + (String) payloadMap.get('leadStatus') + '%';
         // Set the converted status based on the lead's record type
-        String convertedStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true LIMIT 1].MasterLabel;
+        String convertedStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true AND MasterLabel LIKE :leadStatus LIMIT 1].MasterLabel;
         leadConvert.setConvertedStatus(convertedStatus);
     
         Database.LeadConvertResult result = Database.convertLead(leadConvert);
@@ -1554,9 +1556,49 @@ global with sharing class LeadConversionService {
                     FROM Lead WHERE Id = :lead.Id LIMIT 1];
             */
 
+        //Mihir Ramoliya- 16th Marth 2026 - this is giving error when Lead converting to opportunity for the first time as result is null, so added null check for result and then fetching accountId from lead object if result is null
+        // ✅ FIX: Null-safe accountId resolution
+        Id accountId;
+        if (result != null) {
+            // Fresh conversion — result is available
+            accountId = result.getAccountId();
+        } else {
+            // Already-converted lead — result is null, derive accountId from opportunities
+            if (!opportunityIds.isEmpty()) {
+                List<Opportunity> oppCheck = [
+                    SELECT AccountId 
+                    FROM Opportunity 
+                    WHERE Id IN :opportunityIds 
+                    AND AccountId != null 
+                    LIMIT 1
+                ];
+                if (!oppCheck.isEmpty()) {
+                    accountId = oppCheck[0].AccountId;
+                }
+            }
+            
+            // Final fallback: use ConvertedAccountId from the lead itself
+            if (accountId == null && lead.ConvertedContactId != null) {
+                List<Lead> convertedLead = [
+                    SELECT ConvertedAccountId 
+                    FROM Lead 
+                    WHERE Id = :lead.Id 
+                    LIMIT 1
+                ];
+                if (!convertedLead.isEmpty()) {
+                    accountId = convertedLead[0].ConvertedAccountId;
+                }
+            }
+        }
 
+        // Guard: if we still can't resolve an accountId, exit gracefully
+        if (accountId == null) {
+            System.debug('ERROR: Could not resolve accountId in mapFieldsToOpportunityAndAccountMasters');
+            responseMap.put('message', 'Field mapping failed: Could not resolve Account ID');
+            return;
+        }
         
-        Id accountId = result.getAccountId();
+        // Id accountId = result.getAccountId();
         //Id opportunityId = result.getOpportunityId();
         Id leadOwnerId = lead.OwnerId; // Get the Lead Owner ID
         String firstname;
