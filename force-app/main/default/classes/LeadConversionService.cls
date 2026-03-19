@@ -329,7 +329,7 @@ global with sharing class LeadConversionService {
                 //Query lead  wwhere id is getting lead id from payload
                 Lead lead = [SELECT Id, Is_convert__c, Status, Name, Registration_Date__c, Registration_Number__c, OwnerId,
                                     Application_Number__c, Application_Date__c, LeadSource, Phone, Email, Company, RecordType.DeveloperName,
-                                    Preferred_Programme__c, URL__c, Auris_Form_URL__c,
+                                    Preferred_Programme__c, URL__c, Auris_Form_URL__c, Owner.IsActive,
                                     Organisation_Institute_Name__c, Designation__c, My_Highest_Qualification__c,
                                     Engagement_Score__c, Total_Work_Experience_Year_s__c, Department__c                             
                                     FROM Lead WHERE Id = :leadId LIMIT 1];
@@ -351,12 +351,34 @@ global with sharing class LeadConversionService {
                     //System.debug('195 Lead status is not valid. Current status: ' + lead.Status);
                     return responseMap;
                 }
-                //check id lead is converted or not 
-                if (!lead.Is_convert__c) {
-                    lead.Is_convert__c = true;
-                    update lead;
-                    //System.debug('202 Lead converted flag set to true for Lead ID: ' + leadId);
+                // Added By: Mihir Ramoliya
+                // Date: 18th March 2026
+                // Fixed the Lead Inactive Owner error when lead is comming to converting from AURIS. we have check the current owner status and if current owner is Inactive then assign current running user. 
+                Boolean isUpdateRequired = false;
+
+                // Check Owner inactive
+                if(lead.OwnerId != null && !lead.Owner.IsActive){
+                    lead.OwnerId = UserInfo.getUserId();
+                    isUpdateRequired = true;
                 }
+
+                // Check custom conversion flag
+                if(!lead.Is_convert__c){
+                    lead.Is_convert__c = true;
+                    isUpdateRequired = true;
+                }
+
+                // Perform single update
+                if(isUpdateRequired){
+                    update lead;
+                }
+
+                // //check id lead is converted or not 
+                // if (!lead.Is_convert__c) {
+                //     lead.Is_convert__c = true;
+                //     update lead;
+                //     //System.debug('202 Lead converted flag set to true for Lead ID: ' + leadId);
+                // }
 
                 //added by neha for record type
                 Map<String, String> recordTypeMapping = new Map<String, String>();

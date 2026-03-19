@@ -149,7 +149,7 @@ global class saveWebTo_YourProfileData {
         Lead newLead;
         String department   = (String) payloadMap.get('department');
         String typeOfForm   = (String) payloadMap.get('typeOfForm');
-        String registrationNumber = (String) payloadMap.get('registrationNumber');
+        String  = (String) payloadMap.get('registrationNumber');
 
         String recordTypeId = fetchRecordTypeId(department);
         if (recordTypeId == null) {
@@ -160,7 +160,7 @@ global class saveWebTo_YourProfileData {
         }
 
         // 🔹 Handle duplicates (same logic you already have)
-        Lead existingLead;
+        Lead existingLead;registrationNumber
         if (department.equalsIgnoreCase('Undergraduation')) {
             existingLead = handleDuplicateLeadUndergraduation(payloadMap, department, typeOfForm);
         } else {
