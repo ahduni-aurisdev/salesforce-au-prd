@@ -1173,6 +1173,10 @@ global with sharing class LeadConversionService {
         try {
             result = Database.convertLead(leadConvert, false);
             System.debug('Lead conversion executed. Result=' + result);
+            if (originalPreferredProgramme != null) {
+                freshLead.Preferred_Programme__c = originalPreferredProgramme;
+                update freshLead;
+            }
         } catch (Exception e) {
             // Reset the conversion flag if conversion fails
             freshLead.Is_convert__c = false;

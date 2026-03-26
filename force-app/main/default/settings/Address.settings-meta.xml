@@ -2030,6 +2030,14 @@
             </states>
             <states>
                 <active>true</active>
+                <integrationValue>Odisha</integrationValue>
+                <isoCode>OD</isoCode>
+                <label>Odisha</label>
+                <standard>false</standard>
+                <visible>true</visible>
+            </states>
+            <states>
+                <active>true</active>
                 <integrationValue>Orissa</integrationValue>
                 <isoCode>OR</isoCode>
                 <label>Orissa</label>
