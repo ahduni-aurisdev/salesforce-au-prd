@@ -245,6 +245,11 @@
                 <label>Career_360UGQueries</label>
             </value>
             <value>
+                <fullName>KollegeApply</fullName>
+                <default>false</default>
+                <label>KollegeApply</label>
+            </value>
+            <value>
                 <fullName>Website_CLeFEDBrochures</fullName>
                 <default>false</default>
                 <isActive>false</isActive>

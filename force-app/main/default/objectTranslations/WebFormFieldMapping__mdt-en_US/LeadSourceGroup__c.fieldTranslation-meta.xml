@@ -63,6 +63,10 @@
         <translation><!-- Instagram --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>KollegeApply</masterLabel>
+        <translation><!-- KollegeApply --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>LinkedIn Ads</masterLabel>
         <translation><!-- LinkedIn Ads --></translation>
     </picklistValues>
