@@ -6235,4 +6235,152 @@ static void testUpdateAccountWithLatestApplicationNumber_UpdatesAccount2() {
     Test.stopTest();
 }
 
+@isTest
+    static void testPersonAccountUpdateWithAllChildObjectsForUG() {
+        // Comprehensive test for personAccountUpdate with all child objects
+        Id accRecTypeId = getRecordTypeId('Account', 'Undergraduation');
+        if(accRecTypeId == null) return;
+        
+        Account acc = new Account(
+            LastName = 'Comprehensive Test',
+            FirstName = 'Comp',
+            RecordTypeId = accRecTypeId,
+            Phone = '1111111111',
+            PersonMobilePhone = '1111111111',
+            PersonEmail = 'comp@test.com',
+            BillingCountry = 'India',
+            OwnerId = UserInfo.getUserId()
+        );
+        insert acc;
+        
+        // Create opportunities
+        List<Opportunity> opps = new List<Opportunity>();
+        for(Integer i=0; i<3; i++) {
+            opps.add(new Opportunity(
+                Name = 'Test Opp ' + i,
+                RecordTypeId = getRecordTypeId('Opportunity', 'Undergraduation'),
+                StageName = 'Prospecting',
+                CloseDate = Date.today(),
+                AccountId = acc.Id,
+                OwnerId = UserInfo.getUserId(),
+                Application_Number__c = 'APP-COMP-001',
+                Primary_Preferred_Program__c = 'Computer Science',
+                Secondary_Preferred_Programme__c = 'Information Technology',
+                Ternary_Preferred_Programme__c = 'Computer Science and Information Technology',
+                Primary_Preferred_Major__c = 'CSE',
+                Secondary_Preferred_Major__c = 'IT',
+                Ternary_Preferred_Major__c = 'CSE and IT'
+            ));
+        }
+        insert opps;
+        
+        // Create comprehensive payload with all fields
+        Map<String, Object> payloadMap = new Map<String, Object>();
+        payloadMap.put('personAccountId', acc.Id);
+        payloadMap.put('registrationNumber', 'COMP-REG-001');
+        payloadMap.put('email', 'comprehensive@test.com');
+        payloadMap.put('phone', '9998887776');
+        payloadMap.put('programmeInterestedIn', 'Computer Science');
+        payloadMap.put('mobile', '8887776665');
+        payloadMap.put('dateOfBirth', '2000-01-01');
+        payloadMap.put('applicationDate', '2025-01-01');
+        payloadMap.put('registrationDate', '2024-12-01');
+        payloadMap.put('aurisFormURL', 'http://test.com/auris');
+        payloadMap.put('residentialAddress', '123 Main Street');
+        payloadMap.put('cityTownVillage', 'Metropolis');
+        // payloadMap.put('stateUnionTerritoryProvince', 'California');
+        // payloadMap.put('district', 'Test District');
+        payloadMap.put('country', 'India');
+        payloadMap.put('pinPostalCode', '100001');
+        payloadMap.put('applicationNumber', 'APP-COMP-001');
+        payloadMap.put('utmLink', 'utm_source=comp');
+        payloadMap.put('firstName', 'CompFN');
+        payloadMap.put('lastName', 'CompLN');
+        
+        // Add opportunities for stage update
+        List<Map<String, Object>> oppsList = new List<Map<String, Object>>();
+        List<Map<String, Object>> parents = new List<Map<String, Object>>();
+        List<Map<String, Object>> testScores = new List<Map<String, Object>>();
+        for(Opportunity opp : opps) {
+            Map<String, Object> oppUpdate = new Map<String, Object>();
+            oppUpdate.put('opportunityId', opp.Id);
+            oppUpdate.put('opportunityStatus', 'Application Received');
+            oppUpdate.put('CloseDate', String.valueOf(Date.today()));
+            oppUpdate.put('primaryPreferredProgram', 'Computer Science');
+            oppUpdate.put('secondaryPreferredProgramme', 'Information Technology');
+            oppUpdate.put('ternaryPreferredProgramme', 'Computer Science and Information Technology');
+            oppUpdate.put('primaryPreferredMajor', 'CSE');
+            oppUpdate.put('secondaryPreferredMajor', 'IT');
+            oppUpdate.put('ternaryPreferredMajor', 'CSE and IT');
+            oppsList.add(oppUpdate);
+        }
+
+        Map<String, Object> parentUpdate = new Map<String, Object>();
+        parentUpdate.put('parentFullName', 'Parent1');
+        parentUpdate.put('relationship', 'Test');
+        parentUpdate.put('parentGuardianEmail', 'parent1@test.com');
+        parentUpdate.put('parentGuardianPhone', '1234567890');
+        parentUpdate.put('parentGuardianHighestEducationalQualification', '1234567890');
+        parentUpdate.put('parentGuardianOccupation', 'Test');
+        parentUpdate.put('parentGuardianAnnualIncome', '1234567890');
+        parentUpdate.put('parentGuardianDesignation', 'Test');
+        parentUpdate.put('parentGuardianOrganisationName', 'Test');
+        parentUpdate.put('parentGuardianOtherOccupation', 'Test');
+        parentUpdate.put('annualFamilyIncome', 'Test');
+
+        parents.add(parentUpdate);
+
+        Standardised_Test__c testt = new Standardised_Test__c();
+        testt.Name = 'SAT';
+        testt.Status__c = 'Active';
+        testt.Test_Code__c = 'SNAP';
+
+        insert testt;
+
+        Standardised_Test_Score_s__c scoreCard = new Standardised_Test_Score_s__c();
+        scoreCard.Test__c = testt.Id;
+        scoreCard.Opportunity__c = opps[0].Id;
+        scoreCard.Test_Date__c = String.valueOf(Date.today().addDays(-30));
+        scoreCard.Test_Percentile__c = '1500';
+        scoreCard.Test_Score__c = '1500';
+        scoreCard.Account__c = acc.Id;
+        
+        insert scoreCard;
+        
+
+        Map<String, Object> score = new Map<String, Object>();
+        score.put('testName', 'SAT');
+        score.put('percentile', '1500');
+        score.put('testScore', '1500');
+        score.put('percentile', '1500');
+        score.put('testDate', String.valueOf(Date.today().addDays(-30)));
+        testScores.add(score);
+
+        Map<String, Object> score2 = new Map<String, Object>();
+        score2.put('testName', 'SAT2');
+        score2.put('percentile', '1500');
+        score2.put('testScore', '1500');
+        score2.put('percentile', '1500');
+        score2.put('testDate', String.valueOf(Date.today().addDays(-30)));
+        testScores.add(score2);
+        
+
+        payloadMap.put('opportunities', oppsList);
+        payloadMap.put('parents', parents);
+        payloadMap.put('standardisedTestScore', testScores);
+
+        
+        RestRequest req = new RestRequest();
+        req.requestBody = Blob.valueOf(JSON.serialize(payloadMap));
+        RestContext.request = req;
+        
+        Test.startTest();
+        String result = LeadConversionService.convertLead();
+        OpportunityStageUpdater.assignOpportunityOwner('Gujarat', acc.Id);
+        OpportunityStageUpdater.assignOpportunityOwner('Delhi', acc.Id);
+        Test.stopTest();
+        
+        System.assert(result != null);
+    }
+
 }

@@ -2,8 +2,11 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 02-03-2025
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 04-13-2026
+ * @last modified by  : Mihir Ramoliya
+ * Modifications Log 
+ * Ver   Date         Author           Modification
+ * 1.0   04-13-2026   Mihir Ramoliya   Added logic to check inactive account owner and assign System Running User. Commented out full name assignment logic.
 **/
 @RestResource(urlMapping='/updateOpportunityStage')
 global with sharing class OpportunityStageUpdater {
@@ -37,7 +40,8 @@ global with sharing class OpportunityStageUpdater {
             Map<String, Object> messageResponse = new Map<String, Object>();
     
             Account accObj = [
-                SELECT Id, OwnerId, FirstName, LastName, Programme_Interested_in__c 
+                // Mihir Ramoliya - 04-13-2026: Added Owner.IsActive to check if account owner is active or not
+                SELECT Id, OwnerId, Owner.IsActive, FirstName, LastName, Programme_Interested_in__c 
                 FROM Account 
                 WHERE Id =: accountId 
                 LIMIT 1
@@ -121,15 +125,27 @@ global with sharing class OpportunityStageUpdater {
     
                     if (opp.RecordType.DeveloperName == 'Undergraduation') {
                         if (accObj != null) {
-                            opp.OwnerId = accObj.OwnerId;
-                            System.debug('→ Updated OwnerId to Account Owner: ' + opp.OwnerId);
+                            // Mihir Ramoliya - 04-13-2026: Check if account owner is active, if not update to System Running user
+                            if (accObj.OwnerId != null && accObj.Owner != null && !accObj.Owner.IsActive) {
+                                accObj.OwnerId = UserInfo.getUserId();
+                                opp.OwnerId = accObj.OwnerId;
+                                System.debug('→ Updated OwnerId to Running User because Account Owner was inactive: ' + opp.OwnerId);
+                            } else {
+                                // Update opportunity owner with account owner
+                                opp.OwnerId = accObj.OwnerId;
+                                System.debug('→ Updated OwnerId to Account Owner: ' + opp.OwnerId);
+                            }
                         }
+                        
+                        // Mihir Ramoliya - 04-13-2026: Commented below code as requested
+                        /*
                         String fullName = accObj.FirstName != null && accObj.LastName != null ? accObj.FirstName + ' ' + accObj.LastName : null;
                         if (String.isNotBlank(fullName)) {
                             opp.Name = fullName;
                             opp.Full_Name__c = fullName;
                             System.debug('→ Updated Opportunity Name & Full_Name__c: ' + fullName);
                         }
+                        */
                     }
     
                     String message = 'Application Stage successfully updated from ' + oldStageName + ' to ' + opp.StageName + ' for Application ID ' + opp.Id;
