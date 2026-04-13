@@ -13,6 +13,31 @@
 *                    checks for duplicate leads, inserts related records (such as educational details, 
 *                    parent information, and employment history), and manages custom exceptions and error logs.
 **********************************************************************************************/ 
+
+// CHANGE LOG
+// ─────────────────────────────────────────────────────────────────────────────
+// Author              Date            Description
+// ─────────────────────────────────────────────────────────────────────────────
+// Mihir Ramoliya      26-Mar-2026     Rewrote UG group storage model.
+//                                     Groups now stored in dedicated Lead slot
+//                                     fields (Group_1__c … Group_4__c) instead
+//                                     of a single JSON blob in Group_Tag__c.
+//                                     Added max-group validation using
+//                                     UG_Validation_Settings__c custom setting.
+//                                     Added three payload validations:
+//                                     (1) grpPrograms not null,
+//                                     (2) grpPrograms not empty,
+//                                     (3) every group has grptag + programmes.
+//                                     handleDuplicateLeadUndergraduation now
+//                                     queries all Group slot fields so the
+//                                     returned lead can be used for slot
+//                                     read/write without a second query.
+// Rishav Raj          (prior)         Updated processSingleRecord with
+//                                     Registration Number focus.
+// Preksha Chauhan     07-Oct-2024     Original implementation of
+//                                     processSingleRecord.
+// =============================================================================
+
 @RestResource(URLMapping = '/saveLeadRelatedData')
 /**
  * @description - This class provides RESTful API endpoints for creating and managing Lead 
@@ -115,6 +140,9 @@ global class saveWebTo_YourProfileData {
     * Method Name : processSingleRecord
     * Created By : Preksha Chauhan
     * Created Date : 07/10/2024
+    // Modified By : Rishav Raj    — Registration Number focus
+    // Modified By : Mihir Ramoliya — 28-Mar-2026 — UG group slot field model,
+    //               payload validations, max-group count check
     * Description : This method processes a single record from the incoming payload to handle 
     *               the creation or updating of a Lead record in Salesforce. It is responsible for:
     *               1. Extracting the `department` and `typeOfForm` from the provided payload.
@@ -145,48 +173,309 @@ global class saveWebTo_YourProfileData {
     *
     * @return String - The ID of the Lead record that was created or updated.
     ********************************************************************************************/
+    
+     // Modify By: Rishav Raj
+    // MODIFICATION: Updated processSingleRecord with Registration Number focus
     public static String processSingleRecord(Map<String, Object> payloadMap) {
-        Lead newLead;
-        String department   = (String) payloadMap.get('department');
-        String typeOfForm   = (String) payloadMap.get('typeOfForm');
+        String department = (String) payloadMap.get('department');
+        String typeOfForm = (String) payloadMap.get('typeOfForm');
         String registrationNumber = (String) payloadMap.get('registrationNumber');
-
+    
+        // Validate required fields
+        if (String.isBlank(registrationNumber)) {
+            throw new CustomException('Missing required field: registrationNumber');
+        }
+        
+        if (String.isBlank(department)) {
+            throw new CustomException('Missing required field: department');
+        }
+    
         String recordTypeId = fetchRecordTypeId(department);
         if (recordTypeId == null) {
             throw new CustomException('Invalid department or no record type mapping found');
         }
-        if (String.isBlank(registrationNumber)) {
-            throw new CustomException('Missing required field: registrationNumber');
-        }
 
         // 🔹 Handle duplicates (same logic you already have)
-        Lead existingLead;
+        Lead existingLead, newLead;
+        List<Object> programGroups = new List<Object>();
+
+        // ── START: Undergraduation department processing ───────────────────────────
+        // Modified By : Mihir Ramoliya | 28-Mar-2026
+        // Purpose     : Run UG-specific duplicate check, validate and store
+        //               grpPrograms data into dedicated lead slot fields.
         if (department.equalsIgnoreCase('Undergraduation')) {
+
+            // Duplicate check — matches by Email + Phone for Undergraduation.
+            // Returns the existing lead (with all slot fields queried) or null.
             existingLead = handleDuplicateLeadUndergraduation(payloadMap, department, typeOfForm);
+            newLead      = (existingLead != null) ? existingLead : new Lead(RecordTypeId = recordTypeId);
+
+            // ── START: Auris_Registration_Form path ───────────────────────────
+            // Added By : Mihir Ramoliya | 02-Apr-2026
+            // Purpose  : Student is signing up for the first time. This payload
+            //            contains only personal and contact information.
+            //            grpPrograms is not sent and must not be validated.
+            //            Skip all group slot logic entirely.
+            if (typeOfForm == 'Auris_Registration_Form') {
+
+                System.debug('UG Auris_Registration_Form — skipping grpPrograms logic.');
+                // programGroups intentionally left empty.
+                // No slot writes, no insertPreferredPrograms call will happen.
+
+            // ── START: Auris_Admission_Form path ──────────────────────────────
+            // Added By : Mihir Ramoliya | 02-Apr-2026 (consolidated from 28-Mar-2026 logic)
+            // Purpose  : Student has completed programme selection after creating
+            //            their account. grpPrograms is required and must be valid.
+            //            Full slot write logic runs here.
+            } else if (typeOfForm == 'Auris_Admission_Form') {
+
+                System.debug('====== UG Auris_Admission_Form — PROCESSING PROGRAM DATA ======');
+
+                // ── grpPrograms validations ────────────────────────────────────
+                // Validation 1: grpPrograms must be present and non-null
+                if (!payloadMap.containsKey('grpPrograms') || payloadMap.get('grpPrograms') == null) {
+                    throw new CustomException('grpPrograms is required and cannot be null.');
+                }
+
+                programGroups = (List<Object>) payloadMap.get('grpPrograms');
+                System.debug('grpPrograms count: ' + programGroups.size());
+
+                // Validation 2: grpPrograms list must not be empty
+                if (programGroups.isEmpty()) {
+                    throw new CustomException('grpPrograms cannot be an empty list. At least one group is required.');
+                }
+
+                // Validation 3: every group must have a grptag and at least one programme
+                for (Object groupObj : programGroups) {
+                    Map<String, Object> gm = (Map<String, Object>) groupObj;
+                    String tag = (String) gm.get('grptag');
+                    if (String.isBlank(tag)) {
+                        throw new CustomException('Each group in grpPrograms must have a non-empty "grptag".');
+                    }
+                    List<Object> progs = new List<Object>();
+                    if (gm.containsKey('programmes') && gm.get('programmes') != null) {
+                        progs = (List<Object>) gm.get('programmes');
+                    } else if (gm.containsKey('programs') && gm.get('programs') != null) {
+                        progs = (List<Object>) gm.get('programs');
+                    }
+                    if (progs.isEmpty()) {
+                        throw new CustomException('Group "' + tag + '" must have at least one programme.');
+                    }
+                }
+                // ── END: grpPrograms validations ──────────────────────────────
+
+                if (!programGroups.isEmpty()) {
+
+                    Integer maxGroups   = getMaxGroups();
+                    Integer maxPrograms = getMaxProgrammes();
+
+                    // Re-query existing lead with all slot fields so current
+                    // slot state is readable before any writes
+                    if (existingLead != null) {
+                        newLead = Database.query(leadSoqlForCreation(existingLead.Id, maxGroups));
+                    }
+
+                    // ── Max group count validation ─────────────────────────────
+                    Integer existingGroupCount = 0;
+                    for (Integer s = 1; s <= maxGroups; s++) {
+                        if (String.isNotBlank((String) newLead.get('Group_' + s + '__c'))) {
+                            existingGroupCount++;
+                        }
+                    }
+                    Integer newGroupCount = 0;
+                    for (Object groupObj : programGroups) {
+                        Map<String, Object> gm = (Map<String, Object>) groupObj;
+                        String tag = (String) gm.get('grptag');
+                        if (String.isBlank(tag)) continue;
+                        if (findGroupSlotOnLead(newLead, tag, maxGroups) == 0) newGroupCount++;
+                    }
+                    System.debug('Groups on lead: ' + existingGroupCount
+                        + ' | New groups in payload: ' + newGroupCount
+                        + ' | Max allowed: ' + maxGroups);
+                    if (existingGroupCount + newGroupCount > maxGroups) {
+                        Integer available = maxGroups - existingGroupCount;
+                        throw new CustomException(
+                            'Cannot add ' + newGroupCount + ' new group(s). '
+                            + 'This lead already has ' + existingGroupCount + ' of ' + maxGroups + ' allowed groups. '
+                            + (available > 0
+                                ? 'Only ' + available + ' more group(s) can be added.'
+                                : 'No more groups can be added to this lead.')
+                        );
+                    }
+                    // ── END: Max group count validation ───────────────────────
+
+                    // ── Group slot write logic ─────────────────────────────────
+                    for (Object groupObj : programGroups) {
+                        Map<String, Object> groupMap  = (Map<String, Object>) groupObj;
+                        String incomingTag = (String) groupMap.get('grptag');
+                        if (String.isBlank(incomingTag)) continue;
+
+                        // Normalise programme key
+                        List<Object> programmesList = new List<Object>();
+                        if (groupMap.containsKey('programmes') && groupMap.get('programmes') != null) {
+                            programmesList = (List<Object>) groupMap.get('programmes');
+                        } else if (groupMap.containsKey('programs') && groupMap.get('programs') != null) {
+                            programmesList = (List<Object>) groupMap.get('programs');
+                        }
+
+                        if (programmesList.size() > maxPrograms) {
+                            throw new CustomException('Maximum ' + maxPrograms + ' programs allowed per group.');
+                        }
+
+                        // Normalise programme objects
+                        List<Object> normalisedProgrammes = new List<Object>();
+                        for (Integer pi = 0; pi < programmesList.size(); pi++) {
+                            Map<String, Object> prog        = (Map<String, Object>) programmesList[pi];
+                            Map<String, Object> updatedProg = new Map<String, Object>(prog);
+                            if (!prog.containsKey('preferenceOrder')) {
+                                updatedProg.put('preferenceOrder', pi + 1);
+                            } else {
+                                Integer prefOrder = getPreferenceOrder(prog);
+                                if (prefOrder < 1 || prefOrder > maxPrograms) {
+                                    throw new CustomException('preferenceOrder must be between 1 and ' + maxPrograms);
+                                }
+                            }
+                            standardizeProgramKeys(updatedProg);
+                            normalisedProgrammes.add(updatedProg);
+                        }
+
+                        // Resolve applicationNumber
+                        String appNumber;
+                        if (groupMap.containsKey('applicationNumber') && groupMap.get('applicationNumber') != null
+                                && String.isNotBlank((String) groupMap.get('applicationNumber'))) {
+                            appNumber = (String) groupMap.get('applicationNumber');
+                            System.debug('Preserved applicationNumber from payload: ' + appNumber);
+                        } else {
+                            Integer slotForNum = findGroupSlotOnLead(newLead, incomingTag, maxGroups);
+                            if (slotForNum == 0) slotForNum = nextEmptySlotOnLead(newLead, maxGroups);
+                            appNumber = registrationNumber + '-G' + slotForNum;
+                            System.debug('Generated applicationNumber: ' + appNumber);
+                        }
+
+                        // Parse applicationDate to Date type
+                        Date appDate = null;
+                        if (groupMap.containsKey('applicationDate') && groupMap.get('applicationDate') != null) {
+                            try {
+                                appDate = Date.valueOf((String) groupMap.get('applicationDate'));
+                            } catch (Exception e) {
+                                System.debug('Invalid applicationDate format: ' + groupMap.get('applicationDate'));
+                            }
+                        }
+
+                        Integer slot = findGroupSlotOnLead(newLead, incomingTag, maxGroups);
+
+                        if (slot == 0) {
+                            // NEW GRPTAG — write to next empty slot
+                            slot = nextEmptySlotOnLead(newLead, maxGroups);
+                            if (slot == 0) {
+                                System.debug('Max groups (' + maxGroups + ') reached. Skipping: ' + incomingTag);
+                                continue;
+                            }
+                            newLead.put(groupSlotField(slot, 'tag'),       incomingTag);
+                            newLead.put(groupSlotField(slot, 'appNumber'), appNumber);
+                            if (appDate != null) {
+                                newLead.put(groupSlotField(slot, 'appDate'), appDate);
+                            }
+                            List<String> progNames = new List<String>();
+                            List<String> majors    = new List<String>();
+                            for (Object np : normalisedProgrammes) {
+                                Map<String, Object> pm = (Map<String, Object>) np;
+                                String pn = (String) pm.get('programInterestedIn');
+                                if (String.isBlank(pn)) continue;
+                                progNames.add(pn.trim());
+                                String major = (String) pm.get('major');
+                                majors.add(major != null ? major.trim() : '');
+                            }
+                            newLead.put(groupSlotField(slot, 'programmes'), String.join(progNames, ','));
+                            newLead.put(groupSlotField(slot, 'majors'),     String.join(majors,    ','));
+                            System.debug('New group "' + incomingTag + '" written to slot ' + slot);
+
+                        } else {
+                            // EXISTING GRPTAG — overwrite slot with incoming payload as source of truth
+                            // Modified By : Mihir Ramoliya | 04-Apr-2026
+                            // Requirement change: payload always sends the FULL current state of every
+                            // group. So if a programme is missing from the incoming list it means the
+                            // student removed it. We replace the slot contents entirely instead of merging.
+                            //
+                            // Rules:
+                            //   - Incoming list becomes the new programme/major list for this slot.
+                            //   - Programmes absent from payload are removed from the slot.
+                            //   - New programmes in payload are added.
+                            //   - Changed majors are updated.
+                            //   - Max programmes limit still enforced.
+                            if (normalisedProgrammes.size() > maxPrograms) {
+                                throw new CustomException(
+                                    'Group "' + incomingTag + '" cannot have more than '
+                                    + maxPrograms + ' programme(s).'
+                                );
+                            }
+
+                            // Build new lists directly from the incoming payload
+                            List<String> newProgNames = new List<String>();
+                            List<String> newMajors    = new List<String>();
+                            for (Object np : normalisedProgrammes) {
+                                Map<String, Object> pm = (Map<String, Object>) np;
+                                String pn = (String) pm.get('programInterestedIn');
+                                if (String.isBlank(pn)) continue;
+                                String incomingMajor = (String) pm.get('major');
+                                newProgNames.add(pn.trim());
+                                newMajors.add(incomingMajor != null ? incomingMajor.trim() : '');
+                            }
+
+                            // Always overwrite — this replaces any removed programmes
+                            // and captures additions and major changes in one operation
+                            newLead.put(groupSlotField(slot, 'programmes'), String.join(newProgNames, ','));
+                            newLead.put(groupSlotField(slot, 'majors'),     String.join(newMajors,    ','));
+
+                            // Update applicationNumber only if payload provides one and slot is blank
+                            if (String.isBlank((String) newLead.get(groupSlotField(slot, 'appNumber')))) {
+                                newLead.put(groupSlotField(slot, 'appNumber'), appNumber);
+                            }
+                            // Update applicationDate only if payload provides one and slot is blank
+                            if (appDate != null && newLead.get(groupSlotField(slot, 'appDate')) == null) {
+                                newLead.put(groupSlotField(slot, 'appDate'), appDate);
+                            }
+                            System.debug('Existing group "' + incomingTag + '" overwritten in slot ' + slot
+                                + ' with ' + newProgNames.size() + ' programme(s).');
+                        }
+                    }
+                    // ── END: Group slot write logic ───────────────────────────
+
+                    System.debug('====== END PROGRAM DATA PROCESSING ======');
+                }
+            } else {
+                // Unknown typeOfForm for UG — treat as registration (no group processing)
+                System.debug('UG unknown typeOfForm "' + typeOfForm + '" — skipping grpPrograms logic.');
+            }
+            // ── END: Undergraduation typeOfForm split ─────────────────────────
+
+        // =====================================================================
+        // NON-UNDERGRADUATION DEPARTMENTS (Masters, Executive Education, etc.)
+        // =====================================================================
         } else {
             existingLead = handleDuplicateLeadMasters(payloadMap, department, typeOfForm);
+
+            newLead = (existingLead != null) ? existingLead : new Lead(RecordTypeId = recordTypeId);
         }
 
-        newLead = (existingLead != null) ? existingLead : new Lead(RecordTypeId = recordTypeId);
-
-        // 🔹 Query metadata for dynamic mapping
+        // Apply field mappings
         List<Auris_Form_Mapping__mdt> mappings = [
             SELECT Label, Datatype__c, JSON_Key__c, Department__c, TypeOfForm__c 
             FROM Auris_Form_Mapping__mdt
             WHERE (Department__c = :department OR Department__c = null)
             AND   (TypeOfForm__c = :typeOfForm OR TypeOfForm__c = null)
         ];
-
+    
         for (Auris_Form_Mapping__mdt mapRec : mappings) {
             if (String.isBlank(mapRec.JSON_Key__c) || String.isBlank(mapRec.Label)){
                 continue;
             } 
-
+    
             Object jsonValue = payloadMap.get(mapRec.JSON_Key__c);
             if (jsonValue == null){
                 continue;
             } 
-
+    
             Object fieldValue;
             try {
                 switch on mapRec.Datatype__c {
@@ -197,22 +486,31 @@ global class saveWebTo_YourProfileData {
                     when 'Boolean' { fieldValue = Boolean.valueOf(String.valueOf(jsonValue)); }
                     when  else     { fieldValue = String.valueOf(jsonValue); }
                 }
+                // Added By : Mihir Ramoliya
+                // Added on : 26th March 2026
+                // Do not overwrite LeadSource if it is already populated on the lead
+                System.debug('newLead.LeadSource: '+newLead.LeadSource);
+                System.debug('mapRec.Label: '+mapRec.Label);
+                if(!String.isBlank(newLead.LeadSource) && mapRec.Label == 'LeadSource'){
+                    fieldValue = newLead.LeadSource;
+                }
                 newLead.put(mapRec.Label, fieldValue);
+                System.debug('Field ' + mapRec.Label + ' mapped to ' + fieldValue + 'JSON KEY: '+mapRec.JSON_Key__c);
             } catch (Exception e) {
-                System.debug('⚠️ Failed to map ' + mapRec.JSON_Key__c + ' to ' + mapRec.Label + ': ' + e.getMessage());
+                System.debug('Failed to map ' + mapRec.JSON_Key__c + ' to ' + mapRec.Label + ': ' + e.getMessage());
             }
         }
-
-        // 🔹 Handle special business logic
+    
+        // Handle special business logic
         if (String.isBlank(newLead.LastName)) {
             newLead.LastName = '.';
         }
-        if(!payloadMap.containsKey('admissionYear') && payloadMap.get('admissionYear') == null){
+        
+        if(!payloadMap.containsKey('admissionYear') || payloadMap.get('admissionYear') == null){
             newLead.Admission_Year__c = System.label.Admission_Year;
         }
         
-
-        // Handle Phone separately (custom logic)
+        // Handle Phone
         if (payloadMap.containsKey('phone') && payloadMap.get('phone') != null) {
             String country = (String) payloadMap.get('country');
             if (String.isBlank(country)){
@@ -220,19 +518,195 @@ global class saveWebTo_YourProfileData {
             } 
             newLead.Phone = LeadPhoneUpdater.generatePhoneNumberWithCountryCode(country, (String) payloadMap.get('phone'));
         }
-
-        // 🔹 Update timestamp
+        
+        // Update timestamp
         newLead.Auris_Last_Updated_Timestamp__c = System.now().format('yyyy-MM-dd:HH:mm:ss');
-
-        // 🔹 Save record
+    
+        // Save record using Registration Number as external ID
         if (Schema.sObjectType.Lead.isCreateable() && Schema.sObjectType.Lead.isUpdateable()) {
+            // System.debug('Before upsert - Group_Tag__c: ' + newLead.Group_Tag__c);
+            System.debug('Before upsert - RecordTypeId: ' + newLead.RecordTypeId);
+            // System.debug('Before upsert - Department: ' + newLead.Department__c);
+            // System.debug('Before upsert - Preferred_Programme__c: ' + newLead.Preferred_Programme__c);
+
+            
             upsert newLead;
+            
+            System.debug('After upsert - Lead ID: ' + newLead.Id);
+            // System.debug('After upsert - Group_Tag__c: ' + newLead.Group_Tag__c);
         } else {
             throw new CustomException('Insufficient permissions to create or update lead');
         }
+        
+        // ================================================
+        // CRITICAL: Call insertPreferredPrograms if we have program data
+        // ================================================
+        if (!programGroups.isEmpty() && newLead.Id != null) {
+            System.debug('Calling insertPreferredPrograms with JSONKey: programs');
+            insertPreferredPrograms('programs', programGroups, newLead.Id, registrationNumber);
+        }
+        
         handleAdmissionForm(payloadMap, newLead.Id, department, typeOfForm, registrationNumber);
         return newLead.Id;
+    }    
+
+    // =============================================================================
+    // SECTION: CREATION-SIDE SLOT HELPERS
+    // Added By : Mihir Ramoliya
+    // Date     : 28-Mar-2026
+    // Purpose  : Private helper methods used only within processSingleRecord.
+    //            These are intentionally separate from the conversion-class helpers
+    //            (groupFieldName, findGroupSlot, etc.) to keep the two classes
+    //            independent. Both sets resolve the same field names.
+    // =============================================================================
+
+    /**
+     * Returns the Salesforce API field name for a Lead group slot field.
+     * Centralised so all slot reads/writes in this class use consistent names.
+     *
+     * @param slot      Slot number (1–4)
+     * @param fieldType One of: 'tag' | 'appNumber' | 'appDate' | 'programmes' | 'majors'
+     * @return          API field name e.g. 'Group_2_Application_Number__c'
+     */
+    private static String groupSlotField(Integer slot, String fieldType) {
+        if (fieldType == 'tag')        return 'Group_' + slot + '__c';
+        if (fieldType == 'appNumber')  return 'Group_' + slot + '_Application_Number__c';
+        if (fieldType == 'appDate')    return 'Group_' + slot + '_Application_Date__c';
+        if (fieldType == 'programmes') return 'Group_' + slot + '_Programmes__c';
+        if (fieldType == 'majors')     return 'Group_' + slot + '_Majors__c';
+        return 'Group_' + slot + '__c';
     }
+
+    /**
+     * Returns the maximum number of group slots allowed per lead.
+     * Reads Max_Groups__c from UG_Validation_Settings__c. Default: 4.
+     * Admins can change the limit without a code deployment.
+     */
+    private static Integer getMaxGroups() {
+        UG_Validation_Settings__c s = UG_Validation_Settings__c.getOrgDefaults();
+        return (s != null && s.Max_Groups__c != null) ? (Integer) s.Max_Groups__c : 4;
+    }
+
+    /**
+     * Returns the maximum number of programmes allowed per group.
+     * Reads Max_Programmes__c from UG_Validation_Settings__c. Default: 3.
+     */
+    private static Integer getMaxProgrammes() {
+        UG_Validation_Settings__c s = UG_Validation_Settings__c.getOrgDefaults();
+        return (s != null && s.Max_Programmes__c != null) ? (Integer) s.Max_Programmes__c : 3;
+    }
+
+    /**
+     * Builds a dynamic SOQL string that selects all group slot fields for a Lead.
+     * Used to re-query an existing lead (when a duplicate is found) so its current
+     * slot state is visible for read/write operations without a separate query.
+     *
+     * @param leadId    Salesforce Lead record Id
+     * @param maxGroups Maximum number of group slots (from custom setting)
+     * @return          Full SOQL query string
+     */
+    private static String leadSoqlForCreation(Id leadId, Integer maxGroups) {
+        String q = 'SELECT Id, RecordTypeId, Multi_Select_Lead_Source__c, LastName';
+        for (Integer s = 1; s <= maxGroups; s++) {
+            q += ', Group_'  + s + '__c';
+            q += ', Group_'  + s + '_Application_Number__c';
+            q += ', Group_'  + s + '_Application_Date__c';
+            q += ', Group_'  + s + '_Programmes__c';
+            q += ', Group_'  + s + '_Majors__c';
+        }
+        q += ' , LeadSource';
+        q += ' FROM Lead WHERE Id = \'' + leadId + '\' LIMIT 1';
+        return q;
+    }
+
+    /**
+     * Returns the slot number (1–maxGroups) that currently holds the given grptag.
+     * Returns 0 if the grptag is not found in any slot.
+     *
+     * @param lead      Lead record (must include Group_N__c fields)
+     * @param grptag    The group tag string to search for
+     * @param maxGroups Maximum number of slots to check
+     * @return          Slot number 1–4, or 0 if not found
+     */
+    private static Integer findGroupSlotOnLead(Lead lead, String grptag, Integer maxGroups) {
+        for (Integer slot = 1; slot <= maxGroups; slot++) {
+            if (grptag == (String) lead.get('Group_' + slot + '__c')) return slot;
+        }
+        return 0;
+    }
+
+    /**
+     * Returns the first slot number (1–maxGroups) where Group_N__c is blank.
+     * Returns 0 if all slots are occupied (max groups limit reached).
+     *
+     * @param lead      Lead record (must include Group_N__c fields)
+     * @param maxGroups Maximum number of slots to check
+     * @return          First empty slot number 1–4, or 0 if all are full
+     */
+    private static Integer nextEmptySlotOnLead(Lead lead, Integer maxGroups) {
+        for (Integer slot = 1; slot <= maxGroups; slot++) {
+            if (String.isBlank((String) lead.get('Group_' + slot + '__c'))) return slot;
+        }
+        return 0;
+    }
+    // END: CREATION-SIDE SLOT HELPERS
+
+    //Helper method to extract preferenceOrder from a program map
+    private static Integer getPreferenceOrder(Map<String, Object> programme) {
+        if (programme.containsKey('preferenceOrder')) {
+            Object order = programme.get('preferenceOrder');
+            if (order instanceof Integer) return (Integer) order;
+            if (order instanceof String) {
+                try {
+                    return Integer.valueOf((String) order);
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+    
+
+    //Helper method to standardize program keys (handle different cases)
+    private static void standardizeProgramKeys(Map<String, Object> programme) {
+        // Check for different case variations of programInterestedIn
+        if (programme.containsKey('programinterestedin')) {
+            programme.put('programInterestedIn', programme.get('programinterestedin'));
+            programme.remove('programinterestedin');
+        } else if (programme.containsKey('ProgramInterestedIn')) {
+            programme.put('programInterestedIn', programme.get('ProgramInterestedIn'));
+            programme.remove('ProgramInterestedIn');
+        }
+    }
+    
+    //Helper method to validate and sort programmes by preferenceOrder
+    private static List<Map<String, Object>> sortProgrammesByPreference(List<Object> programmes) {
+        List<Map<String, Object>> programmeMaps = new List<Map<String, Object>>();
+        
+        for (Object obj : programmes) {
+            programmeMaps.add((Map<String, Object>) obj);
+        }
+        
+        // Sort by preferenceOrder if available
+        programmeMaps.sort(new ProgrammeComparator());
+        
+        return programmeMaps;
+    }
+    
+    //Comparator class for sorting programmes by preferenceOrder
+    public class ProgrammeComparator implements System.Comparator<Map<String, Object>> {
+        public Integer compare(Map<String, Object> p1, Map<String, Object> p2) {
+            Integer order1 = getPreferenceOrder(p1);
+            Integer order2 = getPreferenceOrder(p2);
+            
+            if (order1 == null && order2 == null) return 0;
+            if (order1 == null) return 1; // null goes last
+            if (order2 == null) return -1;
+            
+            return order1 - order2;
+        }
+    }        
 
     /** 
     * @description - Checking duplicate lead based on combination of Email+ Phone+ Preferred Program 
@@ -247,9 +721,9 @@ global class saveWebTo_YourProfileData {
         String matchingphone=(String) payloadMap.get('phone');
     
         if (matchingphone != null) {
-            matchingphone = '%' + matchingphone + '%'; // Adding % for partial match
+            matchingphone = '%' + matchingphone + '%'; 
         }
-        System.debug('🔹 [Processed] Phone for SOQL: ' + matchingphone);
+        System.debug('[Processed] Phone for SOQL: ' + matchingphone);
     
         String matchingEmail = (String) payloadMap.get('email');
     
@@ -257,18 +731,25 @@ global class saveWebTo_YourProfileData {
     
         List<Lead> matchingLead = [
             SELECT Id, Phone, Registration_Number__c, Email,
-                   Multi_Select_Lead_Source__c, Preferred_Programme__c
+                   Multi_Select_Lead_Source__c, Preferred_Programme__c,
+                   RecordTypeId, LastName, FirstName
             FROM Lead 
             WHERE Phone LIKE :matchingphone 
             AND Email = :matchingEmail 
             AND Preferred_Programme__c = :matchingPreferedProgrm AND department__c = :department
             LIMIT 1
         ];
-        System.debug('🔹 [SOQL Result] Matching Leads Found: ' + matchingLead);
+        System.debug('[SOQL Result] Matching Leads Found: ' + matchingLead);
     
         Lead newLead = null;
         if(!matchingLead.isEmpty()){
             newLead = matchingLead[0];
+            
+            // DEFENSIVE CHECK: Ensure RecordTypeId is available
+            if (newLead.RecordTypeId == null) {
+                newLead = [SELECT Id, RecordTypeId FROM Lead WHERE Id = :newLead.Id];
+            }            
+            
             //code to add leadsource in multipicklist field
             Set<String> picklistValues = new Set<String>();
             if (String.isNotBlank(newLead.Multi_Select_Lead_Source__c)) {
@@ -293,35 +774,103 @@ global class saveWebTo_YourProfileData {
     * @param typeOfForm of lead
     * @return lead 
     */
-    public static lead handleDuplicateLeadUndergraduation(Map<String, Object> payloadMap,String department,String typeOfForm){
-        String matchingphone=(String) payloadMap.get('phone');
-        if (matchingphone != null) {
-            matchingphone = '%' + matchingphone + '%'; // Adding % for partial match
+
+    
+    // =============================================================================
+    // METHOD: handleDuplicateLeadUndergraduation
+    // Created By  : Preksha Chauhan  (original version — prior date)
+    // Modified By : Mihir Ramoliya  — 28-Mar-2026
+    //
+    // Modification Details (28-Mar-2026):
+    //   - Extended the SELECT query to include all Group slot fields
+    //     (Group_1__c … Group_4__c plus Application_Number, Application_Date,
+    //      Majors, Programmes for each slot).
+    //   - This means the lead returned by this method already has all slot
+    //     field values populated, so processSingleRecord can read/write them
+    //     directly without issuing a second query.
+    //   - Also added Department__c, LeadSource to the query for completeness.
+    //
+    // Purpose  : Checks for an existing Lead in Salesforce that matches the
+    //            incoming payload by Email AND Phone (partial match) for the
+    //            given department. If a match is found:
+    //            - Adds 'AURIS' to Multi_Select_Lead_Source__c (deduped).
+    //            - Returns the matching lead (in-memory, not yet saved).
+    //            If no match is found, returns null so processSingleRecord
+    //            creates a new Lead.
+    //
+    // @param payloadMap  Payload map from the REST API request
+    // @param department  Department string e.g. 'Undergraduation'
+    // @param typeOfForm  Form type string e.g. 'Auris_Admission_Form'
+    // @return            Matching Lead sObject (with slot fields) or null
+    // =============================================================================
+    public static Lead handleDuplicateLeadUndergraduation(
+            Map<String, Object> payloadMap,
+            String department,
+            String typeOfForm
+    ) {
+        // Build phone filter — LIKE match to handle partial/country-code variations
+        String matchingPhone = (String) payloadMap.get('phone');
+        if (matchingPhone != null) {
+            matchingPhone = '%' + matchingPhone + '%'; // partial match with wildcards
         }
         String matchingEmail = (String) payloadMap.get('email');
-        List<Lead> matchingLead = [SELECT Id, Phone, Registration_Number__c, Email,Multi_Select_Lead_Source__c 
-                            FROM Lead 
-                            WHERE Phone LIKE :matchingphone 
-                            AND Email = :matchingEmail 
-                            AND Department__c = :department
-                            LIMIT 1];
-        Lead newLead =null;
-        if(!matchingLead.isEmpty()){
+
+        // ── START: Modified By Mihir Ramoliya | 28-Mar-2026 ───────────────────────
+        // Change: Added all Group slot fields (Group_1__c … Group_4__c + related
+        //         fields) to the SELECT so the returned lead can be used immediately
+        //         for slot read/write in processSingleRecord without a second query.
+        //         Also added Department__c and LeadSource for completeness.
+        List<Lead> matchingLead = [
+            SELECT Id, Phone, Registration_Number__c, Email,
+                Multi_Select_Lead_Source__c, RecordTypeId,
+                LastName, FirstName, Department__c, LeadSource,
+                // Group slot 1
+                Group_1__c, Group_1_Application_Date__c,
+                Group_1_Application_Number__c, Group_1_Majors__c, Group_1_Programmes__c,
+                // Group slot 2
+                Group_2__c, Group_2_Application_Date__c,
+                Group_2_Application_Number__c, Group_2_Majors__c, Group_2_Programmes__c,
+                // Group slot 3
+                Group_3__c, Group_3_Application_Date__c,
+                Group_3_Application_Number__c, Group_3_Majors__c, Group_3_Programmes__c,
+                // Group slot 4
+                Group_4__c, Group_4_Application_Date__c,
+                Group_4_Application_Number__c, Group_4_Majors__c, Group_4_Programmes__c
+            FROM   Lead
+            WHERE  Phone LIKE :matchingPhone
+            AND    Email = :matchingEmail
+            AND    Department__c = :department
+            LIMIT  1
+        ];
+        // ── END: Modified By Mihir Ramoliya | 28-Mar-2026 ─────────────────────────
+
+        Lead newLead = null;
+
+        if (!matchingLead.isEmpty()) {
             newLead = matchingLead[0];
-            //code to add leadsource in mutipicklist field
+
+            // Defensive check — if RecordTypeId is not populated on the matched record,
+            // re-query to get it (can happen if the lead has no record type set)
+            if (newLead.RecordTypeId == null) {
+                newLead = [SELECT Id, RecordTypeId FROM Lead WHERE Id = :newLead.Id];
+            }
+
+            // Add 'AURIS' to the Multi_Select_Lead_Source__c multi-picklist.
+            // Use a Set to avoid duplicate entries before joining back to string.
             Set<String> picklistValues = new Set<String>();
             if (String.isNotBlank(newLead.Multi_Select_Lead_Source__c)) {
                 picklistValues.addAll(newLead.Multi_Select_Lead_Source__c.split(';'));
             }
-            // Add the new value if it doesn't already exist
-            String websiteLeadSource = 'AURIS';
-            picklistValues.add(websiteLeadSource);
-            // Save the updated values back to the field
+            picklistValues.add('AURIS');
             newLead.Multi_Select_Lead_Source__c = String.join(new List<String>(picklistValues), ';');
+
             return newLead;
         }
+
+        // No matching lead found — return null so processSingleRecord creates a new one
         return newLead;
     }
+    // END: handleDuplicateLeadUndergraduation
 
     /**
     * @description
@@ -420,7 +969,134 @@ global class saveWebTo_YourProfileData {
     *                  look up and insert records into the Preferred_Program__c object.
     * @param leadId - The Id of the Lead to which the preferred programs are related.
     * @param registrationNumber lead registrationNumber
-    ********************************************************************************************/
+    ********************************************************************************************
+
+    /** 
+    * Modify by: Rishav Raj 
+    * @description - insert preferred programs with group support************************************
+    */
+    // public static void insertPreferredPrograms(String JSONKey, Object programs, Id leadId, String registrationNumber) {
+    //     try {
+    //         // Get the current datetime
+    //         Datetime now = System.now();
+    //         String formattedDate = now.format('yyyy-MM-dd:HH:mm:ss');
+            
+    //         // Update Lead's timestamp
+    //         Lead leadToUpdate = new Lead(Id = leadId);
+    //         leadToUpdate.Auris_Last_Updated_Timestamp__c = formattedDate;
+    //         update leadToUpdate;
+            
+    //         // Query lead to get program groups
+    //         Lead lead = [SELECT Id, Group_Tag__c, RecordTypeId FROM Lead WHERE Id = :leadId LIMIT 1];
+            
+    //         if (String.isNotBlank(lead.Group_Tag__c)) {
+    //             List<Object> programGroups = (List<Object>) JSON.deserializeUntyped(lead.Group_Tag__c);
+                
+    //             // Query existing Preferred_Program__c records
+    //             Map<String, Preferred_Program__c> existingProgramMap = new Map<String, Preferred_Program__c>();
+    //             for (Preferred_Program__c existingProgram : [
+    //                 SELECT Id, Program__c, Major__c, Program_Group_Tag__c, Application_Number__c
+    //                 FROM Preferred_Program__c 
+    //                 WHERE Lead__c = :leadId 
+    //             ]) {
+    //                 String uniqueKey = existingProgram.Program_Group_Tag__c + '-' + 
+    //                                   existingProgram.Application_Number__c + '-' +
+    //                                   existingProgram.Program__c;
+    //                 existingProgramMap.put(uniqueKey, existingProgram);
+    //             }
+    
+    //             List<Preferred_Program__c> programList = new List<Preferred_Program__c>();
+                
+    //             for (Object groupObj : programGroups) {
+    //                 Map<String, Object> groupMap = (Map<String, Object>) groupObj;
+    //                 String groupTag = (String) groupMap.get('uggrouptag');
+    //                 String groupAppNumber = (String) groupMap.get('applicationNumber');
+                    
+    //                 if (String.isBlank(groupAppNumber) && String.isNotBlank(registrationNumber)) {
+    //                     groupAppNumber = registrationNumber + '-G1'; // Default if not set
+    //                 }
+                    
+    //                 if (groupMap.containsKey('programs') && groupMap.get('programs') != null) {
+    //                     List<Object> programListObj = (List<Object>) groupMap.get('programs');
+                        
+    //                     for (Object program : programListObj) {
+    //                         Map<String, Object> programMap;
+                            
+    //                         if (program instanceof String) {
+    //                             programMap = (Map<String, Object>) JSON.deserializeUntyped((String) program);
+    //                         } else {
+    //                             programMap = (Map<String, Object>) program;
+    //                         }
+                            
+    //                         String programCode = null;
+    //                         String majorName = null;
+    //                         Program__c programObjRecord = null;
+    //                         Major__c majorObj = null;
+                            
+    //                         // Query for Program__c
+    //                         if (programMap.containsKey('programInterestedIn') && programMap.get('programInterestedIn') != null) {
+    //                             programCode = (String) programMap.get('programInterestedIn');
+                                
+    //                             List<Program__c> programQuery = [
+    //                                 SELECT Id, Full_Program_Name__c 
+    //                                 FROM Program__c 
+    //                                 WHERE Program_Code__c = :programCode 
+    //                                 OR Full_Program_Name__c = :programCode
+    //                                 LIMIT 1
+    //                             ];
+                                
+    //                             if (!programQuery.isEmpty()) {
+    //                                 programObjRecord = programQuery[0];
+    //                             }
+    //                         }
+                            
+    //                         if (programObjRecord != null) {
+    //                             // Create unique key
+    //                             String uniqueKey = groupTag + '-' + groupAppNumber + '-' + programObjRecord.Id;
+                                
+    //                             if (!existingProgramMap.containsKey(uniqueKey)) {
+    //                                 Preferred_Program__c programRec = new Preferred_Program__c();
+    //                                 programRec.Lead__c = leadId;
+    //                                 programRec.Program_Group_Tag__c = groupTag;
+    //                                 programRec.Application_Number__c = groupAppNumber;
+    //                                 programRec.Program__c = programObjRecord.Id;
+    //                                 programRec.Full_Program_Name__c = programObjRecord.Full_Program_Name__c;
+                                    
+    //                                 if (programMap.containsKey('major') && programMap.get('major') != null) {
+    //                                     majorName = (String) programMap.get('major');
+                                        
+    //                                     List<Major__c> majorQuery = [
+    //                                         SELECT Id 
+    //                                         FROM Major__c 
+    //                                         WHERE Name = :majorName AND Program__c = :programObjRecord.Id
+    //                                         LIMIT 1
+    //                                     ];
+                                        
+    //                                     if (!majorQuery.isEmpty()) {
+    //                                         programRec.Major__c = majorQuery[0].Id;
+    //                                     }
+    //                                 }
+                                    
+    //                                 programList.add(programRec);
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+                
+    //             if (!programList.isEmpty()) {
+    //                 insert programList;
+    //             }
+    //         }
+    //     } catch (Exception e) {
+    //         logFailedLead(JSON.serialize(programs), e, registrationNumber);
+    //         throw new CustomException('Error insertPreferredPrograms method: ' + e.getMessage());
+    //     }   
+    // }
+    
+    
+    
+
     public static void insertPreferredPrograms(String JSONKey,Object programs, Id leadId,String registrationNumber) {
         try {
 
@@ -530,7 +1206,8 @@ global class saveWebTo_YourProfileData {
             logFailedLead(JSON.serialize(programs), e,registrationNumber); // Log the failed attempt
             throw new CustomException('Error insertPreferredPrograms method: ' + e.getMessage());
         }   
-    }  
+    } 
+    
     
     
     /** 
@@ -541,6 +1218,8 @@ global class saveWebTo_YourProfileData {
     * @param leadId - The Id of the Lead to which the preferred programs are related.
     * @param registrationNumber lead registrationNumber
     **/
+    
+    // Created by: Rishav Raj
     public static void insertPreferredProgramsMasters(String JSONKey,Object programs, Id leadId, String registrationNumber) {
         try {
             // Query existing Preferred_Program__c records related to the lead
@@ -584,6 +1263,7 @@ global class saveWebTo_YourProfileData {
             throw new CustomException('Error in insertPreferredProgramsMasters method: ' + e.getMessage());
         }
     }
+    
 
     
    /**
@@ -1185,7 +1865,7 @@ global class saveWebTo_YourProfileData {
     ********************************************************************************************/
     public static void insertSiblingInformation(String JSONKey, Object siblings, Id leadId, String registrationNumber) {
         try {
-            System.debug('⚡ insertSiblingInformation called | LeadId=' + leadId + ', JSONKey=' + JSONKey);
+            System.debug('insertSiblingInformation called | LeadId=' + leadId + ', JSONKey=' + JSONKey);
     
             if (!Schema.sObjectType.Lead.isUpdateable()) {
                 throw new CustomException('You do not have the necessary permissions to update Lead records.');
@@ -1200,10 +1880,10 @@ global class saveWebTo_YourProfileData {
             Lead leadToUpdate = new Lead(Id = leadId);
             leadToUpdate.Auris_Last_Updated_Timestamp__c = formattedDate;
             update leadToUpdate;
-            System.debug('✅ Updated Lead timestamp: ' + formattedDate);
+            System.debug('Updated Lead timestamp: ' + formattedDate);
     
             if (siblings == null) {
-                System.debug('⚠️ No siblings data provided, exiting method.');
+                System.debug('No siblings data provided, exiting method.');
                 return;
             }
     
@@ -1213,7 +1893,7 @@ global class saveWebTo_YourProfileData {
     
             for (Object sibling : (List<Object>) siblings) {
                 if (sibling == null) {
-                    System.debug('⚠️ Skipping null sibling entry');
+                    System.debug('Skipping null sibling entry');
                     continue;
                 }
                 Map<String, Object> siblingMap = (Map<String, Object>) sibling;
@@ -1222,7 +1902,7 @@ global class saveWebTo_YourProfileData {
                 String programCode = siblingMap.containsKey('program') ? (String) siblingMap.get('program') : null;
                 if (programCode != null) {
                     programCodes.add(programCode);
-                    System.debug('📌 Found Program Code: ' + programCode);
+                    System.debug('Found Program Code: ' + programCode);
                 }
             }
     
@@ -1233,7 +1913,7 @@ global class saveWebTo_YourProfileData {
                     WHERE Program_Code__c IN :programCodes
                 ]) {
                     programCodeToIdMap.put(program.Program_Code__c, program.Id);
-                    System.debug('✅ Program Mapped: ' + program.Program_Code__c + ' → ' + program.Id);
+                    System.debug('Program Mapped: ' + program.Program_Code__c + ' → ' + program.Id);
                 }
             }
     
@@ -1247,7 +1927,7 @@ global class saveWebTo_YourProfileData {
                 if (siblingName != null && yearOfGraduation != null) {
                     siblingNames.add(siblingName);
                     graduationYears.add(yearOfGraduation);
-                    System.debug('🧾 Potential sibling: ' + siblingName + ' | Year=' + yearOfGraduation);
+                    System.debug('Potential sibling: ' + siblingName + ' | Year=' + yearOfGraduation);
                 }
             }
     
@@ -1261,7 +1941,7 @@ global class saveWebTo_YourProfileData {
                     AND Year_of_graduation__c IN :graduationYears
                 ]) {
                     existingSiblingMap.put(sibling.Name + sibling.Year_of_graduation__c, sibling);
-                    System.debug('🔎 Existing sibling found: ' + sibling.Name + ' | Year=' + sibling.Year_of_graduation__c);
+                    System.debug('Existing sibling found: ' + sibling.Name + ' | Year=' + sibling.Year_of_graduation__c);
                 }
             }
     
@@ -1273,9 +1953,9 @@ global class saveWebTo_YourProfileData {
     
                 if (programCode != null && programCodeToIdMap.containsKey(programCode)) {
                     siblingRec.Program__c = programCodeToIdMap.get(programCode);
-                    System.debug('✅ Linked Program for sibling: ' + programCode + ' → ' + siblingRec.Program__c);
+                    System.debug('Linked Program for sibling: ' + programCode + ' → ' + siblingRec.Program__c);
                 } else if (programCode != null) {
-                    System.debug('❌ Program not found for code: ' + programCode);
+                    System.debug('Program not found for code: ' + programCode);
                     throw new CustomException('Program with code ' + programCode + ' not found.');
                 }
     
@@ -1283,11 +1963,11 @@ global class saveWebTo_YourProfileData {
                 System.debug('📄 After field mapping siblingRec: ' + JSON.serialize(siblingRec));
     
                 if (siblingRec.Name == null || siblingRec.Year_of_graduation__c == null) {
-                    System.debug('⚠️ Skipping sibling due to missing Name or Year: ' + JSON.serialize(siblingRec));
+                    System.debug('Skipping sibling due to missing Name or Year: ' + JSON.serialize(siblingRec));
                     continue;
                 }
                 if (existingSiblingMap.containsKey(siblingRec.Name + siblingRec.Year_of_graduation__c)) {
-                    System.debug('⚠️ Skipping duplicate sibling: ' + siblingRec.Name + ' | Year=' + siblingRec.Year_of_graduation__c);
+                    System.debug('Skipping duplicate sibling: ' + siblingRec.Name + ' | Year=' + siblingRec.Year_of_graduation__c);
                     continue;
                 }
     
@@ -1296,13 +1976,13 @@ global class saveWebTo_YourProfileData {
     
             if (!siblingList.isEmpty()) {
                 insert siblingList;
-                System.debug('🎉 Inserted sibling records: ' + JSON.serialize(siblingList));
+                System.debug('Inserted sibling records: ' + JSON.serialize(siblingList));
             } else {
-                System.debug('⚠️ No new sibling records to insert.');
+                System.debug('No new sibling records to insert.');
             }
     
         } catch (Exception e) {
-            System.debug('❌ Error in insertSiblingInformation: ' + e.getMessage());
+            System.debug('Error in insertSiblingInformation: ' + e.getMessage());
             logFailedLead(JSON.serialize(siblings), e, registrationNumber);
             throw new CustomException('Error insertSiblingInformation method: ' + e.getMessage());
         }
@@ -1879,7 +2559,7 @@ global class saveWebTo_YourProfileData {
                         targetRecord.put(fieldApi, convertedValue);
         
                     } catch (Exception e) {
-                        System.debug('⚠️ Failed to map key=' + jsonKey + 
+                        System.debug('Failed to map key=' + jsonKey + 
                                     ', field=' + fieldApi + 
                                     ', type=' + datatype + 
                                     ', value=' + rawValue + 
@@ -1900,25 +2580,19 @@ global class saveWebTo_YourProfileData {
         }
     
     
+    // MODIFICATION: Updated handleAdmissionForm to handle program groups*****************************
     public static void handleAdmissionForm(Map<String, Object> payload, Id leadId, String department, String typeOfForm, String registrationNumber) {
         try {
-            Lead masterLead = (leadId != null) 
-                ? [SELECT Id, Registration_Number__c FROM Lead WHERE Id = :leadId LIMIT 1]
-                : new Lead();
-    
-            // masterLead.Admission_Year__c = System.label.Admission_Year;
-            // masterLead.Auris_Last_Updated_Timestamp__c = System.now().format('yyyy-MM-dd:HH:mm:ss');
-            // upsert masterLead;
-    
-            // 🔹 Fetch child mapping metadata
+            Lead masterLead = [SELECT Id, Registration_Number__c, RecordTypeId FROM Lead WHERE Id = :leadId LIMIT 1];
+            
+            // Process child records
             List<Auris_Child_Form_Mapping__mdt> childMappings = [
-                SELECT 	Label, Department__c, JSONKey__c,TypeOfForm__c
+                SELECT Label, Department__c, JSONKey__c, TypeOfForm__c
                 FROM Auris_Child_Form_Mapping__mdt
                 WHERE (Department__c = :department OR Department__c = null)
                 AND   (TypeOfForm__c = :typeOfForm OR TypeOfForm__c = null)
             ];
     
-            // 🔹 Dynamically process children
             for (Auris_Child_Form_Mapping__mdt mapRec : childMappings) {
                 if (payload.containsKey(mapRec.JSONKey__c) && payload.get(mapRec.JSONKey__c) != null) {
                     handle(
@@ -1935,7 +2609,8 @@ global class saveWebTo_YourProfileData {
             logFailedLead(JSON.serialize(payload), e, registrationNumber);
             throw new CustomException('Error in handleAdmissionForm: ' + e.getMessage());
         }
-    }
+    }    
+
     public static void handle(String JSONKey,String methodName, Object payload, Id leadId, String registrationNumber) {
         if (String.isBlank(methodName)){
             return;

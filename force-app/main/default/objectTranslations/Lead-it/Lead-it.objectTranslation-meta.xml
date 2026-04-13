@@ -201,6 +201,10 @@
             <section>Personal Information</section>
         </sections>
         <sections>
+            <label><!-- Program Groups --></label>
+            <section>Program Groups</section>
+        </sections>
+        <sections>
             <label><!-- System Information --></label>
             <section>System Information</section>
         </sections>

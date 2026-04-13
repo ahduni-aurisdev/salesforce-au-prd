@@ -20,6 +20,11 @@
         <field>Lead.Whatsapp_Number__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Program_Group_Tag__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Marketing Cloud Connected App</label>
 </PermissionSet>
