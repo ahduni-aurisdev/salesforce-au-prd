@@ -2800,14 +2800,14 @@ global with sharing class LeadConversionService {
     ***/ 
     public static void mapFieldsToOpportunityAndAccountMasters(Lead lead, Database.LeadConvertResult result, Map<String, Object> responseMap, Set<Id> opportunityIds) {
             
-            //modified by rishav
-            lead = [SELECT Id, OwnerId, Name, Company, Phone, Email, UTM_Link__c,department__c,
-                    Registration_Number__c, Registration_Date__c, Application_Number__c, 
-                    Application_Date__c, LeadSource, URL__c, Auris_Form_URL__c,Multi_Select_Lead_Source__c,
-                    Campaign_Name__c,Campaign_Source__c, Campaign_Medium__c,ConvertedContactId,
-                    Organisation_Institute_Name__c, Designation__c, My_Highest_Qualification__c, Engagement_Score__c,
-                    Total_Work_Experience_Year_s__c, RecordType.DeveloperName
-                    FROM Lead WHERE Id = :lead.Id LIMIT 1];
+        //modified by rishav
+        lead = [SELECT Id, OwnerId, Name, Company, Phone, Email, UTM_Link__c,department__c,
+                Registration_Number__c, Registration_Date__c, Application_Number__c, 
+                Application_Date__c, LeadSource, URL__c, Auris_Form_URL__c,Multi_Select_Lead_Source__c,
+                Campaign_Name__c,Campaign_Source__c, Campaign_Medium__c,ConvertedContactId,
+                Organisation_Institute_Name__c, Designation__c, My_Highest_Qualification__c, Engagement_Score__c,
+                Total_Work_Experience_Year_s__c, RecordType.DeveloperName, FirstName, LastName
+                FROM Lead WHERE Id = :lead.Id LIMIT 1];
 
             /*
             lead = [SELECT Id, OwnerId, Name, Company, Phone, Email, UTM_Link__c,department__c,
@@ -2880,13 +2880,16 @@ global with sharing class LeadConversionService {
             Account account = [SELECT Id, IsPersonAccount, FirstName, LastName, Phone, PersonEmail, UTM_Link__c,
                                       Registration_Number__c, Registration_Date__c,Multi_Select_Lead_Source__c,
                                       Campaign_Name__c,Campaign_Source__c, Campaign_Medium__c FROM Account WHERE Id = :accountId LIMIT 1];
-            */                          
-
+            */                      
+            
+            // Modified by: Mihir Ramoliya 
+            // Date: 17th April 2026
+            // Purpose: To handle the case when lead is converted to account and the first name or last name is null
+            // Refure Error Document #ERR2601
             if (account.IsPersonAccount) {
-                String[] nameParts = lead.Name.split(' ', 2);
-                account.FirstName = (nameParts.size() > 0) ? nameParts[0] : '';
-                account.LastName = (nameParts.size() > 1) ? nameParts[1] : '';
-                fullName = account.FirstName +' '+ account.LastName;
+                account.FirstName = lead.FirstName != null ? lead.FirstName : ' ';
+                account.LastName = lead.LastName != null ? lead.LastName : '.';
+                fullName = account.FirstName + ' ' + account.LastName;
             }
             // Get the current datetime
             Datetime now = System.now();
