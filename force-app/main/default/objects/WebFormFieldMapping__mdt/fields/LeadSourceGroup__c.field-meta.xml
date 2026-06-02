@@ -250,6 +250,11 @@
                 <label>KollegeApply</label>
             </value>
             <value>
+                <fullName>Career_360PGQueries</fullName>
+                <default>false</default>
+                <label>Career_360PGQueries</label>
+            </value>
+            <value>
                 <fullName>Website_CLeFEDBrochures</fullName>
                 <default>false</default>
                 <isActive>false</isActive>

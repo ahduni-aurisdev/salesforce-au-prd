@@ -2385,6 +2385,92 @@ public class LeadConversionServiceTest {
     }
 
     @isTest
+    static void testConvertLeadMastersWithExecutive_Education() {
+        // Test exception handling in convertLeadToAccountAndOpportunityMasters
+        Id leadRtId = getRecordTypeId('Lead', 'Executive_Education');
+        if(leadRtId == null) return;
+        
+        Lead lead = new Lead(
+            LastName = 'ExceptionLead',
+            FirstName = 'Test',
+            Company = 'Test Co',
+            Status = 'Open - Not Contacted',
+            RecordTypeId = leadRtId,
+            Email = 'exception234@test.com',
+            MobilePhone = '12345634640'
+        );
+        insert lead;
+        
+        LeadStatus convertStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true LIMIT 1];
+
+        // Use invalid status to cause exception
+        List<Map<String, Object>> programs = new List<Map<String, Object>>();
+        programs.add(new Map<String, Object>{
+            'ProgramName' => 'Test Program',
+            'applicationNumber' => 'APP-001'
+        });
+        
+        Map<String, Object> payloadMap = new Map<String, Object>();
+        payloadMap.put('leadId', lead.Id);
+        payloadMap.put('leadStatus', 'Application Submitted');
+        payloadMap.put('ProgramsInterestedIn', programs);
+        payloadMap.put('registrationNumber', 'REG-001');
+        
+        // RestRequest req = new RestRequest();
+        // req.requestBody = Blob.valueOf(JSON.serialize(payloadMap));
+        // RestContext.request = req;
+        
+        Test.startTest();
+        LeadConversionService.processSingleLead(payloadMap);
+        Test.stopTest();
+    
+    }
+
+     @isTest
+    static void testConvertLeadMastersWithExecutive_Education2() {
+        // Test exception handling in convertLeadToAccountAndOpportunityMasters
+        Id leadRtId = getRecordTypeId('Lead', 'Executive_Education');
+        if(leadRtId == null) return;
+        
+        Lead lead = new Lead(
+            LastName = 'ExceptionLead',
+            FirstName = 'Test',
+            Company = 'Test Co',
+            Status = 'Open - Not Contacted',
+            RecordTypeId = leadRtId,
+            Email = 'exception234@test.com',
+            MobilePhone = '12345634640'
+        );
+        insert lead;
+        
+        LeadStatus convertStatus = [SELECT MasterLabel FROM LeadStatus WHERE IsConverted = true LIMIT 1];
+
+        // Use invalid status to cause exception
+        List<Map<String, Object>> programs = new List<Map<String, Object>>();
+        programs.add(new Map<String, Object>{
+            'ProgramName' => 'Test Program',
+            'applicationNumber' => 'APP-001'
+        });
+        
+        Map<String, Object> payloadMap = new Map<String, Object>();
+        payloadMap.put('leadId', lead.Id);
+        payloadMap.put('leadStatus', 'Application Submitted');
+        payloadMap.put('ProgramsInterestedIn', programs);
+        payloadMap.put('registrationNumber', 'REG-001');
+        
+        RestRequest req = new RestRequest();
+        req.requestBody = Blob.valueOf(JSON.serialize(payloadMap));
+        RestContext.request = req;
+
+        String t = LeadConversionService.convertLead();
+        
+        Test.startTest();
+        LeadConversionService.processSingleLead(payloadMap);
+        Test.stopTest();
+    
+    }
+
+    @isTest
     static void testConvertLeadUndergraduationWithException() {
         // Test exception handling in convertLeadToAccountAndOpportunityUndergraduation
         Id leadRtId = getRecordTypeId('Lead', 'Undergraduation');

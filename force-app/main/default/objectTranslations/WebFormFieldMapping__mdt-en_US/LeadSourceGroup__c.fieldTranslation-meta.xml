@@ -11,6 +11,10 @@
         <translation><!-- Alumni --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Career_360PGQueries</masterLabel>
+        <translation><!-- Career_360PGQueries --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Career_360Queries</masterLabel>
         <translation><!-- Career_360Queries --></translation>
     </picklistValues>

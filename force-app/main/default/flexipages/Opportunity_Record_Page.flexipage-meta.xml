@@ -231,20 +231,42 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Highest_Qualification__c</fieldItem>
                 <identifier>RecordHighest_Qualification__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Related_Lead__c</fieldItem>
                 <identifier>RecordRelated_Lead__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Original_Lead_Id__c</fieldItem>
                 <identifier>RecordOriginal_Lead_Id__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Admission_Year__c</fieldItem>
+                <identifier>RecordAdmission_Year__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-b620655c-c59c-453e-a49e-fcc08e3d6ae7</name>
@@ -633,6 +655,16 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Multi_Select_Lead_Source__c</fieldItem>
+                <identifier>RecordMulti_Select_Lead_Source_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
                 <fieldItem>Record.Account.Registration_Date__c</fieldItem>
                 <identifier>RecordAccountRegistration_Date_cField</identifier>
             </fieldInstance>
@@ -641,6 +673,16 @@
             <fieldInstance>
                 <fieldItem>Record.Account.Application_Date__c</fieldItem>
                 <identifier>RecordAccountApplication_Date_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Admission_Year__c</fieldItem>
+                <identifier>RecordAdmission_Year_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

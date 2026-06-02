@@ -181,6 +181,12 @@
                 <identifier>RecordOriginal_Lead_Id_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Admission_Year__c</fieldItem>
+                <identifier>RecordAdmission_Year__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-67a41a24-4bc7-45f1-9116-3c4b9eeb631d</name>
         <type>Facet</type>
     </flexiPageRegions>

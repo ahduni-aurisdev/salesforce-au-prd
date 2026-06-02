@@ -4834,9 +4834,9 @@
         </countries>
         <countries>
             <active>true</active>
-            <integrationValue>United States</integrationValue>
+            <integrationValue>United States of America</integrationValue>
             <isoCode>US</isoCode>
-            <label>United States</label>
+            <label>United States of America</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
             <states>

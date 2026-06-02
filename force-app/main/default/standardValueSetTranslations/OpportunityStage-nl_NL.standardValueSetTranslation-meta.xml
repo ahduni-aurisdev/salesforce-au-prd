@@ -109,6 +109,10 @@
         <translation><!-- Final Offer Accepted --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Final Offer Declined</masterLabel>
+        <translation><!-- Final Offer Declined --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Final Offer Not accepted</masterLabel>
         <translation><!-- Final Offer Not accepted --></translation>
     </valueTranslation>
@@ -183,6 +187,10 @@
     <valueTranslation>
         <masterLabel>Personal Interaction Completed</masterLabel>
         <translation><!-- Personal Interaction Completed --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Personal Interaction Declined / Absent</masterLabel>
+        <translation><!-- Personal Interaction Declined / Absent --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Personal Interaction Scheduled</masterLabel>

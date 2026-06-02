@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Department__c</field>
-        <value xsi:type="xsd:string">Undergraduation</value>
+        <value xsi:type="xsd:string">Masters</value>
     </values>
     <values>
         <field>JSON_Key__c</field>
@@ -16,10 +16,10 @@
     </values>
     <values>
         <field>LeadSourceGroup__c</field>
-        <value xsi:type="xsd:string">Career_360UGQueries</value>
+        <value xsi:type="xsd:string">Career_360PGQueries</value>
     </values>
     <values>
         <field>TypeOfForm__c</field>
-        <value xsi:type="xsd:string">Career_360UGQueries</value>
+        <value xsi:type="xsd:string">Career_360PGQueries</value>
     </values>
 </CustomMetadata>

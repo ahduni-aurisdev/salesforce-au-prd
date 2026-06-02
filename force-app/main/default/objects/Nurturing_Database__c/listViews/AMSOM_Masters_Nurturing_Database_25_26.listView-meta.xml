@@ -18,9 +18,9 @@
         <value>Master of Business Administration</value>
     </filters>
     <filters>
-        <field>Academic_Year__c</field>
-        <operation>equals</operation>
-        <value>TIME_ Nagpur</value>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>10/1/2025 12:00 AM</value>
     </filters>
     <label>AMSOM Masters Nurturing Database - 25-26</label>
     <sharedTo>
