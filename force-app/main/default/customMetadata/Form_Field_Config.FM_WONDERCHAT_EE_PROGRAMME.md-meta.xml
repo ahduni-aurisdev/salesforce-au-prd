@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>FM_WONDERCHAT_EE_PROGRAMME</label>
+    <protected>false</protected>
+    <values>
+        <field>Department_Code__c</field>
+        <value xsi:type="xsd:string">EXEC_ED</value>
+    </values>
+    <values>
+        <field>Field_Options__c</field>
+        <value xsi:type="xsd:string">Transforming R&amp;D in Indian Firms
+Grow - Executive General Management
+Gemba
+Fin4NonFin</value>
+    </values>
+    <values>
+        <field>Field_Type__c</field>
+        <value xsi:type="xsd:string">programme_picklist</value>
+    </values>
+    <values>
+        <field>Form_Code__c</field>
+        <value xsi:type="xsd:string">WONDERCHAT</value>
+    </values>
+    <values>
+        <field>Form_Label__c</field>
+        <value xsi:type="xsd:string">Programme of Interest</value>
+    </values>
+    <values>
+        <field>Full_Width__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Help_Text__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Is_Integer__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Is_Numeric__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Is_Required__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Placeholder_Text__c</field>
+        <value xsi:type="xsd:string">Select Programme...</value>
+    </values>
+    <values>
+        <field>SF_API_Name__c</field>
+        <value xsi:type="xsd:string">Preferred_Programme__c</value>
+    </values>
+    <values>
+        <field>Sort_Order__c</field>
+        <value xsi:type="xsd:double">60.0</value>
+    </values>
+</CustomMetadata>

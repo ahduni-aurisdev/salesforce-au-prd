@@ -67,6 +67,10 @@
                 <behavior>Edit</behavior>
                 <field>Admission_Year__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Address__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

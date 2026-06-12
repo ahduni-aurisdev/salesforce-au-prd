@@ -537,6 +537,16 @@
                 <identifier>RecordApplication_Date_cField3</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Description</fieldItem>
+                <identifier>RecordDescriptionField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-b5c4404b-bc58-4029-ad04-947b27c9415e</name>
         <type>Facet</type>
     </flexiPageRegions>

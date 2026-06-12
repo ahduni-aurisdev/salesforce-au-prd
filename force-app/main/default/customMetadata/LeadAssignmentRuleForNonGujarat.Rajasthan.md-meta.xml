@@ -24,10 +24,10 @@
     </values>
     <values>
         <field>User__c</field>
-        <value xsi:type="xsd:string">005J1000000IA0PIAW,0055g00000I3VAhAAN</value>
+        <value xsi:type="xsd:string">005J1000000IA0PIAW,	005fv00000K4Q0PAAV</value>
     </values>
     <values>
         <field>Users_Email__c</field>
-        <value xsi:type="xsd:string">vanisha.gopalani@ahduni.edu.in,nirja.vasavada@ahduni.edu.in</value>
+        <value xsi:type="xsd:string">abhijit.baidya@ahduni.edu.in,nirja.vasavada@ahduni.edu.in</value>
     </values>
 </CustomMetadata>

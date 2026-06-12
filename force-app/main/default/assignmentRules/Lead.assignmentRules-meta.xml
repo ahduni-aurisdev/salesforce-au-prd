@@ -98,7 +98,7 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>vanisha.gopalani@ahduni.edu.in</assignedTo>
+            <assignedTo>abhijit.baidya@ahduni.edu.in</assignedTo>
             <assignedToType>User</assignedToType>
             <booleanFilter>(1 OR 2) AND 3</booleanFilter>
             <criteriaItems>
@@ -118,7 +118,7 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>vanisha.gopalani@ahduni.edu.in</assignedTo>
+            <assignedTo>abhijit.baidya@ahduni.edu.in</assignedTo>
             <assignedToType>User</assignedToType>
             <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7) AND 8</booleanFilter>
             <criteriaItems>

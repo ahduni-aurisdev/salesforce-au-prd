@@ -15,7 +15,7 @@
     <filters>
         <field>Master_Prefereed_Program__c</field>
         <operation>equals</operation>
-        <value>Master of Business Administration</value>
+        <value>Master of Science in Quantitative Finance</value>
     </filters>
     <filters>
         <field>CREATED_DATE</field>

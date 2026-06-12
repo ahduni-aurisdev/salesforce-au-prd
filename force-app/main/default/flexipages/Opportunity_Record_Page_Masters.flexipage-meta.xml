@@ -197,6 +197,12 @@
                 <identifier>RecordAdmission_Year__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Address__c</fieldItem>
+                <identifier>RecordAddress__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-6b1fe844-5027-4ba7-a435-4f220f897566</name>
         <type>Facet</type>
     </flexiPageRegions>

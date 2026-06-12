@@ -24,10 +24,10 @@
     </values>
     <values>
         <field>User__c</field>
-        <value xsi:type="xsd:string">0055g00000I3VAhAAN,005J1000000IA0PIAW,0055g00000Huq92AAB,005J1000000IHZxIAO,005J1000000I2L5IAK,005J1000000Ih9ZIAS</value>
+        <value xsi:type="xsd:string">005fv00000K4Q0PAAV,005J1000000IA0PIAW,0055g00000Huq92AAB,005J1000000IHZxIAO,005J1000000I2L5IAK,005J1000000Ih9ZIAS</value>
     </values>
     <values>
         <field>Users_Email__c</field>
-        <value xsi:type="xsd:string">hetal.thakkar@ahduni.edu.in,anjali.pathania@ahduni.edu.in,prakriti.gaur@ahduni.edu.in,arun.bharadwaj@ahduni.edu.in,nirja.vasavada@ahduni.edu.in,vanisha.gopalani@ahduni.edu.in,leonard.rozario@ahduni.edu.in</value>
+        <value xsi:type="xsd:string">hetal.thakkar@ahduni.edu.in,anjali.pathania@ahduni.edu.in,prakriti.gaur@ahduni.edu.in,arun.bharadwaj@ahduni.edu.in,nirja.vasavada@ahduni.edu.in,abhijit.baidya@ahduni.edu.in,leonard.rozario@ahduni.edu.in</value>
     </values>
 </CustomMetadata>

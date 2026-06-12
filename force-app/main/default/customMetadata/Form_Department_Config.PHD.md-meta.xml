@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>PhD</label>
+    <protected>false</protected>
+    <values>
+        <field>Default_Lead_Source__c</field>
+        <value xsi:type="xsd:string">Walk-in – Campus</value>
+    </values>
+    <values>
+        <field>Icon_Emoji__c</field>
+        <value xsi:type="xsd:string">🔬</value>
+    </values>
+    <values>
+        <field>Lead_Record_Type_Name__c</field>
+        <value xsi:type="xsd:string">Phd</value>
+    </values>
+    <values>
+        <field>Programme_Options__c</field>
+        <value xsi:type="xsd:string">PhD in Engineering
+PhD in Epidemiology
+PhD in Interdisciplinary Humanities and Social Sciences
+PhD in Biological and Life Sciences
+PhD in Management
+PhD in Mathematical and Computational Sciences
+PhD in Physics</value>
+    </values>
+    <values>
+        <field>Section_Label__c</field>
+        <value xsi:type="xsd:string">Doctoral Programmes</value>
+    </values>
+    <values>
+        <field>Sort_Order__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>Subtitle__c</field>
+        <value xsi:type="xsd:string">Doctoral Programmes</value>
+    </values>
+    <values>
+        <field>TypeOfForm__c</field>
+        <value xsi:type="xsd:string">Wonderchat_Phd_Queries</value>
+    </values>
+    <values>
+        <field>URL_Slugs__c</field>
+        <value xsi:type="xsd:string">phd,ph.d,doctorate,doctoral</value>
+    </values>
+    <values>
+        <field>UTM_Source_Map__c</field>
+        <value xsi:type="xsd:string">UTM_Source=LeadSource
+UTM_Source=UTM_Source__c
+UTM_Medium=UTM_Medium__c
+UTM_Campaign=UTM_Campaign__c
+UTM_Content=UTM_Content__c
+UTM_Term=UTM_Term__c</value>
+    </values>
+</CustomMetadata>
