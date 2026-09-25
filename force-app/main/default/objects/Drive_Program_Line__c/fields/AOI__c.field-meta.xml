@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AOI__c</fullName>
+    <label>Area of Interest</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Program__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Finance</fullName>
+                <default>false</default>
+                <label>Finance</label>
+            </value>
+            <value>
+                <fullName>CSE</fullName>
+                <default>false</default>
+                <label>CSE</label>
+            </value>
+            <value>
+                <fullName>Composites</fullName>
+                <default>false</default>
+                <label>Composites</label>
+            </value>
+            <value>
+                <fullName>AI / ML</fullName>
+                <default>false</default>
+                <label>AI / ML</label>
+            </value>
+            <value>
+                <fullName>SDE</fullName>
+                <default>false</default>
+                <label>SDE</label>
+            </value>
+            <value>
+                <fullName>Sys &amp; Sec</fullName>
+                <default>false</default>
+                <label>Sys &amp; Sec</label>
+            </value>
+            <value>
+                <fullName>Chemical</fullName>
+                <default>false</default>
+                <label>Chemical</label>
+            </value>
+            <value>
+                <fullName>Mechanical</fullName>
+                <default>false</default>
+                <label>Mechanical</label>
+            </value>
+            <value>
+                <fullName>EEE</fullName>
+                <default>false</default>
+                <label>EEE</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>HR</fullName>
+                <default>false</default>
+                <label>HR</label>
+            </value>
+            <value>
+                <fullName>Operations</fullName>
+                <default>false</default>
+                <label>Operations</label>
+            </value>
+            <value>
+                <fullName>QF</fullName>
+                <default>false</default>
+                <label>QF</label>
+            </value>
+            <value>
+                <fullName>Economics</fullName>
+                <default>false</default>
+                <label>Economics</label>
+            </value>
+            <value>
+                <fullName>Accounting &amp; Finance</fullName>
+                <default>false</default>
+                <label>Accounting &amp; Finance</label>
+            </value>
+            <value>
+                <fullName>Operations &amp; SCM</fullName>
+                <default>false</default>
+                <label>Operations &amp; SCM</label>
+            </value>
+            <value>
+                <fullName>Business Analytics</fullName>
+                <default>false</default>
+                <label>Business Analytics</label>
+            </value>
+            <value>
+                <fullName>Pyschology</fullName>
+                <default>false</default>
+                <label>Pyschology</label>
+            </value>
+            <value>
+                <fullName>SPS</fullName>
+                <default>false</default>
+                <label>SPS</label>
+            </value>
+            <value>
+                <fullName>History</fullName>
+                <default>false</default>
+                <label>History</label>
+            </value>
+            <value>
+                <fullName>PHL</fullName>
+                <default>false</default>
+                <label>PHL</label>
+            </value>
+            <value>
+                <fullName>MCS</fullName>
+                <default>false</default>
+                <label>MCS</label>
+            </value>
+            <value>
+                <fullName>Physics</fullName>
+                <default>false</default>
+                <label>Physics</label>
+            </value>
+            <value>
+                <fullName>Life Sciences</fullName>
+                <default>false</default>
+                <label>Life Sciences</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>BBA / BSM (Hons)</controllingFieldValue>
+            <controllingFieldValue>MBA</controllingFieldValue>
+            <controllingFieldValue>Integrated MBA</controllingFieldValue>
+            <valueName>Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BBA / BSM (Hons)</controllingFieldValue>
+            <controllingFieldValue>MBA</controllingFieldValue>
+            <controllingFieldValue>Integrated MBA</controllingFieldValue>
+            <valueName>HR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BBA / BSM (Hons)</controllingFieldValue>
+            <controllingFieldValue>BCom (Hons)</controllingFieldValue>
+            <controllingFieldValue>BCom Professional (Hons)</controllingFieldValue>
+            <valueName>Accounting &amp; Finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BBA / BSM (Hons)</controllingFieldValue>
+            <valueName>Operations &amp; SCM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BBA / BSM (Hons)</controllingFieldValue>
+            <valueName>Business Analytics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BA (Hons)</controllingFieldValue>
+            <controllingFieldValue>MS Economics</controllingFieldValue>
+            <valueName>Economics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BA (Hons)</controllingFieldValue>
+            <valueName>Pyschology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BA (Hons)</controllingFieldValue>
+            <valueName>SPS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BA (Hons)</controllingFieldValue>
+            <valueName>History</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BA (Hons)</controllingFieldValue>
+            <valueName>PHL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BS (Hons)</controllingFieldValue>
+            <controllingFieldValue>BTech - CSE</controllingFieldValue>
+            <valueName>AI / ML</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BS (Hons)</controllingFieldValue>
+            <controllingFieldValue>BTech - CSE</controllingFieldValue>
+            <valueName>SDE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BS (Hons)</controllingFieldValue>
+            <controllingFieldValue>BTech - CSE</controllingFieldValue>
+            <valueName>Sys &amp; Sec</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BS (Hons)</controllingFieldValue>
+            <valueName>MCS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BS (Hons)</controllingFieldValue>
+            <valueName>Physics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Integrated MS</controllingFieldValue>
+            <valueName>Life Sciences</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MTech - CSE</controllingFieldValue>
+            <valueName>CSE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MTech - Composites</controllingFieldValue>
+            <valueName>Composites</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BTech - Chemical</controllingFieldValue>
+            <valueName>Chemical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BTech - Mechanical</controllingFieldValue>
+            <valueName>Mechanical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BTech - EEE</controllingFieldValue>
+            <valueName>EEE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MBA</controllingFieldValue>
+            <controllingFieldValue>Integrated MBA</controllingFieldValue>
+            <valueName>Finance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MBA</controllingFieldValue>
+            <controllingFieldValue>Integrated MBA</controllingFieldValue>
+            <valueName>Operations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MSQF</controllingFieldValue>
+            <valueName>QF</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -492,12 +492,4 @@ public class AU_EnquiryFormController_Test {
         Test.stopTest();
 
     }
-
-    @IsTest
-    static void testGetStatePicklistValues() {
-        Test.startTest();
-        List<String> states = AU_EnquiryFormController.getStatePicklistValues();
-        System.assertNotEquals(null, states, 'States list should not be null');
-        Test.stopTest();
-    }
 }

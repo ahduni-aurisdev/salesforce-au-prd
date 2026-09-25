@@ -241,7 +241,7 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>aaqib.chokwala@ahduni.edu.in</assignedTo>
+            <assignedTo>mtech.admissions@ahduni.edu.in</assignedTo>
             <assignedToType>User</assignedToType>
             <criteriaItems>
                 <field>Lead.RecordTypeId</field>

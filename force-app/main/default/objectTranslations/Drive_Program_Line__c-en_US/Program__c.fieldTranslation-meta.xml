@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Program --></label>
+    <name>Program__c</name>
+    <picklistValues>
+        <masterLabel>BA (Hons)</masterLabel>
+        <translation><!-- BA (Hons) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BBA / BSM (Hons)</masterLabel>
+        <translation><!-- BBA / BSM (Hons) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BCom (Hons)</masterLabel>
+        <translation><!-- BCom (Hons) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BCom Professional (Hons)</masterLabel>
+        <translation><!-- BCom Professional (Hons) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BS (Hons)</masterLabel>
+        <translation><!-- BS (Hons) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BTech - CSE</masterLabel>
+        <translation><!-- BTech - CSE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BTech - Chemical</masterLabel>
+        <translation><!-- BTech - Chemical --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BTech - EEE</masterLabel>
+        <translation><!-- BTech - EEE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BTech - Mechanical</masterLabel>
+        <translation><!-- BTech - Mechanical --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrated MBA</masterLabel>
+        <translation><!-- Integrated MBA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrated MS</masterLabel>
+        <translation><!-- Integrated MS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MBA</masterLabel>
+        <translation><!-- MBA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MS Economics</masterLabel>
+        <translation><!-- MS Economics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MSQF</masterLabel>
+        <translation><!-- MSQF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MTech - CSE</masterLabel>
+        <translation><!-- MTech - CSE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MTech - Composites</masterLabel>
+        <translation><!-- MTech - Composites --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

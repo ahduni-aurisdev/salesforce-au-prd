@@ -1130,6 +1130,31 @@
             <field>UTM_Term__c</field>
             <table>Lead</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>State_Text__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Linkdin_Q1__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Linkdin_Ans1__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Linkdin_Q2__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Linkdin_Ans2__c</field>
+            <table>Lead</table>
+        </columns>
         <masterLabel>Leads</masterLabel>
     </sections>
     <sections>
@@ -1801,6 +1826,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LastName__c</field>
+            <table>Lead.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Call_Log_Comment__c</field>
             <table>Lead.Opportunities__r</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

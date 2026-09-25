@@ -239,6 +239,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -303,6 +307,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -323,6 +331,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -339,6 +351,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -349,6 +373,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -451,6 +479,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -471,6 +503,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -487,7 +523,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -575,6 +619,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -633,6 +681,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -706,6 +778,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -722,18 +795,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -759,16 +838,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -790,6 +873,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -805,6 +889,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -971,6 +1061,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -1035,6 +1129,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -1055,6 +1153,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -1071,6 +1173,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -1081,6 +1195,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -1183,6 +1301,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -1203,6 +1325,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -1219,7 +1345,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -1307,6 +1441,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -1365,6 +1503,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -1439,6 +1601,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -1455,18 +1618,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -1492,16 +1661,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -1523,6 +1696,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -1538,6 +1712,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -1700,6 +1880,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -1764,6 +1948,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -1784,6 +1972,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -1800,6 +1992,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -1810,6 +2014,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -1912,6 +2120,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -1932,6 +2144,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -1948,7 +2164,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -2036,6 +2260,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -2094,6 +2322,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -2167,6 +2419,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -2183,18 +2436,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -2220,16 +2479,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -2251,6 +2514,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -2266,6 +2530,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -2428,6 +2698,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -2492,6 +2766,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -2512,6 +2790,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -2528,6 +2810,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -2538,6 +2832,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -2640,6 +2938,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -2660,6 +2962,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -2676,7 +2982,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -2764,6 +3078,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -2822,6 +3140,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -2895,6 +3237,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -2911,18 +3254,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -2948,16 +3297,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -2979,6 +3332,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -2994,6 +3348,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -3160,6 +3520,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -3224,6 +3588,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -3244,6 +3612,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -3260,6 +3632,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -3270,6 +3654,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -3372,6 +3760,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -3392,6 +3784,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -3408,7 +3804,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -3496,6 +3900,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -3554,6 +3962,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -3628,6 +4060,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -3644,18 +4077,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -3681,16 +4120,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -3712,6 +4155,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -3727,6 +4171,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -3889,6 +4339,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -3953,6 +4407,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -3973,6 +4431,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -3989,6 +4451,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -3999,6 +4473,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -4101,6 +4579,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -4121,6 +4603,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -4137,7 +4623,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -4225,6 +4719,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -4283,6 +4781,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -4356,6 +4878,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -4372,18 +4895,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -4409,16 +4938,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -4440,6 +4973,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -4455,6 +4989,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -4621,6 +5161,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -4685,6 +5229,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -4705,6 +5253,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -4721,6 +5273,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -4731,6 +5295,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -4833,6 +5401,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -4853,6 +5425,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -4869,7 +5445,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -4957,6 +5541,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -5015,6 +5603,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -5089,6 +5701,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -5105,18 +5718,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -5142,16 +5761,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -5173,6 +5796,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -5188,6 +5812,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -5350,6 +5980,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -5414,6 +6048,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -5434,6 +6072,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -5450,6 +6092,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -5460,6 +6114,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -5562,6 +6220,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -5582,6 +6244,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -5598,7 +6264,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -5686,6 +6360,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -5744,6 +6422,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -5817,6 +6519,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -5833,18 +6536,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -5870,16 +6579,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -5901,6 +6614,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -5916,6 +6630,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -6082,6 +6802,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -6146,6 +6870,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -6166,6 +6894,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -6182,6 +6914,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -6192,6 +6936,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -6294,6 +7042,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -6314,6 +7066,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -6330,7 +7086,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -6418,6 +7182,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -6476,6 +7244,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -6550,6 +7342,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -6566,18 +7359,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -6603,16 +7402,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -6634,6 +7437,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -6649,6 +7453,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -6811,6 +7621,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -6875,6 +7689,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -6895,6 +7713,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -6911,6 +7733,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -6921,6 +7755,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -7023,6 +7861,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -7043,6 +7885,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -7059,7 +7905,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -7147,6 +8001,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -7205,6 +8063,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -7278,6 +8160,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -7294,18 +8177,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -7331,16 +8220,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -7362,6 +8255,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -7377,6 +8271,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -7543,6 +8443,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -7607,6 +8511,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -7627,6 +8535,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -7643,6 +8555,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -7653,6 +8577,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -7755,6 +8683,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -7775,6 +8707,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -7791,7 +8727,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -7879,6 +8823,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -7937,6 +8885,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -8011,6 +8983,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -8027,18 +9000,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -8064,16 +9043,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -8095,6 +9078,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -8110,6 +9094,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>
@@ -8272,6 +9262,10 @@
             <label>_SYSTEM: HOUSEHOLD CONTACT ROLEPROCESSOR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3L</field>
+            <label>Academic Year</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydE</field>
             <label>Acknowledgment Date</label>
         </opportunityListFieldsLabelMappings>
@@ -8336,6 +9330,10 @@
             <label>Batch Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000009BmDp</field>
+            <label>Call Log Comment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OEq8</field>
             <label>Campaign Medium</label>
         </opportunityListFieldsLabelMappings>
@@ -8356,6 +9354,10 @@
             <label>Combined Rollup Fieldset</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3M</field>
+            <label>Completion_Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQi</field>
             <label>Contact Id for Role</label>
         </opportunityListFieldsLabelMappings>
@@ -8372,6 +9374,18 @@
             <label>Do Not Automatically Create Payment</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3N</field>
+            <label>Drive Date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3O</field>
+            <label>Drive Mode</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3P</field>
+            <label>Drive Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydK</field>
             <label>Elevate Recurring Id</label>
         </opportunityListFieldsLabelMappings>
@@ -8382,6 +9396,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003UjcH</field>
             <label>Engagement Score</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Q</field>
+            <label>Expected Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydM</field>
@@ -8484,6 +9502,10 @@
             <label>Lead Stages</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3R</field>
+            <label>Location</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000001OwYQ</field>
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
@@ -8504,6 +9526,10 @@
             <label>Matching Gift Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3T</field>
+            <label>Max CTC Offered LPA</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDyQk</field>
             <label>Member Level</label>
         </opportunityListFieldsLabelMappings>
@@ -8520,7 +9546,15 @@
             <label>Membership Start Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjb</field>
+            <label>Most Recent Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NJ1000000QqvW</field>
+            <label>Multi Select Lead Source</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000008rfjc</field>
             <label>Multi Select Lead Source</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
@@ -8608,6 +9642,10 @@
             <label>Primary Preferred Program</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3S</field>
+            <label>Program</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00N5g00000ZDydS</field>
             <label>Program Areas</label>
         </opportunityListFieldsLabelMappings>
@@ -8666,6 +9704,30 @@
         <opportunityListFieldsLabelMappings>
             <field>00NJ1000000Qqvc</field>
             <label>Ternary Preferred Programme</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3U</field>
+            <label>Total Appeared Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3V</field>
+            <label>Total Expected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3W</field>
+            <label>Total Offer Accepted</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3X</field>
+            <label>Total Registered Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Y</field>
+            <label>Total Selected Students</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00Nfv000007ww3Z</field>
+            <label>Total Shortlisted Students</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00Nfv000003Tl3R</field>
@@ -8739,6 +9801,7 @@
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>00N5g00000ZDyTF</field>
+            <field>00Nfv000007ww3L</field>
             <field>00N5g00000ZDydE</field>
             <field>00N5g00000ZDydF</field>
             <field>0BCfv0000000Mes</field>
@@ -8755,18 +9818,24 @@
             <field>00NJ1000000QqvR</field>
             <field>00N5g00000ZDydI</field>
             <field>00N5g00000ZDydH</field>
+            <field>00Nfv000009BmDp</field>
             <field>00NJ1000001OEq8</field>
             <field>00NJ1000000QqvS</field>
             <field>00NJ1000001OEq9</field>
             <field>00N5g00000ZDydJ</field>
             <field>00N5g00000ZDyTE</field>
+            <field>00Nfv000007ww3M</field>
             <field>00N5g00000ZDyQi</field>
             <field>00Nfv000003Ujqn</field>
             <field>00N5g00000ZDydL</field>
             <field>00N5g00000ZDyQj</field>
+            <field>00Nfv000007ww3N</field>
+            <field>00Nfv000007ww3O</field>
+            <field>00Nfv000007ww3P</field>
             <field>00N5g00000ZDydK</field>
             <field>00NJ1000000PIMB</field>
             <field>00Nfv000003UjcH</field>
+            <field>00Nfv000007ww3Q</field>
             <field>00N5g00000ZDydM</field>
             <field>00Nfv000006ap29</field>
             <field>00N5g00000gKFIw</field>
@@ -8792,16 +9861,20 @@
             <field>00NJ1000000PIMs</field>
             <field>00NJ1000000PIN1</field>
             <field>00NJ1000000PIMr</field>
+            <field>00Nfv000007ww3R</field>
             <field>00NJ1000001OwYQ</field>
             <field>00N5g00000ZDyde</field>
             <field>00N5g00000ZDydb</field>
             <field>00N5g00000ZDydc</field>
             <field>00N5g00000ZDydd</field>
+            <field>00Nfv000007ww3T</field>
             <field>00N5g00000ZDyQk</field>
             <field>00N5g00000ZDyQl</field>
             <field>00N5g00000ZDyQm</field>
             <field>00N5g00000ZDyQn</field>
+            <field>00Nfv000008rfjb</field>
             <field>00NJ1000000QqvW</field>
+            <field>00Nfv000008rfjc</field>
             <field>00N5g00000ZDygi</field>
             <field>00N5g00000ZDydf</field>
             <field>00N5g00000ZDydg</field>
@@ -8823,6 +9896,7 @@
             <field>00N5g00000hqNbZ</field>
             <field>00NJ1000000QqvX</field>
             <field>00NJ1000000QqvY</field>
+            <field>00Nfv000007ww3S</field>
             <field>00N5g00000ZDydS</field>
             <field>00Nfv000005zlvV</field>
             <field>00N5g00000ZDydo</field>
@@ -8838,6 +9912,12 @@
             <field>00NJ1000000Qqva</field>
             <field>00NJ1000000Qqvb</field>
             <field>00NJ1000000Qqvc</field>
+            <field>00Nfv000007ww3U</field>
+            <field>00Nfv000007ww3V</field>
+            <field>00Nfv000007ww3W</field>
+            <field>00Nfv000007ww3X</field>
+            <field>00Nfv000007ww3Y</field>
+            <field>00Nfv000007ww3Z</field>
             <field>00Nfv000003Tl3R</field>
             <field>00N5g00000ZDydr</field>
             <field>00N5g00000ZDyds</field>

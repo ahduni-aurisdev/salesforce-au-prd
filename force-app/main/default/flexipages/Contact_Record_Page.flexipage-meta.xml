@@ -92,6 +92,12 @@
                 <identifier>Recordnpe01_Private_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Linkdin_Profile_URL__c</fieldItem>
+                <identifier>RecordLinkdin_Profile_URL__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-195185f7-8b22-4c94-ac3d-39501337442a</name>
         <type>Facet</type>
     </flexiPageRegions>

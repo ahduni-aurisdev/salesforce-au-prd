@@ -8,5 +8,6 @@
     <label>Digital Wallet</label>
     <navType>Standard</navType>
     <tabs>standard-LicenseUtilization</tabs>
+    <tabs>standard-ProductLimits</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

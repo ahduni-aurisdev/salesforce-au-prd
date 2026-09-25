@@ -875,7 +875,7 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
     </div>
     <div class="card-body">
 
-      <!-- ── STEP 1: Programme tiles ─────────────────────────── -->
+      <!-- ── STEP 1: Department tiles ─────────────────────────── -->
       <div id="step1">
         <div class="meta-loading" id="metaLoading">
           <div class="spinner-lg"></div>
@@ -894,7 +894,7 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
         <div class="back-bar">
           <button type="button" class="btn-back" id="backBtn" onclick="goBackToDept()">
             <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-            Change Programme
+            Change Department
           </button>
         </div>
         <div class="err-banner" id="errBanner"></div>
@@ -1103,6 +1103,7 @@ function remoteGetMetadata(cb) {
     { escape: false }
   );
 }
+
 function remoteGetStatePicklistValues(cb) {
   Visualforce.remoting.Manager.invokeAction(
     '{!$RemoteAction.AU_EnquiryFormController.getStatePicklistValues}',
@@ -1110,6 +1111,7 @@ function remoteGetStatePicklistValues(cb) {
     { escape: false }
   );
 }
+
 function remoteCreateLead(payload, cb) {
   Visualforce.remoting.Manager.invokeAction(
     '{!$RemoteAction.AU_EnquiryFormController.createLead}',
@@ -1335,8 +1337,7 @@ function selectForm(fCode) {
 function buildDynFields(formObj) {
   var container = document.getElementById('dynFields');
   container.innerHTML = '';
-  document.getElementById('dynLabel').textContent =
-    formObj.sectionLabel || 'Programme Details';
+  document.getElementById('dynLabel').textContent = 'Programme Details';
 
   (formObj.fields || []).forEach(function(f) {
     var wrap = document.createElement('div');
@@ -1428,11 +1429,11 @@ function showStep(n) {
     el.className = 'step-line' + (n > i+1 ? ' done' : '');
   });
 
-  var deptName  = activeDept  ? activeDept.name  : '';
+  var deptName  = activeDept  ? activeDept.name == 'PhD' ? 'Doctoral' : activeDept.name   : '';
   var formName  = activeForm  ? activeForm.name   : '';
   var titles = {
     1: 'Select Your Programme',
-    2: deptName ? deptName + (formName ? ' – ' + formName : '') + ' Enquiry' : 'Enquiry Form',
+    2: deptName ? deptName + ' Enquiry Form' : 'Enquiry Form',
     3: 'Enquiry Confirmed'
   };
   document.getElementById('cardTitle').textContent = titles[n] || '';

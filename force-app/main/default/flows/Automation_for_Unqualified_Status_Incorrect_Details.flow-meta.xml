@@ -123,6 +123,14 @@ NOT(CONTAINS({!$Record.Email},&quot;@&quot;))</expression>
         <connector>
             <targetReference>Check_Invalid_Lead</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>012fv000002KmP8AAK</stringValue>
+            </value>
+        </filters>
         <object>Lead</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

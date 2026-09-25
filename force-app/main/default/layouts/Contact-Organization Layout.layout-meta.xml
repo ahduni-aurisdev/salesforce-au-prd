@@ -42,6 +42,10 @@
                 <behavior>Edit</behavior>
                 <field>Left_Organization__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Linkdin_Profile_URL__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -19,7 +19,8 @@
         <value xsi:type="xsd:string">Master of Business Administration
 Master of Science in Economics
 Master of Management Studies in Heritage Management
-Master of Science in Quantitative Finance</value>
+Master of Science in Quantitative Finance
+Master of Science in Health Data Science</value>
     </values>
     <values>
         <field>Section_Label__c</field>

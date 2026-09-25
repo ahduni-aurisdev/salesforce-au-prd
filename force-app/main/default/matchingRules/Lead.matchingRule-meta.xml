@@ -86,6 +86,11 @@
             <fieldName>Preferred_Programme__c</fieldName>
             <matchingMethod>Exact</matchingMethod>
         </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Admission_Year__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
         <ruleStatus>Active</ruleStatus>
     </matchingRules>
 </MatchingRules>

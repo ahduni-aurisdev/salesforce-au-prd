@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program__c</fullName>
+    <label>Program</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MTech - CSE</fullName>
+                <default>false</default>
+                <label>MTech - CSE</label>
+            </value>
+            <value>
+                <fullName>MTech - Composites</fullName>
+                <default>false</default>
+                <label>MTech - Composites</label>
+            </value>
+            <value>
+                <fullName>BTech - CSE</fullName>
+                <default>false</default>
+                <label>BTech - CSE</label>
+            </value>
+            <value>
+                <fullName>BTech - Chemical</fullName>
+                <default>false</default>
+                <label>BTech - Chemical</label>
+            </value>
+            <value>
+                <fullName>BTech - Mechanical</fullName>
+                <default>false</default>
+                <label>BTech - Mechanical</label>
+            </value>
+            <value>
+                <fullName>BTech - EEE</fullName>
+                <default>false</default>
+                <label>BTech - EEE</label>
+            </value>
+            <value>
+                <fullName>MBA</fullName>
+                <default>false</default>
+                <label>MBA</label>
+            </value>
+            <value>
+                <fullName>MSQF</fullName>
+                <default>false</default>
+                <label>MSQF</label>
+            </value>
+            <value>
+                <fullName>MS Economics</fullName>
+                <default>false</default>
+                <label>MS Economics</label>
+            </value>
+            <value>
+                <fullName>Integrated MBA</fullName>
+                <default>false</default>
+                <label>Integrated MBA</label>
+            </value>
+            <value>
+                <fullName>BBA / BSM (Hons)</fullName>
+                <default>false</default>
+                <label>BBA / BSM (Hons)</label>
+            </value>
+            <value>
+                <fullName>BCom (Hons)</fullName>
+                <default>false</default>
+                <label>BCom (Hons)</label>
+            </value>
+            <value>
+                <fullName>BCom Professional (Hons)</fullName>
+                <default>false</default>
+                <label>BCom Professional (Hons)</label>
+            </value>
+            <value>
+                <fullName>BA (Hons)</fullName>
+                <default>false</default>
+                <label>BA (Hons)</label>
+            </value>
+            <value>
+                <fullName>BS (Hons)</fullName>
+                <default>false</default>
+                <label>BS (Hons)</label>
+            </value>
+            <value>
+                <fullName>Integrated MS</fullName>
+                <default>false</default>
+                <label>Integrated MS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

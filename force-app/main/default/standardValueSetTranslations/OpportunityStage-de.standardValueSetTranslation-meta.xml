@@ -73,12 +73,20 @@
         <translation><!-- Call for Interaction --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Cancelled</masterLabel>
+        <translation><!-- Cancelled --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Closed Lost</masterLabel>
         <translation>Geschlossen und verloren</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Closed Won</masterLabel>
         <translation>Geschlossen und gewonnen</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Completed</masterLabel>
+        <translation><!-- Completed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Conditional Offer Accepted</masterLabel>
@@ -91,6 +99,10 @@
     <valueTranslation>
         <masterLabel>Conditional Offer Sent</masterLabel>
         <translation><!-- Conditional Offer Sent --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Confirmed</masterLabel>
+        <translation><!-- Confirmed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cultivation</masterLabel>
@@ -123,6 +135,10 @@
     <valueTranslation>
         <masterLabel>Identification</masterLabel>
         <translation>Identifikation</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In Progress</masterLabel>
+        <translation><!-- In Progress --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>In-Kind Not Yet Received</masterLabel>
@@ -195,6 +211,10 @@
     <valueTranslation>
         <masterLabel>Personal Interaction Scheduled</masterLabel>
         <translation><!-- Personal Interaction Scheduled --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Planned</masterLabel>
+        <translation><!-- Planned --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pledged</masterLabel>

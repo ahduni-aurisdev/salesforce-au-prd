@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>FirstName</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    CONTAINS({!$Record.LastName}, &quot; &quot;),
+    
+    LEFT(
+        {!$Record.LastName},
+        FIND(&quot; &quot;, {!$Record.LastName}) - 1
+    ),
+    
+    IF(
+        CONTAINS({!$Record.LastName}, &quot;_&quot;),
+        
+        LEFT(
+            {!$Record.LastName},
+            FIND(&quot;_&quot;, {!$Record.LastName}) - 1
+        ),
+        
+        {!$Record.LastName}
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>LastName</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    CONTAINS({!$Record.LastName}, &quot; &quot;),
+    
+    MID(
+        {!$Record.LastName},
+        FIND(&quot; &quot;, {!$Record.LastName}) + 1,
+        LEN({!$Record.LastName})
+    ),
+    
+    IF(
+        CONTAINS({!$Record.LastName}, &quot;_&quot;),
+        
+        MID(
+            {!$Record.LastName},
+            FIND(&quot;_&quot;, {!$Record.LastName}) + 1,
+            LEN({!$Record.LastName})
+        ),
+        
+        &quot;.&quot;
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>Lead Name Sepration {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead Name Separation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>FirstName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>LastName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>FirstName</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

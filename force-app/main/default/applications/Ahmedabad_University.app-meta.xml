@@ -585,7 +585,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>PersonAccount.Undergraduation</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -594,7 +594,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>PersonAccount.Undergraduation</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1295,7 +1295,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.CLeF</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1304,7 +1304,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.CLeF</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1331,7 +1331,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.CLeF</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1340,7 +1340,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.CLeF</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1403,7 +1403,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Executive_Education</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1412,7 +1412,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Executive_Education</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1439,7 +1439,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Executive_Education</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1448,7 +1448,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Executive_Education</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1511,7 +1511,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Phd</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1520,7 +1520,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Phd</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1547,7 +1547,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Phd</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1556,7 +1556,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Phd</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1619,7 +1619,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Undergraduation</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1628,7 +1628,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Undergraduation</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1637,7 +1637,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Undergraduation</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1646,7 +1646,7 @@
         <pageOrSobjectType>Lead</pageOrSobjectType>
         <recordType>Lead.Undergraduation</recordType>
         <type>Flexipage</type>
-        <profile>Manager</profile>
+        <profile>Undergraduation Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1673,7 +1673,7 @@
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Executive_Education</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1682,7 +1682,7 @@
         <pageOrSobjectType>Opportunity</pageOrSobjectType>
         <recordType>Opportunity.Executive_Education</recordType>
         <type>Flexipage</type>
-        <profile>Executive</profile>
+        <profile>Undergraduation Executive</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -1719,6 +1719,114 @@
         <recordType>Opportunity.Executive_Education</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>CEO</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>CEO</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Undergraduation Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Undergraduation Executive</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Undergraduation Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Undergraduation Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>System Administrator Custom</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>System Administrator Custom</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Top Level Management</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_School_Organization_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.School</recordType>
+        <type>Flexipage</type>
+        <profile>Top Level Management</profile>
     </profileActionOverrides>
     <tabs>standard-home</tabs>
     <tabs>standard-Event</tabs>

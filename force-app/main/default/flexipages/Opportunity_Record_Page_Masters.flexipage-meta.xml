@@ -203,6 +203,12 @@
                 <identifier>RecordAddress__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Call_Log_Comment__c</fieldItem>
+                <identifier>RecordCall_Log_Comment__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-6b1fe844-5027-4ba7-a435-4f220f897566</name>
         <type>Facet</type>
     </flexiPageRegions>

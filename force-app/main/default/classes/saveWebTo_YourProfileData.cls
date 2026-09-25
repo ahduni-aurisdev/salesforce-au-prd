@@ -487,12 +487,32 @@ global class saveWebTo_YourProfileData {
                     when  else     { fieldValue = String.valueOf(jsonValue); }
                 }
                 // Added By : Mihir Ramoliya
+                // Added on : 01st September 2026
+                // "AURIS" is a retired legacy value. It still exists in the LeadSource AND
+                // Multi_Select_Lead_Source__c picklists' own value sets (Salesforce does not
+                // support fully deleting a STANDARD field's picklist value via the API - only
+                // deactivating, which was tested and does NOT stop this), so the platform
+                // silently coerces ANY case-insensitive match ("Auris", "auris", "AuRiS"...)
+                // to "AURIS" at save time on either field, invisible to this code - confirmed
+                // by direct testing, not fixable by changing the value's case in Apex. We
+                // never want AURIS to appear as a lead source again, so treat the incoming
+                // 'leadSource' payload key as not sent at all when it matches that legacy value.
+                if (mapRec.JSON_Key__c == 'leadSource' && String.valueOf(fieldValue).equalsIgnoreCase('AURIS')) {
+                    System.debug('Skipping legacy AURIS lead source value from payload for field ' + mapRec.Label + ' - leaving it untouched.');
+                    continue;
+                }
+                // Added By : Mihir Ramoliya
                 // Added on : 26th March 2026
-                // Do not overwrite LeadSource if it is already populated on the lead
-                System.debug('newLead.LeadSource: '+newLead.LeadSource);
+                // Do not overwrite LeadSource if it is already populated on the lead - but
+                // still record this touch's source on Most_Recent_Lead_Source__c (never
+                // locked, unlike LeadSource) so the Lead trigger can pick up a genuine
+                // re-touch for Campaign History even when LeadSource itself stays put.
+                String currentLeadSource = LeadTriggerHandler.safeGet(newLead, Lead.LeadSource);
+                System.debug('newLead.LeadSource: '+currentLeadSource);
                 System.debug('mapRec.Label: '+mapRec.Label);
-                if(!String.isBlank(newLead.LeadSource) && mapRec.Label == 'LeadSource'){
-                    fieldValue = newLead.LeadSource;
+                if(!String.isBlank(currentLeadSource) && mapRec.Label == 'LeadSource'){
+                    newLead.Most_Recent_Lead_Source__c = String.valueOf(fieldValue);
+                    fieldValue = currentLeadSource;
                 }
                 newLead.put(mapRec.Label, fieldValue);
                 System.debug('Field ' + mapRec.Label + ' mapped to ' + fieldValue + 'JSON KEY: '+mapRec.JSON_Key__c);
@@ -521,7 +541,13 @@ global class saveWebTo_YourProfileData {
         
         // Update timestamp
         newLead.Auris_Last_Updated_Timestamp__c = System.now().format('yyyy-MM-dd:HH:mm:ss');
-    
+        System.debug('newLead: '+newLead);
+        System.debug('existingLead: '+existingLead);
+        // Read via safeGet, not newLead.<field> directly - some duplicate-lookup queries in
+        // this class predate these fields and don't select them, which makes a direct read
+        // throw "field not queried" and abort the whole save (seen in practice).
+        System.debug('newLead.Most_Recent_Lead_Source__c: '+LeadTriggerHandler.safeGet(newLead, Lead.Most_Recent_Lead_Source__c));
+        System.debug('newLead.Multi_Select_Lead_Sources__c: '+LeadTriggerHandler.safeGet(newLead, Lead.Multi_Select_Lead_Sources__c));
         // Save record using Registration Number as external ID
         if (Schema.sObjectType.Lead.isCreateable() && Schema.sObjectType.Lead.isUpdateable()) {
             // System.debug('Before upsert - Group_Tag__c: ' + newLead.Group_Tag__c);
@@ -606,7 +632,7 @@ global class saveWebTo_YourProfileData {
      * @return          Full SOQL query string
      */
     private static String leadSoqlForCreation(Id leadId, Integer maxGroups) {
-        String q = 'SELECT Id, RecordTypeId, Multi_Select_Lead_Source__c, LastName';
+        String q = 'SELECT Id, RecordTypeId, Multi_Select_Lead_Source__c, Most_Recent_Lead_Source__c, LastName';
         for (Integer s = 1; s <= maxGroups; s++) {
             q += ', Group_'  + s + '__c';
             q += ', Group_'  + s + '_Application_Number__c';
@@ -728,15 +754,23 @@ global class saveWebTo_YourProfileData {
         String matchingEmail = (String) payloadMap.get('email');
     
         String matchingPreferedProgrm = (String) payloadMap.get('programmeInterestedIn');
-    
+
+        // Only treat an existing Lead as a duplicate if its Admission_Year__c matches
+        // the incoming lead's admission year - a re-application for a different
+        // admission year is a new lead, not a duplicate of the old one.
+        String matchingAdmissionYear = (payloadMap.containsKey('admissionYear') && payloadMap.get('admissionYear') != null)
+            ? String.valueOf(payloadMap.get('admissionYear'))
+            : System.label.Admission_Year;
+
         List<Lead> matchingLead = [
             SELECT Id, Phone, Registration_Number__c, Email,
                    Multi_Select_Lead_Source__c, Preferred_Programme__c,
-                   RecordTypeId, LastName, FirstName
-            FROM Lead 
-            WHERE Phone LIKE :matchingphone 
-            AND Email = :matchingEmail 
+                   RecordTypeId, LastName, FirstName, LeadSource, Most_Recent_Lead_Source__c
+            FROM Lead
+            WHERE Phone LIKE :matchingphone
+            AND Email = :matchingEmail
             AND Preferred_Programme__c = :matchingPreferedProgrm AND department__c = :department
+            AND Admission_Year__c = :matchingAdmissionYear
             LIMIT 1
         ];
         System.debug('[SOQL Result] Matching Leads Found: ' + matchingLead);
@@ -747,17 +781,17 @@ global class saveWebTo_YourProfileData {
             
             // DEFENSIVE CHECK: Ensure RecordTypeId is available
             if (newLead.RecordTypeId == null) {
-                newLead = [SELECT Id, RecordTypeId FROM Lead WHERE Id = :newLead.Id];
-            }            
+                newLead = [SELECT Id, RecordTypeId, LeadSource, Most_Recent_Lead_Source__c FROM Lead WHERE Id = :newLead.Id];
+            }
             
             //code to add leadsource in multipicklist field
-            Set<String> picklistValues = new Set<String>();
-            if (String.isNotBlank(newLead.Multi_Select_Lead_Source__c)) {
-                picklistValues.addAll(newLead.Multi_Select_Lead_Source__c.split(';'));
-            }
-            String websiteLeadSource = 'AURIS';
-            picklistValues.add(websiteLeadSource);
-            newLead.Multi_Select_Lead_Source__c = String.join(new List<String>(picklistValues), ';');
+            // Set<String> picklistValues = new Set<String>();
+            // if (String.isNotBlank(newLead.Multi_Select_Lead_Source__c)) {
+            //     picklistValues.addAll(newLead.Multi_Select_Lead_Source__c.split(';'));
+            // }
+            // String websiteLeadSource = 'AURIS';
+            // picklistValues.add(websiteLeadSource);
+            // newLead.Multi_Select_Lead_Source__c = String.join(new List<String>(picklistValues), ';');
     
             return newLead;
         }
@@ -824,6 +858,7 @@ global class saveWebTo_YourProfileData {
             SELECT Id, Phone, Registration_Number__c, Email,
                 Multi_Select_Lead_Source__c, RecordTypeId,
                 LastName, FirstName, Department__c, LeadSource,
+                Most_Recent_Lead_Source__c,
                 // Group slot 1
                 Group_1__c, Group_1_Application_Date__c,
                 Group_1_Application_Number__c, Group_1_Majors__c, Group_1_Programmes__c,
@@ -850,19 +885,22 @@ global class saveWebTo_YourProfileData {
             newLead = matchingLead[0];
 
             // Defensive check — if RecordTypeId is not populated on the matched record,
-            // re-query to get it (can happen if the lead has no record type set)
+            // re-query to get it (can happen if the lead has no record type set). Must
+            // include every field read below (Multi_Select_Lead_Source__c, LeadSource) or
+            // those reads throw "field not queried", silently swallowed by the caller's
+            // try/catch — this exact gap previously made the LeadSource preservation
+            // and Most_Recent_Lead_Source__c updates silently no-op.
             if (newLead.RecordTypeId == null) {
-                newLead = [SELECT Id, RecordTypeId FROM Lead WHERE Id = :newLead.Id];
+                newLead = [SELECT Id, RecordTypeId, Multi_Select_Lead_Source__c, LeadSource, Most_Recent_Lead_Source__c FROM Lead WHERE Id = :newLead.Id];
             }
 
-            // Add 'AURIS' to the Multi_Select_Lead_Source__c multi-picklist.
-            // Use a Set to avoid duplicate entries before joining back to string.
-            Set<String> picklistValues = new Set<String>();
-            if (String.isNotBlank(newLead.Multi_Select_Lead_Source__c)) {
-                picklistValues.addAll(newLead.Multi_Select_Lead_Source__c.split(';'));
-            }
-            picklistValues.add('AURIS');
-            newLead.Multi_Select_Lead_Source__c = String.join(new List<String>(picklistValues), ';');
+            // Removed By : Mihir Ramoliya | 02nd September 2026
+            // Removed    : unconditional "add 'AURIS' to Multi_Select_Lead_Source__c" step.
+            // This ran on every duplicate match regardless of the payload's actual leadSource,
+            // re-introducing the retired AURIS value we specifically guard against elsewhere
+            // in this class. Multi_Select_Lead_Source__c is now correctly maintained from the
+            // real payload value by the generic field-mapping loop (with the AURIS guard) and
+            // LeadMultiLeadSourceTrigger's own accumulation logic - nothing further needed here.
 
             return newLead;
         }

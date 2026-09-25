@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>Subtitle__c</field>
-        <value xsi:type="xsd:string">Professional &amp; Leadership</value>
+        <value xsi:type="xsd:string">Degree, Certificate, Online, and Customised Programmes</value>
     </values>
     <values>
         <field>TypeOfForm__c</field>

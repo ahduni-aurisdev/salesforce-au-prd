@@ -457,13 +457,28 @@ global without sharing class AU_EnquiryFormController {
             Map<String, Object> data =
                 (Map<String, Object>) JSON.deserializeUntyped(payloadJSON);
 
+            String programVal = strVal(data, 'Preferred_Programme__c');
+
+            // Map containing old value -> new value
+            Map<String, String> programMap = new Map<String, String>{
+                'Global Executive MBA in Pharmaceutical Management'   => 'Gemba',
+                'GROW- Executive General Management Programme'        => 'Grow - Executive General Management',
+                'Building Digital Factories'                          => 'Transforming R&D in Indian Firms',
+                'Finance for Non-Finance Professionals'               => 'Fin4NonFin'
+            };
+
+            // Replace value if found in mapping
+            if (programMap.containsKey(programVal)) {
+                data.put('Preferred_Programme__c', programMap.get(programVal));
+            }
+
             System.debug('AU_EnquiryFormController data  === > ' + data);   
 
             String deptCode   = strVal(data, 'Department_Code__c').toUpperCase();
             String formCode   = strVal(data, 'Form_Code__c').toUpperCase();
             String emailVal   = strVal(data, 'Email');
             String phoneVal   = strVal(data, 'Phone');
-            String programVal = strVal(data, 'Preferred_Programme__c');
+            programVal        = strVal(data, 'Preferred_Programme__c');
 
             /* ── 1. Field configs: form-specific + shared (blank Form_Code) ─ */
             List<Form_Field_Config__mdt> fieldConfigs = [
@@ -642,10 +657,9 @@ global without sharing class AU_EnquiryFormController {
                 if (!values.contains(newValue)) {
                     values.add(newValue);
                 }
-
                 // Convert List back to Multi-Select Picklist format
                 l.Multi_Select_Lead_Source__c = String.join(values, ';');
-
+                l.LeadSource = resolvedLeadSource;
                 Database.update(l);
             } else {
                 l.put('LeadSource', resolvedLeadSource);

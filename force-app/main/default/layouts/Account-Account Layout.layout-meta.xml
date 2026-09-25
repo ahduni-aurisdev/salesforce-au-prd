@@ -59,6 +59,10 @@
                 <behavior>Edit</behavior>
                 <field>UG_Group_Tag__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Board__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

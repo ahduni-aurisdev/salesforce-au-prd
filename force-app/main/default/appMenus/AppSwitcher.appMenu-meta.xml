@@ -216,4 +216,12 @@
         <name>KollegeApply</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>Career_Development_Center</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Partner_API_Access</name>
+        <type>ExternalClientApplication</type>
+    </appMenuItems>
 </AppMenu>

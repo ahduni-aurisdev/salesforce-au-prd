@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <layouts>
+        <layout>CDC</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
         <layout>CLeF Layout</layout>
         <sections>
             <label><!-- Address Information --></label>
@@ -216,6 +231,10 @@
     <quickActions>
         <label><!-- Call Log --></label>
         <name>Call_Log</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Convert Lead --></label>
+        <name>Convert_Lead</name>
     </quickActions>
     <quickActions>
         <label><!-- New Task --></label>

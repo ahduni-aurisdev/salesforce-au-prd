@@ -15,14 +15,14 @@
     <filters>
         <field>Master_Prefereed_Program__c</field>
         <operation>equals</operation>
-        <value>Master of Science in Quantitative Finance</value>
+        <value>Master of Science in Quantitative Finance,Master of Business Administration,Master of Science in Economics,Master of Management Studies in Heritage Management</value>
     </filters>
     <filters>
         <field>CREATED_DATE</field>
         <operation>greaterThan</operation>
-        <value>10/1/2025 12:00 AM</value>
+        <value>9/1/2026 12:00 AM</value>
     </filters>
-    <label>AMSOM Masters Nurturing Database - 25-26</label>
+    <label>AMSOM Masters Nurturing Database - 26-27</label>
     <sharedTo>
         <role>Executive_Graduate_Admissions</role>
         <role>Manager_Graduate_Admissions</role>
