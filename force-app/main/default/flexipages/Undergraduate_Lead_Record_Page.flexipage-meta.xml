@@ -264,6 +264,12 @@
                 <identifier>RecordLead_Fitment_Score__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.School_State2__c</fieldItem>
+                <identifier>RecordSchool_State2__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-dbddb613-14ac-411a-9997-05699ec87a7d</name>
         <type>Facet</type>
     </flexiPageRegions>

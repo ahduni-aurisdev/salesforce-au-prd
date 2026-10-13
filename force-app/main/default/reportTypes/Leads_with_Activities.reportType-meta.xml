@@ -936,6 +936,31 @@
             <field>Linkdin_Ans2__c</field>
             <table>Lead</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Enquiry_Type__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>School_State2__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WhatsApp_Status__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WhatsApp_Read_Date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Educator_Counsellor_Text__c</field>
+            <table>Lead</table>
+        </columns>
         <masterLabel>Leads</masterLabel>
     </sections>
     <sections>
@@ -1159,6 +1184,11 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Engagement Plan</displayNameOverride>
             <field>npsp__Engagement_Plan__c</field>
+            <table>Lead.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Call_Status__c</field>
             <table>Lead.Activities</table>
         </columns>
         <masterLabel>Activities</masterLabel>

@@ -3,6 +3,18 @@
     <label>Executive Education</label>
     <protected>false</protected>
     <values>
+        <field>Contact_Email__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Contact_Phone__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Contact_Title__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Default_Lead_Source__c</field>
         <value xsi:type="xsd:string">Walk-in – Campus</value>
     </values>

@@ -15,7 +15,7 @@ private class PartnerDynamicRecordResourceTest {
     // it rolls back with the rest of the test transaction and never
     // touches the real configuration.
     // PartnerDynamicRecordResource hard-restricts every Lead query to
-    // LeadSource = 'Universier' - the fixture Leads use that value so the
+    // UTM_Link__c = 'https://ahduni.univiser.io/' - the fixture Leads use that value so the
     // existing assertions (which expect them to come back by default)
     // still hold under that mandatory filter.
     @testSetup
@@ -23,13 +23,13 @@ private class PartnerDynamicRecordResourceTest {
         insert new List<Lead>{
             new Lead(FirstName = 'Ann', LastName = 'Partner1', Company = 'Acme',
                       Email = 'ann@example.com', Phone = '555-1000',
-                      Status = 'Open - Not Contacted', LeadSource = 'Universier'),
+                      Status = 'Open - Not Contacted', UTM_Link__c = 'https://ahduni.univiser.io/'),
             new Lead(FirstName = 'Ben', LastName = 'Partner2', Company = 'Acme',
                       Email = 'ben@example.com', Phone = '555-2000',
-                      Status = 'Open - Not Contacted', LeadSource = 'Universier'),
+                      Status = 'Open - Not Contacted', UTM_Link__c = 'https://ahduni.univiser.io/'),
             new Lead(FirstName = 'Cal', LastName = 'Partner3', Company = 'Acme',
                       Email = 'cal@example.com', Phone = '555-3000',
-                      Status = 'Open - Not Contacted', LeadSource = 'Universier')
+                      Status = 'Open - Not Contacted', UTM_Link__c = 'https://ahduni.univiser.io/')
         };
     }
 
@@ -60,17 +60,17 @@ private class PartnerDynamicRecordResourceTest {
         // positives against unrelated keys that happen to contain the
         // same text (e.g. "MobilePhone" containing "Phone").
         System.assert(body.contains('"Email"'), 'Email is granted on Partner_API_Access and should appear');
-        System.assert(body.contains('"LeadSource"'), 'LeadSource is granted on Partner_API_Access and should appear');
+        System.assert(body.contains('"UTM_Link__c"'), 'UTM_Link__c is granted on Partner_API_Access and should appear');
         System.assert(body.contains('"FirstName"'), 'FirstName is a compound-name component with no FieldPermissions row and is always included');
         System.assert(body.contains('"LastName"'), 'LastName is a compound-name component with no FieldPermissions row and is always included');
         System.assert(body.contains('"Status"'), 'Status is a required field with no FieldPermissions row and is always included');
         System.assert(!body.contains('"Company"'), 'Company has no FieldPermissions row on Partner_API_Access');
-        System.assert(!body.contains('"Phone"'), 'Phone (as opposed to MobilePhone) has no FieldPermissions row');
+        System.assert(body.contains('"Phone"'), 'Phone is always included by the class, like FirstName/LastName/Status');
     }
 
     @isTest
     static void testGetRecords_explicitlyRequestedField_allGranted_returnsThem() {
-        RestRequest req = buildRequest('Lead', 'Id,Email,LeadSource', null);
+        RestRequest req = buildRequest('Lead', 'Id,Email,UTM_Link__c', null);
         RestContext.request = req;
         RestContext.response = new RestResponse();
 
@@ -82,7 +82,7 @@ private class PartnerDynamicRecordResourceTest {
         System.assertEquals(200, res.statusCode);
         String body = res.responseBody.toString();
         System.assert(body.contains('"Email"'));
-        System.assert(body.contains('"LeadSource"'));
+        System.assert(body.contains('"UTM_Link__c"'));
     }
 
     @isTest
@@ -233,12 +233,12 @@ private class PartnerDynamicRecordResourceTest {
 
     @isTest
     static void testGetRecords_filterOnFieldNotGrantedForObject_returns400() {
-        // Phone has no FieldPermissions row on the real Partner_API_Access
+        // Company has no FieldPermissions row on the real Partner_API_Access
         // - fails loudly rather than silently ignoring the filter, since a
         // silently-ignored filter would widen the result set beyond what
         // the partner asked for.
         RestRequest req = buildRequest('Lead', 'Id', null);
-        req.params.put('phone', '555-1000');
+        req.params.put('company', 'Acme');
         RestContext.request = req;
         RestContext.response = new RestResponse();
 
@@ -248,25 +248,25 @@ private class PartnerDynamicRecordResourceTest {
 
         RestResponse res = RestContext.response;
         System.assertEquals(400, res.statusCode);
-        System.assert(res.responseBody.toString().contains('phone'));
+        System.assert(res.responseBody.toString().contains('company'));
     }
 
     @isTest
     static void testGetRecords_filterByArbitraryGrantedField_worksWithoutCodeChange() {
-        // LeadSource was never in any hardcoded filterable-field list -
+        // UTM_Link__c was never in any hardcoded filterable-field list -
         // filtering works purely because Partner_API_Access grants it,
         // proving the filter mechanism is fully dynamic rather than
         // limited to a fixed set of field names baked into the class.
-        // Uses 'Universier' (rather than some other value) because every
-        // Lead query is now hard-restricted to LeadSource = 'Universier'
+        // Uses the partner link (rather than some other value) because every
+        // Lead query is now hard-restricted to UTM_Link__c = 'https://ahduni.univiser.io/'
         // regardless of partner input - see
         // testGetRecords_leadSourceDefault_*.
         insert new Lead(FirstName = 'Dee', LastName = 'Partner4', Company = 'Acme',
                           Email = 'dee@example.com', Status = 'Open - Not Contacted',
-                          LeadSource = 'Universier');
+                          UTM_Link__c = 'https://ahduni.univiser.io/');
 
         RestRequest req = buildRequest('Lead', 'Id', null);
-        req.params.put('LeadSource', 'Universier');
+        req.params.put('UTM_Link__c', 'https://ahduni.univiser.io/');
         req.params.put('Email', 'dee@example.com');
         RestContext.request = req;
         RestContext.response = new RestResponse();
@@ -283,11 +283,11 @@ private class PartnerDynamicRecordResourceTest {
 
     @isTest
     static void testGetRecords_leadSourceDefault_excludesLeadsWithOtherSource() {
-        // A Lead whose LeadSource is not 'Universier' must never come back
+        // A Lead whose LeadSource is not the partner link must never come back
         // from this endpoint, even with no partner-supplied filters at all.
         insert new Lead(FirstName = 'Eve', LastName = 'Partner5', Company = 'Acme',
                           Email = 'eve@example.com', Status = 'Open - Not Contacted',
-                          LeadSource = 'Web');
+                          UTM_Link__c = 'https://other.example.com/');
 
         RestRequest req = buildRequest('Lead', 'Id,Email', null);
         RestContext.request = req;
@@ -301,7 +301,7 @@ private class PartnerDynamicRecordResourceTest {
         System.assertEquals(200, res.statusCode);
         String body = res.responseBody.toString();
         System.assert(!body.contains('eve@example.com'),
-            'Leads with LeadSource != Universier must never be returned');
+            'Leads with UTM_Link__c != the partner link must never be returned');
     }
 
     @isTest
@@ -312,10 +312,10 @@ private class PartnerDynamicRecordResourceTest {
         // Web-sourced lead the partner is trying to select.
         insert new Lead(FirstName = 'Eve', LastName = 'Partner5', Company = 'Acme',
                           Email = 'eve@example.com', Status = 'Open - Not Contacted',
-                          LeadSource = 'Web');
+                          UTM_Link__c = 'https://other.example.com/');
 
         RestRequest req = buildRequest('Lead', 'Id', null);
-        req.params.put('LeadSource', 'Web');
+        req.params.put('UTM_Link__c', 'https://other.example.com/');
         RestContext.request = req;
         RestContext.response = new RestResponse();
 
@@ -327,7 +327,7 @@ private class PartnerDynamicRecordResourceTest {
         System.assertEquals(200, res.statusCode);
         List<Object> parsed = (List<Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals(0, parsed.size(),
-            'The mandatory LeadSource = Universier filter must AND with, not be overridden by, partner filters');
+            'The mandatory UTM_Link__c = partner link filter must AND with, not be overridden by, partner filters');
     }
 
     @isTest

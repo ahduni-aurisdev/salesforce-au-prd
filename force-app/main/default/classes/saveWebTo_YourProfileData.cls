@@ -507,6 +507,21 @@ global class saveWebTo_YourProfileData {
                 // still record this touch's source on Most_Recent_Lead_Source__c (never
                 // locked, unlike LeadSource) so the Lead trigger can pick up a genuine
                 // re-touch for Campaign History even when LeadSource itself stays put.
+                // Added By : Mihir Ramoliya
+                // Added on : 12th October 2026
+                // Do not push an existing Lead back to "New Lead" when the same student is
+                // submitted again. Once the sales team has moved the Lead past New Lead, an
+                // incoming 'leadStatus' of New Lead is ignored. Any other incoming status
+                // still applies, and a Lead that is still New Lead can be updated normally.
+                if (mapRec.Label == 'Status' && newLead.Id != null) {
+                    String currentStatus = (String) newLead.get('Status');
+                    if (String.isNotBlank(currentStatus)
+                        && !currentStatus.equalsIgnoreCase('New Lead')
+                        && String.valueOf(fieldValue).equalsIgnoreCase('New Lead')) {
+                        System.debug('Skipping Status reset to New Lead - existing Lead is already at ' + currentStatus);
+                        continue;
+                    }
+                }
                 String currentLeadSource = LeadTriggerHandler.safeGet(newLead, Lead.LeadSource);
                 System.debug('newLead.LeadSource: '+currentLeadSource);
                 System.debug('mapRec.Label: '+mapRec.Label);
@@ -548,6 +563,33 @@ global class saveWebTo_YourProfileData {
         // throw "field not queried" and abort the whole save (seen in practice).
         System.debug('newLead.Most_Recent_Lead_Source__c: '+LeadTriggerHandler.safeGet(newLead, Lead.Most_Recent_Lead_Source__c));
         System.debug('newLead.Multi_Select_Lead_Sources__c: '+LeadTriggerHandler.safeGet(newLead, Lead.Multi_Select_Lead_Sources__c));
+        // Added By : Mihir Ramoliya
+        // Purpose  : A lead arriving from Auris with a Registration Number or a
+        //            Registration Date is an Auris-registered lead, so AURIS is added
+        //            to the Multi_Select_Lead_Source__c (multiselect only - the
+        //            LeadSource field itself still never receives AURIS, see above).
+        //            Existing values are kept; LeadMultiLeadSourceTrigger merges the
+        //            rest. safeGet is used because some duplicate-lookup queries
+        //            don't select these fields.
+        Boolean hasRegistrationNumber = String.isNotBlank(registrationNumber)
+            || String.isNotBlank(LeadTriggerHandler.safeGet(newLead, Lead.Registration_Number__c));
+        Boolean hasRegistrationDate = newLead.isSet(Lead.Registration_Date__c)
+            && newLead.get(Lead.Registration_Date__c) != null;
+        if (hasRegistrationNumber || hasRegistrationDate) {
+            String currentMulti = LeadTriggerHandler.safeGet(newLead, Lead.Multi_Select_Lead_Source__c);
+            Set<String> multiValues = new Set<String>();
+            if (String.isNotBlank(currentMulti)) {
+                for (String v : currentMulti.split(';')) {
+                    if (String.isNotBlank(v.trim())) {
+                        multiValues.add(v.trim());
+                    }
+                }
+            }
+            if (multiValues.add('AURIS')) {
+                newLead.Multi_Select_Lead_Source__c = String.join(new List<String>(multiValues), ';');
+            }
+        }
+
         // Save record using Registration Number as external ID
         if (Schema.sObjectType.Lead.isCreateable() && Schema.sObjectType.Lead.isUpdateable()) {
             // System.debug('Before upsert - Group_Tag__c: ' + newLead.Group_Tag__c);
@@ -632,7 +674,7 @@ global class saveWebTo_YourProfileData {
      * @return          Full SOQL query string
      */
     private static String leadSoqlForCreation(Id leadId, Integer maxGroups) {
-        String q = 'SELECT Id, RecordTypeId, Multi_Select_Lead_Source__c, Most_Recent_Lead_Source__c, LastName';
+        String q = 'SELECT Id, RecordTypeId, Multi_Select_Lead_Source__c, Most_Recent_Lead_Source__c, LastName, Status';
         for (Integer s = 1; s <= maxGroups; s++) {
             q += ', Group_'  + s + '__c';
             q += ', Group_'  + s + '_Application_Number__c';
@@ -765,7 +807,7 @@ global class saveWebTo_YourProfileData {
         List<Lead> matchingLead = [
             SELECT Id, Phone, Registration_Number__c, Email,
                    Multi_Select_Lead_Source__c, Preferred_Programme__c,
-                   RecordTypeId, LastName, FirstName, LeadSource, Most_Recent_Lead_Source__c
+                   RecordTypeId, LastName, FirstName, LeadSource, Most_Recent_Lead_Source__c, Status
             FROM Lead
             WHERE Phone LIKE :matchingphone
             AND Email = :matchingEmail
@@ -858,7 +900,7 @@ global class saveWebTo_YourProfileData {
             SELECT Id, Phone, Registration_Number__c, Email,
                 Multi_Select_Lead_Source__c, RecordTypeId,
                 LastName, FirstName, Department__c, LeadSource,
-                Most_Recent_Lead_Source__c,
+                Most_Recent_Lead_Source__c, Status,
                 // Group slot 1
                 Group_1__c, Group_1_Application_Date__c,
                 Group_1_Application_Number__c, Group_1_Majors__c, Group_1_Programmes__c,

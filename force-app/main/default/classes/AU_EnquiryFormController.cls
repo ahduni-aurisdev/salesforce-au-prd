@@ -197,7 +197,8 @@ global without sharing class AU_EnquiryFormController {
         List<Form_Department_Config__mdt> deptConfigs = [
             SELECT DeveloperName, MasterLabel, Icon_Emoji__c, Subtitle__c,
                    URL_Slugs__c, Lead_Record_Type_Name__c,
-                   Default_Lead_Source__c, UTM_Source_Map__c, Sort_Order__c
+                   Default_Lead_Source__c, UTM_Source_Map__c, Sort_Order__c,
+                   Contact_Email__c, Contact_Phone__c, Contact_Title__c
             FROM   Form_Department_Config__mdt
             ORDER  BY Sort_Order__c ASC NULLS LAST
         ];
@@ -215,7 +216,8 @@ global without sharing class AU_EnquiryFormController {
             SELECT Department_Code__c, Form_Code__c, SF_API_Name__c,
                    Form_Label__c, Field_Type__c, Is_Required__c,
                    Placeholder_Text__c, Help_Text__c, Field_Options__c,
-                   Full_Width__c, Is_Numeric__c, Is_Integer__c, Sort_Order__c
+                   Full_Width__c, Is_Numeric__c, Is_Integer__c, Sort_Order__c,
+                   Is_Hidden__c, Default_Value__c
             FROM   Form_Field_Config__mdt
             ORDER  BY Sort_Order__c ASC NULLS LAST
         ];
@@ -313,6 +315,14 @@ global without sharing class AU_EnquiryFormController {
                 }
             }
 
+            // Resolve contact details with intelligent fallbacks
+            String contactEmail = String.isNotBlank(d.Contact_Email__c)
+                ? d.Contact_Email__c : getDefaultEmailForDept(dCode);
+            String contactPhone = String.isNotBlank(d.Contact_Phone__c)
+                ? d.Contact_Phone__c : getDefaultPhoneForDept(dCode);
+            String contactTitle = String.isNotBlank(d.Contact_Title__c)
+                ? d.Contact_Title__c : getDefaultTitleForDept(dCode, d.MasterLabel);
+
             result.add(new Map<String, Object>{
                 'code'              => dCode,
                 'name'              => d.MasterLabel,
@@ -323,11 +333,72 @@ global without sharing class AU_EnquiryFormController {
                 'leadRecordTypeName'=> d.Lead_Record_Type_Name__c,
                 'defaultLeadSource' => d.Default_Lead_Source__c,
                 'utmSourceMap'      => utmSourceMap,
+                'contactEmail'      => contactEmail,
+                'contactPhone'      => contactPhone,
+                'contactTitle'      => contactTitle,
                 'forms'             => formsOut
             });
         }
 
         return result;
+    }
+
+    /**
+     * Brochure for the chosen programme (Programme_Brochure__mdt), matched on the
+     * programme name as submitted or as remapped. Returns null if none is set or the
+     * link is not https.
+     */
+    @TestVisible
+    private static String getBrochureUrl(String submittedProgramme, String mappedProgramme) {
+        Set<String> names = new Set<String>();
+        if (String.isNotBlank(submittedProgramme)) names.add(submittedProgramme.trim().toLowerCase());
+        if (String.isNotBlank(mappedProgramme))    names.add(mappedProgramme.trim().toLowerCase());
+
+        for (Programme_Brochure__mdt b : [
+            SELECT Programme_Name__c, Brochure_URL__c FROM Programme_Brochure__mdt
+        ]) {
+            if (String.isNotBlank(b.Brochure_URL__c) && String.isNotBlank(b.Programme_Name__c)
+                    && names.contains(b.Programme_Name__c.trim().toLowerCase())
+                    && b.Brochure_URL__c.startsWithIgnoreCase('https://')) {
+                return b.Brochure_URL__c;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Fallback default contact emails per department code.
+     */
+    @TestVisible
+    private static String getDefaultEmailForDept(String deptCode) {
+        if (deptCode == 'UG') return 'ugadmissions@ahduni.edu.in';
+        if (deptCode == 'MASTERS') return 'masters.admissions@ahduni.edu.in';
+        if (deptCode == 'PHD') return 'doctoral.admissions@ahduni.edu.in';
+        if (deptCode == 'EXEC_ED') return 'execed@ahduni.edu.in';
+        return 'admissions@ahduni.edu.in';
+    }
+
+    /**
+     * Fallback default contact phone numbers per department code.
+     */
+    @TestVisible
+    private static String getDefaultPhoneForDept(String deptCode) {
+        if (deptCode == 'UG') return '+91 81288 18876';
+        if (deptCode == 'MASTERS') return '+91 79 6191 1126';
+        if (deptCode == 'PHD') return '+91 79 6191 1125';
+        if (deptCode == 'EXEC_ED') return '+91 79 6191 1197';
+        return '+91 79 6191 1000';
+    }
+
+    /**
+     * Fallback default contact title per department.
+     */
+    @TestVisible
+    private static String getDefaultTitleForDept(String deptCode, String masterLabel) {
+        if (deptCode == 'PHD') return 'Doctoral Admissions';
+        if (deptCode == 'EXEC_ED') return 'Executive Education Admissions';
+        if (String.isNotBlank(masterLabel)) return masterLabel + ' Admissions';
+        return 'Admissions Office';
     }
 
     /* ── Build field list for a form: form-specific + dept-shared merged ─── */
@@ -374,6 +445,8 @@ global without sharing class AU_EnquiryFormController {
                 'fullWidth'   => f.Full_Width__c,
                 'isNumeric'   => f.Is_Numeric__c,
                 'isInteger'   => f.Is_Integer__c,
+                'isHidden'    => f.Is_Hidden__c == true,
+                'defaultValue'=> f.Default_Value__c,
                 'options'     => parseLines(f.Field_Options__c)
             });
         }
@@ -458,6 +531,7 @@ global without sharing class AU_EnquiryFormController {
                 (Map<String, Object>) JSON.deserializeUntyped(payloadJSON);
 
             String programVal = strVal(data, 'Preferred_Programme__c');
+            String submittedProgramme = programVal;
 
             // Map containing old value -> new value
             Map<String, String> programMap = new Map<String, String>{
@@ -482,7 +556,8 @@ global without sharing class AU_EnquiryFormController {
 
             /* ── 1. Field configs: form-specific + shared (blank Form_Code) ─ */
             List<Form_Field_Config__mdt> fieldConfigs = [
-                SELECT SF_API_Name__c, Is_Numeric__c, Is_Integer__c, Form_Code__c
+                SELECT SF_API_Name__c, Is_Numeric__c, Is_Integer__c, Form_Code__c,
+                       Is_Hidden__c, Default_Value__c
                 FROM   Form_Field_Config__mdt
                 WHERE  Department_Code__c = :deptCode
                 AND    (Form_Code__c = :formCode
@@ -501,6 +576,14 @@ global without sharing class AU_EnquiryFormController {
                 if (!allowedFields.containsKey(fc.SF_API_Name__c)
                         || (thisIsSpecific && !alreadyHaveSpecific)) {
                     allowedFields.put(fc.SF_API_Name__c, fc);
+                }
+            }
+
+            /* Apply default values configured on metadata if not supplied in payload */
+            for (String apiName : allowedFields.keySet()) {
+                Form_Field_Config__mdt fc = allowedFields.get(apiName);
+                if (String.isNotBlank(fc.Default_Value__c) && (!data.containsKey(apiName) || String.isBlank(strVal(data, apiName)))) {
+                    data.put(apiName, fc.Default_Value__c);
                 }
             }
 
@@ -593,21 +676,13 @@ global without sharing class AU_EnquiryFormController {
             if (String.isBlank((String) l.get('LastName')))
                 l.put('LastName', 'Unknown');
 
-            /* LeadSource resolution */
-            String resolvedLeadSource = '';
-            String utmSourceVal = strVal(data, 'UTM_Source__c').toLowerCase();
-            if (!deptMeta.isEmpty()) {
-                Form_Department_Config__mdt dm = deptMeta[0];
-                Map<String, String> utmMap = parseKeyValueBlock(dm.UTM_Source_Map__c);
-                if (String.isNotBlank(utmSourceVal) && utmMap.containsKey(utmSourceVal)) {
-                    resolvedLeadSource = utmMap.get(utmSourceVal);
-                } else if (String.isNotBlank(utmSourceVal)) {
-                    resolvedLeadSource = utmSourceVal;
-                } else if (String.isNotBlank(dm.Default_Lead_Source__c)) {
-                    resolvedLeadSource = dm.Default_Lead_Source__c;
-                }
-            }
-            if (String.isBlank(resolvedLeadSource)) resolvedLeadSource = 'Web';
+            /* LeadSource resolution
+               1. LeadSource field selected in the form -> highest priority
+               2. otherwise utm_source in URL            -> used as-is
+               3. otherwise                              -> 'Admission Form' */
+            String resolvedLeadSource = strVal(data, 'LeadSource');
+            if (String.isBlank(resolvedLeadSource)) resolvedLeadSource = strVal(data, 'UTM_Source__c');
+            if (String.isBlank(resolvedLeadSource)) resolvedLeadSource = 'Admission Form';
 
             l.put('TypeOfForm__c', TypeOfForm);
             l.put('Status', 'New Lead');
@@ -652,7 +727,7 @@ global without sharing class AU_EnquiryFormController {
                 }
 
                 // Add new value if not already present
-                String newValue = 'Wonderchat';
+                String newValue = resolvedLeadSource;
 
                 if (!values.contains(newValue)) {
                     values.add(newValue);
@@ -692,6 +767,7 @@ global without sharing class AU_EnquiryFormController {
             response.put('success',   true);
             response.put('leadId',    finalLeadId);
             response.put('duplicate', isDuplicate);
+            response.put('brochureUrl', getBrochureUrl(submittedProgramme, programVal));
 
         } catch (DmlException dmlEx) {
             System.debug(LoggingLevel.ERROR,

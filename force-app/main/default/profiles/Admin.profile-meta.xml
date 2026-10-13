@@ -36,6 +36,11 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
+        <application>standard__AlmDevops</application>
+        <default>false</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>standard__AppLauncher</application>
         <default>false</default>
         <visible>false</visible>
@@ -146,6 +151,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AU_EnquiryFormController_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AU_FormAdminController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AU_FormAdminController_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1370,6 +1383,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Form_Department_Config__mdt.Contact_Email__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Form_Department_Config__mdt.Contact_Phone__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Form_Department_Config__mdt.Contact_Title__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Form_Department_Config__mdt.Default_Lead_Source__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1420,6 +1448,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Form_Field_Config__mdt.Default_Value__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Form_Field_Config__mdt.Department_Code__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1451,6 +1484,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Form_Field_Config__mdt.Help_Text__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Form_Field_Config__mdt.Is_Hidden__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2080,6 +2118,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Programme_Brochure__mdt.Brochure_URL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>RecordTypeMapping__mdt.Object_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2362,6 +2405,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Event_Call_Status</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>JBSystemFlow_Lead</flow>
     </flowAccesses>
     <flowAccesses>
@@ -2395,6 +2442,10 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Special_Source_Lead_Override_MBA_Meta</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>UG_School_Trigger</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
@@ -2444,6 +2495,15 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>AccountPlan-Account Plan Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>AccountPlanObjective-Account Plan Objective Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>AccountPlanObjectiveMeasure-Account Plan Objective Measure Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>ActionPlan-Action Plan Layout</layout>
@@ -2585,6 +2645,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Department_Record_Type_Mapping__mdt-Department Record Type Mapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>DevopsActivityLog-Activity History Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Document_Detail__c-Document Detail Layout</layout>
@@ -2817,6 +2880,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Program__c-Program Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Programme_Brochure__mdt-Programme Brochure Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>QuickText-Quick Text Layout</layout>
@@ -3253,6 +3319,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>AU_SessionHelper</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -3399,6 +3469,10 @@
     <tabVisibilities>
         <tab>Extracurricular_activities__c</tab>
         <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Form_Builder</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>MCUBE_Object_Api__c</tab>
@@ -3887,6 +3961,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ManageForecastingCustomData</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ManageHealthCheck</name>
     </userPermissions>
     <userPermissions>
@@ -3952,6 +4030,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ManagePvtRptsAndDashbds</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageQuotas</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -4051,11 +4133,23 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>OverrideForecasts</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>Packaging2</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>Packaging2Delete</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>PipelineInspectorUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>PlatformWebIdeUser</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -4175,7 +4269,15 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>UserHasDevOpsCore</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ViewAllData</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewAllForecasts</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -4264,6 +4366,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ViewSetup</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewSetupAuditTrail</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

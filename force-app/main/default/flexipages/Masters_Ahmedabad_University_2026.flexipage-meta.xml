@@ -83,6 +83,12 @@
                 <identifier>RecordGender_cField3</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.School_State2__c</fieldItem>
+                <identifier>RecordSchool_State2__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-84317482-25b1-479a-8f7e-710be264a9bd</name>
         <type>Facet</type>
     </flexiPageRegions>

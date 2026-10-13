@@ -3,6 +3,10 @@
     <label>FM_WONDERCHAT_EE_ADMISSION_YEAR</label>
     <protected>false</protected>
     <values>
+        <field>Default_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Department_Code__c</field>
         <value xsi:type="xsd:string">EXEC_ED</value>
     </values>
@@ -32,6 +36,10 @@ Admission Year - 2030</value>
     <values>
         <field>Help_Text__c</field>
         <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Is_Hidden__c</field>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Is_Integer__c</field>

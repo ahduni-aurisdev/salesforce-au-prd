@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>AU_FormAdminController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Grants access to the Dynamic Form Builder Admin Panel and Apex Controllers.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.Call_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.Enquiry_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.Call_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>AU Form Builder Admin</label>
+    <pageAccesses>
+        <apexPage>AU_EnquiryForm</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>AU_SessionHelper</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <tabSettings>
+        <tab>Form_Builder</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

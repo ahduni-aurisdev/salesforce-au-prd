@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Lead Source</label>
+    <protected>false</protected>
+    <values>
+        <field>Default_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Department_Code__c</field>
+        <value xsi:type="xsd:string">UG</value>
+    </values>
+    <values>
+        <field>Field_Options__c</field>
+        <value xsi:type="xsd:string">Alumni
+AURIS
+Campus Visit
+Career_360PGQueries
+Career_360UGQueries
+Career Fair
+careers360
+Careers 360
+College Board/SAT
+Collegedunia
+Colloquiums
+Corporate Partner Visit
+Counsellor
+Email
+Event
+Facebook
+Fair
+Google_ads
+Inbound Call(mcube)
+Info Session
+Inquiry Form
+Instagram
+KollegeApply
+LinkedIn Ads
+Meta Ads
+Newsletter
+Open House
+Outreach Event
+Partner
+Partners
+Phone
+Referral
+Roadshow Event
+Shiksha
+Virtual Webinar
+Walk-in
+Website
+Website_CLeFBrochures
+Website_CLeFConnect
+Website_ExecEDBrochures
+Website_ExecEDConnect
+Website_ExecEDQueries
+Website_MasterConnect
+Website_MastersBrochures
+Website_MastersConnect
+Website_MastersEconomicsLanding
+Website_MastersHeritageLanding
+Website_MastersMBALanding
+Website_MastersMSQFLanding
+Website_MastersQueries
+Website_PhDBrochures
+Website_PhDConnect
+Website_PhDQueries
+Website_ShikshaQueries
+Website_UGBrochures
+Website_UGQueries
+Wonderchat</value>
+    </values>
+    <values>
+        <field>Field_Type__c</field>
+        <value xsi:type="xsd:string">picklist</value>
+    </values>
+    <values>
+        <field>Form_Code__c</field>
+        <value xsi:type="xsd:string">UNDERGRADUATION-2027</value>
+    </values>
+    <values>
+        <field>Form_Label__c</field>
+        <value xsi:type="xsd:string">Lead Source</value>
+    </values>
+    <values>
+        <field>Full_Width__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Help_Text__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Is_Hidden__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Is_Integer__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Is_Numeric__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Is_Required__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Placeholder_Text__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>SF_API_Name__c</field>
+        <value xsi:type="xsd:string">LeadSource</value>
+    </values>
+    <values>
+        <field>Sort_Order__c</field>
+        <value xsi:type="xsd:double">4.0</value>
+    </values>
+</CustomMetadata>

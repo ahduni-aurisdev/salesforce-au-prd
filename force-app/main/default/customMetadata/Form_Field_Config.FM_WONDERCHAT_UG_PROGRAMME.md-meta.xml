@@ -3,6 +3,10 @@
     <label>FM_WONDERCHAT_UG_PROGRAMME</label>
     <protected>false</protected>
     <values>
+        <field>Default_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Department_Code__c</field>
         <value xsi:type="xsd:string">UG</value>
     </values>
@@ -40,6 +44,10 @@ Dual Degree The BxMx Programme (BS - MS in Quantitative Finance)</value>
     <values>
         <field>Help_Text__c</field>
         <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Is_Hidden__c</field>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Is_Integer__c</field>

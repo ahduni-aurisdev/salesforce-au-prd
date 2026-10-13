@@ -160,6 +160,10 @@ body.embed-mode .page{ padding-top:20px; }
   width:100%;
 }
 
+.phone-row{display:flex;gap:8px}
+.phone-row select{flex:0 0 42%;max-width:190px}
+.phone-row input{flex:1;min-width:0}
+
 /* ── UTM STRIP ───────────────────────────────────────────────── */
 .utm{
   display:none;
@@ -439,6 +443,99 @@ body.embed-mode .page{ padding-top:20px; }
   font-weight:500;color:var(--charcoal);margin-bottom:10px;
 }
 .success p{font-size:14px;color:var(--muted);line-height:1.65;max-width:400px;margin:0 auto}
+
+/* ── SUCCESS CONTACT BOX ─────────────────────────────────────── */
+.success-contact-box{
+  margin:28px auto 0;
+  max-width:480px;
+  background:#FAF9F6;
+  border:1px solid var(--border-lt);
+  border-radius:var(--r);
+  padding:20px 24px;
+  text-align:center;
+  animation:fadeUp .35s ease;
+}
+.scb-heading{
+  font-size:12.5px;
+  color:var(--muted);
+  margin-bottom:6px;
+  font-weight:500;
+}
+.scb-office{
+  font-family:var(--fd);
+  font-size:19px;
+  font-weight:600;
+  color:var(--charcoal);
+  margin-bottom:16px;
+}
+.scb-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.scb-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:9px 18px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--charcoal);
+  text-decoration:none;
+  transition:all var(--tr);
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+}
+.scb-btn:hover{
+  border-color:var(--maroon);
+  color:var(--maroon);
+  transform:translateY(-1px);
+  box-shadow:0 4px 10px rgba(128,18,20,.12);
+}
+.scb-btn svg{
+  stroke:var(--maroon);
+  flex-shrink:0;
+}
+.btn-sec{
+  background:transparent;
+  color:var(--muted);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:9px 22px;
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all var(--tr);
+  font-family:var(--fb);
+}
+.btn-sec:hover{
+  border-color:var(--charcoal);
+  color:var(--charcoal);
+  background:#fff;
+}
+body.embed-mode .success-contact-box{
+  background:var(--cb-bg-subtle,#F8FAFC);
+  border-color:var(--cb-border);
+}
+body.embed-mode .scb-office{
+  color:var(--cb-text,#0F172A);
+}
+body.embed-mode .scb-btn:hover{
+  border-color:var(--cb-accent);
+  color:var(--cb-accent);
+}
+body.embed-mode .btn-sec{
+  border-color:var(--cb-border);
+  color:var(--cb-muted);
+}
+body.embed-mode .btn-sec:hover{
+  border-color:var(--cb-accent);
+  color:var(--cb-accent);
+  background:#fff;
+}
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
 .ftr{
@@ -753,8 +850,42 @@ body.embed-mode .btn-back:hover{border-color:var(--cb-accent);color:var(--cb-acc
 /* back-bar row above the form */
 .back-bar{
   display:flex;align-items:center;
-  margin-bottom:18px;
+  margin-bottom:14px;
 }
+
+/* ── DEPARTMENT CONTACT BANNER (STEP 2) ───────────────────────── */
+.dept-contact-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:#FAF9F6;border:1px solid var(--border-lt);
+  border-left:3.5px solid var(--maroon);
+  border-radius:var(--r);padding:11px 16px;margin-bottom:20px;
+  gap:12px;flex-wrap:wrap;animation:fadeUp .25s ease;
+}
+.dcb-info{display:flex;align-items:center;gap:10px}
+.dcb-icon{font-size:16px;line-height:1;display:flex;align-items:center}
+.dcb-title{font-family:var(--fb);font-weight:600;font-size:13px;color:var(--charcoal)}
+.dcb-sub{font-size:12px;color:var(--muted);margin-left:2px}
+.dcb-contacts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dcb-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;color:var(--maroon);
+  text-decoration:none;transition:all var(--tr);
+}
+.dcb-link:hover{text-decoration:underline;opacity:.85}
+.dcb-link svg{stroke:var(--maroon);flex-shrink:0}
+.dcb-sep{color:var(--border);font-size:11px}
+
+/* embed theme override for dept-contact-bar */
+body.embed-mode .dept-contact-bar{
+  background:var(--cb-accent-tint);
+  border-color:var(--cb-border-lt);
+  border-left-color:var(--cb-accent);
+}
+body.embed-mode .dcb-title{color:var(--cb-text)}
+body.embed-mode .dcb-sub{color:var(--cb-muted)}
+body.embed-mode .dcb-link{color:var(--cb-accent)}
+body.embed-mode .dcb-link svg{stroke:var(--cb-accent)}
+
 
 /* ── CAPTCHA ─────────────────────────────────────────────────── */
 /* Hide default reCAPTCHA badge — we show our own disclosure text */
@@ -823,9 +954,9 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
     </div>
   </a>
   <div class="hdr-right">
-    <p>Admissions Office<br/>
-       <a href="tel:+917961911000">+91 79 6191 1000</a> &nbsp;·&nbsp;
-       <a href="mailto:admissions@ahduni.edu.in">admissions@ahduni.edu.in</a></p>
+    <p><span id="hdrContactTitle">Admissions Office</span><br/>
+       <a id="hdrContactPhone" href="tel:+917961911000">+91 79 6191 1000</a> &nbsp;·&nbsp;
+       <a id="hdrContactEmail" href="mailto:admissions@ahduni.edu.in">admissions@ahduni.edu.in</a></p>
   </div>
 </header>
 
@@ -837,8 +968,8 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
     <h1>Programme Enquiry</h1>
     <p>Fill in your details and our admissions team will get in touch shortly.</p>
     <div class="hero-meta">
-      <span>&#127979; <strong>East Campus, Ahmedabad – 380 009</strong></span>
-      <span>&#128222; <strong>+91 79 6191 1000</strong></span>
+      <span>&#127979; <strong>Commerce Circle, Gate no.-2, Ahmedabad - 380009</strong></span>
+      <span>&#128222; <strong id="heroContactPhone">+91 79 6191 1000</strong></span>
       <span>&#127760; <strong>ahduni.edu.in</strong></span>
     </div>
   </div>
@@ -897,6 +1028,29 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
             Change Department
           </button>
         </div>
+
+        <!-- Department Direct Contact Banner -->
+        <div class="dept-contact-bar" id="deptContactBar">
+          <div class="dcb-info">
+            <span class="dcb-icon">&#128222;</span>
+            <div>
+              <span class="dcb-title" id="formContactTitle">Admissions Office</span>
+              <span class="dcb-sub">&mdash; Direct Enquiry Contacts:</span>
+            </div>
+          </div>
+          <div class="dcb-contacts">
+            <a id="formContactPhone" href="tel:+917961911000" class="dcb-link">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span id="formContactPhoneText">+91 79 6191 1000</span>
+            </a>
+            <span class="dcb-sep">&bull;</span>
+            <a id="formContactEmail" href="mailto:admissions@ahduni.edu.in" class="dcb-link">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span id="formContactEmailText">admissions@ahduni.edu.in</span>
+            </a>
+          </div>
+        </div>
+
         <div class="err-banner" id="errBanner"></div>
 
         <form id="eForm" autocomplete="off" onsubmit="return false;">
@@ -926,18 +1080,42 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
               <span class="f-err" id="e_Email">Please enter a valid email address</span>
             </div>
 
-            <!-- CHANGE 4: phone — digits only, max 10, no +91 -->
+            <!-- Phone with country code: country select + national number -->
             <div class="fgrp">
               <label>Mobile Number <span class="req">*</span></label>
-              <input type="tel" id="fMobile" name="Phone"
-                     placeholder="98765 43210"
-                     required="true"
-                     maxlength="10"
-                     inputmode="numeric"
-                     pattern="[0-9]{10}"
-                     autocomplete="tel-national"/>
-              <span class="f-hint">10-digit number, without +91</span>
-              <span class="f-err" id="e_Phone">Please enter a valid 10-digit mobile number</span>
+              <div class="phone-row">
+                <select id="fPhoneCountry" name="Phone_Country" aria-label="Country code">
+                  <option value="IN" data-dial="+91">India (+91)</option>
+                  <option value="AE" data-dial="+971">UAE (+971)</option>
+                  <option value="US" data-dial="+1">United States (+1)</option>
+                  <option value="CA" data-dial="+1">Canada (+1)</option>
+                  <option value="GB" data-dial="+44">United Kingdom (+44)</option>
+                  <option value="AU" data-dial="+61">Australia (+61)</option>
+                  <option value="SG" data-dial="+65">Singapore (+65)</option>
+                  <option value="NP" data-dial="+977">Nepal (+977)</option>
+                  <option value="BD" data-dial="+880">Bangladesh (+880)</option>
+                  <option value="LK" data-dial="+94">Sri Lanka (+94)</option>
+                  <option value="SA" data-dial="+966">Saudi Arabia (+966)</option>
+                  <option value="QA" data-dial="+974">Qatar (+974)</option>
+                  <option value="KW" data-dial="+965">Kuwait (+965)</option>
+                  <option value="OM" data-dial="+968">Oman (+968)</option>
+                  <option value="BH" data-dial="+973">Bahrain (+973)</option>
+                  <option value="NZ" data-dial="+64">New Zealand (+64)</option>
+                  <option value="DE" data-dial="+49">Germany (+49)</option>
+                  <option value="FR" data-dial="+33">France (+33)</option>
+                  <option value="KE" data-dial="+254">Kenya (+254)</option>
+                  <option value="NG" data-dial="+234">Nigeria (+234)</option>
+                  <option value="ZA" data-dial="+27">South Africa (+27)</option>
+                </select>
+                <input type="tel" id="fMobile" name="Phone"
+                       placeholder="98765 43210"
+                       required="true"
+                       maxlength="15"
+                       inputmode="numeric"
+                       autocomplete="tel-national"/>
+              </div>
+              <span class="f-hint" id="phoneHint">Select your country code and enter your number</span>
+              <span class="f-err" id="e_Phone">Please enter a valid mobile number</span>
             </div>
 
             <div class="fgrp">
@@ -980,8 +1158,7 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
           <div style="margin-top:24px">
             <div class="sec-lbl">Enquiry Details</div>
             <div class="fg">
-              <!-- LeadSource resolved server-side from utm_source -->
-              <input type="hidden" id="hLeadSource" name="LeadSource"/>
+              <!-- LeadSource resolved server-side: form field > utm_source > 'Admission Form' -->
               <div class="fgrp sp2">
                 <label>Your Query / Message</label>
                 <textarea id="fDesc" name="Description" rows="3"
@@ -1038,9 +1215,9 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
               <span class="btn-spinner" id="btnSpinner"></span>
               <span id="btnText">Submit Enquiry</span>
             </button>
-            <p class="sub-note">
+            <p class="sub-note" id="formSubNote">
               &#128274; Your information is encrypted and used only by the
-              Ahmedabad University Admissions team.
+              <span id="formSubNoteDept">Ahmedabad University Admissions</span> team. For help: <a id="subNotePhone" href="tel:+917961911000" style="color:var(--maroon);font-weight:600;text-decoration:none">+91 79 6191 1000</a> &middot; <a id="subNoteEmail" href="mailto:admissions@ahduni.edu.in" style="color:var(--maroon);font-weight:600;text-decoration:none">admissions@ahduni.edu.in</a>
             </p>
           </div>
 
@@ -1057,7 +1234,33 @@ body.embed-mode .captcha-note a { color:var(--cb-accent) }
           Thank you for your interest in Ahmedabad University.<br/>
           Our admissions team will contact you shortly.
         </p>
-        
+
+        <div class="success-contact-box" id="successContactBox">
+          <div class="scb-heading">Have immediate questions? Contact our team directly:</div>
+          <div class="scb-office" id="successContactTitle">Admissions Office</div>
+          <div class="scb-actions">
+            <a id="successPhoneLink" href="tel:+917961911000" class="scb-btn">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span id="successPhoneText">+91 79 6191 1000</span>
+            </a>
+            <a id="successEmailLink" href="mailto:admissions@ahduni.edu.in" class="scb-btn">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span id="successEmailText">admissions@ahduni.edu.in</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="brochureBox" style="display:none;margin-top:24px">
+          <a id="brochureLink" class="btn-pri" href="#" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Brochure</span>
+          </a>
+        </div>
+
+        <div style="margin-top:28px">
+          <button type="button" class="btn-sec" onclick="resetForm()">Submit Another Enquiry</button>
+        </div>
       </div>
 
     </div><!-- /card-body -->
@@ -1095,6 +1298,119 @@ var FORM_SLUGS  = {};          // form slug -> form code
 var activeDept  = null;        // selected dept object from META
 var activeForm  = null;        // selected form object from activeDept.forms
 
+/* ── Dynamic Contact Info updater ────────────────────────────── */
+var DEFAULT_CONTACT = {
+  title: 'Admissions Office',
+  phone: '+91 79 6191 1000',
+  email: 'admissions@ahduni.edu.in'
+};
+
+var DEPT_FALLBACK_CONTACTS = {
+  'UG': {
+    title: 'Undergraduate Admissions',
+    phone: '+91 81288 18876',
+    email: 'ugadmissions@ahduni.edu.in'
+  },
+  'MASTERS': {
+    title: 'Masters Admissions',
+    phone: '+91 79 6191 1126',
+    email: 'masters.admissions@ahduni.edu.in'
+  },
+  'PHD': {
+    title: 'Doctoral Admissions',
+    phone: '+91 79 6191 1125',
+    email: 'doctoral.admissions@ahduni.edu.in'
+  },
+  'EXEC_ED': {
+    title: 'Executive Education Admissions',
+    phone: '+91 79 6191 1197',
+    email: 'execed@ahduni.edu.in'
+  }
+};
+
+function updateContactInfo(dept) {
+  var dCode = dept ? (dept.code || '') : '';
+  var fallback = DEPT_FALLBACK_CONTACTS[dCode] || DEFAULT_CONTACT;
+
+  var title = (dept && dept.contactTitle)
+    ? dept.contactTitle
+    : (dept && dept.name ? (dept.name === 'PhD' ? 'Doctoral' : dept.name) + ' Admissions' : fallback.title);
+  var phone = (dept && dept.contactPhone) ? dept.contactPhone : fallback.phone;
+  var email = (dept && dept.contactEmail) ? dept.contactEmail : fallback.email;
+
+  // 1. Header contact info (top of page)
+  var hdrTitle = document.getElementById('hdrContactTitle');
+  if (hdrTitle) hdrTitle.textContent = title;
+
+  var hdrPhone = document.getElementById('hdrContactPhone');
+  if (hdrPhone) {
+    hdrPhone.textContent = phone;
+    hdrPhone.href = 'tel:' + phone.replace(/[^0-9+]/g, '');
+  }
+
+  var hdrEmail = document.getElementById('hdrContactEmail');
+  if (hdrEmail) {
+    hdrEmail.textContent = email;
+    hdrEmail.href = 'mailto:' + email;
+  }
+
+  // 2. Hero phone
+  var heroPhone = document.getElementById('heroContactPhone');
+  if (heroPhone) heroPhone.textContent = phone;
+
+  // 3. Step 2 (Form card) Department Contact Bar
+  var formTitle = document.getElementById('formContactTitle');
+  if (formTitle) formTitle.textContent = title;
+
+  var formPhone = document.getElementById('formContactPhone');
+  var formPhoneText = document.getElementById('formContactPhoneText');
+  if (formPhone) {
+    formPhone.href = 'tel:' + phone.replace(/[^0-9+]/g, '');
+    if (formPhoneText) formPhoneText.textContent = phone;
+    else formPhone.textContent = phone;
+  }
+
+  var formEmail = document.getElementById('formContactEmail');
+  var formEmailText = document.getElementById('formContactEmailText');
+  if (formEmail) {
+    formEmail.href = 'mailto:' + email;
+    if (formEmailText) formEmailText.textContent = email;
+    else formEmail.textContent = email;
+  }
+
+  // 4. Step 2 Sub-note (under submit button)
+  var subDept = document.getElementById('formSubNoteDept');
+  if (subDept) subDept.textContent = title;
+  var subPhone = document.getElementById('subNotePhone');
+  if (subPhone) {
+    subPhone.textContent = phone;
+    subPhone.href = 'tel:' + phone.replace(/[^0-9+]/g, '');
+  }
+  var subEmail = document.getElementById('subNoteEmail');
+  if (subEmail) {
+    subEmail.textContent = email;
+    subEmail.href = 'mailto:' + email;
+  }
+
+  // 5. Success panel contact card (Step 3)
+  var scTitle = document.getElementById('successContactTitle');
+  if (scTitle) scTitle.textContent = title;
+
+  var scPhoneLink = document.getElementById('successPhoneLink');
+  var scPhoneText = document.getElementById('successPhoneText');
+  if (scPhoneLink && scPhoneText) {
+    scPhoneText.textContent = phone;
+    scPhoneLink.href = 'tel:' + phone.replace(/[^0-9+]/g, '');
+  }
+
+  var scEmailLink = document.getElementById('successEmailLink');
+  var scEmailText = document.getElementById('successEmailText');
+  if (scEmailLink && scEmailText) {
+    scEmailText.textContent = email;
+    scEmailLink.href = 'mailto:' + email;
+  }
+}
+
 /* ── VF Remote Actions ───────────────────────────────────────── */
 function remoteGetMetadata(cb) {
   Visualforce.remoting.Manager.invokeAction(
@@ -1123,7 +1439,13 @@ function remoteCreateLead(payload, cb) {
 
 /* ── URL param reader ────────────────────────────────────────── */
 function getURLParams() {
-  var p = new URLSearchParams(window.location.search);
+  var raw = new URLSearchParams(window.location.search);
+  /* case-insensitive param lookup: utm_source, UTM_Source, Utm_Source all work */
+  var p = { get: function(name) {
+    var want = name.toLowerCase(), found = null;
+    raw.forEach(function(v, k) { if (found === null && k.toLowerCase() === want) found = v; });
+    return found;
+  }};
   return {
     dept:     (p.get('dept') || p.get('department') || '').trim(),
     embed:    p.get('embed') === '1',          // CHANGE 1
@@ -1282,6 +1604,8 @@ function selectDept(code) {
   META.forEach(function(d) { if (d.code === code) activeDept = d; });
   if (!activeDept) return;
 
+  updateContactInfo(activeDept);
+
   document.querySelectorAll('#deptGrid .dept-tile').forEach(function(t) {
     t.classList.toggle('sel', t.getAttribute('data-code') === code);
   });
@@ -1329,7 +1653,6 @@ function selectForm(fCode) {
   document.getElementById('deptPill').textContent = activeDept.name;
 
   buildDynFields(activeForm);
-  resolveLeadSource();
   setTimeout(function() { showStep(2); }, 200);
 }
 
@@ -1339,7 +1662,19 @@ function buildDynFields(formObj) {
   container.innerHTML = '';
   document.getElementById('dynLabel').textContent = 'Programme Details';
 
+  var hasVisible = false;
+
   (formObj.fields || []).forEach(function(f) {
+    if (f.isHidden) {
+      var hInput = document.createElement('input');
+      hInput.type = 'hidden';
+      hInput.name = f.sfApiName;
+      hInput.value = f.defaultValue || '';
+      container.appendChild(hInput);
+      return;
+    }
+
+    hasVisible = true;
     var wrap = document.createElement('div');
     wrap.className = 'fgrp' + (f.fullWidth ? ' sp2' : '');
 
@@ -1362,18 +1697,27 @@ function buildDynFields(formObj) {
         opt.value = o; opt.textContent = o;
         el.appendChild(opt);
       });
+      if (f.defaultValue) {
+        el.value = f.defaultValue;
+      }
     } else if (f.type === 'textarea') {
       el = document.createElement('textarea');
       el.name = f.sfApiName;
       el.rows = 3;
       el.placeholder = f.placeholder || '';
       el.style.resize = 'vertical';
+      if (f.defaultValue) {
+        el.value = f.defaultValue;
+      }
     } else {
       el = document.createElement('input');
       el.type = ({ number:'number', date:'date', email:'email', tel:'tel' })[f.type] || 'text';
       el.name = f.sfApiName;
       el.placeholder = f.placeholder || '';
       if (f.type === 'number') { el.step = '0.01'; el.min = '0'; }
+      if (f.defaultValue) {
+        el.value = f.defaultValue;
+      }
     }
     if (f.required) el.required = true;
     wrap.appendChild(el);
@@ -1393,22 +1737,7 @@ function buildDynFields(formObj) {
     container.appendChild(wrap);
   });
 
-  document.getElementById('dynWrap').style.display = 'block';
-}
-
-/* ── Resolve LeadSource from utm_source + dept metadata ──────── */
-function resolveLeadSource() {
-  if (!activeDept) return;
-  var u       = getURLParams();
-  var utmSrc  = (u.source || '').toLowerCase().trim();
-  /* UTM map lives at dept level; default source also at dept level */
-  var utmMap  = activeDept.utmSourceMap || {};
-  var defSrc  = activeDept.defaultLeadSource || 'Web';
-  var resolved = '';
-  if (utmSrc && utmMap[utmSrc])  resolved = utmMap[utmSrc];
-  else if (utmSrc)               resolved = u.source;
-  else                           resolved = defSrc;
-  document.getElementById('hLeadSource').value = resolved || 'Web';
+  document.getElementById('dynWrap').style.display = hasVisible ? 'block' : 'none';
 }
 
 /* ── Step navigation (3 steps) ──────────────────────────────── */
@@ -1469,19 +1798,17 @@ function validateForm() {
     valid = false;
   }
 
-  /* CHANGE 4: phone — exactly 10 digits, no +91 or spaces ────── */
+  /* phone — digits only; India = exactly 10, other countries 6–14 digits */
   var phoneEl = document.getElementById('fMobile');
   if (phoneEl && phoneEl.value) {
-    var digitsOnly = phoneEl.value.replace(/\D/g, '');
-    var phoneOk = digitsOnly.length === 10;
+    var phoneOk = phoneDigitsOk();
     phoneEl.classList.toggle('err', !phoneOk);
     var ep = document.getElementById('e_Phone');
     if (ep) ep.classList.toggle('show', !phoneOk);
     if (!phoneOk) valid = false;
     if (!phoneOk) {
       phoneEl.addEventListener('input', function fixPhone() {
-        var d = phoneEl.value.replace(/\D/g, '');
-        var ok = d.length === 10;
+        var ok = phoneDigitsOk();
         phoneEl.classList.toggle('err', !ok);
         if (ep) ep.classList.toggle('show', !ok);
         if (ok) phoneEl.removeEventListener('input', fixPhone);
@@ -1498,13 +1825,19 @@ function validateForm() {
   return valid;
 }
 
+function phoneDigitsOk() {
+  var d = document.getElementById('fMobile').value.replace(/\D/g, '').replace(/^0+/, '');
+  var cc = document.getElementById('fPhoneCountry').value;
+  return cc === 'IN' ? d.length === 10 : (d.length >= 6 && d.length <= 14);
+}
+
 /* ── Collect payload ─────────────────────────────────────────── */
 function collectPayload() {
   var payload = {};
   new FormData(document.getElementById('eForm')).forEach(function(val, key) {
-    // CHANGE 4: strip non-digits from phone before sending
+    // national digits only; country sent separately as Phone_Country (ISO)
     if (key === 'Phone') {
-      val = String(val).replace(/\D/g, '');
+      val = String(val).replace(/\D/g, '').replace(/^0+/, '');
     }
     if (val && String(val).trim()) payload[key] = String(val).trim();
   });
@@ -1512,9 +1845,16 @@ function collectPayload() {
 }
 
 /* ── Back to dept selection (step 2 → step 1) ───────────────── */
+/* Department fixed by URL → no "Change Department" button */
+function hideBackToDept() {
+  var bar = document.querySelector('#step2 .back-bar');
+  if (bar) bar.style.display = 'none';
+}
+
 function goBackToDept() {
   activeForm = null;
   activeDept = null;
+  updateContactInfo(null);
   document.querySelectorAll('#deptGrid .dept-tile').forEach(function(t) {
     t.classList.remove('sel');
   });
@@ -1605,6 +1945,14 @@ function submitWithToken(captchaToken) {
     btnText.textContent = 'Submit Enquiry';
 
     if (event.status && result && result.success) {
+      var bUrl = result.brochureUrl || '';
+      var bBox = document.getElementById('brochureBox');
+      if (/^https:\/\//i.test(bUrl)) {
+        document.getElementById('brochureLink').href = bUrl;
+        bBox.style.display = 'block';
+      } else {
+        bBox.style.display = 'none';
+      }
       showStep(3);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (event.status && result && result.captchaFailed) {
@@ -1632,6 +1980,7 @@ function resetForm() {
   document.getElementById('e_consent').classList.remove('show');
   activeDept = null;
   activeForm  = null;
+  updateContactInfo(null);
   document.querySelectorAll('.dept-tile').forEach(function(t) {
     t.classList.remove('sel');
   });
@@ -1639,23 +1988,25 @@ function resetForm() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ── Phone: strip non-digits while typing ────────────────────── */
+/* ── Phone: digits only while typing, India capped at 10 ─────── */
 document.addEventListener('DOMContentLoaded', function() {
   var ph = document.getElementById('fMobile');
-  if (ph) {
-    ph.addEventListener('input', function() {
-      // remove anything that's not a digit, enforce max 10
-      var digits = this.value.replace(/\D/g, '').slice(0, 10);
-      this.value = digits;
-    });
-    ph.addEventListener('paste', function(e) {
-      e.preventDefault();
-      var pasted = (e.clipboardData || window.clipboardData).getData('text');
-      // strip +91 prefix if pasted
-      var cleaned = pasted.replace(/^\+?91/, '').replace(/\D/g, '').slice(0, 10);
-      this.value = cleaned;
-    });
+  var cc = document.getElementById('fPhoneCountry');
+  if (!ph || !cc) return;
+  function max() { return cc.value === 'IN' ? 10 : 14; }
+  function clean(v) {
+    var d = v.replace(/\D/g, '');
+    // drop a pasted dial code (e.g. +91 98765...) matching the selected country
+    var dial = cc.options[cc.selectedIndex].getAttribute('data-dial').replace('+', '');
+    if (/^\s*\+/.test(v) && d.indexOf(dial) === 0) d = d.slice(dial.length);
+    return d.slice(0, max());
   }
+  ph.addEventListener('input', function() { this.value = this.value.replace(/\D/g, '').slice(0, max()); });
+  ph.addEventListener('paste', function(e) {
+    e.preventDefault();
+    this.value = clean((e.clipboardData || window.clipboardData).getData('text'));
+  });
+  cc.addEventListener('change', function() { ph.value = ph.value.slice(0, max()); });
 });
 
 /* ── INIT ────────────────────────────────────────────────────── */
@@ -1680,6 +2031,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   applyEmbedMode(url.embed);
   initUTM(url);
+  updateContactInfo(null);
   showStep(1);
   window._filteredDeptCodes = null;  // used by goBackToDept
 
@@ -1742,8 +2094,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('hDept').value     = activeDept.name;
         document.getElementById('hDeptCode').value = activeDept.code;
         document.getElementById('deptPill').classList.add('show');
+        updateContactInfo(activeDept);
         /* Store slug so selectDept can find the right form */
         window._urlFormCode = formCode;
+        hideBackToDept();
         selectForm(match.form.code);
         return;
       }
@@ -1773,6 +2127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (formDeptCodes.length === 1) {
           /* Only one dept — skip step 1 */
           renderFilteredDeptTiles(formDeptCodes);
+          hideBackToDept();
           selectDept(formDeptCodes[0]);
         } else {
           /* Multiple depts — show filtered dept tiles (step 1) */
@@ -1792,6 +2147,7 @@ document.addEventListener('DOMContentLoaded', function() {
       META.forEach(function(d) { if (d.code === deptCode) deptObj = d; });
       if (deptObj) {
         renderDeptTiles();
+        hideBackToDept();
         selectDept(deptCode);  /* selectDept always goes to step 2 now */
         return;
       }

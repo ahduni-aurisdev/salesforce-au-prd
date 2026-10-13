@@ -85,16 +85,6 @@
                     <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.OwnerId</fieldItem>
-                <identifier>RecordOwnerIdField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.RecordTypeId</fieldItem>
                 <identifier>RecordRecordTypeIdField</identifier>
             </fieldInstance>
@@ -105,8 +95,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.School_Board__c</fieldItem>
-                <identifier>RecordSchool_Board_cField</identifier>
+                <fieldItem>Record.Board__c</fieldItem>
+                <identifier>RecordBoard_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

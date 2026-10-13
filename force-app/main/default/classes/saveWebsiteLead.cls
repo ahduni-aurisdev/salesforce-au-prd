@@ -203,7 +203,7 @@ global with sharing class saveWebsiteLead {
             : System.label.Admission_Year;
         List<Lead> matchingLead = [
             SELECT Id, Phone, Registration_Number__c, Email, LeadSource, Preferred_Programme__c,
-                Multi_Select_Lead_Source__c, Name_of_University_College__c, Department__c, State, Country
+                Multi_Select_Lead_Source__c, Name_of_University_College__c, Department__c, State, Country, Status
             FROM Lead
             WHERE Phone LIKE :matchingphone
               AND Email = :matchingEmail
@@ -281,7 +281,7 @@ global with sharing class saveWebsiteLead {
         String matchingDepartment = department;
         List<Lead> matchingLead = [
             SELECT Id, Phone, Registration_Number__c, Email, LeadSource, Preferred_Programme__c,
-                Multi_Select_Lead_Source__c, Name_of_University_College__c, Department__c, State, Country
+                Multi_Select_Lead_Source__c, Name_of_University_College__c, Department__c, State, Country, Status
             FROM Lead
             WHERE Phone LIKE :matchingphone
               AND Email = :matchingEmail
@@ -359,6 +359,17 @@ global with sharing class saveWebsiteLead {
                     typedVal = val;
                 }
 
+                // Added By : Mihir Ramoliya | 12th October 2026
+                // Never push an existing Lead back to "New Lead" on a repeat submission once
+                // the sales team has moved it to a later stage.
+                if (leadField == 'Status' && newLead.Id != null) {
+                    String currentStatus = (String) newLead.get('Status');
+                    if (String.isNotBlank(currentStatus)
+                        && !currentStatus.equalsIgnoreCase('New Lead')
+                        && String.valueOf(typedVal).equalsIgnoreCase('New Lead')) {
+                        continue;
+                    }
+                }
                 newLead.put(leadField, typedVal);
             }
         }

@@ -283,6 +283,21 @@ public class saveWebTo_YourProfileData_Test {
     }
 
     @IsTest
+    static void test_registrationNumber_addsAurisToMultiSelectLeadSource() {
+        if (ugRtId() == null) return;
+        Test.startTest();
+        Map<String, Object> resp = post(ugRegPayload('REG-AURIS-MULTI-001'));
+        Test.stopTest();
+        List<Object> errors = (List<Object>) resp.get('errors');
+        System.assertEquals(0, errors.size(), 'Unexpected errors: ' + errors);
+        List<Lead> leads = [SELECT Multi_Select_Lead_Source__c FROM Lead
+                            WHERE Registration_Number__c = 'REG-AURIS-MULTI-001'];
+        System.assertEquals(1, leads.size());
+        System.assert(String.valueOf(leads[0].Multi_Select_Lead_Source__c).contains('AURIS'),
+            'AURIS must be added to the multiselect lead source: ' + leads[0].Multi_Select_Lead_Source__c);
+    }
+
+    @IsTest
     static void test_ugAdmission_newProgrammes() {
         if (ugRtId() == null) return;
         Map<String, Object> payload = new Map<String, Object>{
@@ -1040,7 +1055,9 @@ public class saveWebTo_YourProfileData_Test {
         Lead created = [SELECT LeadSource, Multi_Select_Lead_Source__c, Most_Recent_Lead_Source__c
                          FROM Lead WHERE Email = 'aurisskip001@test.com' LIMIT 1];
         System.assertEquals(null, created.LeadSource, 'Legacy AURIS value should be skipped, not mapped to LeadSource');
-        System.assertEquals(null, created.Multi_Select_Lead_Source__c, 'Legacy AURIS value should be skipped, not mapped to Multi_Select_Lead_Source__c');
+        // The payload's leadSource is skipped, but the payload carries a registration
+        // number, so AURIS is added to the multiselect by the registration rule instead.
+        System.assertEquals('AURIS', created.Multi_Select_Lead_Source__c, 'AURIS comes only from the registration-number rule');
         System.assertEquals(null, created.Most_Recent_Lead_Source__c, 'With LeadSource never filled, Most_Recent_Lead_Source__c should stay blank too');
     }
 
@@ -1058,7 +1075,7 @@ public class saveWebTo_YourProfileData_Test {
         Lead created = [SELECT LeadSource, Multi_Select_Lead_Source__c
                          FROM Lead WHERE Email = 'aurisskip002@test.com' LIMIT 1];
         System.assertEquals('Website', created.LeadSource, 'A genuine, non-AURIS LeadSource value should still map normally');
-        System.assertEquals('Website', created.Multi_Select_Lead_Source__c, 'A genuine, non-AURIS value should still map onto Multi_Select_Lead_Source__c too');
+        System.assertEquals('AURIS;Website', created.Multi_Select_Lead_Source__c, 'Registration rule adds AURIS; a genuine, non-AURIS value should still map onto Multi_Select_Lead_Source__c too');
     }
 
     // =========================================================================

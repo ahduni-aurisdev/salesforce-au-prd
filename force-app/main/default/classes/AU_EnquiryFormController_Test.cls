@@ -144,7 +144,7 @@ public class AU_EnquiryFormController_Test {
                 if (fc.Is_Numeric__c || fc.Is_Integer__c) {
                     payload.put(fc.SF_API_Name__c, 10);
                 } else {
-                    payload.put(fc.SF_API_Name__c, 'Test Value');
+                    payload.put(fc.SF_API_Name__c, testValueFor(fc.SF_API_Name__c));
                 }
             }
         }
@@ -175,44 +175,30 @@ public class AU_EnquiryFormController_Test {
         // Set reCAPTCHA Mock
         Test.setMock(HttpCalloutMock.class, new ReCaptchaMock(true, 0.9));
 
-        // Dynamically find valid department and form code from the Org's custom metadata
-        String deptCode = 'MASTERS';
-        String formCode = 'MASTERS_MBA';
-        
-        List<Form_Config__mdt> activeForms = [
-            SELECT DeveloperName, Department_Code__c 
-            FROM Form_Config__mdt 
-            LIMIT 1
-        ];
-        if (!activeForms.isEmpty()) {
-            formCode = activeForms[0].DeveloperName;
-            deptCode = activeForms[0].Department_Code__c;
-        } else {
-            List<Form_Department_Config__mdt> activeDepts = [
-                SELECT DeveloperName 
-                FROM Form_Department_Config__mdt 
-                LIMIT 1
-            ];
-            if (!activeDepts.isEmpty()) {
-                deptCode = activeDepts[0].DeveloperName;
-                formCode = '';
-            }
-        }
-
-        // Get the 'Masters' record type ID specifically, which supports the 'Master of Business Administration' picklist value
-        String rtName = 'Masters';
+        // Setup UG department and Undergraduation record type
+        String deptCode = 'UG';
+        String formCode = 'WEBSITE_UG';
         Id rtId = null;
-        Schema.RecordTypeInfo mastersRt = Schema.SObjectType.Lead.getRecordTypeInfosByDeveloperName().get('Masters');
-        if (mastersRt != null && mastersRt.isActive()) {
-            rtId = mastersRt.getRecordTypeId();
+        Schema.RecordTypeInfo ugRt = Schema.SObjectType.Lead.getRecordTypeInfosByDeveloperName().get('Undergraduation');
+        if (ugRt != null && ugRt.isActive()) {
+            rtId = ugRt.getRecordTypeId();
         } else {
             for (Schema.RecordTypeInfo rtInfo : Schema.SObjectType.Lead.getRecordTypeInfos()) {
                 if (rtInfo.isActive() && !rtInfo.isMaster()) {
-                    rtName = rtInfo.getDeveloperName();
                     rtId = rtInfo.getRecordTypeId();
                     break;
                 }
             }
+        }
+
+        List<Form_Config__mdt> ugForms = [
+            SELECT DeveloperName, Department_Code__c 
+            FROM Form_Config__mdt 
+            WHERE Department_Code__c = 'UG'
+            LIMIT 1
+        ];
+        if (!ugForms.isEmpty()) {
+            formCode = ugForms[0].DeveloperName;
         }
 
         // Pre-insert an existing lead that will match the duplicate rules
@@ -221,7 +207,6 @@ public class AU_EnquiryFormController_Test {
             LastName = 'Lead',
             Email = 'duplicate@example.com',
             Phone = '919876543210',
-            Preferred_Programme__c = 'Master of Business Administration',
             RecordTypeId = rtId,
             Multi_Select_Lead_Source__c = 'Wonderchat'
         );
@@ -233,7 +218,6 @@ public class AU_EnquiryFormController_Test {
             'Form_Code__c' => formCode,
             'Email' => 'duplicate@example.com',
             'Phone' => '9876543210',
-            'Preferred_Programme__c' => 'Master of Business Administration',
             'FirstName' => 'Existing',
             'LastName' => 'LeadUpdate',
             'captchaToken' => 'mock_token'
@@ -251,7 +235,7 @@ public class AU_EnquiryFormController_Test {
                 if (fc.Is_Numeric__c || fc.Is_Integer__c) {
                     payload.put(fc.SF_API_Name__c, 10);
                 } else {
-                    payload.put(fc.SF_API_Name__c, 'Test Value');
+                    payload.put(fc.SF_API_Name__c, testValueFor(fc.SF_API_Name__c));
                 }
             }
         }
@@ -490,6 +474,61 @@ public class AU_EnquiryFormController_Test {
         Test.startTest();
         Map<String, Object> response = AU_EnquiryFormController.createLead(payloadJSON);
         Test.stopTest();
+    }
 
+    @IsTest
+    static void testDepartmentContactDetails() {
+        Test.startTest();
+        // Test default emails
+        System.assertEquals('ugadmissions@ahduni.edu.in', AU_EnquiryFormController.getDefaultEmailForDept('UG'), 'UG email should match');
+        System.assertEquals('masters.admissions@ahduni.edu.in', AU_EnquiryFormController.getDefaultEmailForDept('MASTERS'), 'Masters email should match');
+        System.assertEquals('doctoral.admissions@ahduni.edu.in', AU_EnquiryFormController.getDefaultEmailForDept('PHD'), 'PhD email should match');
+        System.assertEquals('execed@ahduni.edu.in', AU_EnquiryFormController.getDefaultEmailForDept('EXEC_ED'), 'Executive Education email should match');
+        System.assertEquals('admissions@ahduni.edu.in', AU_EnquiryFormController.getDefaultEmailForDept('UNKNOWN'), 'Unknown dept should fallback to general email');
+
+        // Test default phones
+        System.assertEquals('+91 81288 18876', AU_EnquiryFormController.getDefaultPhoneForDept('UG'), 'UG phone should match');
+        System.assertEquals('+91 79 6191 1126', AU_EnquiryFormController.getDefaultPhoneForDept('MASTERS'), 'Masters phone should match');
+        System.assertEquals('+91 79 6191 1125', AU_EnquiryFormController.getDefaultPhoneForDept('PHD'), 'PhD phone should match');
+        System.assertEquals('+91 79 6191 1197', AU_EnquiryFormController.getDefaultPhoneForDept('EXEC_ED'), 'Executive Education phone should match');
+        System.assertEquals('+91 79 6191 1000', AU_EnquiryFormController.getDefaultPhoneForDept('UNKNOWN'), 'Unknown dept should fallback to general phone');
+
+        // Test default titles
+        System.assertEquals('Doctoral Admissions', AU_EnquiryFormController.getDefaultTitleForDept('PHD', 'PhD'), 'PhD title should match');
+        System.assertEquals('Executive Education Admissions', AU_EnquiryFormController.getDefaultTitleForDept('EXEC_ED', 'Executive Education'), 'Exec Ed title should match');
+        System.assertEquals('Undergraduate Admissions', AU_EnquiryFormController.getDefaultTitleForDept('UG', 'Undergraduate'), 'UG title should match');
+        System.assertEquals('Admissions Office', AU_EnquiryFormController.getDefaultTitleForDept('UNKNOWN', ''), 'Blank title should fallback to Admissions Office');
+
+        // Test getMetadata returns contact details
+        List<Map<String, Object>> metaList = AU_EnquiryFormController.getMetadata();
+        System.assertNotEquals(null, metaList, 'Metadata list should not be null');
+        for (Map<String, Object> deptMap : metaList) {
+            System.assert(deptMap.containsKey('contactEmail'), 'Dept metadata should contain contactEmail');
+            System.assert(deptMap.containsKey('contactPhone'), 'Dept metadata should contain contactPhone');
+            System.assert(deptMap.containsKey('contactTitle'), 'Dept metadata should contain contactTitle');
+        }
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void getBrochureUrl_unknownProgramme_doesNotThrowAndIsHttpsOnly() {
+        String url = AU_EnquiryFormController.getBrochureUrl('No Such Programme', null);
+        System.assertEquals(null, url, 'No mapping should give no brochure');
+        url = AU_EnquiryFormController.getBrochureUrl(null, null);
+        System.assertEquals(null, url);
+    }
+
+    /** First active picklist value for picklist fields (restricted picklists reject free text), else 'Test Value'. */
+    private static String testValueFor(String apiName) {
+        Schema.SObjectField f = Schema.SObjectType.Lead.fields.getMap().get(apiName.toLowerCase());
+        if (f != null) {
+            Schema.DescribeFieldResult d = f.getDescribe();
+            if (d.getType() == Schema.DisplayType.PICKLIST || d.getType() == Schema.DisplayType.MULTIPICKLIST) {
+                for (Schema.PicklistEntry pe : d.getPicklistValues()) {
+                    if (pe.isActive()) return pe.getValue();
+                }
+            }
+        }
+        return 'Test Value';
     }
 }

@@ -224,4 +224,8 @@
         <name>Partner_API_Access</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>standard__AlmDevops</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

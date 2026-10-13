@@ -27,9 +27,9 @@
  * Example: GET /services/apexrest/v1/records/Lead?fields=Email,Company&Email=a@x.com,b@x.com&limit=50
  *
  * Lead-specific rule: every query against Lead is hard-restricted to
- * LeadSource = 'Universier', in addition to any partner-supplied filters.
+ * UTM_Link__c = 'https://ahduni.univiser.io/', in addition to any partner-supplied filters.
  * This is not partner-overridable - it is ANDed into the WHERE clause
- * unconditionally, even if the partner passes their own LeadSource filter.
+ * unconditionally, even if the partner passes their own UTM_Link__c filter.
  *
  * Filtering uses Database.queryWithBinds() (available since Spring '23)
  * so filter values are always passed as real bind variables, never
@@ -109,12 +109,12 @@ global with sharing class PartnerDynamicRecordResource {
     private static final Integer MAX_FILTER_VALUES = 50;
 
     // Every Lead query this endpoint runs is hard-restricted to this
-    // LeadSource, regardless of what filters the partner requests - this
+    // UTM_Link__c, regardless of what filters the partner requests - this
     // is a mandatory scoping condition, not a partner-overridable default,
     // and is always ANDed in alongside any partner-supplied filters.
     private static final String LEAD_OBJECT_NAME = 'Lead';
-    private static final String LEAD_SOURCE_FIELD = 'LeadSource';
-    private static final String LEAD_SOURCE_REQUIRED_VALUE = 'Universier';
+    private static final String LEAD_SCOPE_FIELD = 'UTM_Link__c';
+    private static final String LEAD_SCOPE_REQUIRED_VALUE = 'https://ahduni.univiser.io/';
 
     private class FilterValidationException extends Exception {}
     private class FieldValidationException extends Exception {}
@@ -175,8 +175,8 @@ global with sharing class PartnerDynamicRecordResource {
             List<String> whereClauses = buildFilterConditions(req, objType, accessibleFields, bindMap);
 
             if (canonicalObjectName == LEAD_OBJECT_NAME) {
-                bindMap.put('requiredLeadSource', LEAD_SOURCE_REQUIRED_VALUE);
-                whereClauses.add(LEAD_SOURCE_FIELD + ' = :requiredLeadSource');
+                bindMap.put('requiredLeadScope', LEAD_SCOPE_REQUIRED_VALUE);
+                whereClauses.add(LEAD_SCOPE_FIELD + ' = :requiredLeadScope');
             }
 
             String soql = 'SELECT ' + String.join(selectedFields, ', ') +
@@ -316,6 +316,10 @@ global with sharing class PartnerDynamicRecordResource {
         fields.add('FirstName');
         fields.add('LastName');
         fields.add('Status');
+        fields.add('Phone');
+        fields.add('City');
+        fields.add('State');
+        fields.add('CreatedDate');
 
         // Id has no configurable FieldPermissions row and is always
         // implicitly readable; include it so records have a stable key.

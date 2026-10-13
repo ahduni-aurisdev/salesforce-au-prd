@@ -3,13 +3,15 @@
     <autoActivateNewReminders>true</autoActivateNewReminders>
     <customizableProductSchedulesEnabled>false</customizableProductSchedulesEnabled>
     <doesEnforceStandardOpportunitySaveLogic>true</doesEnforceStandardOpportunitySaveLogic>
-    <enableExpandedPipelineInspectionSetup>false</enableExpandedPipelineInspectionSetup>
+    <enableExpandedPipelineInspectionSetup>true</enableExpandedPipelineInspectionSetup>
     <enableFindSimilarOpportunities>false</enableFindSimilarOpportunities>
+    <enableForecastCategoryMetrics>true</enableForecastCategoryMetrics>
     <enableOpportunityFieldHistoryTracking>true</enableOpportunityFieldHistoryTracking>
     <enableOpportunityInsightsInMobile>false</enableOpportunityInsightsInMobile>
     <enableOpportunityTeam>false</enableOpportunityTeam>
-    <enablePipelineInspection>false</enablePipelineInspection>
-    <enablePipelineInspectionSingleCategoryRollup>false</enablePipelineInspectionSingleCategoryRollup>
+    <enablePipelineChangesMetrics>true</enablePipelineChangesMetrics>
+    <enablePipelineInspection>true</enablePipelineInspection>
+    <enablePipelineInspectionSingleCategoryRollup>true</enablePipelineInspectionSingleCategoryRollup>
     <enableServiceCaseInsights>false</enableServiceCaseInsights>
     <enableUpdateReminders>true</enableUpdateReminders>
     <oppAmountDealMotionEnabled>true</oppAmountDealMotionEnabled>
