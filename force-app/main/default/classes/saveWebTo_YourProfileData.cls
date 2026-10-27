@@ -28,6 +28,7 @@
 //                                     (1) grpPrograms not null,
 //                                     (2) grpPrograms not empty,
 //                                     (3) every group has grptag + programmes.
+//                                     [14-Oct-2026: programmes no longer required per group]
 //                                     handleDuplicateLeadUndergraduation now
 //                                     queries all Group slot fields so the
 //                                     returned lead can be used for slot
@@ -245,21 +246,15 @@ global class saveWebTo_YourProfileData {
                     throw new CustomException('grpPrograms cannot be an empty list. At least one group is required.');
                 }
 
-                // Validation 3: every group must have a grptag and at least one programme
+                // Validation 3: every group must have a grptag.
+                // Modified By : Mihir Ramoliya | 14-Oct-2026
+                // A group is no longer required to carry programmes. A group with null / missing /
+                // empty programmes is still added to the lead (tag, application number and date).
                 for (Object groupObj : programGroups) {
                     Map<String, Object> gm = (Map<String, Object>) groupObj;
                     String tag = (String) gm.get('grptag');
                     if (String.isBlank(tag)) {
                         throw new CustomException('Each group in grpPrograms must have a non-empty "grptag".');
-                    }
-                    List<Object> progs = new List<Object>();
-                    if (gm.containsKey('programmes') && gm.get('programmes') != null) {
-                        progs = (List<Object>) gm.get('programmes');
-                    } else if (gm.containsKey('programs') && gm.get('programs') != null) {
-                        progs = (List<Object>) gm.get('programs');
-                    }
-                    if (progs.isEmpty()) {
-                        throw new CustomException('Group "' + tag + '" must have at least one programme.');
                     }
                 }
                 // ── END: grpPrograms validations ──────────────────────────────
@@ -388,6 +383,8 @@ global class saveWebTo_YourProfileData {
                             }
                             newLead.put(groupSlotField(slot, 'programmes'), String.join(progNames, ','));
                             newLead.put(groupSlotField(slot, 'majors'),     String.join(majors,    ','));
+                            // Pre-registration (23-Oct-2026): store preRegister / preRegistrationDate when sent
+                            LeadConversionService.applyPreRegToLead(newLead, newLead, slot, groupMap, true);
                             System.debug('New group "' + incomingTag + '" written to slot ' + slot);
 
                         } else {
@@ -423,9 +420,15 @@ global class saveWebTo_YourProfileData {
                             }
 
                             // Always overwrite — this replaces any removed programmes
-                            // and captures additions and major changes in one operation
-                            newLead.put(groupSlotField(slot, 'programmes'), String.join(newProgNames, ','));
-                            newLead.put(groupSlotField(slot, 'majors'),     String.join(newMajors,    ','));
+                            // and captures additions and major changes in one operation.
+                            // Modified By : Mihir Ramoliya | 14-Oct-2026
+                            // Exception: when the payload sends NO programmes for this group
+                            // (null / missing / empty) the group is still kept on the lead, but
+                            // its saved programmes and majors are left untouched instead of wiped.
+                            if (!newProgNames.isEmpty()) {
+                                newLead.put(groupSlotField(slot, 'programmes'), String.join(newProgNames, ','));
+                                newLead.put(groupSlotField(slot, 'majors'),     String.join(newMajors,    ','));
+                            }
 
                             // Update applicationNumber only if payload provides one and slot is blank
                             if (String.isBlank((String) newLead.get(groupSlotField(slot, 'appNumber')))) {
@@ -435,6 +438,8 @@ global class saveWebTo_YourProfileData {
                             if (appDate != null && newLead.get(groupSlotField(slot, 'appDate')) == null) {
                                 newLead.put(groupSlotField(slot, 'appDate'), appDate);
                             }
+                            // Pre-registration (23-Oct-2026): update the flag / date only when sent in the payload
+                            LeadConversionService.applyPreRegToLead(newLead, newLead, slot, groupMap, false);
                             System.debug('Existing group "' + incomingTag + '" overwritten in slot ' + slot
                                 + ' with ' + newProgNames.size() + ' programme(s).');
                         }
@@ -609,6 +614,13 @@ global class saveWebTo_YourProfileData {
         // ================================================
         // CRITICAL: Call insertPreferredPrograms if we have program data
         // ================================================
+        // Pre-registration (23-Oct-2026): when the student's lead is already converted, mirror the
+        // group slots to the converted Account too (Account is used for pre-registration reports).
+        if (!programGroups.isEmpty() && newLead.Id != null && existingLead != null
+                && newLead.get('IsConverted') == true && newLead.get('ConvertedAccountId') != null) {
+            LeadConversionService.syncGroupsToAccount(newLead, (Id) newLead.get('ConvertedAccountId'),
+                LeadConversionService.leadHasPreRegisteredGroup(newLead));
+        }
         if (!programGroups.isEmpty() && newLead.Id != null) {
             System.debug('Calling insertPreferredPrograms with JSONKey: programs');
             insertPreferredPrograms('programs', programGroups, newLead.Id, registrationNumber);
@@ -681,8 +693,10 @@ global class saveWebTo_YourProfileData {
             q += ', Group_'  + s + '_Application_Date__c';
             q += ', Group_'  + s + '_Programmes__c';
             q += ', Group_'  + s + '_Majors__c';
+            q += ', Group_'  + s + '_Pre_Register__c';
+            q += ', Group_'  + s + '_Pre_Registration_Date__c';
         }
-        q += ' , LeadSource';
+        q += ' , LeadSource, IsConverted, ConvertedAccountId';
         q += ' FROM Lead WHERE Id = \'' + leadId + '\' LIMIT 1';
         return q;
     }

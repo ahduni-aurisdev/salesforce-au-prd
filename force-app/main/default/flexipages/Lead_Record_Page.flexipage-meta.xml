@@ -228,6 +228,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.School_State2__c</fieldItem>
                 <identifier>RecordSchool_State2__cField</identifier>
             </fieldInstance>
@@ -2251,6 +2255,26 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Group_1_Pre_Register__c</fieldItem>
+                <identifier>RecordGroup_1_Pre_Register_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Group_1_Pre_Registration_Date__c</fieldItem>
+                <identifier>RecordGroup_1_Pre_Registration_Date_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Group_3__c</fieldItem>
                 <identifier>RecordGroup_3_cField</identifier>
             </fieldInstance>
@@ -2293,6 +2317,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Group_3_Majors__c</fieldItem>
                 <identifier>RecordGroup_3_Majors_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Group_3_Pre_Register__c</fieldItem>
+                <identifier>RecordGroup_3_Pre_Register_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Group_3_Pre_Registration_Date__c</fieldItem>
+                <identifier>RecordGroup_3_Pre_Registration_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-c70d9e3b-6a0c-4f8a-9b72-be726a685456</name>
@@ -2355,6 +2399,26 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.Group_2_Pre_Register__c</fieldItem>
+                <identifier>RecordGroup_2_Pre_Register_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Group_2_Pre_Registration_Date__c</fieldItem>
+                <identifier>RecordGroup_2_Pre_Registration_Date_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Group_4__c</fieldItem>
                 <identifier>RecordGroup_4_cField</identifier>
             </fieldInstance>
@@ -2397,6 +2461,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Group_4_Majors__c</fieldItem>
                 <identifier>RecordGroup_4_Majors_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Group_4_Pre_Register__c</fieldItem>
+                <identifier>RecordGroup_4_Pre_Register_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Group_4_Pre_Registration_Date__c</fieldItem>
+                <identifier>RecordGroup_4_Pre_Registration_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-2d12c172-c20a-488b-a47c-ffcf25677e4f</name>

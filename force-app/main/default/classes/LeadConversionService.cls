@@ -403,6 +403,9 @@ global with sharing class LeadConversionService {
         if (fieldType == 'appDate')    return 'Group_' + slot + '_Application_Date__c';
         if (fieldType == 'programmes') return 'Group_' + slot + '_Programmes__c';
         if (fieldType == 'majors')     return 'Group_' + slot + '_Majors__c';
+        // Added By : Mihir Ramoliya | 23-Oct-2026 — pre-registration flag and date per group slot
+        if (fieldType == 'preReg')     return 'Group_' + slot + '_Pre_Register__c';
+        if (fieldType == 'preRegDate') return 'Group_' + slot + '_Pre_Registration_Date__c';
         return 'Group_' + slot + '__c';
     }
 
@@ -421,6 +424,8 @@ global with sharing class LeadConversionService {
             fragment += ', ' + groupFieldName(s, 'appDate');
             fragment += ', ' + groupFieldName(s, 'programmes');
             fragment += ', ' + groupFieldName(s, 'majors');
+            fragment += ', ' + groupFieldName(s, 'preReg');
+            fragment += ', ' + groupFieldName(s, 'preRegDate');
         }
         return fragment;
     }
@@ -490,6 +495,8 @@ global with sharing class LeadConversionService {
             // Split comma-separated strings into lists; return empty list if blank
             g.put('programmes', String.isBlank(progsStr)  ? new List<String>() : progsStr.split(','));
             g.put('majors',     String.isBlank(majorsStr) ? new List<String>() : majorsStr.split(','));
+            g.put('preRegister',         lead.get(groupFieldName(slot, 'preReg')) == true);
+            g.put('preRegistrationDate', lead.get(groupFieldName(slot, 'preRegDate')));
 
             groups.add(g);
         }
@@ -542,6 +549,210 @@ global with sharing class LeadConversionService {
         return new List<Object>();
     }
     // END: SECTION 4 – GROUP DATA READ HELPERS
+
+    // =============================================================================
+    // SECTION 4A – PRE-REGISTRATION HELPERS
+    // Added By : Mihir Ramoliya | 23-Oct-2026
+    // Purpose  : A group sent with "preRegister": true is stored on the Lead slot
+    //            and mirrored to the Account, but NO Opportunity is created for it.
+    //            Sending the same group later with "preRegister": false turns it
+    //            into a normal application (Opportunity is created).
+    //            When the keys are absent the group behaves exactly as before.
+    // =============================================================================
+    private static Boolean parsePreRegister(Object v) {
+        if (v == null) return null;
+        if (v instanceof Boolean) return (Boolean) v;
+        String t = String.valueOf(v).trim().toLowerCase();
+        if (t == 'true' || t == 'yes' || t == '1') return true;
+        if (t == 'false' || t == 'no' || t == '0') return false;
+        return null;
+    }
+
+    private static Date parsePreRegDate(Object v) {
+        if (v == null || String.isBlank(String.valueOf(v))) return null;
+        try { return Date.valueOf(String.valueOf(v)); } catch (Exception e) { return null; }
+    }
+
+    /** True when the payload group carries preRegister=true. */
+    private static Boolean payloadSaysPreRegister(Map<String, Object> groupMap) {
+        return parsePreRegister(groupMap.get('preRegister')) == true;
+    }
+
+    /**
+     * Writes the pre-register flag / date of one incoming group into the Lead slot.
+     * Keys absent from the payload leave the stored values untouched (new slots default to false).
+     */
+    public static void applyPreRegToLead(Lead leadUpdate, Lead lead, Integer slot, Map<String, Object> g, Boolean isNewSlot) {
+        Boolean pr   = parsePreRegister(g.get('preRegister'));
+        Date    prd  = parsePreRegDate(g.get('preRegistrationDate'));
+        String fFlag = groupFieldName(slot, 'preReg');
+        String fDate = groupFieldName(slot, 'preRegDate');
+        if (pr != null) {
+            leadUpdate.put(fFlag, pr);
+            lead.put(fFlag, pr);
+        } else if (isNewSlot) {
+            leadUpdate.put(fFlag, false);
+            lead.put(fFlag, false);
+        }
+        if (prd == null && pr == true && lead.get(fDate) == null) prd = Date.today();
+        if (prd != null) {
+            leadUpdate.put(fDate, prd);
+            lead.put(fDate, prd);
+        }
+    }
+
+    /**
+     * Mirrors every group slot of the Lead (group, application number/date, programmes, majors,
+     * pre-register flag/date) onto the converted Account so pre-registrations can be reported on.
+     * The Lead slots are the source of truth. Slots that are empty on the Lead are cleared on the Account.
+     *
+     * @param lead      Lead queried with the group slot fields (leadSoql / convertedLeadSoql)
+     * @param accountId Converted Account to update
+     * @param strict    true  = errors are thrown (used when the student has a pre-registered group);
+     *                  false = errors are logged only, so students without pre-registration are never affected
+     */
+    public static void syncGroupsToAccount(Lead lead, Id accountId, Boolean strict) {
+        if (lead == null || accountId == null) return;
+        Account acc = new Account(Id = accountId);
+        Integer slots = Math.min(getMaxGroups(), 4);
+        for (Integer slot = 1; slot <= slots; slot++) {
+            Boolean has = String.isNotBlank((String) lead.get(groupFieldName(slot, 'tag')));
+            acc.put(groupFieldName(slot, 'tag'),        has ? lead.get(groupFieldName(slot, 'tag'))        : null);
+            acc.put(groupFieldName(slot, 'appNumber'),  has ? lead.get(groupFieldName(slot, 'appNumber'))  : null);
+            acc.put(groupFieldName(slot, 'appDate'),    has ? lead.get(groupFieldName(slot, 'appDate'))    : null);
+            acc.put(groupFieldName(slot, 'programmes'), has ? lead.get(groupFieldName(slot, 'programmes')) : null);
+            acc.put(groupFieldName(slot, 'majors'),     has ? lead.get(groupFieldName(slot, 'majors'))     : null);
+            acc.put(groupFieldName(slot, 'preReg'),     has ? (lead.get(groupFieldName(slot, 'preReg')) == true) : false);
+            acc.put(groupFieldName(slot, 'preRegDate'), has ? lead.get(groupFieldName(slot, 'preRegDate')) : null);
+        }
+        try {
+            update acc;
+        } catch (Exception e) {
+            System.debug(LoggingLevel.ERROR, 'Account group sync failed: ' + e.getMessage());
+            if (strict == true) throw new CustomException('Could not save pre-registration on the account: ' + e.getMessage());
+        }
+    }
+
+    /** True when any populated slot of the lead is pre-registered. */
+    public static Boolean leadHasPreRegisteredGroup(Lead lead) {
+        for (Integer slot = 1; slot <= getMaxGroups(); slot++) {
+            if (String.isNotBlank((String) lead.get(groupFieldName(slot, 'tag'))) && lead.get(groupFieldName(slot, 'preReg')) == true) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Pre-registration webhook (UGPreRegistrationRest): saves ONE pre-registration group on a Lead.
+     * Payload keys: leadId, grptag (or groupName), preRegister, preRegistrationDate,
+     *               optional applicationNumber, applicationDate, programmes[{programInterestedIn, major}].
+     *
+     * - Group already on the lead  → that slot is updated (programmes only replaced when sent).
+     * - New group                  → goes to the next empty slot; error when all slots are used.
+     * - Converted lead             → Lead slot and Account mirror are both updated. No Opportunity is ever created here.
+     * Same checks as lead creation / conversion: Undergraduation only, max groups, max programmes,
+     * programme needs a name (slots store plain names, as in lead creation).
+     */
+    public static Map<String, Object> savePreRegistrationGroup(Map<String, Object> p) {
+        Map<String, Object> resp = new Map<String, Object>();
+        String leadIdStr = p.get('leadId') == null ? null : String.valueOf(p.get('leadId')).trim();
+        if (String.isBlank(leadIdStr)) throw new CustomException('Missing required field: leadId');
+        Id leadId;
+        try { leadId = (Id) leadIdStr; } catch (Exception e) { throw new CustomException('Invalid leadId: ' + leadIdStr); }
+        if (leadId.getSobjectType() != Lead.SObjectType) throw new CustomException('leadId is not a Lead Id: ' + leadIdStr);
+
+        Object tagRaw = p.containsKey('grptag') ? p.get('grptag') : p.get('groupName');
+        String tag = tagRaw == null ? null : String.valueOf(tagRaw).trim();
+        if (String.isBlank(tag)) throw new CustomException('Missing required field: grptag (group name)');
+
+        Boolean pr = parsePreRegister(p.get('preRegister'));
+        if (pr == null) throw new CustomException('Missing or invalid field: preRegister (true/false)');
+
+        Date prd = null;
+        if (p.get('preRegistrationDate') != null && String.isNotBlank(String.valueOf(p.get('preRegistrationDate')))) {
+            prd = parsePreRegDate(p.get('preRegistrationDate'));
+            if (prd == null) throw new CustomException('Invalid preRegistrationDate. Use yyyy-MM-dd.');
+        }
+
+        List<Lead> found = Database.query(leadSoql(leadId));
+        if (found.isEmpty()) throw new CustomException('Lead not found: ' + leadId);
+        Lead lead = found[0];
+        if (lead.Department__c != 'Undergraduation' && lead.RecordType.DeveloperName != 'Undergraduation')
+            throw new CustomException('Pre-registration is allowed only for Undergraduation leads.');
+
+        Integer maxGroups   = getMaxGroups();
+        Integer maxPrograms = getMaxProgrammes();
+
+        // Programmes are optional; when sent they get the same checks as lead creation
+        List<String> progNames = new List<String>();
+        List<String> majorNames = new List<String>();
+        Boolean progsSent = false;
+        List<Object> progs = getProgsList(p);
+        if (!progs.isEmpty()) {
+            progsSent = true;
+            if (progs.size() > maxPrograms)
+                throw new CustomException('Maximum ' + maxPrograms + ' programs allowed per group. Group "' + tag + '" has ' + progs.size() + ' programme(s).');
+            for (Object o : progs) {
+                Map<String, Object> pm = (Map<String, Object>) o;
+                String pn = pm.get('programInterestedIn') == null ? null : String.valueOf(pm.get('programInterestedIn')).trim();
+                if (String.isBlank(pn)) throw new CustomException('Each programme must have "programInterestedIn".');
+                String mj = pm.get('major') == null ? '' : String.valueOf(pm.get('major')).trim();
+                progNames.add(pn);
+                majorNames.add(mj);
+            }
+        }
+
+        Integer slot = findGroupSlot(lead, tag);
+        Boolean isNew = (slot == 0);
+        if (isNew) {
+            slot = nextEmptySlot(lead);
+            if (slot == 0)
+                throw new CustomException('Cannot add group "' + tag + '". This lead already has the maximum ' + maxGroups + ' allowed groups.');
+        }
+
+        Lead upd = new Lead(Id = lead.Id);
+        if (isNew) {
+            upd.put(groupFieldName(slot, 'tag'), tag);
+            lead.put(groupFieldName(slot, 'tag'), tag);
+        }
+        if (p.get('applicationNumber') != null) {
+            upd.put(groupFieldName(slot, 'appNumber'), String.valueOf(p.get('applicationNumber')));
+            lead.put(groupFieldName(slot, 'appNumber'), String.valueOf(p.get('applicationNumber')));
+        }
+        if (p.get('applicationDate') != null) {
+            Date ad;
+            try { ad = Date.valueOf(String.valueOf(p.get('applicationDate'))); } catch (Exception e) { throw new CustomException('Invalid applicationDate. Use yyyy-MM-dd.'); }
+            upd.put(groupFieldName(slot, 'appDate'), ad);
+            lead.put(groupFieldName(slot, 'appDate'), ad);
+        }
+        if (progsSent) {
+            upd.put(groupFieldName(slot, 'programmes'), String.join(progNames, ','));
+            upd.put(groupFieldName(slot, 'majors'),     String.join(majorNames, ','));
+            lead.put(groupFieldName(slot, 'programmes'), String.join(progNames, ','));
+            lead.put(groupFieldName(slot, 'majors'),     String.join(majorNames, ','));
+        }
+        Map<String, Object> flags = new Map<String, Object>{ 'preRegister' => pr };
+        if (prd != null) flags.put('preRegistrationDate', prd);
+        applyPreRegToLead(upd, lead, slot, flags, isNew);
+
+        update upd;
+
+        Boolean converted = lead.IsConverted == true && lead.ConvertedAccountId != null;
+        if (converted) syncGroupsToAccount(lead, lead.ConvertedAccountId, true);
+
+        resp.put('success', true);
+        resp.put('leadId', lead.Id);
+        resp.put('grptag', tag);
+        resp.put('slot', slot);
+        resp.put('newGroup', isNew);
+        resp.put('preRegister', lead.get(groupFieldName(slot, 'preReg')) == true);
+        resp.put('preRegistrationDate', lead.get(groupFieldName(slot, 'preRegDate')));
+        resp.put('accountUpdated', converted);
+        if (converted) resp.put('accountId', lead.ConvertedAccountId);
+        resp.put('message', (isNew ? 'Group added to slot ' : 'Group updated in slot ') + slot
+            + (converted ? ' on lead and account.' : ' on lead.') + ' No opportunity created.');
+        return resp;
+    }
+    // END: SECTION 4A – PRE-REGISTRATION HELPERS
 
 
     // =============================================================================
@@ -630,6 +841,7 @@ global with sharing class LeadConversionService {
                 lead.put(groupFieldName(slot, 'tag'),        incomingTag);
                 lead.put(groupFieldName(slot, 'programmes'), String.join(newProgs,  ','));
                 lead.put(groupFieldName(slot, 'majors'),     String.join(newMajors, ','));
+                applyPreRegToLead(leadUpdate, lead, slot, incomingGroup, true);
                 System.debug('New group "' + incomingTag + '" → slot ' + slot);
 
             } else {
@@ -662,6 +874,29 @@ global with sharing class LeadConversionService {
                 leadUpdate.put(groupFieldName(slot, 'majors'),     String.join(newMajors,    ','));
                 lead.put(groupFieldName(slot, 'programmes'),       String.join(newProgNames, ','));
                 lead.put(groupFieldName(slot, 'majors'),           String.join(newMajors,    ','));
+                applyPreRegToLead(leadUpdate, lead, slot, incomingGroup, false);
+                // Application number / date: a pre-registered group is saved without them, so
+                // fill them when the slot is blank, or overwrite when the group is pre-registered.
+                // (Normal groups keep their stored values, as before.)
+                Map<String, Object> leadVals = lead.getPopulatedFieldsAsMap(); // tolerate leads queried without every slot field
+                Boolean slotPreReg = leadVals.get(groupFieldName(slot, 'preReg')) == true;
+                Object inNo = incomingGroup.get('applicationNumber');
+                if (inNo != null && String.isNotBlank(String.valueOf(inNo))
+                    && (slotPreReg || String.isBlank((String) leadVals.get(groupFieldName(slot, 'appNumber'))))) {
+                    leadUpdate.put(groupFieldName(slot, 'appNumber'), String.valueOf(inNo));
+                    lead.put(groupFieldName(slot, 'appNumber'), String.valueOf(inNo));
+                }
+                Object inDt = incomingGroup.get('applicationDate');
+                if (inDt != null && String.isNotBlank(String.valueOf(inDt))
+                    && (slotPreReg || leadVals.get(groupFieldName(slot, 'appDate')) == null)) {
+                    try {
+                        Date d = Date.valueOf(String.valueOf(inDt));
+                        leadUpdate.put(groupFieldName(slot, 'appDate'), d);
+                        lead.put(groupFieldName(slot, 'appDate'), d);
+                    } catch (Exception e) {
+                        System.debug('Invalid applicationDate: ' + inDt);
+                    }
+                }
                 System.debug('Existing group "' + incomingTag + '" overwritten in slot ' + slot
                     + ' with ' + newProgNames.size() + ' programme(s).');
             }
@@ -1064,6 +1299,32 @@ global with sharing class LeadConversionService {
                         }
                         // ── END: Max group validation using lead slot count ────────
 
+                        // ── START: Pre-registration handling (post-conversion) ─────
+                        // Added By : Mihir Ramoliya | 23-Oct-2026
+                        // A group is pre-registered when the payload says preRegister=true, or the
+                        // payload does not say and the lead slot already holds it as pre-registered.
+                        // Pre-registered groups never create / change an Opportunity; they are saved on
+                        // the Lead slot and mirrored to the Account. preRegister=false on a group that
+                        // was pre-registered upgrades it to a normal application (Opportunity created below).
+                        Set<String> preRegTags    = new Set<String>();
+                        Set<String> upgradedTags  = new Set<String>();
+                        for (Object obj : rawGroups) {
+                            Map<String, Object> gm = (Map<String, Object>) obj;
+                            String tag = (String) gm.get('grptag');
+                            Boolean payloadFlag = parsePreRegister(gm.get('preRegister'));
+                            Boolean slotFlag = false;
+                            for (Integer s = 1; s <= maxGroups; s++) {
+                                if (tag == (String) convertedLead.get('Group_' + s + '__c')) {
+                                    slotFlag = convertedLead.get(groupFieldName(s, 'preReg')) == true;
+                                    break;
+                                }
+                            }
+                            Boolean effective = (payloadFlag != null) ? payloadFlag : slotFlag;
+                            if (effective) preRegTags.add(tag);
+                            if (payloadFlag == false && slotFlag) upgradedTags.add(tag);
+                        }
+                        // ── END: Pre-registration handling (post-conversion) ───────
+
                         Id contactId = null;
                         List<Contact> contacts = [SELECT Id FROM Contact WHERE AccountId = :personAccountId LIMIT 1];
                         if (!contacts.isEmpty()) contactId = contacts[0].Id;
@@ -1076,6 +1337,7 @@ global with sharing class LeadConversionService {
                         for (Object obj : rawGroups) {
                             Map<String, Object> grpMap    = (Map<String, Object>) obj;
                             String grpTag                 = (String) grpMap.get('grptag');
+                            if (preRegTags.contains(grpTag)) continue; // pre-registered: no Opportunity work
                             List<Object> incomingProgObjs = getProgsList(grpMap);
 
                             // Parse applicationDate string to Date
@@ -1195,6 +1457,35 @@ global with sharing class LeadConversionService {
                             }
                         }
 
+                        // ── START: write groups to the Lead slots and mirror to the Account ──
+                        // Added By : Mihir Ramoliya | 23-Oct-2026
+                        // Pre-registered / upgraded groups: mandatory (errors are returned to ERP).
+                        // Other groups: best effort so existing behaviour is never broken.
+                        List<Map<String, Object>> mustSave = new List<Map<String, Object>>();
+                        List<Map<String, Object>> niceToSave = new List<Map<String, Object>>();
+                        for (Object obj : rawGroups) {
+                            Map<String, Object> gm = (Map<String, Object>) obj;
+                            String tag = (String) gm.get('grptag');
+                            if (preRegTags.contains(tag) || upgradedTags.contains(tag)) mustSave.add(gm);
+                            else niceToSave.add(gm);
+                        }
+                        if (!mustSave.isEmpty()) {
+                            convertedLead = Database.query(convertedLeadSoql);
+                            update updateLeadGroupFields(convertedLead, mustSave);
+                        }
+                        if (!niceToSave.isEmpty()) {
+                            try {
+                                convertedLead = Database.query(convertedLeadSoql);
+                                update updateLeadGroupFields(convertedLead, niceToSave);
+                            } catch (Exception ex) {
+                                System.debug(LoggingLevel.ERROR, 'Lead slot update skipped: ' + ex.getMessage());
+                            }
+                        }
+                        Lead syncLead = Database.query(convertedLeadSoql);
+                        syncGroupsToAccount(syncLead, personAccountId, leadHasPreRegisteredGroup(syncLead));
+                        if (!preRegTags.isEmpty()) responseMap.put('preRegisteredGroups', preRegTags.size());
+                        // ── END: write groups to the Lead slots and mirror to the Account ────
+
                         // Collect all grptags from the payload for filtering
                         Set<String> payloadGroupTags = new Set<String>();
                         for (Object obj : rawGroups) {
@@ -1235,7 +1526,9 @@ global with sharing class LeadConversionService {
                             responseMap.put('opportunities', opportunityDetails);
                         }
 
-                        if (oppsToUpdate.isEmpty() && oppsToInsert.isEmpty()) {
+                        if (oppsToUpdate.isEmpty() && oppsToInsert.isEmpty() && !preRegTags.isEmpty()) {
+                            responseMap.put('message', 'Pre-registration saved on lead and account. No opportunity created.');
+                        } else if (oppsToUpdate.isEmpty() && oppsToInsert.isEmpty()) {
                             responseMap.put('message', 'No changes made. All programmes were duplicates and no new groups were added.');
                         }
                     }
@@ -2082,6 +2375,30 @@ global with sharing class LeadConversionService {
         }
         // ── END: Single grptag filter ─────────────────────────────────────────────
 
+        // ── START: Pre-registered groups never become Opportunities ───────────────
+        // Added By : Mihir Ramoliya | 23-Oct-2026
+        // Pre-registered groups stay on the Lead slots and are mirrored to the Account.
+        // Only the remaining (normal) groups continue to the conversion below, unchanged.
+        List<Map<String, Object>> convertibleGroups = new List<Map<String, Object>>();
+        for (Map<String, Object> grp : storedGroups) {
+            if (grp.get('preRegister') != true) convertibleGroups.add(grp);
+        }
+        Integer preRegisteredSkipped = storedGroups.size() - convertibleGroups.size();
+        if (convertibleGroups.isEmpty()) {
+            if (!lead.IsConverted) {
+                responseMap.put('leadId', lead.Id);
+                responseMap.put('message', 'All requested group(s) are pre-registered. Lead not converted and no opportunity created.');
+                return 'Pre-registered only – not converted.';
+            }
+            syncGroupsToAccount(lead, lead.ConvertedAccountId, true);
+            responseMap.put('leadId',          lead.Id);
+            responseMap.put('personAccountId', lead.ConvertedAccountId);
+            responseMap.put('message', 'Pre-registration saved on lead and account. No opportunity created.');
+            return 'Pre-registered only.';
+        }
+        storedGroups = convertibleGroups;
+        // ── END: Pre-registered groups never become Opportunities ─────────────────
+
         // ── STEP 4 – Conversion branch ────────────────────────────────────────────
         Id accountId;
         Id contactId;
@@ -2090,6 +2407,7 @@ global with sharing class LeadConversionService {
         // to produce the correct response message.
         Boolean wasAlreadyConverted = lead.IsConverted;
         List<Opportunity> opportunitiesToInsert = new List<Opportunity>();
+        Integer updatedExistingOppCount = 0;
 
         if (!lead.IsConverted) {
             // ── BRANCH A: Lead not yet converted ─────────────────────────────────
@@ -2150,13 +2468,76 @@ global with sharing class LeadConversionService {
 
             // Query existing opportunities to know which groups already have one
             List<Opportunity> existingOpps = [
-                SELECT Id, Program_Group_Tag__c FROM Opportunity WHERE AccountId = :accountId
+                SELECT Id, Program_Group_Tag__c,
+                    Primary_Preferred_Program__c,     Primary_Preferred_Major__c,
+                    Secondary_Preferred_Programme__c, Secondary_Preferred_Major__c,
+                    Ternary_Preferred_Programme__c,   Ternary_Preferred_Major__c
+                FROM Opportunity WHERE AccountId = :accountId
             ];
             Set<String> existingGroupTags = new Set<String>();
+            Map<String, Opportunity> existingOppByTag = new Map<String, Opportunity>();
             for (Opportunity o : existingOpps) {
-                if (o.Program_Group_Tag__c != null) existingGroupTags.add(o.Program_Group_Tag__c);
+                if (o.Program_Group_Tag__c != null) {
+                    existingGroupTags.add(o.Program_Group_Tag__c);
+                    existingOppByTag.put(o.Program_Group_Tag__c, o);
+                }
             }
             System.debug('Existing group tags on account: ' + existingGroupTags);
+
+            // ── START: refresh programmes on EXISTING opportunities ───────────────
+            // Added By : Mihir Ramoliya | 14-Oct-2026
+            // Issue    : when the payload carried grpPrograms for a group that already
+            //            had an opportunity, only the Lead slot was updated; the
+            //            opportunity was skipped and kept stale / empty programmes.
+            // Fix      : for every payload group whose tag matches an existing
+            //            opportunity, overwrite that opportunity's programme/major
+            //            slots with the incoming list (payload = source of truth, same
+            //            rule as the personAccountId route). Groups with no valid
+            //            programmes in the payload leave the opportunity untouched.
+            if (payloadMap.containsKey('grpPrograms') && payloadMap.get('grpPrograms') != null) {
+                Map<Id, Opportunity> oppsToRefresh = new Map<Id, Opportunity>();
+                for (Object obj : (List<Object>) payloadMap.get('grpPrograms')) {
+                    Map<String, Object> grpMap = (Map<String, Object>) obj;
+                    Opportunity existingOpp = existingOppByTag.get((String) grpMap.get('grptag'));
+                    if (existingOpp == null) continue;
+
+                    List<Object> incomingProgObjs = getProgsList(grpMap);
+                    if (incomingProgObjs.size() > maxPrograms) {
+                        throw new CustomException(
+                            'Group "' + (String) grpMap.get('grptag') + '" cannot have more than '
+                            + maxPrograms + ' programme(s).'
+                        );
+                    }
+
+                    List<String> newProgs  = new List<String>();
+                    List<String> newMajors = new List<String>();
+                    for (Object progObj : incomingProgObjs) {
+                        Map<String, Object> pm = (Map<String, Object>) progObj;
+                        String pn    = (String) pm.get('programInterestedIn');
+                        String major = (String) pm.get('major');
+                        if (String.isBlank(pn)) continue;
+                        newProgs.add(pn.trim());
+                        newMajors.add(major != null ? major.trim() : '');
+                    }
+                    if (newProgs.isEmpty()) continue;
+
+                    existingOpp.Primary_Preferred_Program__c      = null; existingOpp.Primary_Preferred_Major__c   = null;
+                    existingOpp.Secondary_Preferred_Programme__c  = null; existingOpp.Secondary_Preferred_Major__c = null;
+                    existingOpp.Ternary_Preferred_Programme__c    = null; existingOpp.Ternary_Preferred_Major__c   = null;
+                    for (Integer pi = 0; pi < newProgs.size() && pi < maxPrograms; pi++) {
+                        if (pi == 0) { existingOpp.Primary_Preferred_Program__c     = newProgs[pi]; existingOpp.Primary_Preferred_Major__c   = newMajors[pi]; }
+                        if (pi == 1) { existingOpp.Secondary_Preferred_Programme__c = newProgs[pi]; existingOpp.Secondary_Preferred_Major__c = newMajors[pi]; }
+                        if (pi == 2) { existingOpp.Ternary_Preferred_Programme__c   = newProgs[pi]; existingOpp.Ternary_Preferred_Major__c   = newMajors[pi]; }
+                    }
+                    oppsToRefresh.put(existingOpp.Id, existingOpp);
+                }
+                if (!oppsToRefresh.isEmpty()) {
+                    update oppsToRefresh.values();
+                    updatedExistingOppCount = oppsToRefresh.size();
+                    System.debug('Refreshed programmes on ' + updatedExistingOppCount + ' existing opportunity/ies.');
+                }
+            }
+            // ── END: refresh programmes on EXISTING opportunities ─────────────────
 
             // Track whether this is a single-group request (grptag in payload)
             // so we can return a specific error instead of silently skipping
@@ -2251,6 +2632,10 @@ global with sharing class LeadConversionService {
         // Update Account fields from lead data and payload
         updateAccountFromLead(lead, accountId, payloadMap);
 
+        // Added By : Mihir Ramoliya | 23-Oct-2026 — mirror all group slots (incl. pre-registration) to the Account
+        syncGroupsToAccount(lead, accountId, leadHasPreRegisteredGroup(lead));
+        if (preRegisteredSkipped > 0) responseMap.put('preRegisteredGroups', preRegisteredSkipped);
+
         // Populate the response map for the REST handler
         responseMap.put('leadId',          lead.Id);
         responseMap.put('personAccountId', accountId);
@@ -2262,7 +2647,11 @@ global with sharing class LeadConversionService {
             ? 'Lead converted with ' + opportunitiesToInsert.size() + ' opportunity/ies.'
             : (!opportunitiesToInsert.isEmpty()
                 ? 'Already converted. Created ' + opportunitiesToInsert.size() + ' new opportunity/ies.'
-                : 'Already converted. All groups already have opportunities.');
+                    + (updatedExistingOppCount > 0 ? ' Updated programmes on ' + updatedExistingOppCount + ' existing opportunity/ies.' : '')
+                : (updatedExistingOppCount > 0
+                    ? 'Already converted. Updated programmes on ' + updatedExistingOppCount + ' existing opportunity/ies.'
+                    : 'Already converted. All groups already have opportunities.'));
+        if (updatedExistingOppCount > 0) responseMap.put('updatedOpportunities', updatedExistingOppCount);
 
         responseMap.put('message', msg);
         System.debug('=== END UG conversion: ' + msg + ' ===');

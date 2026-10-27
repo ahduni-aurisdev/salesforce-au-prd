@@ -112,6 +112,10 @@
         <layout>Undergraduation Layout</layout>
         <layoutType>PersonAccount</layoutType>
         <sections>
+            <label><!-- Applications --></label>
+            <section>Applications</section>
+        </sections>
+        <sections>
             <label><!-- College Information --></label>
             <section>College Information</section>
         </sections>

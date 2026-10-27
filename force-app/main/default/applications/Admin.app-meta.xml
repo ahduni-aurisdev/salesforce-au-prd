@@ -791,6 +791,7 @@
     <tabs>State__c</tabs>
     <tabs>API_Log__c</tabs>
     <tabs>Major__c</tabs>
+    <tabs>Admission_Round__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Admin_UtilityBar</utilityBar>
 </CustomApplication>

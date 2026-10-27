@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Admission Year --></label>
+    <name>Admission_Year__c</name>
+    <picklistValues>
+        <masterLabel>Admission Year - 2023</masterLabel>
+        <translation><!-- Admission Year - 2023 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Admission Year - 2024</masterLabel>
+        <translation><!-- Admission Year - 2024 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Admission Year - 2025</masterLabel>
+        <translation><!-- Admission Year - 2025 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Admission Year - 2027</masterLabel>
+        <translation><!-- Admission Year - 2027 --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
