@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Set this and Admission Year so the scheduled sync can create or update Leads for this session&apos;s registrants. --></help>
+    <label><!-- Department --></label>
+    <name>Department__c</name>
+    <picklistValues>
+        <masterLabel>CLeF</masterLabel>
+        <translation><!-- CLeF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Career Development Centre</masterLabel>
+        <translation><!-- Career Development Centre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Executive Education</masterLabel>
+        <translation><!-- Executive Education --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Graduation</masterLabel>
+        <translation><!-- Graduation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Masters</masterLabel>
+        <translation><!-- Masters --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD</masterLabel>
+        <translation><!-- PhD --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Undergraduation</masterLabel>
+        <translation><!-- Undergraduation --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -17,14 +17,6 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>bccAddresses</name>
-            <value>
-                <collectionElements>
-                    <stringValue>mihir.hlis@gmail.com</stringValue>
-                </collectionElements>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>senderType</name>
             <value>
                 <inputConfiguratorMode>Custom</inputConfiguratorMode>

@@ -1,0 +1,368 @@
+{
+ "allOrNone": false,
+ "records": [
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Dogra",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Ananya V",
+   "Email": "dograananya13@gmail.com",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Urvi",
+   "Programme_Interested_in__c": "BCom (Honours)",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Bhatt",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Mishti",
+   "MobilePhone": "9137182002",
+   "Phone": "9137182002",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Sriram",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Class 12",
+   "FirstName": "Chaitanya",
+   "Email": "chaitanyasriram28@gmail.com",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BS (Honours)",
+   "Major__c": "Economics",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Singh",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Dinesh",
+   "Email": "dsrathorejod11@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Junayed",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Abdullah Al",
+   "Email": "sheikhshadid.khs@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BS (Honours)"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Patidar",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Lateral",
+   "FirstName": "Chahat",
+   "MobilePhone": "9993445721",
+   "Phone": "9993445721",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Nirja",
+   "Programme_Interested_in__c": "BTech",
+   "Major__c": "Electrical and Electronics Engineering"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Chavda",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Bhavin",
+   "Email": "bhavinchavda2009@gmail.com",
+   "MobilePhone": "9213502260",
+   "Phone": "9213502260",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech",
+   "School_City__c": "Rajkot",
+   "Name_of_University_College__c": "Darshan University"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Brahmbhatt",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Aastha",
+   "MobilePhone": "9925566611",
+   "Phone": "9925566611",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech",
+   "Major__c": "Chemical and Environmental Engineering",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Sethi",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Lateral",
+   "FirstName": "Vivek",
+   "MobilePhone": "9427678121",
+   "Phone": "9427678121",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Name_of_University_College__c": "JK Laxmi University, Jaipur"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Jeshani",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Mayank",
+   "MobilePhone": "9274212403",
+   "Phone": "9274212403",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Shah",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 11",
+   "FirstName": "Vedika",
+   "MobilePhone": "9924080044",
+   "Phone": "9924080044",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "Integrated MS in Life Sciences",
+   "Admission_Year__c": "Admission Year - 2028"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Bhansali",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Lateral",
+   "FirstName": "Kavya",
+   "MobilePhone": "9301474557",
+   "Phone": "9301474557",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BSM (Honours)",
+   "School_City__c": "Raipur"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Munde",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Sai",
+   "Email": "sameermunde1010@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Sumit",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "MobilePhone": "8141630290",
+   "Phone": "8141630290",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BCom (Honours)",
+   "School_City__c": "Surat",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Maheshwari",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Lateral",
+   "FirstName": "Rohan",
+   "MobilePhone": "9824254740",
+   "Phone": "9824254740",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech",
+   "Major__c": "Mechanical",
+   "School_City__c": "Ahmedabad",
+   "Name_of_University_College__c": "LJ University"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Sharma",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Aayush",
+   "Email": "info@aayushsharma.co.in",
+   "MobilePhone": "8200794668",
+   "Phone": "9913699922",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BxMx - BS + MS Quantitative Finance",
+   "School_City__c": "Gandhidham",
+   "Board_c__c": "CBSE",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Jadeja",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Mansiba",
+   "Email": "jadejaba13@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Jha",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Aayush",
+   "Email": "ayj.1729@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Tolani",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Panshul",
+   "Email": "tolanipanshul10@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Raiyani",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Email",
+   "Class__c": "Lateral",
+   "FirstName": "Naimish",
+   "Email": "raiyaninaimish7@gmail.com",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Devansh",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Devansh",
+   "MobilePhone": "7880092102",
+   "Phone": "7880092102",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "The Family Business and Entrepreneurship Programme",
+   "School_City__c": "Bhopal",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "LastName": "Roy",
+   "RecordTypeId": "0125g000002SMZSAA4",
+   "Department__c": "Undergraduation",
+   "LeadSource": "Phone",
+   "Class__c": "Class 12",
+   "FirstName": "Disha",
+   "Email": "disharoy152021@gmail.com",
+   "MobilePhone": "9836981836",
+   "Phone": "9836981836",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BCom (Honours)",
+   "School_City__c": "Bangalore",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ ]
+}

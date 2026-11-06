@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Lead Status --></label>
+    <name>Lead_Status__c</name>
+    <picklistValues>
+        <masterLabel>Error</masterLabel>
+        <translation><!-- Error --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead created</masterLabel>
+        <translation><!-- Lead created --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead updated</masterLabel>
+        <translation><!-- Lead updated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No contact details</masterLabel>
+        <translation><!-- No contact details --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending setup</masterLabel>
+        <translation><!-- Pending setup --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>Account_Id__c</field>
+        <value xsi:type="xsd:string">OqolLyQTQYKiiYxTtz5iUw</value>
+    </values>
+    <values>
+        <field>Allowed_Host_Ids__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">cqBK5OFGTTCJj1Whr1Okgg</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">17P8I7S6VaDeh1X2rHhvtO9i6IjJ02at</value>
+    </values>
+    <values>
+        <field>Create_Activities__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Default_Admission_Year__c</field>
+        <value xsi:type="xsd:string">Admission Year - 2027</value>
+    </values>
+    <values>
+        <field>Default_Department__c</field>
+        <value xsi:type="xsd:string">Undergraduation</value>
+    </values>
+    <values>
+        <field>Lead_Owner_Department__c</field>
+        <value xsi:type="xsd:string">Undergraduation</value>
+    </values>
+    <values>
+        <field>Lead_Owner_Profile__c</field>
+        <value xsi:type="xsd:string">Top Level Management</value>
+    </values>
+    <values>
+        <field>Lead_Owner_Role__c</field>
+        <value xsi:type="xsd:string">Associate Director of Outreach</value>
+    </values>
+    <values>
+        <field>Webhook_Secret_Token__c</field>
+        <value xsi:type="xsd:string">Y4qUUbOPS3KLcAGepaZ_nQ</value>
+    </values>
+    <values>
+        <field>Zoom_User_Id__c</field>
+        <value xsi:type="xsd:string">virtual.admissionsoffice@ahduni.edu.in</value>
+    </values>
+</CustomMetadata>

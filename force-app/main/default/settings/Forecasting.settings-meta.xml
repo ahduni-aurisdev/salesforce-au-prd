@@ -737,6 +737,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -920,6 +924,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -1581,6 +1586,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -1765,6 +1774,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -2422,6 +2432,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -2605,6 +2619,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -3262,6 +3277,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -3445,6 +3464,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -4106,6 +4126,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -4290,6 +4314,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -4947,6 +4972,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -5130,6 +5159,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -5791,6 +5821,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -5975,6 +6009,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -6632,6 +6667,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -6815,6 +6854,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -7476,6 +7516,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -7660,6 +7704,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -8317,6 +8362,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -8500,6 +8549,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -9161,6 +9211,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -9345,6 +9399,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>
@@ -10002,6 +10057,10 @@
             <label>UTM Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>PARTNER.NAME</field>
+            <label>Partner Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </opportunityListFieldsLabelMappings>
@@ -10185,6 +10244,7 @@
             <field>00Nfv000001zxnN</field>
             <field>00NJ1000000PLxA</field>
             <field>00NJ1000000Qqvd</field>
+            <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <field>OPPORTUNITY.LAST_ACTIVITY_DAYS</field>

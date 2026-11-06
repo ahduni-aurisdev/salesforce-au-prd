@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Zoom Registration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Zoom Registrations</value>
+    </caseValues>
+    <layouts>
+        <layout>Zoom Registration Layout</layout>
+        <sections>
+            <label><!-- Attendance --></label>
+            <section>Attendance</section>
+        </sections>
+        <sections>
+            <label><!-- Registrant Details --></label>
+            <section>Registrant Details</section>
+        </sections>
+        <sections>
+            <label><!-- Registration Form Answers --></label>
+            <section>Registration Form Answers</section>
+        </sections>
+        <sections>
+            <label><!-- Registration Information --></label>
+            <section>Registration Information</section>
+        </sections>
+        <sections>
+            <label><!-- Salesforce Match --></label>
+            <section>Salesforce Match</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Technical Details --></label>
+            <section>Technical Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

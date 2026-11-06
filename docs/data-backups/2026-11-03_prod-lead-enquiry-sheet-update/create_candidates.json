@@ -1,0 +1,641 @@
+{
+ "dograananya13@gmail.com": {
+  "row": {
+   "Date": "09-10-2026",
+   "First": "Ananya V",
+   "Last": "Dogra",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "BCom (Honours)",
+   "Major": "",
+   "AppNo": "",
+   "Email": "dograananya13@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Urvi",
+   "Enquiry": "General Admission Information",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Urvi",
+   "Programme_Interested_in__c": "BCom (Honours)",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "9137182002": {
+  "row": {
+   "Date": "12-10-2026",
+   "First": "Mishti",
+   "Last": "Bhatt",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9137182002",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "9137182002"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "chaitanyasriram28@gmail.com": {
+  "row": {
+   "Date": "12-10-2026",
+   "First": "Chaitanya",
+   "Last": "Sriram",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "BS (Honours)",
+   "Major": "Economics",
+   "AppNo": "",
+   "Email": "chaitanyasriram28@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Shivani",
+   "Enquiry": "General Admission Information",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BS (Honours)",
+   "Major__c": "Economics",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "dsrathorejod11@gmail.com": {
+  "row": {
+   "Date": "12-10-2026",
+   "First": "Dinesh",
+   "Last": "Singh",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Monsoon 2027",
+   "Programme": "BTech",
+   "Major": "",
+   "AppNo": "",
+   "Email": "dsrathorejod11@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech"
+  }
+ },
+ "sheikhshadid.khs@gmail.com": {
+  "row": {
+   "Date": "14-10-2026",
+   "First": "Abdullah Al",
+   "Last": "Junayed",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "BS (Honours)",
+   "Major": "",
+   "AppNo": "",
+   "Email": "sheikhshadid.khs@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BS (Honours)"
+  }
+ },
+ "9993445721": {
+  "row": {
+   "Date": "14-10-2026",
+   "First": "Chahat",
+   "Last": "Patidar",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "BTech",
+   "Major": "Electrical and Electronics Engineering",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9993445721",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Nirja",
+   "Enquiry": "Lateral Admission",
+   "phones": [
+    "9993445721"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Nirja",
+   "Programme_Interested_in__c": "BTech",
+   "Major__c": "Electrical and Electronics Engineering"
+  }
+ },
+ "bhavinchavda2009@gmail.com": {
+  "row": {
+   "Date": "15-10-2026",
+   "First": "Bhavin",
+   "Last": "Chavda",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "BTech",
+   "Major": "",
+   "AppNo": "",
+   "Email": "bhavinchavda2009@gmail.com",
+   "Phone": "9213502260",
+   "City": "Rajkot",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "Darshan University",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": [
+    "9213502260"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech",
+   "School_City__c": "Rajkot",
+   "Name_of_University_College__c": "Darshan University"
+  }
+ },
+ "9925566611": {
+  "row": {
+   "Date": "15-10-2026",
+   "First": "Aastha",
+   "Last": "Brahmbhatt",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "BTech",
+   "Major": "Chemical and Environmental Engineering",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9925566611",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neela",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "9925566611"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neela",
+   "Programme_Interested_in__c": "BTech",
+   "Major__c": "Chemical and Environmental Engineering",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "9427678121": {
+  "row": {
+   "Date": "19-10-2026",
+   "First": "Vivek",
+   "Last": "Sethi",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9427678121",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "JK Laxmi University, Jaipur",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": [
+    "9427678121"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Name_of_University_College__c": "JK Laxmi University, Jaipur"
+  }
+ },
+ "9274212403": {
+  "row": {
+   "Date": "19-10-2026",
+   "First": "Mayank",
+   "Last": "Jeshani",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9274212403",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "9274212403"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "9924080044": {
+  "row": {
+   "Date": "21-10-2026",
+   "First": "Vedika",
+   "Last": "Shah",
+   "SF": "Unregistered",
+   "Class": "Class 11",
+   "AdmYear": "Admission Year - 2028",
+   "Programme": "Integrated MS in Life Sciences",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9924080044",
+   "City": "",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "9924080044"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "Integrated MS in Life Sciences",
+   "Admission_Year__c": "Admission Year - 2028"
+  }
+ },
+ "9301474557": {
+  "row": {
+   "Date": "30-10-2026",
+   "First": "Kavya",
+   "Last": "Bhansali",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "BSM (Honours)",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9301474557",
+   "City": "Raipur",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": [
+    "9301474557"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BSM (Honours)",
+   "School_City__c": "Raipur"
+  }
+ },
+ "sameermunde1010@gmail.com": {
+  "row": {
+   "Date": "26-10-2026",
+   "First": "Sai",
+   "Last": "Munde",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "sameermunde1010@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  }
+ },
+ "8141630290": {
+  "row": {
+   "Date": "27-10-2026",
+   "First": "Sumit",
+   "Last": "",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "BCom (Honours)",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "8141630290",
+   "City": "Surat",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "8141630290"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BCom (Honours)",
+   "School_City__c": "Surat",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "9824254740": {
+  "row": {
+   "Date": "28-10-2026",
+   "First": "Rohan",
+   "Last": "Maheshwari",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "BTech",
+   "Major": "Mechanical",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "9824254740",
+   "City": "Ahmedabad",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "LJ University",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": [
+    "9824254740"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech",
+   "Major__c": "Mechanical",
+   "School_City__c": "Ahmedabad",
+   "Name_of_University_College__c": "LJ University"
+  }
+ },
+ "info@aayushsharma.co.in": {
+  "row": {
+   "Date": "30-10-2026",
+   "First": "Aayush",
+   "Last": "Sharma",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "BxMx - BS + MS Quantitative Finance",
+   "Major": "",
+   "AppNo": "",
+   "Email": "info@aayushsharma.co.in",
+   "Phone": "8200794668/9913699922",
+   "City": "Gandhidham",
+   "SourceType": "Phone",
+   "SchoolBoard": "CBSE",
+   "College": "",
+   "Counsellor": "Shivani",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "8200794668",
+    "9913699922"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BxMx - BS + MS Quantitative Finance",
+   "School_City__c": "Gandhidham",
+   "Board_c__c": "CBSE",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "jadejaba13@gmail.com": {
+  "row": {
+   "Date": "30-10-2026",
+   "First": "Mansiba",
+   "Last": "Jadeja",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "BTech",
+   "Major": "",
+   "AppNo": "",
+   "Email": "jadejaba13@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech"
+  }
+ },
+ "ayj.1729@gmail.com": {
+  "row": {
+   "Date": "02-11-2026",
+   "First": "Aayush",
+   "Last": "Jha",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Winter 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "ayj.1729@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  }
+ },
+ "tolanipanshul10@gmail.com": {
+  "row": {
+   "Date": "02-11-2026",
+   "First": "Panshul",
+   "Last": "Tolani",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Monsoon 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "tolanipanshul10@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  }
+ },
+ "raiyaninaimish7@gmail.com": {
+  "row": {
+   "Date": "02-11-2026",
+   "First": "Naimish",
+   "Last": "Raiyani",
+   "SF": "Lateral",
+   "Class": "Lateral",
+   "AdmYear": "Lateral Monsoon 2027",
+   "Programme": "",
+   "Major": "",
+   "AppNo": "",
+   "Email": "raiyaninaimish7@gmail.com",
+   "Phone": "",
+   "City": "",
+   "SourceType": "Email",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "Lateral Admission",
+   "phones": []
+  },
+  "vals": {
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  }
+ },
+ "7880092102": {
+  "row": {
+   "Date": "02-11-2026",
+   "First": "Devansh",
+   "Last": "Devansh",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "The Family Business and Entrepreneurship Programme",
+   "Major": "",
+   "AppNo": "",
+   "Email": "",
+   "Phone": "7880092102",
+   "City": "Bhopal",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "7880092102"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "The Family Business and Entrepreneurship Programme",
+   "School_City__c": "Bhopal",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ },
+ "disharoy152021@gmail.com": {
+  "row": {
+   "Date": "03-11-2026",
+   "First": "Disha",
+   "Last": "Roy",
+   "SF": "Unregistered",
+   "Class": "Class 12",
+   "AdmYear": "Admission Year - 2027",
+   "Programme": "BCom (Honours)",
+   "Major": "",
+   "AppNo": "",
+   "Email": "disharoy152021@gmail.com",
+   "Phone": "9836981836",
+   "City": "Bangalore",
+   "SourceType": "Phone",
+   "SchoolBoard": "",
+   "College": "",
+   "Counsellor": "Neelam",
+   "Enquiry": "General Admission Information",
+   "phones": [
+    "9836981836"
+   ]
+  },
+  "vals": {
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BCom (Honours)",
+   "School_City__c": "Bangalore",
+   "Admission_Year__c": "Admission Year - 2027"
+  }
+ }
+}

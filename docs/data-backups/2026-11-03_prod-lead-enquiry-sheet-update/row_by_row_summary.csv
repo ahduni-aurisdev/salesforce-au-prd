@@ -1,0 +1,69 @@
+#,Date,Name,Email,Phone,Matched by,Leads,Action,Target Lead,Notes
+1,09-10-2026,Akansh Soni,chetansony@gmail.com,,Email,1,UPDATE,00Qfv00000aeGntEAE,
+2,09-10-2026,Ananya V Dogra,dograananya13@gmail.com,,—,0,CREATE,,
+3,12-10-2026,Mishti Bhatt,,9137182002,—,0,CREATE,,
+4,12-10-2026,Chaitanya Sriram,chaitanyasriram28@gmail.com,,—,0,CREATE,,
+5,12-10-2026,Dinesh Singh,dsrathorejod11@gmail.com,,—,0,CREATE,,
+6,13-10-2026,Preet,,9898715751,Phone,2,UPDATE,00Qfv00000aXFV2EAO,2 leads in prod (1 converted); only open lead is Closed / Exec Ed
+7,13-10-2026,Dhvaj Patel,dhvajpatel2025@gmail.com,,Email,1,UPDATE,00Qfv00000RcnwHEAR,
+8,14-10-2026,Abdullah Al Junayed,sheikhshadid.khs@gmail.com,,—,0,CREATE,,
+9,14-10-2026,Chahat Patidar,,9993445721,—,0,CREATE,,
+10,14-10-2026,Diya Jain,,8780760510,Phone,3,UPDATE,00Qfv00000dQTuMEAW,3 leads in prod (0 converted)
+11,15-10-2026,Bhavin Chavda,bhavinchavda2009@gmail.com,9213502260,—,0,CREATE,,
+12,15-10-2026,Aboli Pawar,abolip582@gmail.com,9272423491,Phone,1,UPDATE,00Qfv00000dEeWzEAK,
+13,15-10-2026,Diya Patel,pdiya9079@gmail.com,8758893000,Email + Phone,3,UPDATE,00Qfv00000dS8VeEAK,3 leads in prod (0 converted)
+14,15-10-2026,Tatsam Rathod,tatsamkumarrathod58@gmail.com,6352409855,Email + Phone,1,UPDATE,00Qfv00000akIV4EAM,
+15,15-10-2026,Aastha Brahmbhatt,,9925566611,—,0,CREATE,,
+16,16-10-2026,Navinesh Kowshik,navineshkowshik@gmail.com,,Email,2,UPDATE,00Qfv00000cu83TEAQ,2 leads in prod (1 converted)
+17,19-10-2026,Vansh Thakkar,vanshthakkar1828@gmail.com,9898628081,Email + Phone,1,UPDATE,00Qfv00000bCuXNEA0,
+18,19-10-2026,Vivek Sethi,,9427678121,—,0,CREATE,,phone also on other person's lead: Jayati Sethi
+19,19-10-2026,Mayank Jeshani,,9274212403,—,0,CREATE,,phone also on other person's lead: Punya Bhudiya
+20,21-10-2026,Vaishnavi Singh,ravik79@gmail.com,7208000179,Email + Phone,1,UPDATE,00Qfv00000bx82gEAA,
+21,21-10-2026,Vedika Shah,,9924080044,—,0,CREATE,,
+22,21-10-2026,Kavya Yadav,ky804089@gmail.com,,Email,1,SKIP (converted),00Qfv00000FEgI5EAL,
+23,21-10-2026,Dhruv Sanghvi,,9974726260,Phone,2,UPDATE,00Qfv00000adwd8EAA,2 leads in prod (0 converted)
+24,21-10-2026,Soham Mathur,sohammathur4.0@gmail.com,,Email,1,SKIP (converted),00Qfv00000JgjQnEAJ,
+25,22-10-2026,Fairy Shah,fairyshah3024@gmail.com,9099003351,Email,1,UPDATE,00Qfv00000IwqGnEAJ,
+26,22-10-2026,Tanushree Gandhi,tanushreegandhi119@gmail.com,,Email,1,SKIP (converted),00Qfv00000ct5NnEAI,
+27,22-10-2026,Megh Gandhi,megh.gandhi@rediffmail.com,9979636496,Email + Phone,4,UPDATE,00Qfv00000adwcSEAQ,4 leads in prod (0 converted)
+28,22-10-2026,Veer Khatri,,9727548316,Phone,1,SKIP (converted),00Qfv00000c5NkYEAU,phone also on other person's lead: Hensi Solanki
+29,23-10-2026,Kavya Bhansali,,9301474557,—,0,CREATE,,
+30,23-10-2026,Pushti Raval,pushtiraval@gmail.com,6351213917,Email + Phone,1,SKIP (converted),00Qfv00000cCdhHEAS,
+31,26-10-2026,Zeel S,zeel107@icloud.com,,Email,2,UPDATE,00Qfv00000cwJEBEA2,2 leads in prod (1 converted)
+32,26-10-2026,Kabir Shadija,kabirshadija61@gmail.com,,Email,2,UPDATE,00Qfv00000adwdgEAA,2 leads in prod (0 converted)
+33,26-10-2026,Sai Munde,sameermunde1010@gmail.com,,—,0,CREATE,,
+34,26-10-2026,Kushagrah Jhaver,kushagrahjhaver@gmail.com,9687770304,Email + Phone,1,SKIP (converted),00Qfv00000cVIZMEA4,
+35,26-10-2026,Saketh Kadaba,,9845067036,Phone,1,UPDATE,00Qfv00000cXjrhEAC,
+36,26-10-2026,Ahana J,harshithaj@yahoo.com,9866000089,Email + Phone,1,UPDATE,00Qfv00000cd0n3EAA,
+37,26-10-2026,Zeenia Arora,arorazeenia985@gmail.com,,Email,1,SKIP (converted),00Qfv00000D66uWEAR,
+38,27-10-2026,Sumit,,8141630290,—,0,CREATE,,
+39,27-10-2026,Zeenia Arora,,7700957894,Phone,1,SKIP (converted),00Qfv00000POYoYEAX,
+40,28-10-2026,Rohan Maheshwari,,9824254740,—,0,CREATE,,
+41,28-10-2026,Yash Rathod,,7383276908,Phone,2,UPDATE,00Qfv00000cmao5EAA,2 leads in prod (0 converted)
+42,28-10-2026,Amrit Bhatiani,,9899295018,Phone,1,SKIP (converted),00Qfv00000Co6WQEAZ,
+43,28-10-2026,Aman Gupta,amanworkss369@gmail.com,,Email,1,UPDATE,00Qfv00000csglyEAA,
+44,28-10-2026,Mahimaa Ashok Ramani,ashokramani78@gmail.com,,Email,1,UPDATE,00Qfv00000WuNBQEA3,
+45,28-10-2026,Hansraj Patel,palhansraj247@gmail.com,9328399349,Email + Phone,3,UPDATE,00Qfv00000d6c5nEAA,3 leads in prod (1 converted)
+46,29-10-2026,Amey Jain,ameyjain2009@gmail.com,,Email,2,UPDATE,00Qfv00000dF01GEAS,2 leads in prod (0 converted)
+47,29-10-2026,Prit Thakkar,,9898715751,Phone,2,UPDATE,00Qfv00000aXFV2EAO,2 leads in prod (1 converted); only open lead is Closed / Exec Ed
+48,29-10-2026,Priyansh Gangwal,gangwalpriyansh@gmail.com,9893863250,Email,1,SKIP (converted),00Qfv00000QBXXxEAP,
+49,30-10-2026,Kavya Bhansali,,9301474557,—,0,CREATE,,
+50,30-10-2026,Aayush Sharma,info@aayushsharma.co.in,8200794668/9913699922,—,0,CREATE,,
+51,30-10-2026,Pushti Raval,,6351213917,Phone,1,SKIP (converted),00Qfv00000cCdhHEAS,
+52,30-10-2026,Kabir Shadija,kabirshadija61@gmail.com,7984666185,Email + Phone,2,UPDATE,00Qfv00000adwdgEAA,2 leads in prod (0 converted)
+53,30-10-2026,Paramveer Patel,,9909960376,Phone,1,UPDATE,00Qfv00000dQ2vnEAC,phone also on other person's lead: 'Customer'
+54,30-10-2026,Mansiba Jadeja,jadejaba13@gmail.com,,—,0,CREATE,,
+55,30-10-2026,Aboli Pawar,abolipawar63@gmail.com,,Email,1,UPDATE,00Qfv00000dEeWzEAK,
+56,30-10-2026,Tanushree Gandhi,tanushreegandhi119@gmail.com,,Email,1,SKIP (converted),00Qfv00000ct5NnEAI,
+57,02-11-2026,Aayush Jha,ayj.1729@gmail.com,,—,0,CREATE,,
+58,02-11-2026,Kabir Shadija,,7984666185,Phone,2,UPDATE,00Qfv00000adwdgEAA,2 leads in prod (0 converted)
+59,02-11-2026,Panshul Tolani,tolanipanshul10@gmail.com,,—,0,CREATE,,
+60,02-11-2026,Pruthviraj Songara,pruthvirajsongara@gmail.com,8200741100,Email + Phone,1,SKIP (converted),00Qfv00000KuIoSEAV,
+61,02-11-2026,Naimish Raiyani,raiyaninaimish7@gmail.com,,—,0,CREATE,,
+62,02-11-2026,Sanskriti Jain,jainsanskriti2010@gmail.com,9099053114,Email + Phone,2,UPDATE,00Qfv00000aelIcEAI,2 leads in prod (0 converted)
+63,02-11-2026,Devansh Devansh,,7880092102,—,0,CREATE,,
+64,02-11-2026,Tosha Bhatt,tosha.bhatt21@gmail.com,,Email,1,UPDATE,00Qfv00000ZA5tfEAD,
+65,02-11-2026,Parthkumar Patel,parthpatel26008@gmail.com,9924925007,Email + Phone,2,UPDATE,00Qfv00000HLKLOEA5,2 leads in prod (1 converted)
+66,02-11-2026,Divya Pareek,anshumanpareek@yahoo.com,9898209444,Email + Phone,1,UPDATE,00Qfv00000ZkZGSEA3,
+67,02-11-2026,Vinita Vinita,vinita87b@gmail.com,6359032326,Email + Phone,2,UPDATE,00Qfv000002TKIWEA4,2 leads in prod (0 converted)
+68,03-11-2026,Disha Roy,disharoy152021@gmail.com,9836981836,—,0,CREATE,,

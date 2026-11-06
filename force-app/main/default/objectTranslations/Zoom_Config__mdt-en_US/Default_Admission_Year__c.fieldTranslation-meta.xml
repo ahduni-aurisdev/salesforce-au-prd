@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- e.g. Admission Year - 2027. Applied only to new sessions. --></help>
+    <label><!-- Default Admission Year --></label>
+    <name>Default_Admission_Year__c</name>
+</CustomFieldTranslation>

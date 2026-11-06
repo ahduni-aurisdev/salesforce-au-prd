@@ -18,6 +18,21 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Author              Date            Description
 // ─────────────────────────────────────────────────────────────────────────────
+// Jitendra Varma      29-Oct-2026     Fixed duplicate UG leads created when the
+//                                     phone in the payload has '+', spaces or
+//                                     dashes. handleDuplicateLeadUndergraduation
+//                                     now matches by Registration Number first,
+//                                     then by Email + last 10 digits of phone.
+//                                     handleDuplicateLeadMasters also matches on
+//                                     the last 10 digits of phone. A payload
+//                                     phone starting with '+' is now saved as
+//                                     sent instead of getting the country code
+//                                     added a second time. UG Auris_Admission_Form
+//                                     now requires 'leadId' and updates exactly
+//                                     that Lead; missing, invalid or mismatched
+//                                     leadId is an error. email / phone / mobile
+//                                     / admissionYear are optional with leadId.
+//                                     Masters / PhD Admission Form unchanged.
 // Mihir Ramoliya      26-Mar-2026     Rewrote UG group storage model.
 //                                     Groups now stored in dedicated Lead slot
 //                                     fields (Group_1__c … Group_4__c) instead
@@ -178,7 +193,7 @@ global class saveWebTo_YourProfileData {
      // Modify By: Rishav Raj
     // MODIFICATION: Updated processSingleRecord with Registration Number focus
     public static String processSingleRecord(Map<String, Object> payloadMap) {
-        String department = (String) payloadMap.get('department');
+        String department = normalizeDepartment((String) payloadMap.get('department'));
         String typeOfForm = (String) payloadMap.get('typeOfForm');
         String registrationNumber = (String) payloadMap.get('registrationNumber');
     
@@ -196,6 +211,15 @@ global class saveWebTo_YourProfileData {
             throw new CustomException('Invalid department or no record type mapping found');
         }
 
+        // Added By : Jitendra Varma | 29-Oct-2026
+        // A UG Admission Form must carry the 'leadId' returned by the Registration Form
+        // call. That exact Lead is updated - no duplicate matching and no new Lead. A
+        // missing, blank, invalid or mismatched leadId is rejected. Other departments'
+        // Admission Forms are unchanged (duplicate matching, any 'leadId' key ignored).
+        Lead admissionLead = (typeOfForm == AURIS_ADMISSION_FORM && department.equalsIgnoreCase(UG_DEPARTMENT))
+            ? resolveAdmissionLead(payloadMap, department, registrationNumber)
+            : null;
+
         // 🔹 Handle duplicates (same logic you already have)
         Lead existingLead, newLead;
         List<Object> programGroups = new List<Object>();
@@ -208,7 +232,10 @@ global class saveWebTo_YourProfileData {
 
             // Duplicate check — matches by Email + Phone for Undergraduation.
             // Returns the existing lead (with all slot fields queried) or null.
-            existingLead = handleDuplicateLeadUndergraduation(payloadMap, department, typeOfForm);
+            // Admission Form: the Lead given by leadId is used instead.
+            existingLead = (admissionLead != null)
+                ? admissionLead
+                : handleDuplicateLeadUndergraduation(payloadMap, department, typeOfForm);
             newLead      = (existingLead != null) ? existingLead : new Lead(RecordTypeId = recordTypeId);
 
             // ── START: Auris_Registration_Form path ───────────────────────────
@@ -518,11 +545,19 @@ global class saveWebTo_YourProfileData {
                 // submitted again. Once the sales team has moved the Lead past New Lead, an
                 // incoming 'leadStatus' of New Lead is ignored. Any other incoming status
                 // still applies, and a Lead that is still New Lead can be updated normally.
-                if (mapRec.Label == 'Status' && newLead.Id != null) {
+                // Modified By : Jitendra Varma | 29th October 2026
+                // An incoming legacy 'New' is saved as 'New Lead', and an existing Lead still on
+                // 'New' is treated like 'New Lead' so it can be moved to 'New Lead'.
+                if (mapRec.Label == 'Status') {
+                    if (String.valueOf(fieldValue).equalsIgnoreCase(StaticValuesUtil.LEAD_STATUS_NEW)) {
+                        fieldValue = StaticValuesUtil.LEAD_STATUS_NEW_LEAD;
+                    }
                     String currentStatus = (String) newLead.get('Status');
-                    if (String.isNotBlank(currentStatus)
-                        && !currentStatus.equalsIgnoreCase('New Lead')
-                        && String.valueOf(fieldValue).equalsIgnoreCase('New Lead')) {
+                    if (newLead.Id != null
+                        && String.isNotBlank(currentStatus)
+                        && !currentStatus.equalsIgnoreCase(StaticValuesUtil.LEAD_STATUS_NEW_LEAD)
+                        && !currentStatus.equalsIgnoreCase(StaticValuesUtil.LEAD_STATUS_NEW)
+                        && String.valueOf(fieldValue).equalsIgnoreCase(StaticValuesUtil.LEAD_STATUS_NEW_LEAD)) {
                         System.debug('Skipping Status reset to New Lead - existing Lead is already at ' + currentStatus);
                         continue;
                     }
@@ -546,12 +581,27 @@ global class saveWebTo_YourProfileData {
             newLead.LastName = '.';
         }
         
-        if(!payloadMap.containsKey('admissionYear') || payloadMap.get('admissionYear') == null){
+        // Modified By : Jitendra Varma | 29-Oct-2026
+        // A UG Admission Form updating the Lead given by leadId may leave out admissionYear
+        // (like email / phone / mobile) - the Lead keeps its own value instead of being
+        // reset to the default Admission Year.
+        if(admissionLead == null && (!payloadMap.containsKey('admissionYear') || payloadMap.get('admissionYear') == null)){
             newLead.Admission_Year__c = System.label.Admission_Year;
         }
         
         // Handle Phone
-        if (payloadMap.containsKey('phone') && payloadMap.get('phone') != null) {
+        // Modified By : Jitendra Varma | 29-Oct-2026
+        // Auris sends the phone with '+' and the country code (e.g. '+919876543210').
+        // Such a number is saved as sent (spaces/dashes removed) - adding the country
+        // code again saved it as '91919876543210'. A number without '+' still gets the
+        // country code added as before.
+        String payloadPhone = (String) payloadMap.get('phone');
+        String payloadPhoneDigits = (payloadPhone == null) ? '' : payloadPhone.replaceAll('\\D', '');
+        if (payloadPhone != null
+                && payloadPhone.trim().startsWith(INTERNATIONAL_PHONE_PREFIX)
+                && String.isNotBlank(payloadPhoneDigits)) {
+            newLead.Phone = INTERNATIONAL_PHONE_PREFIX + payloadPhoneDigits;
+        } else if (payloadMap.containsKey('phone') && payloadMap.get('phone') != null) {
             String country = (String) payloadMap.get('country');
             if (String.isBlank(country)){
                 country = 'IN';
@@ -800,11 +850,7 @@ global class saveWebTo_YourProfileData {
     * @return lead 
     */
     public static Lead handleDuplicateLeadMasters(Map<String, Object> payloadMap,String department,String typeOfForm){
-        String matchingphone=(String) payloadMap.get('phone');
-    
-        if (matchingphone != null) {
-            matchingphone = '%' + matchingphone + '%'; 
-        }
+        String matchingphone = buildPhoneMatchPattern((String) payloadMap.get('phone'));
         System.debug('[Processed] Phone for SOQL: ' + matchingphone);
     
         String matchingEmail = (String) payloadMap.get('email');
@@ -898,12 +944,23 @@ global class saveWebTo_YourProfileData {
             String department,
             String typeOfForm
     ) {
-        // Build phone filter — LIKE match to handle partial/country-code variations
-        String matchingPhone = (String) payloadMap.get('phone');
-        if (matchingPhone != null) {
-            matchingPhone = '%' + matchingPhone + '%'; // partial match with wildcards
+        // Modified By : Jitendra Varma | 29-Oct-2026
+        // Registration Number is the same on the Registration and Admission forms
+        // and unique per student, so it is checked first. Email + Phone is the
+        // fallback. An empty set makes the IN filter match nothing, so a blank
+        // Registration Number never matches leads that have none.
+        String registrationNumber = (String) payloadMap.get('registrationNumber');
+        Set<String> matchingRegistrationNumbers = new Set<String>();
+        if (String.isNotBlank(registrationNumber)) {
+            matchingRegistrationNumbers.add(registrationNumber.trim());
         }
+        String matchingPhone = buildPhoneMatchPattern((String) payloadMap.get('phone'));
         String matchingEmail = (String) payloadMap.get('email');
+        Set<String> matchingDepartments = new Set<String>{ department };
+        if (UG_DEPARTMENT.equalsIgnoreCase(normalizeDepartment(department))) {
+            matchingDepartments.add(UG_DEPARTMENT);
+            matchingDepartments.add(UG_DEPARTMENT_ALIAS);
+        }
 
         // ── START: Modified By Mihir Ramoliya | 28-Mar-2026 ───────────────────────
         // Change: Added all Group slot fields (Group_1__c … Group_4__c + related
@@ -928,17 +985,26 @@ global class saveWebTo_YourProfileData {
                 Group_4__c, Group_4_Application_Date__c,
                 Group_4_Application_Number__c, Group_4_Majors__c, Group_4_Programmes__c
             FROM   Lead
-            WHERE  Phone LIKE :matchingPhone
-            AND    Email = :matchingEmail
-            AND    Department__c = :department
-            LIMIT  1
+            WHERE  Department__c IN :matchingDepartments
+            AND    (Registration_Number__c IN :matchingRegistrationNumbers
+                    OR (Phone LIKE :matchingPhone AND Email = :matchingEmail))
+            ORDER BY CreatedDate ASC
+            LIMIT  :DUPLICATE_CANDIDATE_LIMIT
         ];
         // ── END: Modified By Mihir Ramoliya | 28-Mar-2026 ─────────────────────────
 
         Lead newLead = null;
 
         if (!matchingLead.isEmpty()) {
+            // Prefer the oldest lead with the same Registration Number; otherwise
+            // the oldest Email + Phone match.
             newLead = matchingLead[0];
+            for (Lead candidate : matchingLead) {
+                if (matchingRegistrationNumbers.contains(candidate.Registration_Number__c)) {
+                    newLead = candidate;
+                    break;
+                }
+            }
 
             // Defensive check — if RecordTypeId is not populated on the matched record,
             // re-query to get it (can happen if the lead has no record type set). Must
@@ -965,6 +1031,116 @@ global class saveWebTo_YourProfileData {
         return newLead;
     }
     // END: handleDuplicateLeadUndergraduation
+
+    // Max leads returned by the UG duplicate lookup before picking the best match.
+    private static final Integer DUPLICATE_CANDIDATE_LIMIT = 50;
+    // Number of trailing phone digits compared when matching duplicates.
+    private static final Integer PHONE_MATCH_DIGITS = 10;
+    // A phone starting with this already carries its country code.
+    private static final String INTERNATIONAL_PHONE_PREFIX = '+';
+    // Form type that must carry the leadId of the Lead to update (UG only).
+    private static final String AURIS_ADMISSION_FORM = 'Auris_Admission_Form';
+    // Only this department's Admission Form requires leadId.
+    private static final String UG_DEPARTMENT = 'Undergraduation';
+    private static final String UG_DEPARTMENT_ALIAS = 'Undergraduate';
+    // Payload key holding the Salesforce Lead Id on the Admission Form.
+    private static final String LEAD_ID_KEY = 'leadId';
+    // Length of API_Log__c.Request__c - the logged payload is cut to fit.
+    @TestVisible
+    private static final Integer API_LOG_REQUEST_MAX_LENGTH = 131072;
+
+    /**
+     * @description Resolve both supported UG names to the department used by form metadata.
+     * Modified: 02-Nov-2026. All other department names retain their existing behavior.
+     */
+    private static String normalizeDepartment(String department) {
+        if (UG_DEPARTMENT.equalsIgnoreCase(department)
+                || UG_DEPARTMENT_ALIAS.equalsIgnoreCase(department)) {
+            return UG_DEPARTMENT;
+        }
+        return department;
+    }
+
+    // Added By : Jitendra Varma | 29-Oct-2026
+    // Returns the Lead a UG Admission Form payload must update, taken from its 'leadId'.
+    // email / phone / mobile / admissionYear are optional on such a payload - when sent
+    // they are written as usual, when left out the Lead keeps its existing values.
+    // Throws CustomException (returned to Auris as the error message, nothing saved) when
+    // leadId is missing / blank / not a valid Lead Id / not found, or when the Lead belongs
+    // to a different Registration Number or department. A blank Registration Number or
+    // department on the Lead is not a mismatch - the payload value is written to it.
+    // Queries every Lead field the rest of processSingleRecord reads.
+    // @param payloadMap          Payload map from the REST API request
+    // @param department          Payload department
+    // @param registrationNumber  Payload registrationNumber (already validated as not blank)
+    // @return                    The Lead to update
+    @TestVisible
+    private static Lead resolveAdmissionLead(Map<String, Object> payloadMap, String department, String registrationNumber) {
+        Object rawLeadId = payloadMap.get(LEAD_ID_KEY);
+        String leadIdValue = (rawLeadId == null) ? null : String.valueOf(rawLeadId).trim();
+        if (String.isBlank(leadIdValue)) {
+            throw new CustomException('Missing required field: leadId. ' + AURIS_ADMISSION_FORM
+                + ' must include the leadId of the Lead to update.');
+        }
+
+        Id leadId;
+        try {
+            leadId = Id.valueOf(leadIdValue);
+        } catch (StringException e) {
+            throw new CustomException('Invalid leadId "' + leadIdValue + '": not a valid Salesforce Id.');
+        }
+        if (leadId.getSObjectType() != Lead.SObjectType) {
+            throw new CustomException('Invalid leadId "' + leadIdValue + '": not a Lead Id.');
+        }
+
+        List<Lead> leads = [
+            SELECT Id, RecordTypeId, Registration_Number__c, Department__c, Email, Phone,
+                   FirstName, LastName, Status, LeadSource, Most_Recent_Lead_Source__c,
+                   Multi_Select_Lead_Source__c, Preferred_Programme__c,
+                   IsConverted, ConvertedAccountId
+            FROM   Lead
+            WHERE  Id = :leadId
+            LIMIT  1
+        ];
+        if (leads.isEmpty()) {
+            throw new CustomException('Invalid leadId "' + leadIdValue + '": no Lead found with this Id.');
+        }
+        Lead lead = leads[0];
+
+        if (String.isNotBlank(lead.Registration_Number__c)
+                && !lead.Registration_Number__c.trim().equalsIgnoreCase(registrationNumber.trim())) {
+            throw new CustomException('leadId "' + leadIdValue + '" belongs to Registration Number "'
+                + lead.Registration_Number__c + '", but the payload has "' + registrationNumber + '".');
+        }
+        if (String.isNotBlank(lead.Department__c)
+                && !normalizeDepartment(lead.Department__c).equalsIgnoreCase(normalizeDepartment(department))) {
+            throw new CustomException('leadId "' + leadIdValue + '" belongs to department "'
+                + lead.Department__c + '", but the payload has "' + department + '".');
+        }
+        return lead;
+    }
+
+    // Added By : Jitendra Varma | 29-Oct-2026
+    // Phone is saved with all non-digits removed and a country code added in front
+    // (e.g. '+447887139054' is saved as '91447887139054'), so the raw payload value
+    // never matches when it has '+', spaces or dashes. Matching on the last 10
+    // digits works whichever country code was added.
+    // @param phone  Phone value from the payload
+    // @return       LIKE pattern on the last 10 digits, or null when there are no digits
+    @TestVisible
+    private static String buildPhoneMatchPattern(String phone) {
+        if (phone == null) {
+            return null;
+        }
+        String digits = phone.replaceAll('\\D', '');
+        if (String.isBlank(digits)) {
+            return null;
+        }
+        if (digits.length() > PHONE_MATCH_DIGITS) {
+            digits = digits.right(PHONE_MATCH_DIGITS);
+        }
+        return '%' + digits + '%';
+    }
 
     /**
     * @description
@@ -2777,6 +2953,11 @@ global class saveWebTo_YourProfileData {
      * @param payload   - String payload : The JSON payload that was being processed when the exception occurred.
      * @param e  - Exception e    : The exception that was thrown during the processing of the lead.
      * @param registrationNumber  - String    : The registration number of the lead that was being processed when the exception occurred.
+     *
+     * Modified By : Jitendra Varma | 06-Nov-2026
+     *               The payload is now saved on Request__c, so a failed log shows the exact
+     *               values that were sent. It is cut to the field length so a very large
+     *               payload cannot make the log insert itself fail.
      ******************************************************************************************/
     public static void logFailedLead(String payload, Exception e,String registrationNumber) {
         try {
@@ -2794,6 +2975,7 @@ global class saveWebTo_YourProfileData {
             apiLog.Response__c = e.getMessage();
             apiLog.Log_Type__c = 'Failed';
             apiLog.Registration_Number__c = registrationNumber;
+            apiLog.Request__c = (payload == null) ? null : payload.left(API_LOG_REQUEST_MAX_LENGTH);
             //system.debug('3137 ' +apiLog.Registration_Number__c);
             insert apiLog;
         } catch (Exception logException) {

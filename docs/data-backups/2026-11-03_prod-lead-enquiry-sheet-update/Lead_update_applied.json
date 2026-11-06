@@ -1,0 +1,239 @@
+{
+ "allOrNone": false,
+ "records": [
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000aeGntEAE",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000aXFV2EAO",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000RcnwHEAR",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000dQTuMEAW",
+   "Educator_Counsellor_Text__c": "Nirja",
+   "Programme_Interested_in__c": "The Family Business and Entrepreneurship Programme",
+   "Major__c": "Family Business and Entrepreneurship"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000dEeWzEAK",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BA (Honours)"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000dS8VeEAK",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BSM (Honours)",
+   "School_City__c": "Morbi"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000akIV4EAM",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BS (Honours)",
+   "Major__c": "Physics",
+   "School_City__c": "Ahmedabad"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000cu83TEAQ",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000bCuXNEA0",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000bx82gEAA",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "BS (Honours)",
+   "Major__c": "Economics",
+   "School_City__c": "Ahmedabad"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000IwqGnEAJ",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BS (Honours)",
+   "Major__c": "MCS",
+   "Admission_Year__c": "Admission Year - 2027"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000adwcSEAQ",
+   "Programme_Interested_in__c": "BTech"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000cwJEBEA2",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000adwdgEAA",
+   "Name_of_University_College__c": "VNSU"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000cXjrhEAC",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000cd0n3EAA",
+   "Educator_Counsellor_Text__c": "Urvi",
+   "School_City__c": "Vizag",
+   "School__c": "Rishi Vally School"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000cmao5EAA",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BTech"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000csglyEAA",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000WuNBQEA3",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Shivani",
+   "Programme_Interested_in__c": "Integrated MS in Life Sciences"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000d6c5nEAA",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Urvi",
+   "Programme_Interested_in__c": "BSM (Honours)"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000dF01GEAS",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000dQ2vnEAC",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BSM (Honours)"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000aelIcEAI",
+   "Enquiry_Type__c": "Application Assistance"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000ZA5tfEAD",
+   "Enquiry_Type__c": "Application Technical Issue",
+   "Educator_Counsellor_Text__c": "Shivani"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000HLKLOEA5",
+   "Enquiry_Type__c": "Lateral Admission",
+   "Educator_Counsellor_Text__c": "Neelam"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv00000ZkZGSEA3",
+   "Enquiry_Type__c": "General Admission Information",
+   "Educator_Counsellor_Text__c": "Neelam",
+   "Programme_Interested_in__c": "BS (Honours)",
+   "Major__c": "Economics"
+  },
+  {
+   "attributes": {
+    "type": "Lead"
+   },
+   "id": "00Qfv000002TKIWEA4",
+   "Enquiry_Type__c": "Application Assistance",
+   "Educator_Counsellor_Text__c": "Neelam"
+  }
+ ]
+}

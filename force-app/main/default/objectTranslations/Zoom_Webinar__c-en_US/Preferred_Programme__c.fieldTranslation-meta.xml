@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Optional. New Leads get this programme and are assigned by the programme rule. Blank = department round-robin. --></help>
+    <label><!-- Preferred Programme --></label>
+    <name>Preferred_Programme__c</name>
+    <picklistValues>
+        <masterLabel>AGCP</masterLabel>
+        <translation><!-- AGCP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ahmedabad Grand Challenge Programme</masterLabel>
+        <translation><!-- Ahmedabad Grand Challenge Programme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of  Commerce (Honours)</masterLabel>
+        <translation><!-- Bachelor of  Commerce (Honours) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Arts (Honours)</masterLabel>
+        <translation><!-- Bachelor of Arts (Honours) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Commerce (Professional)</masterLabel>
+        <translation><!-- Bachelor of Commerce (Professional) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Science (Honours)</masterLabel>
+        <translation><!-- Bachelor of Science (Honours) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Science In Management (Honours)</masterLabel>
+        <translation><!-- Bachelor of Science In Management (Honours) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Science in Economics (Honours)</masterLabel>
+        <translation><!-- Bachelor of Science in Economics (Honours) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Technology</masterLabel>
+        <translation><!-- Bachelor of Technology --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Technology in Chemical and Environmental Engineering</masterLabel>
+        <translation><!-- Bachelor of Technology in Chemical and Environmental Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Technology in Computer Science and  Engineering</masterLabel>
+        <translation><!-- Bachelor of Technology in Computer Science and  Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Technology in Electrical and Electronics Engineering</masterLabel>
+        <translation><!-- Bachelor of Technology in Electrical and Electronics Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor of Technology in Mechanical Engineering</masterLabel>
+        <translation><!-- Bachelor of Technology in Mechanical Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Building Digital Factories</masterLabel>
+        <translation><!-- Building Digital Factories --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Certificate in Business Analytics</masterLabel>
+        <translation><!-- Certificate in Business Analytics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Certificate in Financial Analysis</masterLabel>
+        <translation><!-- Certificate in Financial Analysis --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Certificate in Strategic Digital Marketing</masterLabel>
+        <translation><!-- Certificate in Strategic Digital Marketing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diploma in Business Analytics</masterLabel>
+        <translation><!-- Diploma in Business Analytics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diploma in Financial Analysis</masterLabel>
+        <translation><!-- Diploma in Financial Analysis --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diploma in Translation and Creative Writing</masterLabel>
+        <translation><!-- Diploma in Translation and Creative Writing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fin4NonFin</masterLabel>
+        <translation><!-- Fin4NonFin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Finance for Non-Finance Professionals</masterLabel>
+        <translation><!-- Finance for Non-Finance Professionals --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gemba</masterLabel>
+        <translation><!-- Gemba --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grow - Executive General Management</masterLabel>
+        <translation><!-- Grow - Executive General Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrated Arts Dual Degree Programme</masterLabel>
+        <translation><!-- Integrated Arts Dual Degree Programme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrated Master of Science</masterLabel>
+        <translation><!-- Integrated Master of Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Integrated Programme in Technology and Management</masterLabel>
+        <translation><!-- Integrated Programme in Technology and Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MTech in VLSI, Microelectronics and Semiconductors</masterLabel>
+        <translation><!-- MTech in VLSI, Microelectronics and Semiconductors --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Business Administration</masterLabel>
+        <translation><!-- Master of Business Administration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Management Studies in Heritage Management</masterLabel>
+        <translation><!-- Master of Management Studies in Heritage Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Science in Economics</masterLabel>
+        <translation><!-- Master of Science in Economics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Science in Health Data Science</masterLabel>
+        <translation><!-- Master of Science in Health Data Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Science in Quantitative Finance</masterLabel>
+        <translation><!-- Master of Science in Quantitative Finance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Technology in Composites</masterLabel>
+        <translation><!-- Master of Technology in Composites --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Technology in Computer Science and Engineering</masterLabel>
+        <translation><!-- Master of Technology in Computer Science and Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Technology in Microelectronics and Semiconductors</masterLabel>
+        <translation><!-- Master of Technology in Microelectronics and Semiconductors --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD at Amrut Mody School Of Management</masterLabel>
+        <translation><!-- PhD at Amrut Mody School Of Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD at Bagchi School Of Public Health</masterLabel>
+        <translation><!-- PhD at Bagchi School Of Public Health --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD at School Of Arts and Sciences</masterLabel>
+        <translation><!-- PhD at School Of Arts and Sciences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD at School Of Engineering and Applied Science</masterLabel>
+        <translation><!-- PhD at School Of Engineering and Applied Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Biological and Life Sciences</masterLabel>
+        <translation><!-- PhD in Biological and Life Sciences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Engineering</masterLabel>
+        <translation><!-- PhD in Engineering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Epidemiology</masterLabel>
+        <translation><!-- PhD in Epidemiology --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Interdisciplinary Humanities and Social Sciences</masterLabel>
+        <translation><!-- PhD in Interdisciplinary Humanities and Social Sciences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Life Sciences</masterLabel>
+        <translation><!-- PhD in Life Sciences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Management</masterLabel>
+        <translation><!-- PhD in Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Mathematical and Computational Sciences</masterLabel>
+        <translation><!-- PhD in Mathematical and Computational Sciences --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD in Physics</masterLabel>
+        <translation><!-- PhD in Physics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Programme in Integrated Arts</masterLabel>
+        <translation><!-- Programme in Integrated Arts --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>The BxMx Programme</masterLabel>
+        <translation><!-- The BxMx Programme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>The BxMx Programme Dual Degree: BA - MBA</masterLabel>
+        <translation><!-- The BxMx Programme Dual Degree: BA - MBA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>The BxMx Programme Dual Degree: BS - MS in Quantitative Finance</masterLabel>
+        <translation><!-- The BxMx Programme Dual Degree: BS - MS in Quantitative Finance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>The BxMx Programme Dual Degree: BTech - MBA</masterLabel>
+        <translation><!-- The BxMx Programme Dual Degree: BTech - MBA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>The Entrepreneurship &amp; Family Business Programme</masterLabel>
+        <translation><!-- The Entrepreneurship &amp; Family Business Programme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Transforming R&amp;D in Indian Firms</masterLabel>
+        <translation><!-- Transforming R&amp;D in Indian Firms --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Zoom Session</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Zoom Sessions</value>
+    </caseValues>
+    <layouts>
+        <layout>Zoom Webinar Layout</layout>
+        <sections>
+            <label><!-- Attendance Summary --></label>
+            <section>Attendance Summary</section>
+        </sections>
+        <sections>
+            <label><!-- Lead Setup --></label>
+            <section>Lead Setup</section>
+        </sections>
+        <sections>
+            <label><!-- Schedule --></label>
+            <section>Schedule</section>
+        </sections>
+        <sections>
+            <label><!-- Session Information --></label>
+            <section>Session Information</section>
+        </sections>
+        <sections>
+            <label><!-- Sync Information --></label>
+            <section>Sync Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Zoom Links --></label>
+            <section>Zoom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

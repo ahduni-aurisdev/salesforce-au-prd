@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Commincation/RojssFnqySVAknyMANSWNSyDyVpraL</members>
+        <name>Dashboard</name>
+    </types>
+    <types>
+        <members>CommunicationMarketingAttribution/Admissions_by_Original_Lead_Source_TNv</members>
+        <members>CommunicationMarketingAttribution/Lead_Trend_by_Department_xjs</members>
+        <members>CommunicationMarketingAttribution/Leads_by_Department_Lead_Souce_Ahb</members>
+        <members>CommunicationMarketingAttribution/Leads_by_UTM_pjC</members>
+        <members>CommunicationMarketingAttribution/Opportunities_by_Department_Stage_Cks</members>
+        <name>Report</name>
+    </types>
+    <version>65.0</version>
+</Package>

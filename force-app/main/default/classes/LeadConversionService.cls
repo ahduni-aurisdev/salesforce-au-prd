@@ -626,7 +626,7 @@ global with sharing class LeadConversionService {
             acc.put(groupFieldName(slot, 'preRegDate'), has ? lead.get(groupFieldName(slot, 'preRegDate')) : null);
         }
         try {
-            update acc;
+            new SystemMode().save(acc);
         } catch (Exception e) {
             System.debug(LoggingLevel.ERROR, 'Account group sync failed: ' + e.getMessage());
             if (strict == true) throw new CustomException('Could not save pre-registration on the account: ' + e.getMessage());
@@ -673,7 +673,7 @@ global with sharing class LeadConversionService {
             if (prd == null) throw new CustomException('Invalid preRegistrationDate. Use yyyy-MM-dd.');
         }
 
-        List<Lead> found = Database.query(leadSoql(leadId));
+        List<Lead> found = (List<Lead>) new SystemMode().query(leadSoql(leadId));
         if (found.isEmpty()) throw new CustomException('Lead not found: ' + leadId);
         Lead lead = found[0];
         if (lead.Department__c != 'Undergraduation' && lead.RecordType.DeveloperName != 'Undergraduation')
@@ -734,7 +734,7 @@ global with sharing class LeadConversionService {
         if (prd != null) flags.put('preRegistrationDate', prd);
         applyPreRegToLead(upd, lead, slot, flags, isNew);
 
-        update upd;
+        new SystemMode().save(upd);
 
         Boolean converted = lead.IsConverted == true && lead.ConvertedAccountId != null;
         if (converted) syncGroupsToAccount(lead, lead.ConvertedAccountId, true);
@@ -2981,6 +2981,15 @@ global with sharing class LeadConversionService {
     // END: SECTION 11 – updateAccountFromLead & updateAccountFromPayload
 
     public class CustomException extends Exception {}    
+
+    /**
+     * System-mode helper used by the pre-registration code, so it also works when it is
+     * called from the public webhook (guest user, no record access).
+     */
+    private without sharing class SystemMode {
+        private List<SObject> query(String soql) { return Database.query(soql); }
+        private void save(SObject rec) { update rec; }
+    }
 
     /**
     * @description - This method updates the record types of the Account and Opportunity records

@@ -8,6 +8,7 @@
     <enableExternalSharingModel>true</enableExternalSharingModel>
     <enableManagerGroups>false</enableManagerGroups>
     <enableManualUserRecordSharing>false</enableManualUserRecordSharing>
+    <enablePartnerSuperUserAccess>false</enablePartnerSuperUserAccess>
     <enablePortalUserCaseSharing>true</enablePortalUserCaseSharing>
     <enablePortalUserVisibility>false</enablePortalUserVisibility>
     <enableRemoveTMGroupMembership>false</enableRemoveTMGroupMembership>

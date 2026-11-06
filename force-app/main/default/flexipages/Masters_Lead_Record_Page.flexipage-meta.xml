@@ -207,6 +207,16 @@
                 <identifier>RecordForm_Submission_Date__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Assigned_Admission_Round__c</fieldItem>
+                <identifier>RecordAssigned_Admission_Round_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-dbddb613-14ac-411a-9997-05699ec87a7d</name>
         <type>Facet</type>
     </flexiPageRegions>

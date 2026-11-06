@@ -4807,9 +4807,9 @@
         </countries>
         <countries>
             <active>true</active>
-            <integrationValue>Tanzania, United Republic of</integrationValue>
+            <integrationValue>United Republic of Tanzania</integrationValue>
             <isoCode>TZ</isoCode>
-            <label>Tanzania, United Republic of</label>
+            <label>United Republic of Tanzania</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
             <visible>true</visible>
