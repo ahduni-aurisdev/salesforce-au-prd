@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UG_2027_Pre_Registered</fullName>
+    <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>Group_1__c</columns>
+    <columns>Group_1_Pre_Register__c</columns>
+    <columns>Group_1_Pre_Registration_Date__c</columns>
+    <columns>Group_2__c</columns>
+    <columns>Group_2_Pre_Register__c</columns>
+    <columns>Group_2_Pre_Registration_Date__c</columns>
+    <columns>Group_3__c</columns>
+    <columns>Group_3_Pre_Register__c</columns>
+    <columns>Group_3_Pre_Registration_Date__c</columns>
+    <columns>Group_4__c</columns>
+    <columns>Group_4_Pre_Register__c</columns>
+    <columns>Group_4_Pre_Registration_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Lead.Undergraduation</value>
+    </filters>
+    <filters>
+        <field>Admission_Year__c</field>
+        <operation>equals</operation>
+        <value>Admission Year - 2027</value>
+    </filters>
+    <filters>
+        <field>Group_1_Pre_Register__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Group_2_Pre_Register__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Group_3_Pre_Register__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Group_4_Pre_Register__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>UG 2027 - Pre-Registered</label>
+    <sharedTo>
+        <group>Undergraduation</group>
+    </sharedTo>
+</ListView>
